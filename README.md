@@ -16,11 +16,11 @@ Setting .gitconfig file
 - go to Users
 - go to your User name (mine is Timothy)
 - edit the .gitconfig file and add this:
-    [alias]
-      co = checkout
-      ci = commit
-      st = status
-      br = branch
-      hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-      type = cat-file -t
-      dump = cat-file -p
+    - [alias]
+    -   co = checkout
+    -   ci = commit
+    -   st = status
+    -   br = branch
+    -   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    -   type = cat-file -t
+    -   dump = cat-file -p
