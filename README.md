@@ -1,4 +1,36 @@
-<h2>Restaurant Ordering System</h2>
+# Restaurant Ordering System
+
+Just what the name suggest :) 
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+	##Maven 3.+
+	#https://maven.apache.org/download.cgi
+	
+
+
+### Installing
+	
+	##if not yet done
+ 		#gcloud init // The project-id
+	
+	#mvn clean install
+	#mvn dependecy:resolve
+	    
+
+## How to RUN LOCAllY
+	
+
+	#mvn -DskipTests appengine:run
+	
+## Deployment
+	
+	#mvn -DskipTests appengine:deploy
+
 
 Suggested work flow:
 - git branch <feature name>
