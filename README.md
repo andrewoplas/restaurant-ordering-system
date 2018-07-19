@@ -2,9 +2,6 @@
 
 Just what the name suggest :) 
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -32,27 +29,27 @@ These instructions will get you a copy of the project up and running on your loc
 	#mvn -DskipTests appengine:deploy
 
 
-Suggested work flow:
-- git branch <feature name>
-- after editing look at the recent commits of master branch if there is new
-- git fetch
-- git rebase origin/master
-- fix conflicts if any
-- git add
-- git rebase --continue
-- git push
-- Ask for Pull Request or here in Gitlab "Merge Request" and add other devs as reviewers and press the "Remove source branch when merge request is accepted." option
+###Suggested work flow:
+  - git branch <feature name>
+  - after editing look at the recent commits of master branch if there is new
+  - git fetch
+  - git rebase origin/master
+  - fix conflicts if any
+  - git add
+  - git rebase --continue
+  - git push
+  - Ask for Pull Request or here in Gitlab "Merge Request" and add other devs as reviewers and press the "Remove source branch when merge request is accepted." option
 
-Setting .gitconfig file
-- go to (C:) drive
-- go to Users
-- go to your User name (mine is Timothy)
-- edit the .gitconfig file and add this:
-    - [alias]
-      - co = checkout
-      - ci = commit
-      - st = status
-      - br = branch
-      - hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-      - type = cat-file -t
-      - dump = cat-file -p
+  Setting .gitconfig file
+  - go to (C:) drive
+  - go to Users
+  - go to your User name (mine is Timothy)
+  - edit the .gitconfig file and add this:
+      - [alias]
+        - co = checkout
+        - ci = commit
+        - st = status
+        - br = branch
+        - hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+        - type = cat-file -t
+        - dump = cat-file -p
