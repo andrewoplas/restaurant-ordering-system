@@ -5,31 +5,31 @@ Just what the name suggest :)
 
 ### Prerequisites
 
-	##Maven 3.+
-	#https://maven.apache.org/download.cgi
+	Maven 3.+
+	  https://maven.apache.org/download.cgi
 	
 
 
 ### Installing
 	
-	##if not yet done
- 		#gcloud init // The project-id
+	if not yet done
+ 		gcloud init // The project-id
 	
-	#mvn clean install
-	#mvn dependecy:resolve
+	mvn clean install
+	mvn dependecy:resolve
 	    
 
-## How to RUN LOCAllY
-	
+   How to RUN LOCALLY
+    
 
-	#mvn -DskipTests appengine:run
-	
-## Deployment
-	
-	#mvn -DskipTests appengine:deploy
+    mvn -DskipTests appengine:run
+    
+   Deployment
+    
+    mvn -DskipTests appengine:deploy
 
 
-###Suggested work flow:
+Suggested work flow:
   - git branch <feature name>
   - after editing look at the recent commits of master branch if there is new
   - git fetch
