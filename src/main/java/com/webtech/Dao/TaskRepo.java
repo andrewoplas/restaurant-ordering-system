@@ -3,7 +3,7 @@ package com.webtech.Dao;
 import com.google.appengine.api.datastore.*;
 import com.webtech.Model.TaskEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 
 import java.util.ArrayList;
@@ -11,24 +11,24 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class TaskRepo {
+@Repository
+public class TaskRepo implements RESPOSITORY<TaskEntity>{
 
-    private final static String KIND = "Task2";
+    private final static String KIND = "Task";
 
     @Autowired
     com.google.appengine.api.datastore.DatastoreService datastore;
 
-    public TaskEntity entityToTask(Entity entity) {
+    public TaskEntity entityToObject(Entity entity) {
         return new TaskEntity.Builder()
                 .description((String) entity.getProperty(TaskEntity.DESCRIPTION))
-                .id(entity.getKey().getId())
+                .id(Long.valueOf((String)entity.getProperty(TaskEntity.ID)))
                 .untilDate((String) entity.getProperty(TaskEntity.UNTIL_DATE))
                 .build();
     }
 
     
-    public Optional<Long> createTask(TaskEntity task) {
+    public Optional<Long> addObject(TaskEntity task) {
         Entity incTaskEntity = new Entity(KIND);
         incTaskEntity.setProperty(TaskEntity.DESCRIPTION, task.getDescription());
         incTaskEntity.setProperty(TaskEntity.UNTIL_DATE, task.getUntilDate());
@@ -38,18 +38,18 @@ public class TaskRepo {
     }
 
     
-    public TaskEntity readTask(Long taskId) {
+    public TaskEntity getItem(Long taskId) {
         Entity taskEntity = null;
         try {
             taskEntity = datastore.get(KeyFactory.createKey(KIND, taskId));
         } catch (EntityNotFoundException e) {
             return null;
         }
-        return entityToTask(taskEntity);
+        return entityToObject(taskEntity);
     }
 
     
-    public void updateTask(TaskEntity task) {
+    public void update(TaskEntity task) {
         Key key = KeyFactory.createKey(KIND, task.getId());
         Entity entity = new Entity(key);
         entity.setProperty(TaskEntity.DESCRIPTION, task.getDescription());
@@ -59,21 +59,26 @@ public class TaskRepo {
     }
 
     
-    public void deleteTask(Long taskId) {
+    public boolean delete(Long taskId) {
         Key key = KeyFactory.createKey(KIND, taskId);
         datastore.delete(key);
+        return true;
     }
 
-    public List<TaskEntity> entitiesToTasks(Iterator<Entity> resultList) {
+    public List<TaskEntity> entitiesToObjects(Iterator<Entity> resultList) {
         List<TaskEntity> resultTasks = new ArrayList<>();
         while (resultList.hasNext()) {
-            resultTasks.add(entityToTask(resultList.next()));
+            resultTasks.add(entityToObject(resultList.next()));
         }
         return resultTasks;
     }
 
     
-    public List<TaskEntity> listTasks(String startCursorString) {
+	public List<TaskEntity> getItems() {
+		return getItems(null);
+    }
+    
+    public List<TaskEntity> getItems(String startCursorString) {
         FetchOptions fetchOptions = FetchOptions.Builder.withLimit(10);
         if (startCursorString != null && !startCursorString.equals("")) {
             fetchOptions.startCursor(Cursor.fromWebSafeString(startCursorString));
@@ -83,13 +88,34 @@ public class TaskRepo {
         PreparedQuery preparedQuery = datastore.prepare(query);
         QueryResultIterator<Entity> results = preparedQuery.asQueryResultIterator(fetchOptions);
 
-        List<TaskEntity> resultBooks = entitiesToTasks(results);
+        List<TaskEntity> resultBooks = entitiesToObjects(results);
         Cursor cursor = results.getCursor();
-        if (cursor != null && resultBooks.size() == 10) {
-            String cursorString = cursor.toWebSafeString();
+       
             return resultBooks;
-        } else {
-            return resultBooks;
-        }
+        
     }
+
+
+	@Override
+	public TaskEntity create(TaskEntity obj) {
+		return null;
+	}
+
+    @Deprecated
+	@Override
+	public TaskEntity getItem(String id) {
+		return null;
+	}
+
+	@Override
+	public boolean itemExist(long id) {
+		return false;
+	}
+
+    
+    @Deprecated
+	@Override
+	public boolean delete(String id) {
+		return false;
+	}
 }

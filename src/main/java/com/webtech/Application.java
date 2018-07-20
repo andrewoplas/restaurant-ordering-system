@@ -7,10 +7,10 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class RosApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RosApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Bean
