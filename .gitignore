@@ -22,3 +22,41 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+# compiled output
+/angular-app/dist
+/angular-app/tmp
+/angular-app/out-tsc
+
+# dependencies
+/angular-app/node_modules
+
+# IDEs and editors
+/angular-app/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/angular-app/.sass-cache
+/angular-app/connect.lock
+/angular-app/coverage
+/angular-app/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/angular-app/typings
+
+# System Files
+.DS_Store
+Thumbs.db
