@@ -6,7 +6,7 @@ import { ReceptionistAssistanceComponent } from '../assets/ts/receptionist-assis
 import { ReceptionistDineComponent } from '../assets/ts/receptionist-dine.component';
 import { ReceptionistOrderComponent } from '../assets/ts/receptionist-order.component';
 
-import { AdminComponent } from '../assets/Admin/ts/admin.component';
+import { AdminComponent } from '../assets/Admin/admin.component';
 
 import { OccupantComponent } from '../assets/ts/occupant.component';
 import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
