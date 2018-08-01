@@ -11,6 +11,7 @@ import { AdminComponent } from '../assets/Admin/admin.component';
 import { OccupantComponent } from '../assets/ts/occupant.component';
 import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
 import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
+import { LandingComponent } from '../assets/ts/landing.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
         component: ReceptionistDineComponent
       }
     ]
+  },
+  {
+    path: '',
+    component: LandingComponent
   }
 ];
 

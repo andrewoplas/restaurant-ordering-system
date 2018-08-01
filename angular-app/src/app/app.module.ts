@@ -11,6 +11,7 @@ import { ReceptionistAssistanceComponent } from '../assets/ts/receptionist-assis
 import { ReceptionistOrderComponent } from '../assets/ts/receptionist-order.component';
 import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
 import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
+<<<<<<< HEAD
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { AdminNavComponent } from '../assets/Admin/ts/admin-nav.component';
 import { OverViewComponent } from '../assets/Admin/ts/over-view.component';
@@ -19,6 +20,9 @@ import { MapComponent } from '../assets/Admin/ts/map.component';
 
 //Admin 
 
+=======
+import { LandingComponent } from '../assets/ts/landing.component';
+>>>>>>> User side landing page
 
 @NgModule({
   declarations: [
@@ -31,11 +35,15 @@ import { MapComponent } from '../assets/Admin/ts/map.component';
     ReceptionistOrderComponent,
     OccupantDishDetailsComponent,
     OccupantMenuComponent,
+<<<<<<< HEAD
     AdminNavComponent,
     OverViewComponent,
     AdminSideBarComponent,
     MapComponent,
     
+=======
+    LandingComponent
+>>>>>>> User side landing page
   ],
   imports: [
     BrowserModule,
