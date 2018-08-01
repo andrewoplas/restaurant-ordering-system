@@ -10,7 +10,7 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "sass"
+          "styleext": "scss"
         }
       },
       "architect": {
@@ -24,12 +24,42 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/plugins"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss"
+              
             ],
-            "scripts": []
+            "scripts": [
+              "../angular-app/src/plugins/bower_components/jquery/dist/jquery.min.js",
+              "../angular-app/src/plugins/bootstrap/dist/js/bootstrap.min.js",
+
+              "../angular-app/src/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js",
+
+              "../angular-app/src/plugins/bower_components/waypoints/lib/jquery.waypoints.js",
+              "../angular-app/src/plugins/bower_components/counterup/jquery.counterup.min.js",
+
+              "../angular-app/src/plugins/js/jquery.slimscroll.js",
+              "../angular-app/src/plugins/js/waves.js",
+
+              "../angular-app/src/plugins/bower_components/vectormap/jquery-jvectormap-2.0.2.min.js",
+              "../angular-app/src/plugins/bower_components/vectormap/jquery-jvectormap-world-mill-en.js",
+              "../angular-app/src/plugins/bower_components/vectormap/jquery-jvectormap-in-mill.js",
+              "../angular-app/src/plugins/bower_components/vectormap/jquery-jvectormap-us-aea-en.js",
+
+              "../angular-app/src/plugins/bower_components/chartist-js/dist/chartist.min.js",
+              "../angular-app/src/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js",
+              
+              "../angular-app/src/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js",
+              "../angular-app/src/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js",
+
+              "../angular-app/src/plugins/js/custom.min.js",
+              "../angular-app/src/plugins/js/dashboard3.js",
+
+              "../angular-app/src/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"
+             
+            ]
           },
           "configurations": {
             "production": {
@@ -76,7 +106,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
