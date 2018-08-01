@@ -39,7 +39,7 @@ The modified folder structure is inspired by an [Angular 5 article](https://itne
 │   karma.conf.js
 │   main.ts
 │   polyfills.ts
-│   styles.sass
+│   styles.scss
 │   test.ts
 │   tsconfig.app.json
 │   tsconfig.spec.json

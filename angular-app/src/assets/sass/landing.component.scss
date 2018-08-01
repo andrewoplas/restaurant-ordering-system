@@ -1,0 +1,20 @@
+.circle-container-big {
+    border-radius: 50%;
+    width: 135vw;
+    height: 100vw;
+    margin-top: -120vh;
+    margin-left: -20vw;
+    position: absolute;
+    box-shadow: 15px 15px 30px rgba(0,0,0,0.30);
+    background-color: #A40020;
+}
+
+.circle-container-sm {
+    border-radius: 50%;
+    width: 60vw;
+    height: 60vw;
+    box-shadow: 15px 15px 30px rgba(0,0,0,0.30);
+    background-color: #A40020;
+    margin-top: 65vh;
+    margin-left: 21vw;
+}
