@@ -8,6 +8,9 @@ Just what the name suggest :)
 	Maven 3.+
 	  https://maven.apache.org/download.cgi
 	
+	For Angular 5
+	  type 'cd angular-app' , press Enter, and then 'npm install -g @angular/cli' and press Enter to install necessary Angular modules. 
+	
 
 
 ### Installing
@@ -19,12 +22,13 @@ Just what the name suggest :)
 	mvn dependecy:resolve
 	    
 
-   How to RUN LOCALLY
+### How to RUN LOCALLY
     
 
     mvn -DskipTests appengine:run
     
-   Deployment
+    
+### Deployment
     
     mvn -DskipTests appengine:deploy
 
