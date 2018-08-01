@@ -1,0 +1,142 @@
+*{
+    // transition: all 200ms ease-in-out;
+    font-family: $primary-font;
+    color: $dark-o-90;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+app-root {
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+
+    &.sticky-nav {
+        .nav-wrapper {
+            height: 96px;
+        }
+
+        .ag-navbar {
+            position: fixed;
+            padding: 15px 0px;
+            background-color: $dark !important;
+            width: 100%;
+            z-index: 10;
+            top: 0;
+        }
+    }
+}
+
+h1, 
+.h1 {
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: $base-font-size * 2.5;
+    line-height: 1.5;
+    color: $dark-o-90;
+}
+  
+h2, 
+.h2 {
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: $base-font-size * 2;
+    line-height: 1.5;
+    color: $dark-o-90;
+}
+  
+h3, 
+.h3 {
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: $base-font-size * 1.75;
+    line-height: 1.7;
+    color: $dark-o-90;
+  }
+  
+h4, 
+.h4 {
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: $base-font-size * 1.5;
+    line-height: 1.8;
+    color: $dark-o-90;
+  }
+  
+h5, 
+.h5 {
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: $base-font-size * 1.25;
+    line-height: 1.8;
+    color: $dark-o-90;
+}
+  
+h6, 
+.h6 {
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: $base-font-size * 1;
+    line-height: 1.9;
+    color: $dark-o-90;
+}
+  
+p {
+    font-family: $primary-font;
+    font-weight: 400;
+    font-size: $base-font-size * 1;
+    line-height: 1.9;
+    color: $dark-o-90;
+}
+  
+label,
+.label {
+    color: $brand-primary;
+    font-family: $label-font;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.25px;
+    line-height: 15px;
+    text-transform: uppercase;
+}
+
+.label2 {
+    font-family: $primary-font;
+    font-weight: 400;
+    font-size: $base-font-size * 0.625;
+    letter-spacing: 1.6px;
+    color: $dark-o-50;
+    text-transform: uppercase;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+.ag-container {
+    padding: 30px 15px;
+}
+
+.ag-page-link p {
+    font-size: 14px;
+    color: rgba(33,30,26,0.9);
+    font-size: 14px;
+    line-height: 22px;
+    padding: 11px 0px 0px;
+}
+
+textarea {
+    min-height: 190px;
+}
+
+.footer {
+    height: 25px;
+}
