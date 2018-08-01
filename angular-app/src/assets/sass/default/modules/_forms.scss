@@ -1,0 +1,61 @@
+.form-control {
+  padding: 15px 16px;
+  height: 50px;
+  font-weight: 400;
+  font-size: $base-font-size * 1;
+  border: 1px solid $brand-secondary-o-20;
+
+  &::-webkit-input-placeholder,
+  &::placeholder {
+    color: $dark-o-40 !important;
+  }
+
+  &:focus {
+      border-color: $brand-primary;
+      box-shadow: none;
+  }
+}
+
+.has-error {
+  .form-control,
+  .form-control:focus, {
+    border-color: $error;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+  }
+}
+
+.error-message {
+  display: block;
+  color: $error;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.form-group {
+
+  &.ag-icon {
+    .form-control {
+      padding-left: 40px;
+    }  
+
+    &:before {
+      content: "\e075";
+      font-family: 'simple-line-icons';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
+      position: absolute;
+      color: inherit;
+      bottom: 32px;
+      left: 29px;
+    }
+  }
+  
+}
