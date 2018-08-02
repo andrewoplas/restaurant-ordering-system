@@ -2,39 +2,72 @@
 
 Just what the name suggest :) 
 
+## Set-up
 
 ### Prerequisites
 
-	Maven 3.+
+* stable to fast Internet connection
+* latest version of Java SE installed
+* [Node.js latest LTS version](https://nodejs.org/en/download/)
+
+* Maven 3.+
 	  https://maven.apache.org/download.cgi
 	
-	For Angular 5
-	  type 'cd angular-app' , press Enter, and then 'npm install -g @angular/cli' and press Enter to install necessary Angular modules. 
-	
+* Angular 5
+	  
+    type `cd angular-app` , press Enter, and then `npm install @angular/cli` and press Enter to install necessary Angular modules. 
 
 
 ### Installing
 	
-	if not yet done
- 		gcloud init // The project-id
-	
-	mvn clean install
-	mvn dependecy:resolve
+* Maven
+
+	`mvn clean install`
+	`mvn dependecy:resolve`
 	    
 
 ### How to RUN LOCALLY
     
+  * Spring Boot
 
-    mvn -DskipTests appengine:run
-    
+    `mvn -DskipTests appengine:run`
+
+  * Angular 5
+
+    `ng serve --open`
     
 ### Deployment
     
-    mvn -DskipTests appengine:deploy
+  * Spring Boot
 
+    `mvn -DskipTests appengine:deploy`
 
-Suggested work flow:
-  - git branch <feature name>
+  * Angular 5
+
+    `ng build --prod`
+
+## Angular 5
+
+Make sure you are in `angular-app` directory first before adding components, services, etc.
+
+Ample knowledge of Angular 5 is also needed. 
+
+### Adding Components
+
+* `ng g c modules/admin|customer|receptionist/component-name`
+
+* `move modules/admin|customer|receptionist/component-name.html|scss|ts src/app/assets/html|scss|ts`
+
+Note: Gipangita pa nakog way kung unsaon pag shorten sa mga commands. Tiis-tiis lang :3
+
+### Adding Services
+
+* `ng g s core/services/service-name`
+
+### Further stuff will be added later 
+
+## Suggested work flow:
+  - git branch < feature name >
   - after editing look at the recent commits of master branch if there is new
   - git fetch
   - git rebase origin/master
