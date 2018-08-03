@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'overview',
   templateUrl: '../html/over-view.component.html',
-  styleUrls: ['../sass/admin.component.scss']
+  styleUrls: ['../scss/admin.component.scss']
 })
 export class OverViewComponent implements OnInit {
 

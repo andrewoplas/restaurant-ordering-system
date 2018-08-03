@@ -5,7 +5,7 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-landing',
   templateUrl: '../html/landing.component.html',
-  styleUrls: ['../sass/landing.component.scss']
+  styleUrls: ['../scss/landing.component.scss']
 })
 export class LandingComponent implements OnInit {
 

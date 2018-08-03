@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-admin',
   templateUrl: './html/admin.component.html',
-  styleUrls: ['./sass/admin.component.scss']
+  styleUrls: ['./scss/admin.component.scss']
 })
 export class AdminComponent implements OnInit {
   datas : any = [
