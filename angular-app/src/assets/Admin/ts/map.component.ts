@@ -3,7 +3,7 @@ import * as $ from 'jquery';
 @Component({
   selector: 'map',
   templateUrl: '../html/map.component.html',
-  styleUrls: ["../sass/bower_components/vectormap/jquery-jvectormap-2.0.2.css"]
+  styleUrls: ["../scss/bower_components/vectormap/jquery-jvectormap-2.0.2.css"]
 })
 export class MapComponent implements OnInit {
 
