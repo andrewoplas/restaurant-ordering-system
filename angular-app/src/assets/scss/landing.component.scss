@@ -1,0 +1,61 @@
+@import '../scss/default/abstract/_variables.scss';
+
+.circle-container-big {
+    border-radius: 50%;
+    width: 135vw;
+    height: 100vw;
+    margin-top: -500vw;
+    margin-left: -20vw;
+    position: absolute;
+    box-shadow: 15px 15px 30px rgba(0,0,0,0.30);
+    background-color: #A40020;
+}
+
+.circle-container-sm {
+    border-radius: 50%;
+    width: 60vw;
+    height: 60vw;
+    box-shadow: 15px 15px 30px rgba(0,0,0,0.30);
+    background-color: #A40020;
+    margin-top: 0;
+    margin-left: 21vw;
+    position: relative;
+}
+
+.featured-image {
+    background-image: url(../img/ramen-3.png);
+    height: 70vh;
+    width: 80vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 14vw;
+    bottom: 0;
+    opacity: 0;
+}
+
+.right-call-to-action {
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+}
+
+.right-call-to-action > * {
+    z-index: 999;
+    position: absolute;
+    right: 5vw;
+}
+
+.right-container {
+    width: 40%;
+    margin-top: 5vh;
+}
+
+.cta-btn {
+    background-color: $brand-primary;
+    border-radius: 5px;
+    box-shadow: 12px 12px 16px rgba(0,0,0,0.30);
+    padding: 25px 110px;
+    color: $white;
+    font-size: 42px;
+}

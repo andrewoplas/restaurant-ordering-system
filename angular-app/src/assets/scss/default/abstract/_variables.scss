@@ -1,0 +1,52 @@
+$orange: #ffa500;
+$primary-font: 'VarelaRound', sans-serif;
+$banner-font: 'Oswald', sans-serif;
+$label-font: 'Helvetica LT Condensed';
+
+$brand-primary: #FBA62F;
+$brand-primary-o-5: rgba($brand-primary, 0.05); //opacity
+$brand-primary-o-10: rgba($brand-primary, 0.10); //opacity
+$brand-primary-l-10: lighten($brand-primary, 10); //lighten
+$brand-primary-d-10: darken($brand-primary, 10); //darken
+
+$brand-primary-o-10: #f8f1e9;
+
+$brand-secondary: #A40020;
+$brand-secondary-o-5: rgba($brand-secondary, 0.05); //opcacity
+$brand-secondary-o-10: rgba($brand-secondary, 0.10); //opcacity
+$brand-secondary-o-20: rgba($brand-secondary, 0.20);
+
+$dark: #1B1A19;
+$dark-o-1: rgba($dark, 0.01);
+$dark-o-5: rgba($dark, 0.05);
+$dark-o-10: rgba($dark, 0.10);
+$dark-o-20: rgba($dark, 0.20);
+$dark-o-30: rgba($dark, 0.30);
+$dark-o-40: rgba($dark, 0.40);
+$dark-o-50: rgba($dark, 0.50);
+$dark-o-70: rgba($dark, 0.70);
+$dark-o-90: rgba($dark, 0.90);
+$dark-l-90: lighten($dark, 90);
+$dark-l-80: lighten($dark, 80); //lighten
+
+$white: #FFFFFF;
+$gray: #262625;
+$dark-container: #1E1E1D;
+$green: #3D9A2D;
+$red: #CA3232;
+
+$error: #D0051A;
+$error-o-04: rgba($error, 0.04);
+$error-o-10: rgba($error, 0.10);
+
+$warning: #FFBA2C;
+$warning-o-10: rgba($warning, 0.10);
+
+$success: #6CCB1E;
+$success-o-10: rgba($success, 0.10);
+
+$info: #4A90E2;
+$info-o-10: rgba($info, 0.10);
+
+
+$base-font-size: 14px;

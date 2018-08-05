@@ -17,8 +17,8 @@ import { OverViewComponent } from '../assets/Admin/ts/over-view.component';
 import { AdminSideBarComponent } from '../assets/Admin/ts/admin-side-bar.component';
 import { MapComponent } from '../assets/Admin/ts/map.component';
 
-//Admin 
-
+//Admin
+import { LandingComponent } from '../assets/ts/landing.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { MapComponent } from '../assets/Admin/ts/map.component';
     OverViewComponent,
     AdminSideBarComponent,
     MapComponent,
-    
+    LandingComponent
   ],
   imports: [
     BrowserModule,

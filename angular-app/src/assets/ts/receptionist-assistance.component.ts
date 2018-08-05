@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-receptionist-assistance',
   templateUrl: '../html/receptionist-assistance.component.html',
-  styleUrls: ['../sass/receptionist-assistance.component.sass']
+  styleUrls: ['../scss/receptionist-assistance.component.scss']
 })
 export class ReceptionistAssistanceComponent implements OnInit {
 
