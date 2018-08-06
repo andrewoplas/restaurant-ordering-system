@@ -1,0 +1,186 @@
+@import '../scss/default/abstract/_variables.scss';
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v34/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+body, html {
+    overflow: hidden;
+    margin: 0;
+}
+
+.background-image {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    z-index: 1;
+    width: 35%;
+}
+
+.circle-container {
+    border-radius: 50%;
+    width: 60vw;
+    height: 180vh;
+    box-shadow: -15px 13px 30px rgba(0, 0, 0, 0.3);
+    background-color:$brand-secondary;
+    margin-top: -40vh;
+    margin-left: 85vw;
+    position: fixed;
+}
+
+
+.menu-container {
+    height: 100vh;
+    width: 11vw;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px 0;
+    overflow-y: auto;
+    z-index: 3;
+
+    .menu {
+        height: 15vh;
+        padding: 15px;
+
+        &.active {
+            background-image: url(../img/icon-background.png);
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: $white;
+        }
+    }
+}
+
+.menu-item-container {
+    width: 63vw;
+    margin-left: 11vw;
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    .menu-item {
+        background-color: $brand-secondary;
+        border-radius: 7px;
+        box-shadow: 0px 3px 12px 2px rgba(0,0,0,0.16);
+        width: 300px;
+        margin: 15px 25px;
+        z-index: 2;
+
+        .dish-padding {
+            padding: 30px 30px 0 30px;
+        }
+
+        .dish-price {
+            display: block;
+            height: 65px;
+            width: 65px;
+            border-radius: 50%;
+            text-align: center;
+            background-color: $brand-primary;
+            color: $white;
+            position: absolute;
+
+            span { 
+                height: 65px; 
+                display: inline-block; 
+                zoom: 1; 
+                *display: inline; 
+                vertical-align: middle; 
+            }
+
+            p { 
+                display: inline-block; 
+                zoom: 1; 
+                *display: inline; 
+                vertical-align: middle; 
+                color: #fff; 
+            }
+        }
+
+        img {
+            width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .dish-name {
+            color: $white;
+            font-size: 20px;
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .dish-buttons {
+            margin-top: 30px;
+            
+            button {
+                width: 50%;
+                border: 0;
+                font-size: 13px;
+                outline: none;
+                padding: 16px;
+
+                &.btn-review {
+                    border-radius: 0px 0px 0px 8px;
+                    background-color: $brand-secondary;
+
+                    i {
+                        font-size: 30px;
+                    }
+                }
+
+                &.btn-order {
+                    border-radius: 0px 0px 8px 0px;
+                    background-color: $brand-primary;
+                }
+
+                span {
+                    color:$white;
+                }
+
+                i {
+                    color:$white;
+                    font-size: 25px;
+                    display: block;
+                }
+            }
+        }
+    }
+}
