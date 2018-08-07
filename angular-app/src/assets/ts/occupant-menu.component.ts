@@ -12,6 +12,10 @@ export class OccupantMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $(document).on('click', '.menu', function(){
+      $('.menu').removeClass('active');
+      $(this).addClass("active");
+    });
   }
 
 }

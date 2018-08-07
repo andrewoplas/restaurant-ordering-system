@@ -35,6 +35,10 @@ body, html {
     opacity: 0.5;
     z-index: 1;
     width: 35%;
+
+     @media screen and (max-width: 824px) {
+        width: 45%;
+    }
 }
 
 .circle-container {
@@ -43,9 +47,21 @@ body, html {
     height: 180vh;
     box-shadow: -15px 13px 30px rgba(0, 0, 0, 0.3);
     background-color:$brand-secondary;
-    margin-top: -40vh;
-    margin-left: 85vw;
+    margin-top: -35vh;
+    margin-left: 86vw;
     position: fixed;
+
+    @media screen and (max-width: 1000px) {
+        margin-left: 84vw;
+    }
+
+    @media screen and (max-width: 623px) {
+        margin-left: 76vw;
+    }
+
+    @media screen and (max-width: 350px) {
+        margin-left: 70vw;
+    }
 }
 
 
@@ -59,27 +75,64 @@ body, html {
     overflow-y: auto;
     z-index: 3;
 
+    @media screen and (max-width: 840px) {
+        width: 12.5vw;
+    }
+
+    @media screen and (max-width: 623px) {
+        width: 16vw;
+        margin-right: 15px;
+    }
+
+    @media screen and (max-width: 350px) {
+        width: 70px;
+        margin-right: 20px;
+    }
+
     .menu {
         height: 15vh;
         padding: 15px;
+        cursor: pointer;
+
+        @media screen and (max-width: 840px) {
+            width: 65%;
+            height: 70px;
+        }
+
+        @media screen and (max-width: 420px) {
+            height: auto;
+        }
 
         &.active {
             background-image: url(../img/icon-background.png);
             background-position: center;
             background-repeat: no-repeat;
+
+            @media screen and (max-width: 623px) {
+                background-size: 85%;
+            }
         }
 
         img {
             display: block;
             margin-left: auto;
             margin-right: auto;
+
+            @media screen and (max-width: 420px) {
+                width: 70%;
+            }
         }
 
         span {
             display: block;
             text-align: center;
             margin-top: 10px;
+            font-size: 13.5px;
             color: $white;
+
+            @media screen and (max-width: 420px) {
+                font-size: 11px;
+            }
         }
     }
 }
@@ -93,6 +146,15 @@ body, html {
     align-content: center;
     justify-content: center;
 
+    @media screen and (max-width: 1111px) {
+        width: 85vw;
+        margin-left: 0;
+    }
+
+    @media screen and (max-width: 470px) {
+        width: 72vw;
+    }
+
     .menu-item {
         background-color: $brand-secondary;
         border-radius: 7px;
@@ -101,8 +163,24 @@ body, html {
         margin: 15px 25px;
         z-index: 2;
 
+        @media screen and (max-width: 824px) {
+            width: 250px;
+        }
+
+        @media screen and (min-width: 624px) and (max-width: 768px) {
+            width: 215px;
+        }
+
+        @media screen and (max-width: 470px) {
+            width: 230px;
+        }
+
         .dish-padding {
             padding: 30px 30px 0 30px;
+
+            @media screen and (max-width: 383px) {
+                padding: 20px 20px 0 20px;
+            }
         }
 
         .dish-price {
@@ -115,12 +193,21 @@ body, html {
             color: $white;
             position: absolute;
 
+            @media screen and (min-width: 624px) and (max-width: 768px) {
+                height: 50px;
+                width: 50px;    
+            }
+
             span { 
                 height: 65px; 
                 display: inline-block; 
                 zoom: 1; 
                 *display: inline; 
                 vertical-align: middle; 
+
+                @media screen and (min-width: 624px) and (max-width: 768px) {
+                   height: 50px;
+                }
             }
 
             p { 
@@ -145,6 +232,10 @@ body, html {
             display: block;
             margin-top: 15px;
             text-align: center;
+
+            @media screen and (max-width: 400px) {
+                font-size: 15px;
+            }
         }
 
         .dish-buttons {
@@ -156,6 +247,7 @@ body, html {
                 font-size: 13px;
                 outline: none;
                 padding: 16px;
+                cursor: pointer;
 
                 &.btn-review {
                     border-radius: 0px 0px 0px 8px;
@@ -163,6 +255,10 @@ body, html {
 
                     i {
                         font-size: 30px;
+
+                        @media screen and (min-width: 624px) and (max-width: 768px) {
+                            font-size: 20px;
+                        }
                     }
                 }
 
@@ -173,12 +269,28 @@ body, html {
 
                 span {
                     color:$white;
+
+                    @media screen and (min-width: 624px) and (max-width: 768px) {
+                        font-size: 10px;
+                    }
+
+                    @media screen and (max-width: 383px) {
+                        font-size: 10px;
+                    }
+
+                    @media screen and (max-width: 335) {
+                        font-size: 9px;
+                    }
                 }
 
                 i {
                     color:$white;
                     font-size: 25px;
                     display: block;
+
+                    @media screen and (min-width: 624px) and (max-width: 768px) {
+                        font-size: 20px;
+                    }
                 }
             }
         }
