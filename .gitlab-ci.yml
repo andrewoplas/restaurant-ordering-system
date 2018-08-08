@@ -1,7 +1,7 @@
 image: node:latest
 
 before_script:
-    - cd angular-app
+  - cd angular-app
 
 stages:
   - production
