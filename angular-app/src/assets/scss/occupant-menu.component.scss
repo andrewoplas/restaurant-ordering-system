@@ -309,19 +309,9 @@
     z-index: 100;
 
     &.active {
-        transform: translateZ(0) scale(19);
-        transition: all 500ms ease;
+        transform: translateZ(0) scale(30);
+        transition: all 750ms ease;
         visibility: visible;
-
-        @media screen and (min-width: 450px) {
-            transition: all 600ms ease;
-            transform: translateZ(0) scale(25);
-        }
-
-        @media screen and (min-width: 600px) {
-            transition: all 750ms ease;
-            transform: translateZ(0) scale(27);
-        }        
     }
 
     &.inactive {
