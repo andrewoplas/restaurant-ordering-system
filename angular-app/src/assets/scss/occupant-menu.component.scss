@@ -23,9 +23,9 @@
     -webkit-font-smoothing: antialiased;
 }
 
-body, html {
-    overflow: hidden;
-    margin: 0;
+.user-side {
+    overflow-y: auto;
+    height: auto;
 }
 
 .background-image {
@@ -36,8 +36,16 @@ body, html {
     z-index: 1;
     width: 35%;
 
-     @media screen and (max-width: 824px) {
+    @media screen and (max-width: 824px) {
         width: 45%;
+    }
+
+    @media screen and (max-width: 559px) {
+        width: 75%;
+    }
+
+    @media screen and (max-width: 400px) {
+        width: 300px;
     }
 }
 
@@ -55,15 +63,10 @@ body, html {
         margin-left: 84vw;
     }
 
-    @media screen and (max-width: 623px) {
-        margin-left: 76vw;
-    }
-
-    @media screen and (max-width: 350px) {
-        margin-left: 70vw;
+    @media screen and (max-width: 768px) {
+        display: none;
     }
 }
-
 
 .menu-container {
     height: 100vh;
@@ -79,14 +82,8 @@ body, html {
         width: 12.5vw;
     }
 
-    @media screen and (max-width: 623px) {
-        width: 16vw;
-        margin-right: 15px;
-    }
-
-    @media screen and (max-width: 350px) {
-        width: 70px;
-        margin-right: 20px;
+    @media screen and (max-width: 768px) {
+        display: none;
     }
 
     .menu {
@@ -94,33 +91,16 @@ body, html {
         padding: 15px;
         cursor: pointer;
 
-        @media screen and (max-width: 840px) {
-            width: 65%;
-            height: 70px;
-        }
-
-        @media screen and (max-width: 420px) {
-            height: auto;
-        }
-
         &.active {
             background-image: url(../img/icon-background.png);
             background-position: center;
             background-repeat: no-repeat;
-
-            @media screen and (max-width: 623px) {
-                background-size: 85%;
-            }
         }
 
         img {
             display: block;
             margin-left: auto;
             margin-right: auto;
-
-            @media screen and (max-width: 420px) {
-                width: 70%;
-            }
         }
 
         span {
@@ -129,10 +109,43 @@ body, html {
             margin-top: 10px;
             font-size: 13.5px;
             color: $white;
+        }
+    }
+}
 
-            @media screen and (max-width: 420px) {
-                font-size: 11px;
-            }
+.menu-container-xs {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 101;
+    background: transparent;
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 769px) {
+        display: none;
+    }    
+
+    .menu-item-xs {
+        width: 200px;
+        margin: 20px 0 20px 0;
+        display: flex;
+        align-items:center;
+
+        
+
+        img {
+            width: 40px;
+            margin-right: 35px;
+        }
+
+        span {
+            color: $white;
         }
     }
 }
@@ -140,19 +153,24 @@ body, html {
 .menu-item-container {
     width: 63vw;
     margin-left: 11vw;
-    padding-top: 50px;
+    padding: 20px 0;
     display: flex;
     flex-wrap: wrap;
-    align-content: center;
     justify-content: center;
+
+    @media screen and (min-width: 1500px) {
+        width: 1125px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     @media screen and (max-width: 1111px) {
         width: 85vw;
         margin-left: 0;
     }
 
-    @media screen and (max-width: 470px) {
-        width: 72vw;
+    @media screen and (max-width: 768px) {
+        width: 100vw;
     }
 
     .menu-item {
@@ -163,40 +181,36 @@ body, html {
         margin: 15px 25px;
         z-index: 2;
 
+        @media screen and (min-width: 1500px) {
+            width: 350px;
+        }
+
         @media screen and (max-width: 824px) {
             width: 250px;
         }
 
-        @media screen and (min-width: 624px) and (max-width: 768px) {
-            width: 215px;
+        @media screen and (max-width: 599px) {
+            width: 220px;
+            margin: 15px;
         }
 
-        @media screen and (max-width: 470px) {
-            width: 230px;
+        @media screen and (max-width: 499px) {
+            width: 260px;
         }
 
         .dish-padding {
             padding: 30px 30px 0 30px;
-
-            @media screen and (max-width: 383px) {
-                padding: 20px 20px 0 20px;
-            }
         }
 
         .dish-price {
             display: block;
+            position: relative;
             height: 65px;
             width: 65px;
             border-radius: 50%;
             text-align: center;
             background-color: $brand-primary;
             color: $white;
-            position: absolute;
-
-            @media screen and (min-width: 624px) and (max-width: 768px) {
-                height: 50px;
-                width: 50px;    
-            }
 
             span { 
                 height: 65px; 
@@ -204,10 +218,6 @@ body, html {
                 zoom: 1; 
                 *display: inline; 
                 vertical-align: middle; 
-
-                @media screen and (min-width: 624px) and (max-width: 768px) {
-                   height: 50px;
-                }
             }
 
             p { 
@@ -221,6 +231,7 @@ body, html {
 
         img {
             width: 85%;
+            margin-top: -60px;
             margin-left: auto;
             margin-right: auto;
             display: block;
@@ -232,10 +243,6 @@ body, html {
             display: block;
             margin-top: 15px;
             text-align: center;
-
-            @media screen and (max-width: 400px) {
-                font-size: 15px;
-            }
         }
 
         .dish-buttons {
@@ -255,24 +262,20 @@ body, html {
 
                     i {
                         font-size: 30px;
-
-                        @media screen and (min-width: 624px) and (max-width: 768px) {
-                            font-size: 20px;
-                        }
                     }
                 }
 
                 &.btn-order {
                     border-radius: 0px 0px 8px 0px;
                     background-color: $brand-primary;
+
+                    @media screen and (max-width: 599px) {
+                        padding: 16px 0px;
+                    }
                 }
 
                 span {
                     color:$white;
-
-                    @media screen and (min-width: 624px) and (max-width: 768px) {
-                        font-size: 10px;
-                    }
 
                     @media screen and (max-width: 383px) {
                         font-size: 10px;
@@ -287,12 +290,82 @@ body, html {
                     color:$white;
                     font-size: 25px;
                     display: block;
-
-                    @media screen and (min-width: 624px) and (max-width: 768px) {
-                        font-size: 20px;
-                    }
                 }
             }
         }
+    }
+}
+
+.fab-menu-expand {
+    visibility: hidden;
+    display: block;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background-color: $brand-primary;    
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+
+    &.active {
+        transform: translateZ(0) scale(19);
+        transition: all 500ms ease;
+        visibility: visible;
+
+        @media screen and (min-width: 450px) {
+            transition: all 600ms ease;
+            transform: translateZ(0) scale(25);
+        }
+
+        @media screen and (min-width: 600px) {
+            transition: all 750ms ease;
+            transform: translateZ(0) scale(27);
+        }        
+    }
+
+    &.inactive {
+        transform: translateZ(0) scale(1);
+        transition: all 500ms ease;
+    }
+
+    @media screen and (max-width: 768px) {
+        visibility: visible;
+    }
+}
+
+.fab-menu {
+    display: block;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: $brand-primary;    
+    position: fixed;
+    visibility: hidden;
+    bottom: 15px;
+    right: 15px;
+    z-index: 9999;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+    @media screen and (max-width: 768px) {
+        visibility: visible;
+    }
+
+    span { 
+        height: 65px; 
+        display: inline-block; 
+        zoom: 1; 
+        *display: inline; 
+        vertical-align: middle; 
+    }
+
+    i { 
+        display: inline-block; 
+        zoom: 1; 
+        *display: inline; 
+        vertical-align: middle; 
+        color: #fff; 
+        font-size: 40px;
     }
 }
