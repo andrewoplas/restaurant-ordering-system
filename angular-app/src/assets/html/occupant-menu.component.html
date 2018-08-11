@@ -3,7 +3,7 @@
     <div class="circle-container"></div>
 
     <div class="menu-item-container">
-        <div class="menu-item" *ngFor="let number of [0,1,2,3]">
+        <div class="menu-item animated hide" *ngFor="let number of [0,1,2,3,5,6,7,8]">
             <div class="dish-padding">
                 <span class="dish-price">
                     <span></span>
@@ -28,27 +28,61 @@
     </div>
 
     <div class="menu-container">
-        <div class="menu active" (click)="menuClick($event);">
+        <div class="menu active">
             <img src="assets/img/Salad.png" />
             <span>All</span>
         </div>
 
-        <div class="menu" (click)="menuClick($event);">
+        <div class="menu">
             <img src="assets/img/Main course.png" />
             <span>Main</span>
         </div>
 
-        <div class="menu" (click)="menuClick($event);">
+        <div class="menu">
             <img src="assets/img/Japanese food.png" />
             <span>Side</span>
         </div>
 
-        <div class="menu" (click)="menuClick($event);">
+        <div class="menu">
             <img src="assets/img/Dessert.png" />
             <span>Desserts</span>
         </div>
 
-        <div class="menu" (click)="menuClick($event);">
+        <div class="menu">
+            <img src="assets/img/Beverage.png" />
+            <span>Beverages</span>
+        </div>
+    </div>
+
+    <div class="visible-xs fab-menu">
+        <span></span>
+        <i class="material-icons">restaurant_menu</i>
+    </div>
+
+    <div class="fab-menu-expand inactive"> </div>
+
+    <div class="menu-container-xs hide">
+        <div class="menu-item-xs animated hide active">
+            <img src="assets/img/Salad.png" />
+            <span>All</span>
+        </div>
+        
+        <div class="menu-item-xs animated hide">
+            <img src="assets/img/Main course.png" />
+            <span>Main</span>
+        </div>
+        
+        <div class="menu-item-xs animated hide">
+            <img src="assets/img/Japanese food.png" />
+            <span>Side</span>
+        </div>
+        
+        <div class="menu-item-xs animated hide">
+            <img src="assets/img/Dessert.png" />
+            <span>Desserts</span>
+        </div>
+        
+        <div class="menu-item-xs animated hide">
             <img src="assets/img/Beverage.png" />
             <span>Beverages</span>
         </div>
