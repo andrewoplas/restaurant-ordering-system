@@ -23,6 +23,11 @@
     -webkit-font-smoothing: antialiased;
 }
 
+body {
+    overflow: auto !important;
+    overflow: initial !important;
+}
+
 .user-side {
     overflow-y: auto;
     height: auto;
