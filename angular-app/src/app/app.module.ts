@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ReceptionistComponent } from '../assets/ts/receptionist.component';
 import { AdminComponent } from '../assets/Admin/admin.component';
 import { OccupantComponent } from '../assets/ts/occupant.component';
+import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
 import { ReceptionistDineComponent } from '../assets/ts/receptionist-dine.component';
 import { ReceptionistAssistanceComponent } from '../assets/ts/receptionist-assistance.component';
 import { ReceptionistOrderComponent } from '../assets/ts/receptionist-order.component';
@@ -35,7 +36,8 @@ import { LandingComponent } from '../assets/ts/landing.component';
     OverViewComponent,
     AdminSideBarComponent,
     MapComponent,
-    LandingComponent
+    LandingComponent,
+    OccupantOrderComponent
   ],
   imports: [
     BrowserModule,
