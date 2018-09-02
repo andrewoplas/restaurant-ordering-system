@@ -1,4 +1,5 @@
 @import '../scss/default/abstract/_variables.scss';
+@import '../scss/default/abstract/_mixin.scss';
 
 @font-face {
     font-family: 'Material Icons';
@@ -30,7 +31,29 @@
 }
 
 .menu {
-    padding: 20px 50px;
+    @include breakpoint(xxs) {
+        padding: 15px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+
+    @include breakpoint(xs) {
+        padding: 15px;
+        text-align: right;
+        padding-bottom: 10px;
+    }
+
+    @include breakpoint(sm) {
+        text-align: right;
+        padding: 20px 30px;
+        padding-bottom: 10px;
+    }
+    
+    @include breakpoint(lg) {
+        text-align: right;
+        padding: 20px 50px;
+        padding-bottom: 0;
+	}
 
     .menu-item {
         display: inline-block;
@@ -86,5 +109,124 @@
             }
         }
     }
+}
+
+.order-container {
+   
+    .order-col {
+        width: 70vw;
+        float: left;
+        padding-left: 50px;
+        
+        .filler {
+            display: inline-block;
+            width: 10%;
+        }
+
+        .title {
+            display: inline-block;
+            margin: 0;
+            font-size: 40px;
+            color: $brand-primary;
+        }
+
+        .table-order {
+            margin-top: 30px;
+
+            thead {
+                margin-bottom: 10px;
+
+                th {
+                    padding-left: 0;
+                    font-size: 25px;
+                    font-weight: normal;
+                    color: $brand-primary;
+                    border-bottom: none;
+                    padding-bottom: 20px;
+                }
+            }
+
+            tbody {
+                .spacer {
+                    box-shadow: none;
+
+                    td {
+                        padding: 10px !important;
+                    }
+                }
+
+                tr {
+                    box-shadow: 1px 4px 13px 2px  rgba(0, 0, 0, 0.16);
+                    border-radius: 8px;
+                }
+
+                td {
+                    padding-left: 0;
+                    padding: 18px 0;
+                    border-top: none;
+                    color: $white;
+                    font-size: 22px;
+                    vertical-align: middle;
+
+                    img {
+                        width: 125px;
+                    }
+
+                    .quantity-container {
+
+                        .quantity {
+                            width: 60px;
+                            height: 40px;
+                            outline: 0;
+                            border: 0;
+                            text-align: center;
+                            color: $brand-primary;
+                            font-size: 15px;
+                            box-shadow: 5px 5px 45px -10px rgba(0,0,0,0.4);
+                        }
+
+                        button {
+                            width: 35px;
+                            height: 40px;
+                            background-color: $brand-primary;
+                            padding: 0;
+                            border: 0;
+                            outline: 0;
+                            vertical-align: top;
+                            z-index: 1;
+
+                            &.btn-left { margin-right: -2px; }
+                            &.btn-right { margin-left: -2px; }
+
+                            i {
+                                color: $white;
+                            }
+                        }
+
+                    }
+
+                    .close-icon {
+                        color: rgba(255, 255, 255, 0.5);
+                        font-size: 35px;
+                        top: 5px;
+                        right: 5px;
+                        position: absolute;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $white;
+                            transition: 300ms;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .total-col {
+        width: 30vw;
+        float: right;
+    }
+
 }
 

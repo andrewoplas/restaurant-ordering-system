@@ -1,5 +1,5 @@
 <div class="user-side">
-    <div class="menu pull-right">
+    <div class="menu">
         <div class="menu-item order">
             <span>
                 Order <i class="material-icons shopping-icon">shopping_cart</i>
@@ -13,4 +13,50 @@
             <span>Menu <i class="material-icons menu-icon">view_headline</i></span>
         </div>
     </div>
+
+    <div class="order-container">
+        <div class="order-col">
+            <p class="filler"></p>
+            <h1 class="title">Your Orders</h1>
+            <table class="table table-order">
+                <thead>
+                    <tr>
+                        <th width="10%"></th>
+                        <th>Image</th>
+                        <th>Dish</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let number of [0,1,2,3,5,6,7,8]">
+                        <td width="10%"></td>
+                        <td>
+                            <img src="assets/img/dish-1.png" class="img-responsive" />
+                        </td>
+                        <td>Scottish Prawn</td>
+                        <td>₱ 100</td>
+                        <td>₱ 100</td>
+                        <td>
+                            <div class="quantity-container">
+                                <button class="btn btn-left"><i class="material-icons">chevron_left</i></button>
+                                <input type="text" class="quantity" value="1" readonly />
+                                <button class="btn btn-right"><i class="material-icons">chevron_right</i></button>
+                            </div>
+                            <i class="material-icons close-icon">close</i>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="total-col">
+
+        </div>
+    </div>
+
+
 </div>
