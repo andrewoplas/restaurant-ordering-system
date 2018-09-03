@@ -34,8 +34,8 @@ export class OccupantOrderComponent implements OnInit {
         container.addClass('fadeOutLeft');
         
         setTimeout(function () { 
-          container.remove();
           container.next().remove();
+          container.remove();
         }, 750);
       });
     });

@@ -121,13 +121,28 @@ body {
 .order-container {
    
     .order-col {
-        width: 70vw;
-        float: left;
-        padding-left: 50px;
+        width: 100vw;
+        padding-left: 30px;
+        padding-right: 30px;
         
-        .filler {
-            display: inline-block;
-            width: 10%;
+        @include breakpoint(md) {
+            width: 70vw;
+            padding-left: 50px;
+            float: left;
+        }
+
+        @media (min-width: 992px) and (max-width: 1200px) {
+            width: 75vw;
+        }
+
+        @media screen and (max-width: 500px) {
+            padding-left: 20px;
+            padding-right: 20px;    
+        }
+
+        hr {
+            border-top: 1px solid #FBA62F;
+            opacity: 0.2;
         }
 
         .title {
@@ -135,10 +150,23 @@ body {
             margin: 0;
             font-size: 40px;
             color: $brand-primary;
+            margin-left: 10%;
+
+            @media screen and (max-width: 1200px) {
+                margin-left: 20px;
+            }
+
+            @media screen and (max-width: 550px) {
+                margin-top: 20px;
+            }
         }
 
         .table-order {
             margin-top: 30px;
+
+            @media screen and (max-width: 550px) {
+                margin-top: 10px;
+            }
 
             thead {
                 margin-bottom: 10px;
@@ -150,6 +178,22 @@ body {
                     color: $brand-primary;
                     border-bottom: none;
                     padding-bottom: 20px;
+
+                    @media screen and (max-width: 1200px) {
+                        font-size: 20px;
+                    }
+
+                    @media screen and (max-width: 550px) {
+                        font-size: 17px;
+                    }                    
+
+                    &.col-spacer {
+                        width: 10%;
+
+                        @media screen and (max-width: 1200px) {
+                            width: 0;
+                        }
+                    }
                 }
             }
 
@@ -166,64 +210,178 @@ body {
                 tr {
                     box-shadow: 1px 4px 13px 2px  rgba(0, 0, 0, 0.16);
                     border-radius: 8px;
-                }
 
-                td {
-                    background-color: #A40020;
-                    padding-left: 0;
-                    padding: 18px 0;
-                    border-top: none;
-                    color: $white;
-                    font-size: 22px;
-                    vertical-align: middle;
-                    z-index: 2;
+                    td {
+                        background-color: #A40020;
+                        padding-left: 0;
+                        padding: 18px 5px;
+                        border-top: none;
+                        color: $white;
+                        font-size: 22px;
+                        vertical-align: middle;
+                        z-index: 2;
+                        border-radius: 8px;
 
-                    img { width: 125px; }
+                        @media screen and (max-width: 1200px) {
+                            font-size: 18px;
+                        }
 
-                    .quantity-container {
-
-                        .quantity {
-                            width: 60px;
-                            height: 40px;
-                            outline: 0;
-                            border: 0;
-                            text-align: center;
-                            color: $brand-primary;
+                        @media screen and (max-width: 450px) {
                             font-size: 15px;
-                            box-shadow: 5px 5px 45px -10px rgba(0,0,0,0.4);
+                        }                   
+
+                        &:first-child {
+                            @media screen and (max-width: 1200px) {
+                                padding-left: 15px;
+                            }
                         }
 
-                        button {
-                            width: 35px;
-                            height: 40px;
+                        &:last-child {
+                            @media screen and (max-width: 1200px) {
+                                padding-right: 20px;
+                            }
+                        }                        
+
+                        img { width: 125px; }
+
+                        .quantity-container {
+
+                            .quantity {
+                                width: 60px;
+                                height: 40px;
+                                outline: 0;
+                                border: 0;
+                                text-align: center;
+                                color: $brand-primary;
+                                font-size: 15px;
+                                box-shadow: 5px 5px 45px -10px rgba(0,0,0,0.4);
+
+                                @media screen and (max-width: 768px) {
+                                    border-radius: 4px;
+                                }
+
+                                @media screen and (max-width: 550px) {
+                                    width: 50px;
+                                }
+
+                                @media screen and (max-width: 450px) {
+                                    height: 35px;
+                                }
+                            }
+
+                            button {
+                                width: 37.5px;
+                                height: 40px;
+                                background-color: $brand-primary;
+                                padding: 0;
+                                border: 0;
+                                outline: 0;
+                                vertical-align: top;
+                                z-index: 1;
+
+                                &.btn-left { 
+                                    margin-right: -2px; 
+                                    @media screen and (max-width: 768px) { margin: 0; }
+                                }
+                                &.btn-right { 
+                                    margin-left: -2px; 
+                                    @media screen and (max-width: 768px) { margin: 0; }
+                                }
+
+                                @media screen and (max-width: 768px) {
+                                    width: 60px;
+                                    height: 35px;
+                                    display: block;
+                                }
+
+                                @media screen and (max-width: 550px) {
+                                    width: 50px;
+                                }
+
+                                @media screen and (max-width: 450px) {
+                                    height: 30px;
+                                }
+
+
+                                i { color: $white; }
+                            }
+
+                        }
+
+                        .close-icon {
+                            color: rgba(255, 255, 255, 0.5);
+                            font-size: 35px;
+                            top: 5px;
+                            right: 5px;
+                            position: absolute;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: $white;
+                                transition: 300ms;
+                            }
+
+                            @media screen and (max-width: 768px) {
+                                font-size: 20px;
+                            }
+                        }
+
+                        .price-xs {
                             background-color: $brand-primary;
-                            padding: 0;
-                            border: 0;
-                            outline: 0;
-                            vertical-align: top;
-                            z-index: 1;
-
-                            &.btn-left { margin-right: -2px; }
-                            &.btn-right { margin-left: -2px; }
-                            i { color: $white; }
-                        }
-
-                    }
-
-                    .close-icon {
-                        color: rgba(255, 255, 255, 0.5);
-                        font-size: 35px;
-                        top: 5px;
-                        right: 5px;
-                        position: absolute;
-                        cursor: pointer;
-
-                        &:hover {
                             color: $white;
-                            transition: 300ms;
+                            font-weight: normal;
+                            font-size: 15px;
+                            width: 80px;
+
+                            @media screen and (max-width: 500px) {
+                                width: auto;
+                                display: inline-block !important;
+                                font-size: 13px;
+                            }
                         }
                     }
                 }
+            }
+        }
+
+        .total-price-container {
+            background-color: #A40020;
+            padding: 20px;
+            font-size: 22px;
+            box-shadow: 1px 4px 13px 2px  rgba(0, 0, 0, 0.16);
+            border-radius: 8px;
+            margin-bottom: 30px;
+
+            .total-price-label {
+                color: $white;
+                font-size: 30px;
+                float: left;
+
+                @media screen and (max-width: 500px) {
+                    font-size: 25px;
+                }
+            }
+
+            .price {
+                color: $white;
+                font-size: 30px;
+                float: right;
+
+                @media screen and (max-width: 500px) {
+                    font-size: 25px;
+                }
+            }
+
+            button {
+                display: block;
+                background-color: $brand-primary;
+                color: $white;
+                font-size: 25px;
+                border: 0;
+                border-radius: 4px;
+                padding: 15px 65px;
+                width: 100%;
+                box-shadow: 10px 10px 40px -2px rgba(0, 0, 0, 0.302);
             }
         }
     }
@@ -231,6 +389,15 @@ body {
     .total-col {
         width: 30vw;
         float: right;
+        visibility: hidden;
+
+        @include breakpoint(md) {
+            visibility: visible;
+        }
+
+        @media screen and (max-width: 1200px) {
+            width: 25vw;
+        }
 
         .circle-container {
             border-radius: 50%;
@@ -274,6 +441,12 @@ body {
                         font-size: 32.5px;
                         display: inline-block;
                         margin-right: 40px;
+
+                        
+                        @media screen and (max-width: 1170px) {
+                            font-size: 25px;
+                            margin-right: 15px;
+                        }
                     }
 
                     .price {
@@ -289,7 +462,11 @@ body {
                         border: 0;
                         border-radius: 4px;
                         padding: 15px 65px;
-                        box-shadow: 10px 10px 40px -2px rgba(0,0,0,0.3);
+                        box-shadow: 10px 10px 40px -2px rgba(0, 0, 0, 0.302);
+
+                        @media screen and (max-width: 1170px) {
+                            padding: 10px 40px;
+                        }                 
                     }
                 }
             }
