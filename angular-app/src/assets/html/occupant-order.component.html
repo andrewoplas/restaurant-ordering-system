@@ -1,0 +1,85 @@
+<div class="user-side">
+    <div class="menu">
+        <div class="menu-item order">
+            <span>
+                Order <i class="material-icons shopping-icon">shopping_cart</i>
+                <span class="order-quantity">
+                    <span></span><p>12</p>
+                </span>
+            </span>
+        </div>
+
+        <div class="menu-item menu">
+            <span>Menu <i class="material-icons menu-icon">view_headline</i></span>
+        </div>
+    </div>
+
+    <div class="order-container">
+        <div class="order-col">
+            <h1 class="title">Your Orders</h1>
+            <table class="table table-order">
+                <thead>
+                    <tr>
+                        <th class="col-spacer"></th>
+                        <th>Image</th>
+                        <th>Dish</th>
+                        <th class="hidden-xs">Price</th>
+                        <th>Subtotal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let number of [0,1,2,3,5,6,7,8]" class="animated">
+                        <td></td>
+                        <td>
+                            <img src="assets/img/dish-1.png" class="img-responsive" />
+                        </td>
+                        <td>Scottish Prawn asdf <br/> <span class="visible-xs badge price-xs">₱ 100</span></td>
+                        <td class="hidden-xs">₱ 100</td>
+                        <td>₱ 100</td>
+                        <td>
+                            <div class="quantity-container">
+                                <button class="btn btn-left">
+                                    <i class="material-icons hidden-xs">chevron_left</i>
+                                    <i class="material-icons visible-xs">expand_less</i>
+                                </button>
+                                <input type="text" class="quantity" value="1" readonly />
+                                <button class="btn btn-right">
+                                    <i class="material-icons hidden-xs">chevron_right</i>
+                                    <i class="material-icons visible-xs">expand_more</i>
+                                </button>
+                            </div>
+                            <i class="material-icons close-icon remove-order">close</i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr class="visible-sm visible-xs" />
+
+            <div class="total-price-container visible-sm visible-xs">
+                <p class="total-price-label">Total Price</p>
+                <p class="price">₱ 299</p>
+                <button class="btn-checkout">Checkout</button>
+            </div>
+
+        </div>
+
+        <div class="total-col">
+            <img src="assets/img/menu-background-flip.png" class="fire-background" />
+            <div class="circle-container">
+                <span class="total-price-container">
+                    <i></i>
+                    <p>
+                        <span class="total">Total</span>
+                        <span class="price">₱ 299</span>
+                        <button class="btn-checkout">Checkout</button>
+                    </p>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+</div>
