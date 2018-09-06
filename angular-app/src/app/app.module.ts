@@ -20,6 +20,7 @@ import { MapComponent } from '../assets/Admin/ts/map.component';
 
 //Admin
 import { LandingComponent } from '../assets/ts/landing.component';
+import { AdminDisplayItemMenuComponent } from '../assets/Admin/ts/admin-display-item-menu.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LandingComponent } from '../assets/ts/landing.component';
     AdminSideBarComponent,
     MapComponent,
     LandingComponent,
-    OccupantOrderComponent
+    OccupantOrderComponent,
+    AdminDisplayItemMenuComponent
   ],
   imports: [
     BrowserModule,
