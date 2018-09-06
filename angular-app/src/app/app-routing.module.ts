@@ -7,6 +7,7 @@ import { ReceptionistDineComponent } from '../assets/ts/receptionist-dine.compon
 import { ReceptionistOrderComponent } from '../assets/ts/receptionist-order.component';
 
 import { AdminComponent } from '../assets/Admin/admin.component';
+import { AdminDisplayItemMenuComponent } from '../assets/Admin/ts/admin-display-item-menu.component';
 
 import { OccupantComponent } from '../assets/ts/occupant.component';
 import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
@@ -17,7 +18,13 @@ import { OccupantOrderComponent } from '../assets/ts/occupant-order.component';
 const routes: Routes = [
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    children: [
+      {
+        path: 'display-item-menu',
+        component: AdminDisplayItemMenuComponent
+      }
+    ]
   },
   {
     path: 'occupant',

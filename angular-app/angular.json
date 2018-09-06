@@ -46,7 +46,6 @@
               "../angular-app/src/plugins/bower_components/vectormap/jquery-jvectormap-world-mill-en.js",
               "../angular-app/src/plugins/bower_components/vectormap/jquery-jvectormap-in-mill.js",
               "../angular-app/src/plugins/bower_components/vectormap/jquery-jvectormap-us-aea-en.js",
-
               "../angular-app/src/plugins/bower_components/chartist-js/dist/chartist.min.js",
               "../angular-app/src/plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js",
               
@@ -56,8 +55,8 @@
               "../angular-app/src/plugins/js/custom.min.js",
               "../angular-app/src/plugins/js/dashboard3.js",
 
-              "../angular-app/src/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"
-             
+
+              "../angular-app/src/plugins/bower_components/styleswitcher/jQuery.style.switcher.js",
             ]
           },
           "configurations": {
