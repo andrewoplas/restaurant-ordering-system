@@ -15,6 +15,7 @@ public class TaskEntity {
     public TaskEntity() {
     }
 
+    //needed to work
     public TaskEntity(String id, String description, Integer priority, String untilDate) {
         this.id = id;
         this.description = description;
