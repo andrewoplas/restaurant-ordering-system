@@ -1,0 +1,207 @@
+@import "admin.component.scss";
+@import '../../scss/default/main.scss';
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v34/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    vertical-align: middle;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.user-side {
+    display: flex;
+    align-items: center;
+}
+
+.fire-image {
+    width: 45%;
+    opacity: 0.45;
+    position: fixed;
+    left: 0;
+
+    @include breakpoint(xxs) {
+        width: 75%;
+    }
+
+    @include breakpoint(xs) {
+        width: 55%;
+    }
+
+    @include breakpoint(sm) {
+        width: 45%;
+    }    
+}
+
+.login-container {
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+
+    .logo {
+        width: 220px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+    }
+
+    button {
+        background-color: #FBA62F;
+        border-radius: 5px;
+        box-shadow: 12px 12px 16px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        color: #FFFFFF !important;
+        font-size: 18px;
+        width: 100%;
+        border: 0;
+        margin-top: 20px;
+        font-family: "VarelaRound", sans-serif;
+    }
+}
+
+.group 	{ 
+    position: relative; 
+    margin-bottom: 30px; 
+
+    .view-password {
+        position: absolute;
+        right: 5px;
+        top: 10px;
+        color: white;
+        cursor: pointer;
+    }
+
+    input {
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        border: none;
+        border-bottom: 1.5px solid rgba(255, 255, 255, 0.7);
+        background-color: transparent;
+        width: 100%;
+        color: $white;
+        font-family: "VarelaRound", sans-serif;
+
+        &:focus {
+            outline: none; 
+        }
+
+        &:focus ~ .bar:before, &:focus ~ .bar:after {
+            width: 50%;
+        }
+
+        &:focus ~ label, &:valid ~ label {
+            top: -15px;
+            font-size: 14px;
+            color: white;
+        }
+
+        &:focus ~ .highlight {
+            -webkit-animation: inputHighlighter 0.3s ease;
+            -moz-animation: inputHighlighter 0.3s ease;
+            animation: inputHighlighter 0.3s ease;
+        }
+    }
+
+    label {
+        color: rgba(255, 255, 255, 0.7); 
+        text-transform: capitalize;
+        font-size: 18px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 0.2s ease all; 
+        -moz-transition: 0.2s ease all; 
+        -webkit-transition: 0.2s ease all;
+        font-family: "VarelaRound", sans-serif;
+        letter-spacing: 0;
+    }
+
+    .bar { 
+        position: relative; 
+        display: block; 
+        width: 100%; 
+        margin-top: 1px;
+
+        &:before, &:after 	{
+            content: '';
+            height: 2.5px; 
+            width: 0;
+            bottom: 1px; 
+            position: absolute;
+            background: $brand-primary; 
+            transition: 0.2s ease all; 
+            -moz-transition: 0.2s ease all; 
+            -webkit-transition: 0.2s ease all;
+        }
+
+        &:before {
+            left: 50%;
+        }
+
+        &:after {
+            right: 50%; 
+        }
+    }
+
+    .highlight {
+        position: absolute;
+        height: 60%; 
+        width: 100px; 
+        top: 25%; 
+        left: 0;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+
+@-webkit-keyframes inputHighlighter {
+	from { 
+        background: #5264AE; 
+    }
+    to 	{ 
+        width: 0; 
+        background: transparent; 
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from { 
+        background: #5264AE; 
+    }
+    to { 
+        width: 0; 
+        background: transparent; 
+    }
+}
+
+@keyframes inputHighlighter {
+	from { 
+        background: #5264AE; 
+    }
+    to { 
+        width: 0; 
+        background: transparent; 
+    }
+}
