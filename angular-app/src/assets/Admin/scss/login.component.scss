@@ -1,6 +1,5 @@
 @import "admin.component.scss";
 @import '../../scss/default/main.scss';
-@import '../../scss/default/abstract/_variables.scss';
 
 @font-face {
     font-family: 'Material Icons';
@@ -33,7 +32,7 @@
 
 .fire-image {
     width: 45%;
-    opacity: 0.50;
+    opacity: 0.45;
     position: fixed;
     left: 0;
 
