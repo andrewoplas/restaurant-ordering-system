@@ -10,17 +10,11 @@ app-root {
     font-family: 'Rubik', sans-serif;
 }
 
-* {
-    position: relative;
-}
-
 body {
     width: 100%;
     padding: 0;
     margin: 0 auto;
-    // overflow: hidden;
     overflow-x: hidden;
-    // height: 100vh;
     position: relative;
 
     &.sticky-nav {
@@ -40,7 +34,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-	width: 12px;
+    width: 10px;
 	background-color: #F5F5F5;
 }
 
