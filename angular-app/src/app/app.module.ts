@@ -18,6 +18,7 @@ import { MapComponent } from '../assets/Admin/ts/map.component';
 //Admin
 import { LandingComponent } from '../assets/ts/landing.component';
 import { AdminDisplayItemMenuComponent } from '../assets/Admin/ts/admin-display-item-menu.component';
+import { LoginComponent } from '../assets/Admin/ts/login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AdminDisplayItemMenuComponent } from '../assets/Admin/ts/admin-display-
     MapComponent,
     LandingComponent,
     OccupantOrderComponent,
-    AdminDisplayItemMenuComponent
+    AdminDisplayItemMenuComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
