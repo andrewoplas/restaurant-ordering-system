@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ReceptionistComponent } from '../assets/ts/receptionist.component';
-import { ReceptionistAssistanceComponent } from '../assets/ts/receptionist-assistance.component';
-import { ReceptionistDineComponent } from '../assets/ts/receptionist-dine.component';
-import { ReceptionistOrderComponent } from '../assets/ts/receptionist-order.component';
 
 import { AdminComponent } from '../assets/Admin/admin.component';
 import { AdminDisplayItemMenuComponent } from '../assets/Admin/ts/admin-display-item-menu.component';
@@ -47,21 +44,7 @@ const routes: Routes = [
   },
   {
     path: 'receptionist',
-    component: ReceptionistComponent,
-    children: [
-      {
-        path: 'assistance',
-        component: ReceptionistAssistanceComponent
-      },
-      {
-        path: 'order',
-        component: ReceptionistOrderComponent
-      },
-      {
-        path: 'dine',
-        component: ReceptionistDineComponent
-      }
-    ]
+    component: ReceptionistComponent
   },
   {
     path: '',

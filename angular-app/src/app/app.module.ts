@@ -7,9 +7,6 @@ import { ReceptionistComponent } from '../assets/ts/receptionist.component';
 import { AdminComponent } from '../assets/Admin/admin.component';
 import { OccupantComponent } from '../assets/ts/occupant.component';
 import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
-import { ReceptionistDineComponent } from '../assets/ts/receptionist-dine.component';
-import { ReceptionistAssistanceComponent } from '../assets/ts/receptionist-assistance.component';
-import { ReceptionistOrderComponent } from '../assets/ts/receptionist-order.component';
 import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
 import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -28,9 +25,6 @@ import { AdminDisplayItemMenuComponent } from '../assets/Admin/ts/admin-display-
     ReceptionistComponent,
     AdminComponent,
     OccupantComponent,
-    ReceptionistDineComponent,
-    ReceptionistAssistanceComponent,
-    ReceptionistOrderComponent,
     OccupantDishDetailsComponent,
     OccupantMenuComponent,
     AdminNavComponent,
