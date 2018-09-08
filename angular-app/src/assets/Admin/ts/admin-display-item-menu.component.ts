@@ -10,6 +10,8 @@ import 'datatables.net-bs4';
 })
 export class AdminDisplayItemMenuComponent implements OnInit {
 
+  title = "MAIN COURSE";
+  
   constructor() { }
 
 
