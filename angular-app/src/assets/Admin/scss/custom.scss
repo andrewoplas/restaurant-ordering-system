@@ -1,0 +1,43 @@
+.navbar-header {
+    color: #ffffff;
+
+    .ros-logo {
+        width: 50px;
+        margin-bottom: 10p
+    }
+
+    .ros-text {
+        font-size: 19px;
+        padding: 0;
+    }
+
+    b {
+        color: #ffffff;
+    }
+
+    .caret {
+        color: #ffffff;
+    }
+}
+
+.sidebar {
+    .menu-logo {
+        margin-right: 7px;
+    }
+}
+
+.btn {
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #cfcfcf;
+}
+
+.content-title {
+    font-size: 14px;
+}
+
+.title-card {
+    display: flex;
+    align-items: center;
+}
+
