@@ -1,29 +1,42 @@
 <div class="row">
-  <div class="col-lg-12">
-      <div class="white-box">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h4><strong>MAIN MENU ITEMS</strong></h4>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <button type="button" class="btn btn-default btn-warning btn-additem">Add Item</button>
-            </div>
-        </div>
-          <hr>
-          <div class="container-fluid">
-          <table class="table table-striped row-border" id="editable-datatable" width="100%">
-              <thead>
-                  <tr>
-                      <th>Image</th>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Cooking Time</th>
-                      <th>Persons/Serving</th>
-                      <th></th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
+    <div class="col-lg-12">
+        <div class="white-box">
+          <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <h4><strong>MAIN MENU ITEMS</strong></h4>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <button type="button" class="btn btn-default btn-warning btn-additem" data-toggle="modal" data-target="#addMenuItem">Add Item</button>
+              </div>
+          </div>
+            <hr>
+            <div class="container-fluid">
+            <table class="table table-striped row-border" id="editable-datatable" width="100%">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Cooking Time</th>
+                        <th>Persons/Serving</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="" width="80" height="80"/>
+                        </td>
+                        <td>Human Limbs with Diarrhea</td>
+                        <td>P320</td>
+                        <td>40 minutes</td>
+                        <td>3-5 persons</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg btn-view"><i class="ti ti-eye"></i></button>
+                            <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg btn-remove"><i class="ti ti-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
                       <td>
                           <img src="" width="80" height="80"/>
                       </td>
@@ -36,21 +49,83 @@
                           <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg btn-remove"><i class="ti ti-trash"></i></button>
                       </td>
                   </tr>
-                  <tr>
-                    <td>
-                        <img src="" width="80" height="80"/>
-                    </td>
-                    <td>Human Limbs with Diarrhea</td>
-                    <td>P320</td>
-                    <td>40 minutes</td>
-                    <td>3-5 persons</td>
-                    <td>
-                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg btn-view"><i class="ti ti-eye"></i></button>
-                        <button type="button" class="btn btn-danger btn-outline btn-circle btn-lg btn-remove"><i class="ti ti-trash"></i></button>
-                    </td>
-                </tr>
-          </table>
+            </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div id="addMenuItem" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-custom-size">
+          <div class="modal-content">
+              <div class="modal-header">       
+                  <h4 class="modal-title" id="myModalLabel">Add Menu Dish</h4> 
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  x
+                  </button>      
+     
+              </div>
+              <div class="modal-body container-fluid">
+                  <form class="form-horizontal">
+                      <div class="form-group">
+                          <label for="dish-name" class="col-form-label">Dish Name</label>
+                          <div class="input-group col-md-12"> 
+                              <input type="text" class="form-control" id="dish-name" />
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="dish-description" class="col-form-label">Description</label>
+                          <textarea rows="5" class="form-control" id="dish-description">
+                          </textarea>
+                      </div>
+                      <div class="form-group">
+                          <label for="dish-price" class="col-form-label">Price</label>
+                          <div class="input-group"> 
+                              <span class="input-group-addon">₱</span>
+                             <input type="number" value="0.00" min="0.00" step="10.00" data-number-to-fixed="2" placeholder="0.00" class="form-control currency" id="dish-price" />
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-md-6">
+                                  <label for="dish-cooking-time" class="col-form-label">Cooking Time:</label>
+                                  <div class="input-group"> 
+                                     <input type="number" value="0" min="0" step="10" data-number-stepfactor="100" class="form-control" id="dish-cooking-time" />
+                                     <span class="input-group-addon">minutes</span>
+                                  </div>
+                          </div>
+                          <div class="col-md-6">
+                                  <label for="dish-serving" class="col-form-label">Persons/Serving:</label>
+                                  <div class="input-group"> 
+                                     <input type="number" value="0" min="0" max="4" step="1" data-number-stepfactor="100" class="form-control" id="dish-serving" />
+                                     <span class="input-group-addon">persons</span>
+                                  </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="dish-price" class="col-form-label">Category</label>
+                          <select class="form-control" id="dish-category">
+                              <option>Main Course</option>
+                              <option>Side Dish</option>
+                              <option>Dessert</option>
+                              <option>Beverage</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                              <div class="col-md-12 m-b-20">
+                              <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span id="file-name"><i class="ion-upload m-r-5"></i>Upload Contact Image</span>
+                                  <input type="file" class="upload"> </div>
+                              </div>
+                      </div>
+                      <div class="form-group">
+                          <input type="checkbox" class="form-check-input" id="dish-show" value="">     
+                          <label for="dish-show" class="col-form-label">Show the dish in the menu</label>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+              </div>
           </div>
       </div>
   </div>
-</div>

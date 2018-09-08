@@ -1,3 +1,4 @@
+
 @import "admin.component.scss";
 @import "bower_components/sidebar-nav/dist/sidebar-nav.min.css";
 @import '../../scss/default/abstract/_variables.scss';
@@ -56,4 +57,16 @@ body {
 
 #editable-datatable_paginate {
     color: red;
+}
+
+.modal-title {
+    float: left;
+}
+
+.close {
+    float: right;
+}
+
+.modal-custom-size {
+    width: 400px;
 }
