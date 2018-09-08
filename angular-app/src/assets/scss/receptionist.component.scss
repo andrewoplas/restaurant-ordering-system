@@ -1,3 +1,5 @@
+@import '../../plugins/bootstrap/dist/css/bootstrap.min.css';
+
 #reception-header {
     height: 100px;
     padding: 10px 0;
@@ -5,5 +7,20 @@
     .reception-ros-logo {
         width: 80px;
         height: 80px;
+    }
+}
+
+.main-body-container {
+    padding: 100px 0 0 0;
+
+    .flex-container {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+
+        .flex-item {
+            height: 80px;
+            width: 80px;
+        }
     }
 }
