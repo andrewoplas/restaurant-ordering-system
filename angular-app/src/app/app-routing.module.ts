@@ -17,11 +17,11 @@ import { LandingComponent } from '../assets/ts/landing.component';
 import { OccupantOrderComponent } from '../assets/ts/occupant-order.component';
 
 const routes: Routes = [
-    {
-      path: 'login',
-      component: LoginComponent
-    },
-    {
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'admin',
     component: AdminComponent,
     children: [
