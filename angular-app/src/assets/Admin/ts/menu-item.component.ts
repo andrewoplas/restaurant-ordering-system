@@ -5,10 +5,10 @@ import 'datatables.net-bs4';
 
 @Component({
   selector: 'display-item-menu',
-  templateUrl: '../html/admin-display-item-menu.component.html',
-  styleUrls: ['../scss/admin-display-item-menu.component.scss']
+  templateUrl: '../html/menu-item.component.html',
+  styleUrls: ['../scss/menu-item.component.scss']
 })
-export class AdminDisplayItemMenuComponent implements OnInit {
+export class MenuItemComponent implements OnInit {
 
   title = "MAIN COURSE";
   

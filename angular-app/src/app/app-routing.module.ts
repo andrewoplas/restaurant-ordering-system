@@ -7,7 +7,7 @@ import { ReceptionistDineComponent } from '../assets/ts/receptionist-dine.compon
 import { ReceptionistOrderComponent } from '../assets/ts/receptionist-order.component';
 
 import { AdminComponent } from '../assets/Admin/admin.component';
-import { AdminDisplayItemMenuComponent } from '../assets/Admin/ts/admin-display-item-menu.component';
+import { MenuItemComponent } from '../assets/Admin/ts/menu-item.component';
 import { LoginComponent } from "../assets/Admin/ts/login.component";
 
 import { OccupantComponent } from '../assets/ts/occupant.component';
@@ -26,8 +26,8 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
-        path: 'display-item-menu',
-        component: AdminDisplayItemMenuComponent
+        path: 'menu-item',
+        component: MenuItemComponent
       }
     ]
   },
