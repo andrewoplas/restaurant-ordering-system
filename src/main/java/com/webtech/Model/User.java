@@ -109,5 +109,39 @@ public class User {
         this.name = name;
     }
 
-	
+	public static class Builder {
+        private Long id;
+		private String name;
+		private String username;
+		private String password;
+		private String role;
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder username(String username) {
+            this.username = username;
+            return this;
+		}
+
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+		public Builder role(String role) {
+            this.role = role;
+            return this;
+		}
+
+        public User build() {
+            return new MenuItem(this);
+        }
+    }
 }
