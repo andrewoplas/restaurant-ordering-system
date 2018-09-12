@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminNavComponent } from '../../../../assets/Admin/ts/admin-nav.component';
+import { AdminNavComponent } from '../../../../assets/Admin/ts/parts/admin-nav.component';
 
 describe('AdminNavComponent', () => {
   let component: AdminNavComponent;
