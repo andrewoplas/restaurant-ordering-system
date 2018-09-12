@@ -10,13 +10,13 @@ import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
 import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
 import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { AdminNavComponent } from '../assets/Admin/ts/admin-nav.component';
-import { AdminSideBarComponent } from '../assets/Admin/ts/admin-side-bar.component';
 
 //Admin
 import { LandingComponent } from '../assets/ts/landing.component';
 import { MenuItemComponent } from "../assets/Admin/ts/menu-item.component";
 import { LoginComponent } from '../assets/Admin/ts/login.component';
+import { AdminNavComponent } from "../assets/Admin/ts/parts/admin-nav.component";
+import { AdminSideBarComponent } from "../assets/Admin/ts/parts/admin-side-bar.component";
 
 @NgModule({
   declarations: [
