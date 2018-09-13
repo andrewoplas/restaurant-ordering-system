@@ -13,15 +13,13 @@ import { ReceptionistOrderComponent } from '../assets/ts/receptionist-order.comp
 import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
 import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { AdminNavComponent } from '../assets/Admin/ts/admin-nav.component';
-import { OverViewComponent } from '../assets/Admin/ts/over-view.component';
-import { AdminSideBarComponent } from '../assets/Admin/ts/admin-side-bar.component';
-import { MapComponent } from '../assets/Admin/ts/map.component';
 
 //Admin
 import { LandingComponent } from '../assets/ts/landing.component';
 import { MenuItemComponent } from "../assets/Admin/ts/menu-item.component";
 import { LoginComponent } from '../assets/Admin/ts/login.component';
+import { AdminNavComponent } from "../assets/Admin/ts/parts/admin-nav.component";
+import { AdminSideBarComponent } from "../assets/Admin/ts/parts/admin-side-bar.component";
 
 @NgModule({
   declarations: [
@@ -35,9 +33,7 @@ import { LoginComponent } from '../assets/Admin/ts/login.component';
     OccupantDishDetailsComponent,
     OccupantMenuComponent,
     AdminNavComponent,
-    OverViewComponent,
     AdminSideBarComponent,
-    MapComponent,
     LandingComponent,
     OccupantOrderComponent,
     MenuItemComponent,
