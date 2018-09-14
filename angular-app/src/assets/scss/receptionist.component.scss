@@ -41,9 +41,6 @@
 
         
     }
-<<<<<<< HEAD
-}
-=======
 
     .tab {
         overflow: hidden;
@@ -82,6 +79,11 @@
     .sub-text {
         color: #DDDDDD;
         font-size: 18px;
+
+        i {
+            color: #DDDDDD;
+            font-size: 18px;
+        }
     }
 
     .reception-btn {
@@ -95,5 +97,17 @@
         border: none;
         margin-top: 35px;
     }
+
+    .reception-btn-skel {
+        background-color: #ffffff;
+        outline: none;
+        font-size: 28px;
+        height: 80px;
+        width: 100%;
+        color: #FBA62F;
+        border: 1px solid #FBA62F;
+        box-shadow: 3px 3px 12px rgba(0,0,0,0.35);
+        margin-top: 35px;
+    }
 }
->>>>>>> [Task/#0051] - Finish Dine Tab
+
