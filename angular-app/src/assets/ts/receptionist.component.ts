@@ -12,7 +12,7 @@ export class ReceptionistComponent implements OnInit {
   ngOnInit() {
   }
 
-  openTab(evt, tabName) {
+  openTab(tabName) {
     var i, tabcontent, tablinks;
 
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -26,7 +26,7 @@ export class ReceptionistComponent implements OnInit {
     }
 
     document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
+    document.getElementById(tabName + "-btn").className += " active";
   }
 
 }
