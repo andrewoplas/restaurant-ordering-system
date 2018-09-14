@@ -4,62 +4,62 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.webtech.Model.Menu;
+import com.webtech.Service.MenuService;
 
 
-import com.webtech.Model.MenuItem;
-import com.webtech.Service.MenuItemService;
 
-@Controller
 @RestController
-public class MenuController extends BaseController implements CONTROLLER<MenuItem>{
+public class MenuController extends BaseController implements CONTROLLER<Menu>{
 
-//    @Autowired
-//	MenuService taskservice;
-//	
+    @Autowired
+	MenuService taskservice;
+
 	@CrossOrigin
-    @RequestMapping(path = "/menu", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@Override
-	public @ResponseBody MenuItem create(MenuItem obj) {
+    @RequestMapping(path = "/menu", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+	
+	public @ResponseBody Menu create(Menu obj) {
 		// TODO Auto-generated method stub
-		return null;
+		return taskservice.create(obj);
 	}
 	@CrossOrigin
     @RequestMapping(path = "/menu", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	@Override
-	public void update(MenuItem obj) {
+	
+	public void update(Menu obj) {
 		// TODO Auto-generated method stub
-		
+		taskservice.update(obj);
 	}
 
 	@CrossOrigin
     @RequestMapping(path = "/menu/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @Override
-	public boolean delete(String id) {
+    
+	public boolean delete(@PathVariable(name = "id", required = true) String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return taskservice.delete(id);
 	}
 
 	@CrossOrigin
     @RequestMapping(path = "/menus", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @Override
-	public List<MenuItem> getItems() {
+    
+	public List<Menu> getItems() {
 		// TODO Auto-generated method stub
-		return null;
+		return taskservice.getItems();
 	}
 
 	@CrossOrigin
     @RequestMapping(path = "/menu/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @Override
-	public MenuItem getItem(String id) {
+	public Menu getItem(@PathVariable(name = "id", required = true) String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return taskservice.getItem(id);
 	}
 	
 }

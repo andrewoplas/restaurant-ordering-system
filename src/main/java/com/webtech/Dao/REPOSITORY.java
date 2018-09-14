@@ -8,7 +8,7 @@ import java.util.*;
 import com.webtech.CRUD;
 
 
-interface RESPOSITORY<T> extends CRUD<T>{
+interface REPOSITORY<T> extends CRUD<T>{
 
 
    EntityManagerFactory emf = EntityManagerFactory.getInstance();

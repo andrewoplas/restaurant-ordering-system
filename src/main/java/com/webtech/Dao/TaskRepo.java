@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class TaskRepo implements RESPOSITORY<TaskEntity>{
+public class TaskRepo implements REPOSITORY<TaskEntity>{
 
     private final static String KIND = "Task";
 
