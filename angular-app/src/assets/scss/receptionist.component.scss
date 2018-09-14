@@ -41,4 +41,59 @@
 
         
     }
+<<<<<<< HEAD
 }
+=======
+
+    .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        color: #6A6A6A;
+        transition: 0.3s;
+        border-bottom: rgba(0,0,0,0) 1px solid;
+    }
+
+    .tab button.active {
+        color: #A40020;
+        border-bottom: #A40020 1px solid;
+    }
+
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+    }
+
+    .title {
+        color: #6A6A6A;
+        font-size: 22px;
+    }
+
+    .sub-text {
+        color: #DDDDDD;
+        font-size: 18px;
+    }
+
+    .reception-btn {
+        background-color: #FBA62F;
+        outline: none;
+        font-size: 28px;
+        height: 80px;
+        width: 100%;
+        color: #ffffff;
+        box-shadow: 3px 3px 12px rgba(0,0,0,0.35);
+        border: none;
+        margin-top: 35px;
+    }
+}
+>>>>>>> [Task/#0051] - Finish Dine Tab
