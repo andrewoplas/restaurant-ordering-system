@@ -7,7 +7,7 @@ import * as $ from "jquery";
   styleUrls: ['../scss/login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {

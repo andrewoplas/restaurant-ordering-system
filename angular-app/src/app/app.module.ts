@@ -13,6 +13,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 
 //Admin
 import { LandingComponent } from '../assets/ts/landing.component';
+import { TableComponent } from "../assets/Admin/ts/table.component";
 import { MenuItemComponent } from "../assets/Admin/ts/menu-item.component";
 import { LoginComponent } from '../assets/Admin/ts/login.component';
 import { AdminNavComponent } from "../assets/Admin/ts/parts/admin-nav.component";
@@ -31,7 +32,8 @@ import { AdminSideBarComponent } from "../assets/Admin/ts/parts/admin-side-bar.c
     LandingComponent,
     OccupantOrderComponent,
     MenuItemComponent,
-    LoginComponent
+    LoginComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

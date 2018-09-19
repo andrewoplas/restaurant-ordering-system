@@ -6,6 +6,7 @@ import { ReceptionistComponent } from '../assets/ts/receptionist.component';
 import { AdminComponent } from '../assets/Admin/admin.component';
 import { MenuItemComponent } from '../assets/Admin/ts/menu-item.component';
 import { LoginComponent } from "../assets/Admin/ts/login.component";
+import { TableComponent } from "../assets/Admin/ts/table.component";
 
 import { OccupantComponent } from '../assets/ts/occupant.component';
 import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
@@ -22,6 +23,14 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
+      {
+        path: 'dashboard',
+        component: MenuItemComponent
+      },
+      {
+        path: 'table',
+        component: TableComponent
+      },
       {
         path: 'menu-item',
         component: MenuItemComponent
@@ -41,7 +50,8 @@ const routes: Routes = [
             component: OccupantDishDetailsComponent
           }
         ]
-      }, {
+      }, 
+      {
         path: 'order',
         component: OccupantOrderComponent,
       }
