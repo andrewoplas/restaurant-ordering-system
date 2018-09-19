@@ -1,7 +1,58 @@
 @import "admin.component.scss";
 @import "bower_components/sidebar-nav/dist/sidebar-nav.min.css";
 @import '../../scss/default/abstract/_variables.scss';
+@import '../../../plugins/bootstrap/dist/css/bootstrap.min.css';
 
 .col-in i {
     color: #ffffff;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    margin: 25px 0;
+
+    .flex-item {
+        background-color: #ffffff;
+        height: 230px;
+        width: 230px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .table-pic {
+            height: 80px;
+            width: 80px;
+            text-align: center;
+            background-repeat: no-repeat;
+        }
+    
+        .table-two {
+            background: url(../../img/table-gold-2.png);
+            background-size: cover;
+        }
+    
+        .table-four {
+            background: url(../../img/table-gold-4.png);
+            background-size: cover;
+        }
+
+        span {
+            color: #ffffff;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    
+    .table-occupied {
+        opacity: 0.5;
+    }
+
+    .table-vacant:hover {
+        box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+    }   
 }
