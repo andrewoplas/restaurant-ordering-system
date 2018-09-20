@@ -56,3 +56,13 @@
         box-shadow: 0 6px 16px rgba(0,0,0,0.35);
     }   
 }
+
+.btn-addtable, .btn-addtable:hover, .btn-addtable:active, .btn-addtable:visited {
+    padding: 5px;
+    color: white;
+    background-color: #ffa500 !important;
+    border-color: #ffa500 !important;
+    float: right;
+    max-height: 40px;
+    width: 120px;
+}
