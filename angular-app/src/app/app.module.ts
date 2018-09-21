@@ -18,6 +18,7 @@ import { MenuItemComponent } from "../assets/Admin/ts/menu-item.component";
 import { LoginComponent } from '../assets/Admin/ts/login.component';
 import { AdminNavComponent } from "../assets/Admin/ts/parts/admin-nav.component";
 import { AdminSideBarComponent } from "../assets/Admin/ts/parts/admin-side-bar.component";
+import { OrderComponent } from "../assets/Admin/ts/order.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AdminSideBarComponent } from "../assets/Admin/ts/parts/admin-side-bar.c
     OccupantOrderComponent,
     MenuItemComponent,
     LoginComponent,
-    TableComponent
+    TableComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

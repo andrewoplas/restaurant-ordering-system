@@ -13,6 +13,7 @@ import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details
 import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
 import { LandingComponent } from '../assets/ts/landing.component';
 import { OccupantOrderComponent } from '../assets/ts/occupant-order.component';
+import { OrderComponent } from '../assets/Admin/ts/order.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,11 @@ const routes: Routes = [
       {
         path: 'menu-item',
         component: MenuItemComponent
-      }
+      },
+			{
+        path: 'orders',
+        component: OrderComponent
+			}
     ]
   },
   {
