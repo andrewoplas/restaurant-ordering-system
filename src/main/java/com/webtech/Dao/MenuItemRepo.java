@@ -1,7 +1,12 @@
 package com.webtech.Dao;
 
 import com.google.appengine.api.datastore.*;
+import com.jmethods.catatumbo.EntityQueryRequest;
+import com.jmethods.catatumbo.QueryResponse;
+import com.webtech.Model.Menu;
 import com.webtech.Model.MenuItem;
+import com.webtech.Model.Order;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class MenuItemRepo implements RESPOSITORY<MenuItem>{
+public class MenuItemRepo implements REPOSITORY<MenuItem>{
 
     private final static String KIND = "MenuItem";
 
@@ -33,7 +38,7 @@ public class MenuItemRepo implements RESPOSITORY<MenuItem>{
     }
     @Override
     public Optional<Long> addObject(MenuItem menuItem) {
-        Entity incTaskEntity = new Entity(KIND);
+       // Entity incTaskEntity = new Entity(KIND);
         
          
         //  incTaskEntity.setProperty(MenuItem.NAME, menuItem.getName());
@@ -67,11 +72,10 @@ public class MenuItemRepo implements RESPOSITORY<MenuItem>{
     }
     
     public List<MenuItem> entitiesToObjects(Iterator<Entity> resultList) {
-        List<MenuItem> resultTasks = new ArrayList<>();
-        while (resultList.hasNext()) {
-            resultTasks.add(entityToObject(resultList.next()));
-        }
-        return resultTasks;
+    	EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM MenuItem");
+		QueryResponse<MenuItem> response = em.executeEntityQueryRequest(MenuItem.class, request);
+		List<MenuItem> obj = response.getResults();
+		return obj;
     }
 
     @Override
@@ -96,7 +100,7 @@ public class MenuItemRepo implements RESPOSITORY<MenuItem>{
             return resultBooks;
         
     }
-
+    
 
 	@Override
 	public MenuItem create(MenuItem obj) {
@@ -119,4 +123,12 @@ public class MenuItemRepo implements RESPOSITORY<MenuItem>{
 	public boolean delete(String id) {
 		return false;
 	}
+    
+    public List<MenuItem> getItemsFromMenu(String menuId){
+    	EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM MenuItem where menuId = @id	");
+    	request.setNamedBinding("id", menuId);
+		QueryResponse<MenuItem> response = em.executeEntityQueryRequest(MenuItem.class, request);
+		List<MenuItem> menu = response.getResults();
+		return menu;
+    }
 }

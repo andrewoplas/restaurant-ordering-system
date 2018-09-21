@@ -22,7 +22,7 @@ public class MenuItem {
     
 	
 	@Identifier
-	private String menuItemId;
+	private String id;
 
 	@Property(name="name",indexed=true)
 	private String name;
@@ -51,12 +51,12 @@ public class MenuItem {
 
 	public MenuItem(){}
 
-	public MenuItem(String id, String name, String description , Double price, int cooking_time, int serving , String picture) {
-        this.menuItemId = id;
+	public MenuItem(String id, String menuId,String name, String description , Double price, int cooking_time, int serving , String picture) {
+        this.id = id;
         this.description = description;
         this.name = name;
 		this.price = price;
-		
+		this.menuId = menuId;
 		this.cooking_time = cooking_time;
 		this.serving = serving;
 		this.picture = picture;
@@ -76,7 +76,7 @@ public class MenuItem {
 	}
 	
 	private MenuItem(Builder builder) {
-        this.menuItemId = (String.valueOf(builder.id));
+        this.id = (String.valueOf(builder.id));
         this.description = builder.description;
         this.name = builder.name;
 		this.price = builder.price;
@@ -91,14 +91,14 @@ public class MenuItem {
 	 * @return the id
 	 */
 	public String getId() {
-		return menuItemId;
+		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(String id) {
-		this.menuItemId = id;
+		this.id = id;
 	}
 
 	/**
@@ -178,6 +178,16 @@ public class MenuItem {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+
+	public String getMenuId() {
+		return menuId;
+	}
+
+	public void setMenuId(String menuId) {
+		this.menuId = menuId;
 	}
 
 
