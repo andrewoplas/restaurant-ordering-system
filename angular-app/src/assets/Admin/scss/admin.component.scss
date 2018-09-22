@@ -1,11 +1,9 @@
-:host /deep/ {
-    @import "./bootstrap/dist/css/bootstrap.min.css";
-    @import "bower_components/sidebar-nav/dist/sidebar-nav.min.css";
-    @import "css/animate.css";
-    @import "css/spinners.css";
-    @import "css/style.css";
-    @import "colors/default.css";
-}
+@import "./bootstrap/dist/css/bootstrap.min.css";
+@import "bower_components/sidebar-nav/dist/sidebar-nav.min.css";
+@import "css/animate.css";
+@import "css/spinners.css";
+@import "css/style.css";
+@import "colors/default.css";
 
 // Customization
 @import "./custom.scss";

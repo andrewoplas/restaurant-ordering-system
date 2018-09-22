@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import * as $ from "jquery";
-import "datatables.net-bs";
 
 @Component({
   selector: "app-order",
   templateUrl: "../html/order.component.html",
-  styleUrls: ["../scss/order.component.scss"]
+  styleUrls: ["../scss/order.component.scss"],
+  encapsulation: ViewEncapsulation.None
 })
 export class OrderComponent implements OnInit {
   title = "ORDERS";
@@ -17,5 +17,4 @@ export class OrderComponent implements OnInit {
   ngAfterViewInit() {
     $("#table-orders").dataTable();
   }
-  
 }
