@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Order } from '../entity/Order';
 
@@ -17,7 +17,7 @@ const httpOptions = {
 
 export class OrderService {
   private baseUrl: string;
-  private orders: Array<Order>;
+  public orders: Array<Order>;
 
   constructor(private http: HttpClient) {
     this.baseUrl = "http://localhost:8080";
@@ -25,6 +25,11 @@ export class OrderService {
 
   get orderList(): Array<Order> {
     return this.orders;
+  }
+
+  public getAllOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.baseUrl}/get-all-orders`, httpOptions)
+      .pipe(catchError(this.handleError('get-all-orders', null)));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -43,7 +48,6 @@ export class OrderService {
 
   load(): Promise<Order[]> {
     this.orders = new Array<Order>();
-
     return this.http.get<Order[]>(`${this.baseUrl}/get-all-orders`, httpOptions)
       .toPromise()
       .then((data: any) => this.orders = data)

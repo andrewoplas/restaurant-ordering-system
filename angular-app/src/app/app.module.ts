@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from "@angular/core";
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from './app-routing.module';
@@ -27,9 +28,6 @@ import { OrderComponent } from '../assets/Admin/ts/order.component';
 //Service
 import { OrderService } from '../app/core/services/order.service';
 
-export function startupOrderFactory(orderService: OrderService): Function {
-  return () => orderService.load();
-}
 
 @NgModule({
   declarations: [
@@ -52,18 +50,10 @@ export function startupOrderFactory(orderService: OrderService): Function {
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbTooltipModule
   ],
-  providers: [
-    OrderService,
-    {
-      // Provider for orderList
-      provide: APP_INITIALIZER,
-      useFactory: startupOrderFactory,
-      deps: [OrderService],
-      multi: true
-    }
-  ],
+  providers: [OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

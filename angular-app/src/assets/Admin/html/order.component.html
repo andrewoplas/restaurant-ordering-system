@@ -86,24 +86,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let order of orderList">
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
+                        <tr *ngFor="let order of orderList; let last = last" [attr.id]="order.id">
+                            <td>{{ order.tableId }}</td>
+                            <td>{{ order.orderNumber }}</td>
+                            <td>{{ order.dateCreated | date:'medium' }}</td>
+                            <td>{{ order.amount }}</td>
                             <td>
-                            </td>
-                            <td class="text-center">
-                                <span class="badge badge-success">PAID</span>
-                                <!-- <span class="badge badge-warning">PENDING</span>
-                                <span class="badge badge-danger">CANCELLED</span> -->
+                                <span class="badge"
+                                    [ngClass]="{
+                                    'badge-success': order.status == status.PAID,
+                                    'badge-warning': order.status == status.PENDING ,
+                                    'badge-danger': order.status == status.CANCELLED 
+                                    }">
+                                    {{ order.status | uppercase }}
+                                </span>
                             </td>
                             <td>
                                 <button type="button" data-toggle="tooltip" title="Show Menu Item"  class="btn btn-info btn-outline btn-circle m-r-5 p-0">
                                     <i class="text-info mdi mdi-food-variant"></i> 
                                 </button>
-                                <button type="button" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-outline btn-circle p-0">
+                                <button *ngIf="order.status == status.CANCELLED" type="button" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-outline btn-circle p-0">
                                     <i class="text-danger mdi mdi-delete"></i> 
                                 </button>
+                                <span *ngIf='last'>{{reinitialize(last)}}</span>
                             </td>
                         </tr>
                     </tbody>

@@ -138,7 +138,6 @@ $(document).ready(function () {
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
-        alert('tooltip Initialization');
     });
 
     /* ===== Popover Initialization ===== */

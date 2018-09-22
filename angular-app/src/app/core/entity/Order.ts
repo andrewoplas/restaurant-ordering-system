@@ -19,7 +19,15 @@ export class Order {
 }
 
 export interface MenuItemQuantity {
-  optionValue: string;
-  displayValue: string;
-  imageFile: string;
+  quantity: number;
+  price: number;
+  imageUrl: string;
+  name: string;
+  onSale: number;
+}
+
+export enum Status {
+  PAID = 'paid',
+  PENDING = 'pending',
+  CANCELLED = 'cancelled'
 }

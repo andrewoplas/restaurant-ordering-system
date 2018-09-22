@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
-import 'datatables.net-bs4';
-
 @Component({
   selector: 'display-item-menu',
   templateUrl: '../html/menu-item.component.html',

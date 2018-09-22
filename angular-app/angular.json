@@ -39,7 +39,7 @@
               "../angular-app/src/plugins/js/jquery.slimscroll.js",
               "../angular-app/src/plugins/js/waves.js",
 
-              "../angular-app/src/plugins/js/custom.min.js",
+              "../angular-app/src/plugins/js/custom.js",
 
               "../angular-app/src/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"
             ]
