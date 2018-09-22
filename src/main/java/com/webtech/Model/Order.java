@@ -1,104 +1,90 @@
 package com.webtech.Model;
 
+import java.util.Date;
 import java.util.List;
 
 import com.jmethods.catatumbo.Entity;
 import com.jmethods.catatumbo.Identifier;
+import com.jmethods.catatumbo.Property;
 
 @Entity(kind = "Order")
 public class Order {
 	
 	@Identifier
-	private String id;
-	private String tableId;
+	private Long id;
+	
 	private double amount;
+	
     private String status;
-    private List<Menu> menus;
-    private List<MenuItem> items;
-    private String date_created;
+	
+	@Property(name="table_id")
+	private int tableId;
+	
+	@Property(name="order_number")
+	private String orderNumber;
     
-	/**
-	 * @return the id
-	 */
-	public String getId() {
+    @Property(name="menu_item")
+    private List<MenuItemQuantity> menuItem;
+    
+    @Property(name="date_created")
+    private Date dateCreated;
+    
+    public Order() {
+    }
+
+	public Long getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
-	/**
-	 * @return the tableId
-	 */
-	public String getTableId() {
-		return tableId;
-	}
-	/**
-	 * @param tableId the tableId to set
-	 */
-	public void setTableId(String tableId) {
-		this.tableId = tableId;
-	}
-	/**
-	 * @return the amount
-	 */
+
 	public double getAmount() {
 		return amount;
 	}
-	/**
-	 * @param amount the amount to set
-	 */
+
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	/**
-	 * @return the status
-	 */
+
 	public String getStatus() {
 		return status;
 	}
-	/**
-	 * @param status the status to set
-	 */
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	/**
-	 * @return the items
-	 */
-	public List<MenuItem> getItems() {
-		return items;
+
+	public int getTableId() {
+		return tableId;
 	}
-	/**
-	 * @param items the items to set
-	 */
-	public void setItems(List<MenuItem> items) {
-		this.items = items;
+
+	public void setTableId(int tableId) {
+		this.tableId = tableId;
 	}
-	/**
-	 * @return the date_created
-	 */
-	public String getDate_created() {
-		return date_created;
+
+	public String getOrderNumber() {
+		return orderNumber;
 	}
-	/**
-	 * @param date_created the date_created to set
-	 */
-	public void setDate_created(String date_created) {
-		this.date_created = date_created;
+
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
 	}
-	/**
-	 * @return the menus
-	 */
-	public List<Menu> getMenus() {
-		return menus;
+
+	public List<MenuItemQuantity> getMenuItem() {
+		return menuItem;
 	}
-	/**
-	 * @param menus the menus to set
-	 */
-	public void setMenus(List<Menu> menus) {
-		this.menus = menus;
+
+	public void setMenuItem(List<MenuItemQuantity> menuItem) {
+		this.menuItem = menuItem;
 	}
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}	
 }
