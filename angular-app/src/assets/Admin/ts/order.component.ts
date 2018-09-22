@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import * as $ from "jquery";
+import { OrderService } from "../../../app/core/services/order.service";
+import { Order } from "../../../app/core/entity/Order";
 
 @Component({
   selector: "app-order",
@@ -8,10 +10,13 @@ import * as $ from "jquery";
 })
 export class OrderComponent implements OnInit {
   title = "ORDERS";
+  orderList: Array<Order> = new Array<Order>();
 
-  constructor() {}
+  constructor(private orderService: OrderService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.orderList = this.orderService.orderList;
+  }
 
   ngAfterViewInit() {
     $("#table-orders").dataTable();
