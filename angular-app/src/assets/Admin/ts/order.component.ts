@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import * as $ from "jquery";
+import "datatables.net-bs";
 
 @Component({
-  selector: 'app-order',
-  templateUrl: '../html/order.component.html',
-  styleUrls: ['../scss/order.component.scss']
+  selector: "app-order",
+  templateUrl: "../html/order.component.html",
+  styleUrls: ["../scss/order.component.scss"]
 })
 export class OrderComponent implements OnInit {
+  title = "ORDERS";
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    $("#table-orders").dataTable();
   }
-
+  
 }

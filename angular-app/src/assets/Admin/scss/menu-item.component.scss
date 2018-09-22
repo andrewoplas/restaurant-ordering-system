@@ -1,7 +1,5 @@
-
+@import "bower_components/jquery-datatables-editable/dataTables.css";
 @import "admin.component.scss";
-@import "bower_components/sidebar-nav/dist/sidebar-nav.min.css";
-@import '../../scss/default/abstract/_variables.scss';
 
 body {
     font-family: $primary-font;
@@ -11,8 +9,8 @@ body {
 .btn-additem, .btn-additem:hover, .btn-additem:active, .btn-additem:visited {
     padding: 5px;
     color: white;
-    background-color: #ffa500 !important;
-    border-color: #ffa500 !important;
+    background-color: $brand-primary !important;
+    border-color: $brand-primary !important;
     float: right;
     max-height: 40px;
     width: 120px;
