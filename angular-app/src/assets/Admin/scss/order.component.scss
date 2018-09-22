@@ -1,14 +1,6 @@
 @import "admin.component.scss";
 
 :host /deep/ {
-    .col-in i {
-        color: #ffffff;
-    }
-
-    .btn-circle:hover > i {
-        color: #ffffff !important;
-    }
-
     table.dataTable {
         width: 100%;
         margin: 0 auto;
@@ -585,4 +577,16 @@
   border-width: 0 5px 5px;
   border-bottom-color: #000;
 }
+}
+
+.col-in i {
+        color: #ffffff;
+    }
+
+.btn-circle:hover > i, .btn-circle:active > i {
+    color: #ffffff !important;
+}
+
+.badge {
+    padding: 5px 10px;
 }

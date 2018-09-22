@@ -40,7 +40,7 @@ public class User {
 		this.password = password;
 	}
 
-	private MenuItem(Builder builder) {
+	private void MenuItem(Builder builder) {
         this.userId = (String.valueOf(builder.id));
         this.name = builder.name;
 		this.password = builder.password;
@@ -54,12 +54,7 @@ public class User {
 	public String getUserId() {
 		return this.userId;
 	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setRole(String id) {
-		this.userId = id;
-	}
+	
     /**
 	 * @return the role
 	 */
@@ -139,9 +134,9 @@ public class User {
             this.role = role;
             return this;
 		}
-
-        public User build() {
-            return new MenuItem(this);
-        }
+//
+//        public User build() {
+//            return new MenuItem(this);
+//        }
     }
 }
