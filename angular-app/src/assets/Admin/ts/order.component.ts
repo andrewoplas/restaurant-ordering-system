@@ -38,4 +38,8 @@ export class OrderComponent implements OnInit {
       .DataTable()
       .destroy();
   }
+
+  delete(id) {
+    alert(id);
+  }
 }

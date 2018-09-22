@@ -32,6 +32,11 @@ export class OrderService {
       .pipe(catchError(this.handleError('get-all-orders', null)));
   }
 
+  public deleteOrder(order: string) {
+    return this.http.delete<Order>(`${this.baseUrl}/delete-order/${order}`)
+      .pipe(catchError(this.handleError('delete-order', order)));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

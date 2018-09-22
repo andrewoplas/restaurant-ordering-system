@@ -29,7 +29,12 @@ public class OrderService implements SERVICE<Order> {
 
 	@Override
 	public boolean delete(String id) {
-		return service.delete(id);
+		if(getItem(id) != null) {
+			service.delete(id);
+			return true;
+		} 
+		
+		return false;
 	}
 
 	@Override
