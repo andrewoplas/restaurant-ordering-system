@@ -40,7 +40,7 @@ import { OrderComponent } from "../assets/Admin/ts/order.component";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

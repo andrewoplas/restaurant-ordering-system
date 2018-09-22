@@ -5,7 +5,6 @@ import * as $ from "jquery";
   selector: "app-order",
   templateUrl: "../html/order.component.html",
   styleUrls: ["../scss/order.component.scss"],
-  encapsulation: ViewEncapsulation.None
 })
 export class OrderComponent implements OnInit {
   title = "ORDERS";
