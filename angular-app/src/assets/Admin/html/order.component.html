@@ -109,7 +109,7 @@
                             </td>
                             <td>
                                 <button type="button" (click)="open(content, order)" data-toggle="tooltip" title="Show Menu Item"  class="btn btn-info btn-outline btn-circle m-r-5 p-0">
-                                    <i class="text-info mdi mdi-food"></i> 
+                                    <i class="mdi mdi-food"></i> 
                                 </button>
                                 <button [swal]="deleteOrder" *ngIf="order.status == status.CANCELLED" type="button" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-outline btn-circle p-0">
                                     <i class="text-danger mdi mdi-delete"></i> 
