@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { OrderStatusFilterPipe } from './pipe/order-status-filter.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: []
+  declarations: [OrderStatusFilterPipe]
 })
 export class CoreModule { }

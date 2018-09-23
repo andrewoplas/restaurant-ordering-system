@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from "@angular/core";
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
 
 import { AppComponent } from "./app.component";
@@ -28,6 +28,9 @@ import { OrderComponent } from '../assets/Admin/ts/order.component';
 import { OrderService } from '../app/core/services/order.service';
 import { MessageService } from "../app/core/services/message.service";
 
+//Pipes
+import { OrderStatusFilterPipe } from '../app/core/pipe/order-status-filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,14 +44,16 @@ import { MessageService } from "../app/core/services/message.service";
     MenuItemComponent,
     LoginComponent,
     TableComponent,
-    OrderComponent
+    OrderComponent,
+
+    OrderStatusFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
     HttpClientModule,
-    NgbTooltipModule,
+    NgbModule.forRoot(),
     SweetAlert2Module.forRoot()
   ],
   providers: [OrderService, MessageService],
