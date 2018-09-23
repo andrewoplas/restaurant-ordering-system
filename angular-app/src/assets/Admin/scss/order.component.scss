@@ -53,7 +53,7 @@
     table.dataTable tbody th,
     table.dataTable tbody td {
         padding: 8px 10px;
-        vertical-align: middle;
+        vertical-align: middle !important;
     }
     table.dataTable.row-border tbody th,
     table.dataTable.row-border tbody td,
