@@ -12,7 +12,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 //Occupant
 import { ReceptionistComponent } from "../assets/ts/receptionist.component";
 import { AdminComponent } from "../assets/Admin/admin.component";
-import { OccupantComponent } from "../assets/ts/occupant.component";
 import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
 import { OccupantDishDetailsComponent } from "../assets/ts/occupant-dish-details.component";
 import { OccupantMenuComponent } from "../assets/ts/occupant-menu.component";
@@ -35,7 +34,6 @@ import { MessageService } from "../app/core/services/message.service";
     AppComponent,
     ReceptionistComponent,
     AdminComponent,
-    OccupantComponent,
     OccupantDishDetailsComponent,
     OccupantMenuComponent,
     AdminNavComponent,

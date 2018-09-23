@@ -43,24 +43,18 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'occupant',
-    component: OccupantComponent,
+    path: 'menu',
+    component: OccupantMenuComponent,
     children: [
       {
-        path: 'menu',
-        component: OccupantMenuComponent,
-        children: [
-          {
-            path: 'dishdetails',
-            component: OccupantDishDetailsComponent
-          }
-        ]
-      }, 
-      {
-        path: 'order',
-        component: OccupantOrderComponent,
+        path: 'dishdetails',
+        component: OccupantDishDetailsComponent
       }
     ]
+  }, 
+  {
+    path: 'order',
+    component: OccupantOrderComponent,
   },
   {
     path: 'receptionist',
