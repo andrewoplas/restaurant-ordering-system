@@ -86,7 +86,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let order of orderList; let last = last" [attr.id]="order.id">
+                        <tr *ngFor="let order of orderList; let last = last">
                             <td>{{ order.tableId }}</td>
                             <td>{{ order.orderNumber }}</td>
                             <td>{{ order.dateCreated | date:'medium' }}</td>
@@ -105,9 +105,21 @@
                                 <button type="button" data-toggle="tooltip" title="Show Menu Item"  class="btn btn-info btn-outline btn-circle m-r-5 p-0">
                                     <i class="text-info mdi mdi-food-variant"></i> 
                                 </button>
-                                <button *ngIf="order.status == status.CANCELLED" type="button" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-outline btn-circle p-0">
+                                <button [swal]="deleteOrder" *ngIf="order.status == status.CANCELLED" type="button" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-outline btn-circle p-0">
                                     <i class="text-danger mdi mdi-delete"></i> 
                                 </button>
+                                <swal
+                                    #deleteOrder
+                                    title="Delete Order?"
+                                    text="Are you sure you want to remove this order?"
+                                    type="question"
+                                    [showCancelButton]="true"
+                                    [focusCancel]="true"
+                                    (confirm)="delete(order.id)"
+                                    confirmButtonText="Yes, Delete it"
+                                    confirmButtonColor="#A40020"
+                                >
+                                </swal>
                                 <span *ngIf='last'>{{reinitialize(last)}}</span>
                             </td>
                         </tr>

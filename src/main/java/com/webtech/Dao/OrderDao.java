@@ -6,44 +6,57 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.google.appengine.api.datastore.Entity;
-import com.jmethods.catatumbo.EntityManager;
-import com.jmethods.catatumbo.EntityManagerFactory;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
-import com.webtech.Model.Menu;
 import com.webtech.Model.Order;
-import com.webtech.Model.Table;
 
 @Repository
 public class OrderDao implements REPOSITORY<Order> {
 	
 	@Override
 	public Order create(Order obj) {
-		return em.insert(obj);
+		Order insertedOrder = null;
+		
+		try {
+			insertedOrder = em.insert(obj);	
+		} catch (Exception ex) {
+			System.out.println("INSERTDAO: " + ex.getMessage());
+		}
+		
+		return insertedOrder;
 	}
 
 	@Override
 	public void update(Order obj) {
-		em.update(obj);
+		try {
+			em.update(obj);			
+		} catch (Exception ex) {
+			System.out.println("UPDATEDAO: " + ex.getMessage());
+		}
 	}
 
 	@Override
 	public boolean delete(String id) {
-		em.delete(Menu.class, id);
-		return true;
+		try {
+			em.delete(Order.class, Long.parseLong(id));
+			return true;
+		} catch (Exception ex) {
+			System.out.println("DELETEDAO: " + ex.getMessage());
+		}
+		
+		return false;
 	}
 	
 	public List<Order> getItems() {
 		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Order`");
 		QueryResponse<Order> response = em.executeEntityQueryRequest(Order.class, request);
 		List<Order> obj = response.getResults();
-		System.out.println("Return: " + obj.size());
 		return obj;
 	}
 
 	@Override
 	public Order getItem(String id) {
-		return em.load(Order.class, id);
+		return em.load(Order.class, Long.parseLong(id));
 	}
 
 	@Override
@@ -53,7 +66,7 @@ public class OrderDao implements REPOSITORY<Order> {
 
 	@Override
 	public boolean itemExist(long id) {
-		return false;
+		return getItem(Long.toString(id)) != null;
 	}
 
 	//@Override

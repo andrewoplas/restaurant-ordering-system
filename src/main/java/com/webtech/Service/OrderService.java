@@ -11,35 +11,48 @@ import com.jmethods.catatumbo.EntityManager;
 import com.jmethods.catatumbo.EntityManagerFactory;
 import com.webtech.Dao.OrderDao;
 import com.webtech.Model.Order;
+import com.webtech.Model.OrderStatus;
 
 @Service
 public class OrderService implements SERVICE<Order> {		
 	@Autowired
-	private OrderDao service;
+	private OrderDao repository;
 	
 	@Override
 	public Order create(Order obj) {
-		return service.create(obj);
+		return repository.create(obj);
 	}
 
 	@Override
 	public void update(Order obj) {
-		service.update(obj);
+		repository.update(obj);
 	}
 
 	@Override
 	public boolean delete(String id) {
-		return service.delete(id);
+		boolean result = false;
+		
+		try {		
+			Long longId = Long.parseLong(id);
+			Order order = repository.getItem(id);
+			if(order != null && order.getStatus().equals(OrderStatus.CANCELLED.toString())) {
+				result = repository.delete(id);
+			}
+		} catch (Exception ex) {
+			System.out.print("DELETESERVICE");
+		}
+		
+		return result;
 	}
 
 	@Override
 	public List<Order> getItems() {
-		return service.getItems();
+		return repository.getItems();
 	}
 
 	@Override
 	public Order getItem(String id) {		
-		return service.getItem(id);
+		return repository.getItem(id);
 	}
 
 }

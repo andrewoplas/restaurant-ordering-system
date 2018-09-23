@@ -21,6 +21,8 @@ public class Menu {
 	
     @Ignore
     private List<MenuItem> items;
+    
+    public Menu() { }
 
 	public Menu(String name, String description, List<MenuItem> items) {
 		
