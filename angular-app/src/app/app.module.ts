@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from "@angular/core";
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from './app-routing.module';
@@ -29,8 +30,6 @@ import { OrderComponent } from '../assets/Admin/ts/order.component';
 import { OrderService } from '../app/core/services/order.service';
 import { MessageService } from "../app/core/services/message.service";
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +52,8 @@ import { MessageService } from "../app/core/services/message.service";
     AppRoutingModule,
     FlexLayoutModule,
     HttpClientModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [OrderService, MessageService],
   bootstrap: [AppComponent]

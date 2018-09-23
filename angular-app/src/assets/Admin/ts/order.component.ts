@@ -18,7 +18,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     $("#table-orders").dataTable();
-    this.orderService.getOrders();
+    this.getOrders();
     $('.preloader').fadeOut();
   }
 
@@ -45,6 +45,9 @@ export class OrderComponent implements OnInit {
         success => {
           if(success) {
             this.orderList = this.orderList.filter(o => o.id != id);
+            alert('done');
+          } else {
+            alert('error');
           }
       });
   }

@@ -35,8 +35,7 @@ public class OrderService implements SERVICE<Order> {
 		try {		
 			Long longId = Long.parseLong(id);
 			Order order = repository.getItem(id);
-			
-			if(order != null && order.getStatus().equals(OrderStatus.CANCELLED)) {
+			if(order != null && order.getStatus().equals(OrderStatus.CANCELLED.toString())) {
 				result = repository.delete(id);
 			}
 		} catch (Exception ex) {
