@@ -8,8 +8,6 @@ import { MenuItemComponent } from '../assets/Admin/ts/menu-item.component';
 import { LoginComponent } from "../assets/Admin/ts/login.component";
 import { TableComponent } from "../assets/Admin/ts/table.component";
 
-import { OccupantComponent } from '../assets/ts/occupant.component';
-import { OccupantDishDetailsComponent } from '../assets/ts/occupant-dish-details.component';
 import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
 import { LandingComponent } from '../assets/ts/landing.component';
 import { OccupantOrderComponent } from '../assets/ts/occupant-order.component';

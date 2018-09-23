@@ -23,7 +23,7 @@ export class OccupantOrderComponent implements OnInit {
     $(function () {
       $(".table-order tbody")
         .find("tr")
-        .after('<tr _ngcontent-c2 class="spacer"><td _ngcontent-c2 colspan="6"></td></tr>');
+        .after('<tr _ngcontent-c1 class="spacer"><td _ngcontent-c1 colspan="6"></td></tr>');
     });
   }
 
