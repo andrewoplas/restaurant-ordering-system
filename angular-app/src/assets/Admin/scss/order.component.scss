@@ -578,8 +578,8 @@
 }
 
 .col-in i {
-        color: #ffffff;
-    }
+    color: #ffffff;
+}
 
 .btn-circle:hover > i, .btn-circle:focus > i {
     color: #ffffff !important;
@@ -588,3 +588,82 @@
 .badge {
     padding: 5px 10px;
 }
+
+.circle-md {
+    padding-top: 11px;
+}
+
+ 
+/deep/ {
+    .order-items-modal {
+
+        h3 {
+            display: inline-block !important;
+            font-size: 25px !important;
+        }
+
+        .close {
+            margin-right: 5px;
+            margin-top: 5px;
+
+            i {
+                font-size: 35px !important;
+            }
+            
+        }
+
+        .modal-dialog {
+            max-width: 800px !important;
+        }
+
+        .modal-content {
+            border: none !important;
+        }
+
+        .table {
+            tr td {
+                border-top: none !important;
+                vertical-align: middle !important;
+
+                img {
+                    width: 100px;
+                }
+
+                &.dish-name {
+                    width: 50% !important;
+
+                    .name {
+                        font-size: 22px !important;
+                    }
+
+                    .description {
+                        font-size: 14px !important;
+                        color: rgba(0,0,0,0.4) !important;
+                    }
+
+                    .total-label {
+                        font-size: 25px !important;
+                    }
+                }
+
+                &.price {
+                    min-width: 30%;
+
+                    .total-price {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+
+        .btn-close {
+            padding: 5px !important;
+            color: white !important;
+            background-color: #ffa500 !important;
+            border-color: #ffa500 !important;
+            float: right !important;
+            max-height: 40px !important;
+            width: 120px !important;
+        }
+    }
+} 
