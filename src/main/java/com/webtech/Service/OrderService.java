@@ -11,6 +11,7 @@ import com.jmethods.catatumbo.EntityManager;
 import com.jmethods.catatumbo.EntityManagerFactory;
 import com.webtech.Dao.OrderDao;
 import com.webtech.Model.Order;
+import com.webtech.Model.OrderStatus;
 
 @Service
 public class OrderService implements SERVICE<Order> {		
@@ -33,12 +34,13 @@ public class OrderService implements SERVICE<Order> {
 		
 		try {		
 			Long longId = Long.parseLong(id);
+			Order order = repository.getItem(id);
 			
-			if(repository.itemExist(longId)) {
+			if(order != null && order.getStatus().equals(OrderStatus.CANCELLED)) {
 				result = repository.delete(id);
 			}
 		} catch (Exception ex) {
-			result = false;
+			System.out.print("DELETESERVICE");
 		}
 		
 		return result;
