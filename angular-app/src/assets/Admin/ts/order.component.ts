@@ -17,12 +17,19 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService) {}
 
   ngOnInit() {
-    $('#table-orders').dataTable();
-    this.orderService
-      .getAllOrders()
-      .subscribe(data => this.receiveOrderList(data));
-
+    $("#table-orders").dataTable();
+    this.orderService.getOrders();
     $('.preloader').fadeOut();
+  }
+
+  getOrders() {
+    this.orderService.getOrders().subscribe(
+      data => {
+        this.orderList = data;
+        $("#table-orders").DataTable().clear();
+        $('#table-orders').DataTable().destroy();
+      }
+    );
   }
 
   reinitialize(isLast: boolean) {
@@ -32,14 +39,13 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  receiveOrderList(data) {
-    this.orderList = data;
-    $('#table-orders')
-      .DataTable()
-      .destroy();
-  }
-
-  delete(id) {
-    alert(id);
+  delete(id: number) {
+    this.orderService.deleteOrder(id)
+      .subscribe(
+        success => {
+          if(success) {
+            this.orderList = this.orderList.filter(o => o.id != id);
+          }
+      });
   }
 }

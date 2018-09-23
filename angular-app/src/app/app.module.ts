@@ -27,6 +27,8 @@ import { OrderComponent } from '../assets/Admin/ts/order.component';
 
 //Service
 import { OrderService } from '../app/core/services/order.service';
+import { MessageService } from "../app/core/services/message.service";
+
 
 
 @NgModule({
@@ -53,7 +55,7 @@ import { OrderService } from '../app/core/services/order.service';
     HttpClientModule,
     NgbTooltipModule
   ],
-  providers: [OrderService],
+  providers: [OrderService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

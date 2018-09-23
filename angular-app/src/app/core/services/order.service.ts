@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { MessageService } from '../services/message.service';
 import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
@@ -12,14 +13,16 @@ const httpOptions = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-
 export class OrderService {
   private baseUrl: string;
   public orders: Array<Order>;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {
     this.baseUrl = "http://localhost:8080";
   }
 
@@ -27,35 +30,68 @@ export class OrderService {
     return this.orders;
   }
 
-  public getAllOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${this.baseUrl}/get-all-orders`, httpOptions)
-      .pipe(catchError(this.handleError('get-all-orders', null)));
+  /** GET: retrieve orders from the server */
+  public getOrders(): Observable<Order[]> {
+    return this.http
+      .get<Order[]>(`${this.baseUrl}/get-all-orders`, httpOptions)
+      .pipe(
+        tap(() => this.log("get-all-orders")),
+        catchError(this.handleError("get-all-orders", []))
+      );
   }
 
-  public deleteOrder(order: string) {
-    return this.http.delete<Order>(`${this.baseUrl}/delete-order/${order}`)
-      .pipe(catchError(this.handleError('delete-order', order)));
+  /** POST: add a new order to the server */
+  addOrder(order: Order): Observable<any> {
+    return this.http
+      .put<Order>(`${this.baseUrl}/add-order`, order, httpOptions)
+      .pipe(
+        tap(_ => this.log(`add order with id=${order.id}`)),
+        catchError(this.handleError<Order>("add-order"))
+      );
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  /** DELETE: delete the order from the server */
+  public deleteOrder(order: string | number): Observable<any> {
+    return this.http
+      .delete<Order>(`${this.baseUrl}/delete-order/${order}`)
+      .pipe(
+        tap(_ => this.log(`deleted order id=${order}`)),
+        catchError(this.handleError("delete-order", order))
+      );
+  }
+
+  /** PUT: update the order on the server */
+  updateHero(order: Order): Observable<any> {
+    return this.http
+      .put(`${this.baseUrl}/update-order`, order, httpOptions)
+      .pipe(
+        tap(_ => this.log(`updated order id=${order.id}`)),
+        catchError(this.handleError<any>("update-order"))
+      );
+  }
+
+  /* Helper Methods */
+
+  private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      console.error(error);
       console.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
   load(): Promise<Order[]> {
     this.orders = new Array<Order>();
-    return this.http.get<Order[]>(`${this.baseUrl}/get-all-orders`, httpOptions)
+    return this.http
+      .get<Order[]>(`${this.baseUrl}/get-all-orders`, httpOptions)
       .toPromise()
-      .then((data: any) => this.orders = data)
+      .then((data: any) => (this.orders = data))
       .catch((err: any) => Promise.resolve());
+  }
+
+  /** Log a OrderService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`OrderService: ${message}`);
   }
 }

@@ -6,13 +6,9 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.google.appengine.api.datastore.Entity;
-import com.jmethods.catatumbo.EntityManager;
-import com.jmethods.catatumbo.EntityManagerFactory;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
-import com.webtech.Model.Menu;
 import com.webtech.Model.Order;
-import com.webtech.Model.Table;
 
 @Repository
 public class OrderDao implements REPOSITORY<Order> {
@@ -29,7 +25,7 @@ public class OrderDao implements REPOSITORY<Order> {
 
 	@Override
 	public boolean delete(String id) {
-		em.delete(Menu.class, id);
+		em.delete(Order.class, Long.parseLong(id));
 		return true;
 	}
 	
@@ -43,7 +39,7 @@ public class OrderDao implements REPOSITORY<Order> {
 
 	@Override
 	public Order getItem(String id) {
-		return em.load(Order.class, id);
+		return em.load(Order.class, Long.parseLong(id));
 	}
 
 	@Override
@@ -53,7 +49,7 @@ public class OrderDao implements REPOSITORY<Order> {
 
 	@Override
 	public boolean itemExist(long id) {
-		return false;
+		return getItem(Long.toString(id)) != null;
 	}
 
 	//@Override

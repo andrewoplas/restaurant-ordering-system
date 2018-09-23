@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webtech.Model.Order;
 import com.webtech.Service.OrderService;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/")
 public class OrderController extends BaseController implements CONTROLLER<Order> {
@@ -25,14 +24,15 @@ public class OrderController extends BaseController implements CONTROLLER<Order>
 	@Autowired
 	OrderService service;
 	
-	
+	@CrossOrigin
     @PostMapping(path = "/order", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public Order create(Order obj) {
 		// TODO Auto-generated method stub
 		return service.create(obj);
 	}
-
+	
+	@CrossOrigin
     @RequestMapping(path = "/order", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public void update(Order obj) {
@@ -40,22 +40,25 @@ public class OrderController extends BaseController implements CONTROLLER<Order>
 		service.update(obj);
 	}
 	
+	@CrossOrigin
     @DeleteMapping(path = "/delete-order/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public boolean delete(@PathVariable(name = "id", required = true) String id) {
+		System.out.println("DELETE");
 		return service.delete(id);
 	}
 	
+	@CrossOrigin
 	@GetMapping(path = "/get-all-orders", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public List<Order> getItems() {
 		return service.getItems();
 	}
 	
+	@CrossOrigin
     @RequestMapping(path = "/order/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public Order getItem(@PathVariable(name = "id", required = true)String id) {
-		// TODO Auto-generated method stub
 		return service.getItem(id);
 	}
 

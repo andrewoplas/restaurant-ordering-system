@@ -15,36 +15,43 @@ import com.webtech.Model.Order;
 @Service
 public class OrderService implements SERVICE<Order> {		
 	@Autowired
-	private OrderDao service;
+	private OrderDao repository;
 	
 	@Override
 	public Order create(Order obj) {
-		return service.create(obj);
+		return repository.create(obj);
 	}
 
 	@Override
 	public void update(Order obj) {
-		service.update(obj);
+		repository.update(obj);
 	}
 
 	@Override
 	public boolean delete(String id) {
-		if(getItem(id) != null) {
-			service.delete(id);
-			return true;
-		} 
+		boolean result = false;
 		
-		return false;
+		try {		
+			Long longId = Long.parseLong(id);
+			
+			if(repository.itemExist(longId)) {
+				result = repository.delete(id);
+			}
+		} catch (Exception ex) {
+			result = false;
+		}
+		
+		return result;
 	}
 
 	@Override
 	public List<Order> getItems() {
-		return service.getItems();
+		return repository.getItems();
 	}
 
 	@Override
 	public Order getItem(String id) {		
-		return service.getItem(id);
+		return repository.getItem(id);
 	}
 
 }
