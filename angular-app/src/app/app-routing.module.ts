@@ -45,12 +45,6 @@ const routes: Routes = [
   {
     path: 'menu',
     component: OccupantMenuComponent,
-    children: [
-      {
-        path: 'dishdetails',
-        component: OccupantDishDetailsComponent
-      }
-    ]
   }, 
   {
     path: 'order',
