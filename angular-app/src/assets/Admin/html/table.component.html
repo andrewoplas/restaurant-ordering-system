@@ -110,7 +110,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="myModalLabel">Table Details</h4> </div>
-            <div class="modal-body container-fluid body-container">
+            <div class="modal-body container-fluid add-table-body-container">
                 <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 flex-container">
                     <div class="flex-item">
                         <span class="table-details">13</span>
@@ -143,14 +143,70 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4> </div>
-            <div class="modal-body">
-                <h4>Overflowing text to show scroll behavior</h4>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <div class="col-lg-12 col-md-2 col-sm-2 col-xs-12">
+                    <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+                        <h4 class="modal-title">Table No. 1</h4>
+                    </div>
+                    <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+                        <h4 class="modal-title-right">Order No. 12</h4>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+            <div class="modal-body container-fluid view-table-body-container">
+                <div class="col-lg-12 col-md-2 col-sm-2 col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table color-table inverse-table view-table">
+                            <thead>
+                                <tr>
+                                    <th class="column-heading">Image</th>
+                                    <th class="column-heading">Name</th>
+                                    <th class="column-heading">Quantity</th>
+                                    <th class="column-heading">Price</th>
+                                    <th class="column-heading">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img src="../../img/dish-1.png"></td>
+                                    <td>Scottish Prawn</td>
+                                    <td>1</td>
+                                    <td>P 100</td>
+                                    <td>P 100</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../../img/dish-1.png"></td>
+                                    <td>Scottish Prawn</td>
+                                    <td>1</td>
+                                    <td>P 100</td>
+                                    <td>P 100</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../../img/dish-1.png"></td>
+                                    <td>Scottish Prawn</td>
+                                    <td>1</td>
+                                    <td>P 100</td>
+                                    <td>P 100</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../../img/dish-1.png"></td>
+                                    <td>Scottish Prawn</td>
+                                    <td>1</td>
+                                    <td>P 100</td>
+                                    <td>P 100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-2 col-sm-2 col-xs-12 total-container">
+                    <div class="col-lg-11">
+                        <h3>Total</h3>
+                    </div>
+                    <div class="col-lg-1">
+                        <h3>400</h3>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /.modal-content -->

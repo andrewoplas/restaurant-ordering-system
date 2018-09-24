@@ -73,7 +73,7 @@
     width: 120px;
 }
 
-.body-container {
+.add-table-body-container {
     display: flex;
     align-items: center;
 
@@ -94,5 +94,28 @@
         color: #ffffff;
         width: 119px;
         height: 40px;
+    }
+}
+
+.modal-title-right {
+    text-align: right;
+}
+
+.view-table-body-container {
+    
+    .column-heading {
+        text-align: center;
+    }
+
+    .view-table {
+        text-align: center;
+    }
+
+    .total-container {
+        text-align: right;
+        
+        h3 {
+            color: #ffa500;
+        }
     }
 }
