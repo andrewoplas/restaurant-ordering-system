@@ -35,12 +35,10 @@ const routes: Routes = [
       {
         path: 'menu-item',
         component: MenuItemComponent,
-        children: [
-          {
-            path: 'add',
-            component: MenuItemAddComponent
-          }
-        ]
+      },
+      {
+        path: 'menu-item/add',
+        component: MenuItemAddComponent
       },
 			{
         path: 'orders',

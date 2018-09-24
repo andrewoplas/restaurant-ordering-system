@@ -1,0 +1,294 @@
+@import "./bower_components/bootstrap-tagsinput/css/bootstrap-tagsinput.css";
+@import "admin.component.scss";
+
+.group 	{ 
+    position: relative; 
+    margin-bottom: 30px; 
+
+    input {
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        border: none;
+        border-bottom: 1px solid #e4e7ea;
+        background-color: transparent;
+        width: 100%;
+        font-family: "VarelaRound", sans-serif;
+
+        &:focus {
+            outline: none; 
+        }
+
+        &:focus ~ .bar:before, &:focus ~ .bar:after {
+            width: 50%;
+        }
+
+        &:focus ~ label, &:valid ~ label {
+            top: -15px;
+            font-size: 15px;
+            color: $brand-primary;
+        }
+
+        &:focus ~ .highlight {
+            -webkit-animation: inputHighlighter 0.3s ease;
+            -moz-animation: inputHighlighter 0.3s ease;
+            animation: inputHighlighter 0.3s ease;
+        }
+    }
+
+    textarea {
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        border: none;
+        border-bottom: 1px solid #e4e7ea;
+        background-color: transparent;
+        width: 100%;
+        font-family: "VarelaRound", sans-serif;
+
+        &:focus {
+            outline: none; 
+        }
+
+        &:focus ~ .bar:before, &:focus ~ .bar:after {
+            width: 50%;
+        }
+
+        &:focus ~ label, &:valid ~ label {
+            top: -15px;
+            font-size: 15px;
+            color: $brand-primary;
+        }
+
+        &:focus ~ .highlight {
+            -webkit-animation: inputHighlighter 0.3s ease;
+            -moz-animation: inputHighlighter 0.3s ease;
+            animation: inputHighlighter 0.3s ease;
+        }
+    }
+
+    select {
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        border: none;
+        border-bottom: 1px solid #e4e7ea;
+        background-color: transparent;
+        width: 100%;
+        font-family: "VarelaRound", sans-serif;
+
+        &:focus {
+            outline: none; 
+        }
+
+        &:focus ~ .bar:before, &:focus ~ .bar:after {
+            width: 50%;
+        }
+
+        &:focus ~ label, &:valid ~ label {
+            top: -15px;
+            font-size: 15px;
+            color: $brand-primary;
+        }
+
+        &:focus ~ .highlight {
+            -webkit-animation: inputHighlighter 0.3s ease;
+            -moz-animation: inputHighlighter 0.3s ease;
+            animation: inputHighlighter 0.3s ease;
+        }
+    }
+
+    label {
+        color: #313131;
+        text-transform: capitalize;
+        font-size: 15px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 10px;
+        transition: 0.2s ease all; 
+        -moz-transition: 0.2s ease all; 
+        -webkit-transition: 0.2s ease all;
+        font-family: "VarelaRound", sans-serif;
+        letter-spacing: 0;
+    }
+
+    .bar { 
+        position: relative; 
+        display: block; 
+        width: 100%; 
+        margin-top: 1px;
+
+        &:before, &:after 	{
+            content: '';
+            height: 2.5px; 
+            width: 0;
+            bottom: 1px; 
+            position: absolute;
+            background: $brand-primary; 
+            transition: 0.2s ease all; 
+            -moz-transition: 0.2s ease all; 
+            -webkit-transition: 0.2s ease all;
+        }
+
+        &:before {
+            left: 50%;
+        }
+
+        &:after {
+            right: 50%; 
+        }
+    }
+
+    .highlight {
+        position: absolute;
+        height: 60%; 
+        width: 100px; 
+        top: 25%; 
+        left: 0;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+
+@-webkit-keyframes inputHighlighter {
+	from { 
+        background: #5264AE; 
+    }
+    to 	{ 
+        width: 0; 
+        background: transparent; 
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from { 
+        background: #5264AE; 
+    }
+    to { 
+        width: 0; 
+        background: transparent; 
+    }
+}
+
+@keyframes inputHighlighter {
+	from { 
+        background: #5264AE; 
+    }
+    to { 
+        width: 0; 
+        background: transparent; 
+    }
+}
+
+input[type="checkbox"].ios8-switch {
+    position: absolute;
+    margin: 8px 0 0 16px;    
+}
+input[type="checkbox"].ios8-switch + label {
+    position: relative;
+    padding: 5px 0 0 50px;
+    line-height: 2.0em;
+}
+input[type="checkbox"].ios8-switch + label:before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 40px; /* x*5 */
+    height: 24px; /* x*3 */
+    border-radius: 16px; /* x*2 */
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+input[type="checkbox"].ios8-switch + label:after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 0px;
+    width: 24px; /* x*3 */
+    height: 24px; /* x*3 */
+    border-radius: 16px; /* x*2 */
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+input[type="checkbox"].ios8-switch + label:hover:after {
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+input[type="checkbox"].ios8-switch:checked + label:after {
+    margin-left: 16px;
+}
+input[type="checkbox"].ios8-switch:checked + label:before {
+    background: $brand-secondary;
+}
+input[type="checkbox"].ios8-switch-lg {
+    margin: 10px 0 0 20px;
+}
+input[type="checkbox"].ios8-switch-lg + label {
+    position: relative;
+    padding: 7px 0 0 60px;
+    line-height: 2.3em;
+}
+input[type="checkbox"].ios8-switch-lg + label:before {
+    width: 50px; /* x*5 */
+    height: 30px; /* x*3 */
+    border-radius: 20px; /* x*2 */
+}
+input[type="checkbox"].ios8-switch-lg + label:after {
+    width: 30px; /* x*3 */
+    height: 30px; /* x*3 */
+    border-radius: 20px; /* x*2 */
+}
+input[type="checkbox"].ios8-switch-lg + label:hover:after {
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+input[type="checkbox"].ios8-switch-lg:checked + label:after {
+    margin-left: 20px; /* x*2 */
+}
+
+.label-show {
+    line-height: 15px !important;
+    font-size: 17px;
+    font-family: 'VarelaRound', sans-serif;
+}
+
+.btn-submit, .btn-submit:hover, .btn-submit:active, .btn-submit:visited {
+    padding: 5px;
+    color: white;
+    background-color: $brand-primary !important;
+    border-color: $brand-primary !important;
+    max-height: 40px;
+    width: 120px;
+}
+
+/deep/ {
+    .tags-default {
+        border: none;
+        border-bottom: 1px solid #e4e7ea;
+        padding-bottom: 10px;
+
+        input {
+            font-family: VarelaRound;
+            border: none;
+            outline: none;
+        }
+
+        .tag {
+            background-color: $brand-primary;
+            color: white !important;
+            font-family: 'VarelaRound', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            line-height: 1.5px;
+            text-transform: unset;
+        }
+    }
+}

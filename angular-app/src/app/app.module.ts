@@ -51,7 +51,7 @@ import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
     FeedbackComponent,
     MenuItemAddComponent,
 
-    OrderStatusFilterPipe,
+    OrderStatusFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -59,7 +59,7 @@ import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
     FlexLayoutModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
   ],
   providers: [OrderService, MessageService],
   bootstrap: [AppComponent]
