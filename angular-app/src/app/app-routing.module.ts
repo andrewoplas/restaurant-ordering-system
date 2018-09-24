@@ -5,6 +5,7 @@ import { ReceptionistComponent } from '../assets/ts/receptionist.component';
 
 import { AdminComponent } from '../assets/Admin/admin.component';
 import { MenuItemComponent } from '../assets/Admin/ts/menu-item.component';
+import { MenuItemAddComponent } from "../assets/Admin/ts/menu-item-add.component";
 import { LoginComponent } from "../assets/Admin/ts/login.component";
 import { TableComponent } from "../assets/Admin/ts/table.component";
 
@@ -33,7 +34,13 @@ const routes: Routes = [
       },
       {
         path: 'menu-item',
-        component: MenuItemComponent
+        component: MenuItemComponent,
+        children: [
+          {
+            path: 'add',
+            component: MenuItemAddComponent
+          }
+        ]
       },
 			{
         path: 'orders',
