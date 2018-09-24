@@ -10,7 +10,8 @@
 
     .card {
         background-color: $white;
-        height: 500px;
+        min-height: 500px;
+        height: auto;
         width: 100%;
         max-width: 800px;
         margin: 0 auto;
@@ -22,6 +23,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: right;
+            min-height: 500px;
             height: 100%;
             padding: 10px;
             border-radius: 10px 0 0 10px;
@@ -102,6 +104,26 @@
                     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
                     border-radius: 5px;
                     cursor: pointer;
+                }
+
+                .remove {
+                    display: flex;
+                }
+
+                .remove-last {
+                    display: flex;
+                }
+    
+                @media (max-width: 600px) {
+                    .remove {
+                        display: none;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    .remove-last {
+                        display: none;
+                    }
                 }
             }
         }
