@@ -43,6 +43,15 @@
             align-items: center;
             justify-content: center;
         }
+
+        .table-details {
+            height: 150px;
+            width: 150px;
+            text-align: center;
+            background: url(../../img/table-gold-4.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
     }
     
     .table-occupied {
@@ -62,4 +71,51 @@
     float: right;
     max-height: 40px;
     width: 120px;
+}
+
+.add-table-body-container {
+    display: flex;
+    align-items: center;
+
+    h5 {
+        margin: 15px auto;
+    }
+
+    .table-input {
+        margin: 5px;
+    }
+}
+
+.btn-submit-container {
+    text-align: center;
+
+    button {
+        background-color: #ffa500;
+        color: #ffffff;
+        width: 119px;
+        height: 40px;
+    }
+}
+
+.modal-title-right {
+    text-align: right;
+}
+
+.view-table-body-container {
+    
+    .column-heading {
+        text-align: center;
+    }
+
+    .view-table {
+        text-align: center;
+    }
+
+    .total-container {
+        text-align: right;
+        
+        h3 {
+            color: #ffa500;
+        }
+    }
 }

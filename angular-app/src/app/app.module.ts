@@ -14,6 +14,7 @@ import { ReceptionistComponent } from "../assets/ts/receptionist.component";
 import { AdminComponent } from "../assets/Admin/admin.component";
 import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
 import { OccupantMenuComponent } from "../assets/ts/occupant-menu.component";
+import { FeedbackComponent } from '../assets/ts/feedback.component';
 
 //Admin
 import { LandingComponent } from '../assets/ts/landing.component';
@@ -25,11 +26,11 @@ import { AdminSideBarComponent } from '../assets/Admin/ts/parts/admin-side-bar.c
 import { OrderComponent } from '../assets/Admin/ts/order.component';
 
 //Service
-import { OrderService } from '../app/core/services/order.service';
-import { MessageService } from "../app/core/services/message.service";
+import { OrderService } from './core/services/order.service';
+import { MessageService } from "./core/services/message.service";
 
 //Pipes
-import { OrderStatusFilterPipe } from '../app/core/pipe/order-status-filter.pipe';
+import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,9 @@ import { OrderStatusFilterPipe } from '../app/core/pipe/order-status-filter.pipe
     TableComponent,
     OrderComponent,
 
-    OrderStatusFilterPipe
+    OrderStatusFilterPipe,
+
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

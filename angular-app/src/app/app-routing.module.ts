@@ -12,6 +12,7 @@ import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
 import { LandingComponent } from '../assets/ts/landing.component';
 import { OccupantOrderComponent } from '../assets/ts/occupant-order.component';
 import { OrderComponent } from '../assets/Admin/ts/order.component';
+import { FeedbackComponent } from '../assets/ts/feedback.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'receptionist',
     component: ReceptionistComponent
+  },
+  {
+    path: 'feedback',
+    component: FeedbackComponent
   },
   {
     path: '',
