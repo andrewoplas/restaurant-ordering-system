@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-feedback',
-  templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.scss']
+  templateUrl: '../html/feedback.component.html',
+  styleUrls: ['../scss/feedback.component.scss']
 })
 export class FeedbackComponent implements OnInit {
 
