@@ -103,20 +103,32 @@
     </div>
 </div>
 
-<!-- sample modal content -->
+<!-- add table modal content -->
 <div id="add-table-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Modal Heading</h4> </div>
-            <div class="modal-body">
-                <h4>Overflowing text to show scroll behavior</h4>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <h4 class="modal-title" id="myModalLabel">Table Details</h4> </div>
+            <div class="modal-body container-fluid body-container">
+                <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 flex-container">
+                    <div class="flex-item">
+                        <span class="table-details">13</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+                        <h5>Table Number</h5>
+                        <h5>No. of Seats</h5>
+                    </div>
+                    <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+                        <input type="number" class="form-control table-input">
+                        <input type="number" class="form-control table-input">
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
+            <div class="modal-footer btn-submit-container">
+                <button type="button" class="btn waves-effect" data-dismiss="modal">Submit</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -125,7 +137,7 @@
 </div>
 <!-- /.modal -->
 
-<!-- sample modal content -->
+<!-- view table modal content -->
 <div class="modal fade view-table-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
