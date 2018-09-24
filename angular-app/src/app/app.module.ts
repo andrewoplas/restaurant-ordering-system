@@ -30,6 +30,7 @@ import { MessageService } from "../app/core/services/message.service";
 
 //Pipes
 import { OrderStatusFilterPipe } from '../app/core/pipe/order-status-filter.pipe';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,9 @@ import { OrderStatusFilterPipe } from '../app/core/pipe/order-status-filter.pipe
     TableComponent,
     OrderComponent,
 
-    OrderStatusFilterPipe
+    OrderStatusFilterPipe,
+
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
