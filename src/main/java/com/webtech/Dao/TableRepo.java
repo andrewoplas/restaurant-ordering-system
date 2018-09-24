@@ -17,20 +17,36 @@ public class TableRepo implements REPOSITORY<Table> {
 	@Override
 	public Table create(Table obj) {
 		// TODO Auto-generated method stub
-		return em.insert(obj);
+		Table insertTable = null;
+		try {
+			insertTable = em.insert(obj);	
+		} catch (Exception ex) {
+			System.out.println("INSERTDAO: " + ex.getMessage());
+		}
+		return insertTable;
 	}
 
 	@Override
 	public void update(Table obj) {
 		// TODO Auto-generated method stub
-		em.update(obj);
+		
+		try {
+			em.update(obj);
+		} catch (Exception ex) {
+			System.out.println("INSERTDAO: " + ex.getMessage());
+		}
 	}
 
 	@Override
 	public boolean delete(String id) {
 		// TODO Auto-generated method stub
-		em.delete(Menu.class, id);
-		return true;
+		try {
+			em.delete(Menu.class, id);
+			return true;
+		} catch (Exception ex) {
+			System.out.println("INSERTDAO: " + ex.getMessage());
+			return false;
+		}
 	}
 
 	@Override
