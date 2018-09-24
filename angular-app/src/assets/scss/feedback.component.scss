@@ -1,0 +1,131 @@
+@import '../scss/default/abstract/_variables.scss';
+
+.feedback-container {
+    background-color: $white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card {
+        background-color: $white;
+        min-height: 500px;
+        height: auto;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        box-shadow: 0px 0px 16px rgba(0,0,0,0.35);
+        border-radius: 10px;
+
+        .left-container {
+            background: url(../img/feedback-background.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: right;
+            min-height: 500px;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .right-container {
+            padding: 25px;
+
+            .submit-btn {
+                background-color: $brand-primary;
+                outline: none;
+                border: none;
+                padding: 12px 20px;
+                color: $white;
+                font-size: 18px;
+                font-family: "VarelaRound", sans-serif;
+                float: right;
+            }
+
+            .rate-container {
+                display: flex;
+                justify-content: space-between;
+                background-color: rgba(251,166,47,0.35);
+                height: 80px;
+                border-radius: 3px;
+                align-items: center;
+                padding: 20px;
+
+                .rate-emoji {
+                    background-color: $white;
+                    height: 45px;
+                    width: 45px;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 2px;
+                    cursor: pointer;
+
+                    i {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            h1 {
+                font-size: 32px;
+                margin: 0;
+            }
+
+            .label-flex-container {
+                display: flex;
+                margin-top: 35px;
+                justify-content: space-between;
+
+                div {
+                    color: #555555;
+                    font-weight: bold;
+                }
+            }
+
+            .mt-20 {
+                margin-top: 20px;
+            }
+
+            .flex-container {
+                display: flex;
+                justify-content: space-between;
+
+                .flex-item {
+                    background-color: $brand-primary;
+                    color: $white;
+                    height: 45px;
+                    width: 45px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                .remove {
+                    display: flex;
+                }
+
+                .remove-last {
+                    display: flex;
+                }
+    
+                @media (max-width: 600px) {
+                    .remove {
+                        display: none;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    .remove-last {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
