@@ -24,6 +24,7 @@ import { LoginComponent } from '../assets/Admin/ts/login.component';
 import { AdminNavComponent } from '../assets/Admin/ts/parts/admin-nav.component';
 import { AdminSideBarComponent } from '../assets/Admin/ts/parts/admin-side-bar.component';
 import { OrderComponent } from '../assets/Admin/ts/order.component';
+import { MenuItemAddComponent } from "../assets/Admin/ts/menu-item-add.component";
 
 //Service
 import { OrderService } from './core/services/order.service';
@@ -31,6 +32,7 @@ import { MessageService } from "./core/services/message.service";
 
 //Pipes
 import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -46,10 +48,10 @@ import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
     LoginComponent,
     TableComponent,
     OrderComponent,
+    FeedbackComponent,
+    MenuItemAddComponent,
 
-    OrderStatusFilterPipe,
-
-    FeedbackComponent
+    OrderStatusFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,7 @@ import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
     FlexLayoutModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
   ],
   providers: [OrderService, MessageService],
   bootstrap: [AppComponent]
