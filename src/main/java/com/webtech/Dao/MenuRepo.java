@@ -24,21 +24,37 @@ public class MenuRepo implements REPOSITORY<Menu> {
 	@Override
 	public Menu create(Menu obj) {
 		// TODO Auto-generated method stub
-		obj = em.insert(obj);
-        return obj;
+		Menu insertedMenu = null ; 
+		try {
+			insertedMenu = em.insert(obj);	
+		} catch (Exception ex) {
+			System.out.println("INSERTDAO: " + ex.getMessage());
+		}
+		
+        return insertedMenu;
 		
 	}
 
 	@Override
 	public void update(Menu obj) {
 		// TODO Auto-generated method stub
-		em.update(obj);
+		
+		try {
+			em.update(obj);	
+		} catch (Exception ex) {
+			System.out.println("INSERTDAO: " + ex.getMessage());
+		}
 	}
 
 	@Override
 	public boolean delete(String id) {
 		// TODO Auto-generated method stub
-		em.delete(Menu.class, id);
+		
+		try {
+			em.delete(Menu.class, id);
+		} catch (Exception ex) {
+			System.out.println("INSERTDAO: " + ex.getMessage());
+		}
 		return true	;
 	}
 

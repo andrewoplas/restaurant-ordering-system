@@ -104,13 +104,20 @@ public class MenuItemRepo implements REPOSITORY<MenuItem>{
 
 	@Override
 	public MenuItem create(MenuItem obj) {
-		return null;
+		MenuItem insertedMenuItem = null ; 
+		try {
+			insertedMenuItem = em.insert(obj);	
+		} catch (Exception ex) {
+			System.out.println("INSERTDAO: " + ex.getMessage());
+		}
+		
+        return insertedMenuItem;
 	}
 
     @Deprecated
 	@Override
 	public MenuItem getItem(String id) {
-		return null;
+		return em.load(MenuItem.class, id);
 	}
 
 	@Override
