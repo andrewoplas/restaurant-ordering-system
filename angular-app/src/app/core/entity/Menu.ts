@@ -1,4 +1,4 @@
-export class Order {
+export class Menu {
   id: number;
   name: string;
   description: string;
