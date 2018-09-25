@@ -20,9 +20,23 @@ export class FeedbackComponent implements OnInit {
       $(this).addClass("choosen");
     });
 
+    $(".foodquality-rate").click(function(){
+      // Clear rate before choosing assigning a new one
+      clearFoodQuality();
+      // Add class to selected rate
+      $(this).addClass("choosen");
+    });
+
     // Clears over all choosen rate
     function clearOverall(){
       $(".overall-rate").each(function(index) {
+        $(this).removeClass("choosen");
+      });
+    }
+
+    // Clears over all choosen food quality rate
+    function clearFoodQuality(){
+      $(".foodquality-rate").each(function(index) {
         $(this).removeClass("choosen");
       });
     }
