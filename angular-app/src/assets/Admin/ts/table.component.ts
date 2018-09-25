@@ -8,15 +8,23 @@ import * as $ from 'jquery';
 })
 export class TableComponent implements OnInit {
 
-  title = "TABLE";
+  title : string;
+  num : number;
+  seats : number;
   
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.title = "TABLE";
+    this.num = 13;
+    this.seats = 4;
+
+    $(".table-details").html(this.num);
+  }
 
   addTable(){
-    $("#table-number").val("13");
-    $("#table-seats").val("4");
+    $("#table-number").val(this.num);
+    $("#table-seats").val(this.seats);
 
     this.initFunc();
 
@@ -26,17 +34,23 @@ export class TableComponent implements OnInit {
   }
 
   submitTable(){
-    var num = $("#table-number").val();
-    var seats = $("#table-seats").val();
+    
   }
 
   initFunc(){
+    $('#table-number').on("change", function(){
+      this.num = $("#table-number").val();
+      $(".table-details").html(this.num);
+    });
+
     $('#table-seats').on("change", function(){
       if($("#table-seats").val() == 4){
         $(".table-details").css("background-image", "url(assets/img/table-gold-4.png)");
+        this.seats = 4;
       }
       else{
         $(".table-details").css("background-image", "url(assets/img/table-gold-2.png)");
+        this.seats = 2;
       }
     });
   }
