@@ -5,11 +5,6 @@
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <button type="button" class="btn btn-additem btn-standard btn-addtable model_img img-responsive" alt="default" data-toggle="modal" data-target="#add-table-modal">Add Table</button>
     </div>
-
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 add-table">
-        <button type="button" class="btn btn-default btn-warning btn-addtable">Add Table</button>
-    </div>
-    
 </div>
 
 <div class="row">
@@ -171,28 +166,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img src="../../img/dish-1.png"></td>
-                                    <td>Scottish Prawn</td>
-                                    <td>1</td>
-                                    <td>P 100</td>
-                                    <td>P 100</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="../../img/dish-1.png"></td>
-                                    <td>Scottish Prawn</td>
-                                    <td>1</td>
-                                    <td>P 100</td>
-                                    <td>P 100</td>
-                                </tr>
-                                <tr>
-                                    <td><img src="../../img/dish-1.png"></td>
-                                    <td>Scottish Prawn</td>
-                                    <td>1</td>
-                                    <td>P 100</td>
-                                    <td>P 100</td>
-                                </tr>
-                                <tr>
+                                <tr *ngFor="let x of [1,2,3,4,5]">
                                     <td><img src="../../img/dish-1.png"></td>
                                     <td>Scottish Prawn</td>
                                     <td>1</td>
