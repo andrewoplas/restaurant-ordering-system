@@ -67,6 +67,10 @@
                         font-size: 18px;
                     }
                 }
+
+                .choosen {
+                    background-color: $brand-secondary;
+                }
             }
 
             h1 {
@@ -104,6 +108,10 @@
                     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
                     border-radius: 5px;
                     cursor: pointer;
+                }
+
+                .choosen {
+                    background-color: $brand-secondary;
                 }
 
                 .remove {
