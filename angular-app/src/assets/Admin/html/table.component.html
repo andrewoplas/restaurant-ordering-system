@@ -3,7 +3,7 @@
         <h4 class="page-title">{{ title }}</h4>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <button type="button" class="btn btn-additem btn-standard btn-addtable model_img img-responsive" alt="default" data-toggle="modal" data-target="#add-table-modal">Add Table</button>
+        <button type="button" (click)="addTable()" class="btn btn-additem btn-standard btn-addtable model_img img-responsive" alt="default" data-toggle="modal" data-target="#add-table-modal">Add Table</button>
     </div>
 </div>
 
@@ -122,8 +122,8 @@
                         <h5>No. of Seats</h5>
                     </div>
                     <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
-                        <input type="number" class="form-control table-input">
-                        <input type="number" class="form-control table-input">
+                        <input type="number" class="form-control table-input" id="table-number" value="">
+                        <input type="number" class="form-control table-input" id="table-seats" max="4" min="2" step="2" value="">
                     </div>
                 </div>
             </div>
