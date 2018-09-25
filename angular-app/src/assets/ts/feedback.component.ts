@@ -9,10 +9,37 @@ import * as $ from 'jquery';
 })
 export class FeedbackComponent implements OnInit {
 
+  feedback : Feedback;
+
   constructor() { }
 
   ngOnInit() {
-    
+    this.initDataFeedback();
+    this.initFunctions();
+  }
+
+  initDataFeedback(){
+    this.feedback = {
+      id: "test",
+      overallQuality: 5,
+      foodQuality: 2,
+      staffQuality: 2
+    }
+  }
+
+  initFunctions() {
+    $(".submit-btn").click(function() {
+      // Initiate the feedback model
+      this.feedback = {
+        id: "",
+        overallQuality: parseInt($(".overall-rate.choosen").html()),
+        foodQuality: getFoodQuality(),
+        staffQuality: getStaffQuality()
+      }
+
+      console.log(this.feedback);
+    });
+
     $(".overall-rate").click(function(){
       // Clear rate before choosing assigning a new one
       clearOverall();
@@ -55,6 +82,29 @@ export class FeedbackComponent implements OnInit {
       });
     }
 
+    // Gets food quality rate base on index
+    function getFoodQuality(){
+      let result : number;
+      result = 0;
+      $(".foodquality-rate").each(function(index) {
+        if($(this).hasClass("choosen")){
+          result = index + 1;
+        }
+      });
+      return result;
+    }
+
+    // Gets staff quality rate base on index
+    function getStaffQuality(){
+      let result : number;
+      result = 0;
+      $(".staff-rate").each(function(index) {
+        if($(this).hasClass("choosen")){
+          result = index + 1;
+        }
+      });
+      return result;
+    }
   }
 
 }
