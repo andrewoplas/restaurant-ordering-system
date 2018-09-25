@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     $("#table-menu").dataTable();
-    // this.getMenus();
+    this.getMenus();
     $(".preloader").fadeOut();
   }
 
@@ -24,6 +24,7 @@ export class MenuComponent implements OnInit {
     this.menuService.getOrders().subscribe(
       data => {
         this.menuList = data;
+        console.log(data);
         $("#table-menu").DataTable().clear();
         $('#table-menu').DataTable().destroy();
       }

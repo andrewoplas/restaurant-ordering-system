@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.webtech.Dao;
 
 import java.util.List;
@@ -12,84 +9,69 @@ import com.google.appengine.api.datastore.Entity;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
 import com.webtech.Model.Menu;
-import com.webtech.Model.MenuItem;
 
-/**
- * @author Jean Mikhael Fuentes
- *
- */
 @Repository
-public class MenuRepo implements REPOSITORY<Menu> {
+public class MenuDao implements REPOSITORY<Menu> {
 
 	@Override
 	public Menu create(Menu obj) {
-		// TODO Auto-generated method stub
-		Menu insertedMenu = null ; 
+		Menu insertedMenu = null;
+		
 		try {
 			insertedMenu = em.insert(obj);	
 		} catch (Exception ex) {
-			System.out.println("INSERTDAO: " + ex.getMessage());
+			System.out.println("INSERTMENU: " + ex.getMessage());
 		}
 		
-        return insertedMenu;
-		
+		return insertedMenu;
 	}
 
 	@Override
 	public void update(Menu obj) {
-		// TODO Auto-generated method stub
-		
 		try {
-			em.update(obj);	
+			em.update(obj);			
 		} catch (Exception ex) {
-			System.out.println("INSERTDAO: " + ex.getMessage());
+			System.out.println("UPDATEMENU: " + ex.getMessage());
 		}
 	}
 
 	@Override
 	public boolean delete(String id) {
-		// TODO Auto-generated method stub
-		
 		try {
-			em.delete(Menu.class, id);
+			em.delete(Menu.class, Long.parseLong(id));
+			return true;
 		} catch (Exception ex) {
-			System.out.println("INSERTDAO: " + ex.getMessage());
+			System.out.println("DELETEMENU: " + ex.getMessage());
 		}
-		return true	;
+		
+		return false;
 	}
-
-	@Override
+	
 	public List<Menu> getItems() {
-		// TODO Auto-generated method stub
-		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM Menu");
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Menu`");
 		QueryResponse<Menu> response = em.executeEntityQueryRequest(Menu.class, request);
-		List<Menu> menu = response.getResults();
-		return menu;
+		List<Menu> obj = response.getResults();
+		return obj;
 	}
 
 	@Override
 	public Menu getItem(String id) {
-		// TODO Auto-generated method stub
-		return em.load(Menu.class, id);
+		return em.load(Menu.class, Long.parseLong(id));
 	}
 
 	@Override
 	public Menu entityToObject(Entity entity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean itemExist(long id) {
-		// TODO Auto-generated method stub
-		return false;
+		return getItem(Long.toString(id)) != null;
 	}
 
 	@Override
 	public Optional<Long> addObject(Menu obj) {
 		// TODO Auto-generated method stub
-		obj = em.insert(obj);
-        return Optional.of(Long.parseLong(obj.getId()));
+		return null;
 	}
-
 }

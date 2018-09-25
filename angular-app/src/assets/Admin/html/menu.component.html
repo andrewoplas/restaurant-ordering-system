@@ -20,18 +20,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let order of [1,2,3,4,5]; let last = last">
-                            <td>Food 1</td>
-                            <td class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tellus ante, dapibus vitae elementum et, sollicitudin in nulla. Proin pulvinar consequat augue, sit amet gravida urna pellentesque non. Aenean vehicula euismod sodales. Sed nec nibh velit. Integer nec risus maximus, aliquam quam vitae, rutrum dui. In hac habitasse platea dictumst. Vivamus tempor nulla ut ipsum lacinia elementum. Nam congue, arcu et porta laoreet, diam ex vestibulum lacus, sed ullamcorper turpis diam vitae dolor.</td>
+                        <tr *ngFor="let menu of menuList; let last = last">
+                            <td>{{ menu.name }}</td>
+                            <td class="description">{{ menu.description }}</td>
                             <td class="text-center">
-                                <!-- <span class="badge" [ngClass]="{
-                                    'badge-success': order.status == status.PAID,
-                                    'badge-danger': order.status == status.CANCELLED 
+                                <span class="badge" [ngClass]="{
+                                    'badge-success': menu.show == true,
+                                    'badge-danger': menu.show == false 
                                     }">
-                                    SHOWN
-                                </span> -->
-                                <span class="badge badge-success">SHOWN</span>
-                                <span class="badge badge-danger">HIDDEN</span>
+                                    {{ menu.show? 'SHOWN' : 'HIDDEN' }}
+                                </span>
                             </td>
                             <td>
                                 <button type="button" data-toggle="tooltip" title="Show Menu Item"

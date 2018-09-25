@@ -11,89 +11,59 @@ import com.jmethods.catatumbo.Property;
 public class Menu {
 
 	@Identifier
-    private String id;
+    private Long id;
 	
-	
-	@Property(name="name",indexed=true)
+	@Property(name="name", indexed=true)
 	private String name;
-	@Property(name="description",indexed=true)
+	
     private String description;
+	
+	private boolean show;
 	
     @Ignore
     private List<MenuItem> items;
     
     public Menu() { }
 
-	public Menu(String name, String description, List<MenuItem> items) {
-		
-		this.name = name;
-		this.description = description;
-		this.items = items;
-	}
-
-	public Menu(String id, String name, String description, List<MenuItem> items) {
-		
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.items = items;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the name
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name the name to set
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return the description
-	 */
 	public String getDescription() {
 		return description;
 	}
 
-	/**
-	 * @param description the description to set
-	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	/**
-	 * @return the items
-	 */
+	public boolean isShow() {
+		return show;
+	}
+
+	public void setShow(boolean show) {
+		this.show = show;
+	}
+
 	public List<MenuItem> getItems() {
 		return items;
 	}
 
-	/**
-	 * @param items the items to set
-	 */
 	public void setItems(List<MenuItem> items) {
 		this.items = items;
 	}
-	
-	
+    
+    
 }

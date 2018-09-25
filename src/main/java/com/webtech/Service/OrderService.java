@@ -1,14 +1,10 @@
 package com.webtech.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.appengine.api.datastore.Entity;
-import com.jmethods.catatumbo.EntityManager;
-import com.jmethods.catatumbo.EntityManagerFactory;
 import com.webtech.Dao.OrderDao;
 import com.webtech.Model.Order;
 import com.webtech.Model.OrderStatus;
