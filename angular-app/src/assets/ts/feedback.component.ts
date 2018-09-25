@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -11,7 +11,7 @@ export class FeedbackComponent implements OnInit {
 
   feedback : Feedback;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.initDataFeedback();
@@ -25,6 +25,11 @@ export class FeedbackComponent implements OnInit {
       foodQuality: 2,
       staffQuality: 2
     }
+  }
+
+  // Redirects after confirmation of feedback
+  redirect() {
+    this.router.navigate(['']);
   }
 
   initFunctions() {
