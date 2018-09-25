@@ -16,15 +16,15 @@ export class TableComponent implements OnInit {
 
   ngOnInit() { 
     this.title = "TABLE";
-    this.num = 13;
-    this.seats = 4;
-
-    $(".table-details").html(this.num);
   }
 
   addTable(){
+    this.num = 13;
+    this.seats = 4;
+
     $("#table-number").val(this.num);
     $("#table-seats").val(this.seats);
+    $(".table-details").html(this.num);
 
     this.initFunc();
 
