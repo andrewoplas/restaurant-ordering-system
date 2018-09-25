@@ -3,11 +3,13 @@ export class Menu {
   name: string;
   description: string;
   menu_items: Array<number>;
+  show: boolean;
 
-  constructor(id:number, name:string, description: string, menu_items: Array<number>) {
-    this.id = id
-    this.name = name
-    this.description = description
-    this.menu_items = menu_items
+  constructor(id:number, name:string, description: string, menu_items: Array<number>, show:boolean) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.menu_items = menu_items;
+    this.show = show;
   }
 }

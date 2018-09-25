@@ -35,8 +35,13 @@
 .sidebar {
     a.waves-effect .menu-logo {
         background-image: url(../../img/ic_room_service.png);
-        height: 14px;
+        height: 32px;
         width: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        margin-right: 7px;
+        vertical-align: middle;
 
         span {
             padding-left: 28px;
@@ -54,8 +59,13 @@
 
         .menu-logo {
             background-image: url(../../img/ic_room_service_active.png);
-            height: 14px;
+            height: 32px;
             width: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            margin-right: 7px;
+            vertical-align: middle;
         }
     }
 }
