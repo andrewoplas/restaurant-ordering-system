@@ -106,6 +106,10 @@
                     cursor: pointer;
                 }
 
+                .choosen {
+                    background-color: $brand-secondary;
+                }
+
                 .remove {
                     display: flex;
                 }
