@@ -5,6 +5,7 @@ import { ReceptionistComponent } from '../assets/ts/receptionist.component';
 
 import { AdminComponent } from '../assets/Admin/admin.component';
 import { MenuItemComponent } from '../assets/Admin/ts/menu-item.component';
+import { MenuComponent } from "../assets/Admin/ts/menu.component";
 import { MenuItemAddComponent } from "../assets/Admin/ts/menu-item-add.component";
 import { LoginComponent } from "../assets/Admin/ts/login.component";
 import { TableComponent } from "../assets/Admin/ts/table.component";
@@ -17,53 +18,57 @@ import { FeedbackComponent } from '../assets/ts/feedback.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: "login",
     component: LoginComponent
   },
   {
-    path: 'admin',
+    path: "admin",
     component: AdminComponent,
     children: [
       {
-        path: 'dashboard',
+        path: "dashboard",
         component: MenuItemComponent
       },
       {
-        path: 'table',
+        path: "table",
         component: TableComponent
       },
       {
-        path: 'menu-item',
-        component: MenuItemComponent,
+        path: "menu",
+        component: MenuComponent
       },
       {
-        path: 'menu-item/add',
+        path: "menu-item",
+        component: MenuItemComponent
+      },
+      {
+        path: "menu-item/add",
         component: MenuItemAddComponent
       },
-			{
-        path: 'orders',
+      {
+        path: "orders",
         component: OrderComponent
-			}
+      }
     ]
   },
   {
-    path: 'menu',
-    component: OccupantMenuComponent,
-  }, 
-  {
-    path: 'order',
-    component: OccupantOrderComponent,
+    path: "menu",
+    component: OccupantMenuComponent
   },
   {
-    path: 'receptionist',
+    path: "order",
+    component: OccupantOrderComponent
+  },
+  {
+    path: "receptionist",
     component: ReceptionistComponent
   },
   {
-    path: 'feedback',
+    path: "feedback",
     component: FeedbackComponent
   },
   {
-    path: '',
+    path: "",
     component: LandingComponent
   }
 ];
