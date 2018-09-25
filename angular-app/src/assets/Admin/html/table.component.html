@@ -123,12 +123,12 @@
                     </div>
                     <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
                         <input type="number" class="form-control table-input" id="table-number" value="">
-                        <input type="number" class="form-control table-input" id="table-seats" max="4" min="2" step="2" value="">
+                        <input type="number" class="form-control table-input" id="table-seats" max="4" min="2" step="2">
                     </div>
                 </div>
             </div>
             <div class="modal-footer btn-submit-container">
-                <button type="button" class="btn waves-effect" data-dismiss="modal">Submit</button>
+                <button type="button" class="btn waves-effect" (click)="submitTable()" data-dismiss="modal">Submit</button>
             </div>
         </div>
         <!-- /.modal-content -->
