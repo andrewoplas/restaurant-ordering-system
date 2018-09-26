@@ -5,16 +5,55 @@
 }
 
 :host /deep/ {
-    .flex-container {
+
+    .add-table-container {
         display: flex;
         flex-flow: row;
         justify-content: space-evenly;
         margin: 25px 0;
 
-        .flex-item {
+        .add-table-item {
             background-color: #ffffff;
             height: 230px;
+            margin: 10px 0;
             width: 230px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .table-details {
+                height: 150px;
+                width: 150px;
+                text-align: center;
+                background: url(../../img/table-gold-4.png);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            span {
+                color: #ffffff;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+        }
+    }
+
+    .flex-container {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin: 25px 0;
+
+        .flex-item {
+            background-color: #ffffff;
+            height: 250px;
+            margin: 10px 0;
+            width: calc(100% * (1/4) - 20px - 1px);
             padding: 15px;
             display: flex;
             align-items: center;

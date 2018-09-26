@@ -83,10 +83,10 @@ export class TableComponent implements OnInit {
         this.tableSeat = "table-four";
       }
   
-      $( ".flex-tables-container" ).append( "<div class=" + "flex-container" + ">" +
+      $( ".flex-catcher" ).append( "" +
       "<div class= 'flex-item table-vacant model_img img-responsive'" + "alt='default'" + "data-toggle= 'modal'" + "data-target='.view-table-modal'>" +
           "<span class='table-pic " + this.tableSeat +"'>" + this.table.tablenum + "</span>" +
-      "</div> </div>");
+      "</div>");
     });
 
     console.log(this.num);
