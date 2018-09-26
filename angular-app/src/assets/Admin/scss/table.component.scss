@@ -4,63 +4,104 @@
     color: #ffffff;
 }
 
-.flex-container {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    margin: 25px 0;
+:host /deep/ {
 
-    .flex-item {
-        background-color: #ffffff;
-        height: 230px;
-        width: 230px;
-        padding: 15px;
+    .add-table-container {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-flow: row;
+        justify-content: space-evenly;
+        margin: 25px 0;
 
-        .table-pic {
-            height: 80px;
-            width: 80px;
-            text-align: center;
-            background-repeat: no-repeat;
-        }
-    
-        .table-two {
-            background: url(../../img/table-gold-2.png);
-            background-size: cover;
-        }
-    
-        .table-four {
-            background: url(../../img/table-gold-4.png);
-            background-size: cover;
-        }
-
-        span {
-            color: #ffffff;
-            font-size: 20px;
+        .add-table-item {
+            background-color: #ffffff;
+            height: 230px;
+            margin: 10px 0;
+            width: 230px;
+            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
 
-        .table-details {
-            height: 150px;
-            width: 150px;
-            text-align: center;
-            background: url(../../img/table-gold-4.png);
-            background-size: cover;
-            background-repeat: no-repeat;
+            .table-details {
+                height: 150px;
+                width: 150px;
+                text-align: center;
+                background: url(../../img/table-gold-4.png);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            span {
+                color: #ffffff;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
         }
     }
-    
-    .table-occupied {
-        opacity: 0.5;
-    }
 
-    .table-vacant:hover {
-        box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-    }   
+    .flex-container {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin: 25px 0;
+
+        .flex-item {
+            background-color: #ffffff;
+            height: 250px;
+            margin: 10px 0;
+            width: calc(100% * (1/4) - 20px - 1px);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .table-pic {
+                height: 80px;
+                width: 80px;
+                text-align: center;
+                background-repeat: no-repeat;
+            }
+        
+            .table-two {
+                background: url(../../img/table-gold-2.png);
+                background-size: cover;
+            }
+        
+            .table-four {
+                background: url(../../img/table-gold-4.png);
+                background-size: cover;
+            }
+
+            span {
+                color: #ffffff;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .table-details {
+                height: 150px;
+                width: 150px;
+                text-align: center;
+                background: url(../../img/table-gold-4.png);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+        
+        .table-occupied {
+            opacity: 0.5;
+        }
+
+        .table-vacant:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+        }   
+    }
 }
 
 .btn-addtable, .btn-addtable:hover, .btn-addtable:active, .btn-addtable:visited {
