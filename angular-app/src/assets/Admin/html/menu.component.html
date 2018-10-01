@@ -47,6 +47,7 @@
                                     type="question"
                                     [showCancelButton]="true" 
                                     [focusCancel]="true" 
+                                    (confirm)="delete(menu.id)"
                                     confirmButtonText="Yes, Delete it"
                                     confirmButtonColor="#A40020">
                                 </swal>
