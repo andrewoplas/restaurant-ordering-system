@@ -41,7 +41,7 @@ export class MenuService {
   }
 
   /** POST: add a new menu to the server */
-  addMenu(menu: Menu): Observable<any> {
+  public addMenu(menu: Menu): Observable<any> {
     return this.http
       .put<Menu>(`${this.baseUrl}/add-menu`, menu, httpOptions)
       .pipe(
@@ -61,7 +61,7 @@ export class MenuService {
   }
 
   /** PUT: update the menu on the server */
-  updateHero(menu: Menu): Observable<any> {
+  public updateHero(menu: Menu): Observable<any> {
     return this.http
       .put(`${this.baseUrl}/update-menu`, menu, httpOptions)
       .pipe(

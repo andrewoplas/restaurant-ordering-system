@@ -37,4 +37,17 @@ export class MenuComponent implements OnInit {
       eval("$('[data-toggle=tooltip]').tooltip();");
     }
   }
+
+  delete(id: number) {
+    this.menuService.deleteMenu(id)
+      .subscribe(
+        success => {
+          if(success) {
+            this.menuList = this.menuList.filter(o => o.id != id);
+             alert('done');
+          } else {
+             alert('error');
+          }
+      });
+  }
 }
