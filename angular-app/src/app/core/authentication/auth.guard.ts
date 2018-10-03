@@ -11,14 +11,11 @@ export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService) { }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (!this.auth.loggedIn) {
+    if (!this.auth.isloggedIn()) {
       localStorage.setItem('authRedirect', state.url);
-    }
-    if (!this.auth.tokenValid && !this.auth.loggedIn) {
-      this.auth.login();
-      return false;
-    }
-    if (this.auth.tokenValid && this.auth.loggedIn) {
+      console.log('not logged in');
+    } else {
+      console.log('logged in');
       return true;
     }
   }
