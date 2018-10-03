@@ -89,8 +89,13 @@ export class TableComponent implements OnInit {
               "<div class='col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive' alt='default' data-toggle='modal' data-target='.view-table-modal' title='View Table'>" +
                 "<span class='table-pic " + this.tableSeat +"'>" + this.table.tablenum + "</span>" +
               "</div>" +
-              "<div class='col-lg-12 col-md-8 col-sm-12 button-container' [swal]='deleteTable' data-toggle='tooltip'>" +
-                  "<i _ngcontent-c4 class='text-danger mdi mdi-delete'></i>" +
+              "<div class='col-lg-12 col-md-8 col-sm-12 button-container'>" +
+                  "<div class='col-lg-6 col-md-6 col-sm-12 button-edit'>" +
+                      "<i _ngcontent-c4 class='mdi mdi-pencil'></i>" +
+                  "</div>" +
+                  "<div class='col-lg-6 col-md-6 col-sm-12 button-delete' [swal]='deleteTable' data-toggle='tooltip'>" +
+                      "<i _ngcontent-c4 class='mdi mdi-delete'></i>" +
+                  "</div>" +
               "</div>" +
           "</div>" +
       "</div>");
