@@ -15,66 +15,34 @@ import { LandingComponent } from '../assets/ts/landing.component';
 import { OccupantOrderComponent } from '../assets/ts/occupant-order.component';
 import { OrderComponent } from '../assets/Admin/ts/order.component';
 import { FeedbackComponent } from '../assets/ts/feedback.component';
+import { AuthGuard } from './core/authentication/auth.guard';
+import { AdminGuard } from './core/authentication/admin.guard';
 
 const routes: Routes = [
-  {
-    path: "login",
-    component: LoginComponent
-  },
-  {
-    path: "admin",
-    component: AdminComponent,
+  { path: "login", component: LoginComponent },
+  { path: "admin", component: AdminComponent,
     children: [
-      {
-        path: "dashboard",
-        component: MenuItemComponent
-      },
-      {
-        path: "table",
-        component: TableComponent
-      },
-      {
-        path: "menu",
-        component: MenuComponent
-      },
-      {
-        path: "menu-item",
-        component: MenuItemComponent
-      },
-      {
-        path: "menu-item/add",
-        component: MenuItemAddComponent
-      },
-      {
-        path: "orders",
-        component: OrderComponent
-      }
+      { path: "dashboard", component: MenuItemComponent },
+      { path: "table", component: TableComponent },
+      { path: "menu", component: MenuComponent },
+      { path: "menu-item", component: MenuItemComponent },
+      { path: "menu-item/add", component: MenuItemAddComponent },
+      { path: "orders", component: OrderComponent }
     ]
   },
-  {
-    path: "menu",
-    component: OccupantMenuComponent
-  },
-  {
-    path: "order",
-    component: OccupantOrderComponent
-  },
-  {
-    path: "receptionist",
-    component: ReceptionistComponent
-  },
-  {
-    path: "feedback",
-    component: FeedbackComponent
-  },
-  {
-    path: "",
-    component: LandingComponent
-  }
+  { path: "menu", component: OccupantMenuComponent },
+  { path: "order", component: OccupantOrderComponent },
+  { path: "receptionist", component: ReceptionistComponent },
+  { path: "feedback", component: FeedbackComponent },
+  { path: "", component: LandingComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AuthGuard,
+    AdminGuard
+  ]
 })
 export class AppRoutingModule { }
