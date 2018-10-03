@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery";
+import { FormBuilder, Validators, FormArray, FormGroupDirective } from "@angular/forms";
+import { AuthService } from '../../../app/core/services/auth.service';
+import { User } from '../../../app/models/User';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +10,13 @@ import * as $ from "jquery";
   styleUrls: ['../scss/login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  forms = this.fb.group({
+    username: ["", [Validators.required]],
+    password: ["", [Validators.required]],
+  });
   
-  constructor() { }
+  constructor(private auth: AuthService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.showPassword();
@@ -28,6 +36,20 @@ export class LoginComponent implements OnInit {
           input.attr('type', 'text');
         }
       });
+    });
+  }
+
+  login() {
+    let user = {
+      username: this.forms.value.username,
+      password: this.forms.value.username,
+    };
+
+    this.auth.login(user).subscribe(
+      response => {
+        if(response != null) {
+          this.auth.setLoggedInUser(response);
+        }
     });
   }
 

@@ -2,22 +2,24 @@
     <img src="assets/img/menu-background.png" class="fire-image" />
 
     <div class="login-container">
-        <img src="assets/img/logo-transparent.png" class="logo" />
-        
-        <div class="group">
-            <input type="text" name="username" id="username" required>
-            <span class="bar"></span>
-            <label>Username</label>
-        </div>
+        <form [formGroup]="forms" #formDirective="ngForm" (submit)="login()">
+            <img src="assets/img/logo-transparent.png" class="logo" />
+            
+            <div class="group">
+                <input type="text" name="username" id="username" required formControlName="username">
+                <span class="bar"></span>
+                <label>Username</label>
+            </div>
 
-        <div class="group">
-            <input type="password" name="password" id="password" required>
-            <i class="material-icons view-password">visibility</i>
-            <span class="bar"></span>
-            <label>Password</label>
-        </div>
+            <div class="group">
+                <input type="password" name="password" id="password" required formControlName="password">
+                <i class="material-icons view-password">visibility</i>
+                <span class="bar"></span>
+                <label>Password</label>
+            </div>
 
-        <button>LOGIN</button>
+            <button [disabled]="!forms.valid">LOGIN</button>
+        </form>
 
     </div>
 </div>
