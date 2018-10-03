@@ -131,7 +131,11 @@
         }
 
         .table-vacant .button-container:hover {
-            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+            cursor: pointer;
+
+            i {
+                color: #f44336;
+            }
         }   
     }
 }
