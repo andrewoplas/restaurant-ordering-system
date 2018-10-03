@@ -51,7 +51,7 @@
 
         .flex-item {
             background-color: #ffffff;
-            height: 250px;
+            height: 260px;
             margin: 10px 0;
             width: calc(100% * (1/4) - 20px - 1px);
             display: flex;
@@ -77,13 +77,30 @@
             .button-container {
                 height: 25%;
                 padding: 0px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
 
-                .text-danger {
-                    color: rgba(27,26,25,0.9);
-                    font-size: 24px;
+                .button-edit {
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-right: 1px solid rgba(27,26,25,0.08);
+
+                    i {
+                        color: rgba(27,26,25,0.5);
+                        font-size: 24px;
+                    }
+                }
+
+                .button-delete {
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    i {
+                        color: rgba(27,26,25,0.5);
+                        font-size: 24px;
+                    }
                 }
             }
 
@@ -130,11 +147,19 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.35);
         }
 
-        .table-vacant .button-container:hover {
-            cursor: pointer;
+        .table-vacant .button-container {
+            .button-delete:hover {
+                cursor: pointer;
+                i {
+                    color: #f44336;
+                }
+            }
 
-            i {
-                color: #f44336;
+            .button-edit:hover {
+                cursor: pointer;
+                i {
+                    color: #ffa500;
+                }
             }
         }   
     }
