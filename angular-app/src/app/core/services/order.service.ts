@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { MessageService } from '../services/message.service';
+import { MessageService } from './message.service';
 import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
-import { Order } from '../entity/Order';
+import { Order } from '../../models/Order';
 
 const httpOptions = {
   headers: new HttpHeaders({

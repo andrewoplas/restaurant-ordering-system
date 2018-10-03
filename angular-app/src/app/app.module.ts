@@ -57,6 +57,8 @@ import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     FlexLayoutModule,
     HttpClientModule,
