@@ -54,10 +54,38 @@
             height: 250px;
             margin: 10px 0;
             width: calc(100% * (1/4) - 20px - 1px);
-            padding: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+
+            .row {
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+            }
+
+            .span-container {
+                height: 75%;
+                padding: 0px;
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+                justify-content: space-evenly;
+                border-bottom: 1px solid rgba(27,26,25,0.08);
+            }
+
+            .button-container {
+                height: 25%;
+                padding: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .text-danger {
+                    color: rgba(27,26,25,0.9);
+                    font-size: 24px;
+                }
+            }
 
             .table-pic {
                 height: 80px;
@@ -98,7 +126,11 @@
             opacity: 0.5;
         }
 
-        .table-vacant:hover {
+        .table-vacant .span-container:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+        }
+
+        .table-vacant .button-container:hover {
             box-shadow: 0 6px 16px rgba(0,0,0,0.35);
         }   
     }
