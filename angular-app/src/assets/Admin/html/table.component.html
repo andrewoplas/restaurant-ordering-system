@@ -60,7 +60,7 @@
     <div class="flex-container flex-catcher">
         <div class="flex-item table-vacant">
             <div class="row">
-                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal">
+                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
                     <span class="table-pic table-four">1</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
@@ -70,7 +70,7 @@
         </div>
         <div class="flex-item table-occupied">
             <div class="row">
-                <div class="col-lg-12 col-md-8 col-sm-12 span-container">
+                <div class="col-lg-12 col-md-8 col-sm-12 span-container" title="View Table">
                     <span class="table-pic table-four">2</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container">
@@ -90,7 +90,7 @@
         </div>
         <div class="flex-item table-vacant">
             <div class="row">
-                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal">
+                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
                     <span class="table-pic table-two">4</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
@@ -110,7 +110,7 @@
         </div>
         <div class="flex-item table-vacant">
             <div class="row">
-                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal">
+                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
                     <span class="table-pic table-four">6</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
@@ -130,7 +130,7 @@
         </div>
         <div class="flex-item table-vacant">
             <div class="row">
-                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal">
+                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
                     <span class="table-pic table-four">8</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
@@ -140,7 +140,7 @@
         </div>
         <div class="flex-item table-vacant">
             <div class="row">
-                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal">
+                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
                     <span class="table-pic table-four">9</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
@@ -150,7 +150,7 @@
         </div>
         <div class="flex-item table-vacant">
             <div class="row">
-                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal">
+                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
                     <span class="table-pic table-two">10</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
@@ -160,7 +160,7 @@
         </div>
         <div class="flex-item table-vacant">
             <div class="row">
-                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal">
+                <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
                     <span class="table-pic table-two">11</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
@@ -178,6 +178,19 @@
                 </div>
             </div>
         </div>
+
+        <swal
+            #deleteTable
+            title="Delete Table?"
+            text="Are you sure you want to remove this table?"
+            type="question"
+            [showCancelButton]="true"
+            [focusCancel]="true"
+            (confirm)="delete(table.id)"
+            confirmButtonText="Yes, Delete it"
+            confirmButtonColor="#A40020"
+        >
+        </swal>
     </div>
 </div>
 
