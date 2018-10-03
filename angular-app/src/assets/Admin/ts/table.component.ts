@@ -84,8 +84,15 @@ export class TableComponent implements OnInit {
       }
   
       $( ".flex-catcher" ).append( "" +
-      "<div class= 'flex-item table-vacant model_img img-responsive'" + "alt='default'" + "data-toggle= 'modal'" + "data-target='.view-table-modal'>" +
-          "<span class='table-pic " + this.tableSeat +"'>" + this.table.tablenum + "</span>" +
+      "<div class='flex-item table-vacant'>" +
+          "<div class='row'>" +
+              "<div class='col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive' alt='default' data-toggle='modal' data-target='.view-table-modal' title='View Table'>" +
+                "<span class='table-pic " + this.tableSeat +"'>" + this.table.tablenum + "</span>" +
+              "</div>" +
+              "<div class='col-lg-12 col-md-8 col-sm-12 button-container' [swal]='deleteTable' data-toggle='tooltip'>" +
+                  "<i _ngcontent-c4 class='text-danger mdi mdi-delete'></i>" +
+              "</div>" +
+          "</div>" +
       "</div>");
     });
 
