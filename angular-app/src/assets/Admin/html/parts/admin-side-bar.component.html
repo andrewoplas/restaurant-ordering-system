@@ -12,7 +12,7 @@
                   <li><a href="javascript:void(0)"><i class="ti-wallet"></i> <span class="hide-menu">My Balance</span></a></li>
                   <li><a href="javascript:void(0)"><i class="ti-email"></i> <span class="hide-menu">Inbox</span></a></li>
                   <li><a href="javascript:void(0)"><i class="ti-settings"></i> <span class="hide-menu">Account Setting</span></a></li>
-                  <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a></li>
+                  <li><a href="javascript:void(0)" (click)="logout()"><i class="fa fa-power-off"></i> <span class="hide-menu">Logout</span></a></li>
               </ul>
           </li>
           <li> <a href="/admin/dashboard" class="waves-effect"><i  class="mdi mdi-av-timer fa-fw"></i> <span class="hide-menu">Dashboard</span></a> </li>
@@ -22,7 +22,7 @@
           <li> <a href="/admin/menu-item" class="waves-effect"><div class="menu-logo"></div><span class="hide-menu">Menu Item</span></a> </li>
           
           <li class="devider"></li>
-          <li><a href="login.html" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
+          <li><a href="javascript:void(0)" (click)="logout()" class="waves-effect"><i class="mdi mdi-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
       </ul>
   </div>
 </div>

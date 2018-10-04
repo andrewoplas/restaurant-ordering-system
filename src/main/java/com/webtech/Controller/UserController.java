@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.webtech.Model.LoginUser;
 import com.webtech.Model.User;
 import com.webtech.Service.UserService;
 
@@ -23,6 +25,12 @@ public class UserController extends BaseController implements CONTROLLER<User> {
 	
 	@Autowired
 	UserService service;
+	
+	@CrossOrigin
+    @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+	public User login(@RequestBody LoginUser obj) {
+		return service.login(obj);
+	}
 	
 	@CrossOrigin
     @PostMapping(path = "/user", produces = MediaType.APPLICATION_JSON_VALUE)

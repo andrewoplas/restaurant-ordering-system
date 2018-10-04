@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MenuService } from '../../../app/core/services/menu.service';
-import { Menu } from '../../../app/core/entity/Menu';
+import { Menu } from '../../../app/models/Menu';
 import * as $ from 'jquery';
 
 @Component({

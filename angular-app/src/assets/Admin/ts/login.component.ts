@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
+import { AuthService } from '../../../app/core/services/auth.service';
 import * as $ from "jquery";
 
 @Component({
@@ -7,8 +9,17 @@ import * as $ from "jquery";
   styleUrls: ['../scss/login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  isError = false;
+
+  forms = this.fb.group({
+    username: ["", [Validators.required]],
+    password: ["", [Validators.required]],
+  });
   
-  constructor() { }
+  constructor(
+    private auth: AuthService, 
+    private fb: FormBuilder) 
+  { }
 
   ngOnInit() {
     this.showPassword();
@@ -28,6 +39,36 @@ export class LoginComponent implements OnInit {
           input.attr('type', 'text');
         }
       });
+    });
+  }
+
+  login() {
+    let user = {
+      username: this.forms.value.username,
+      password: this.forms.value.password,
+    };
+
+    $('.showbox').css('visibility', 'visible');
+    $('.login-text').css('color', '#FBA62F');
+
+    this.auth.login(user).subscribe(
+      response => {
+        if(response != null) {
+          this.auth.successLogin(response);
+        } else {
+          eval(
+            'swal({' +
+            'title: "Error",' +
+            'text: "Invalid Username or Password!",' +
+            'type: "error",' +
+            'confirmButtonText: "Try Again",' +
+            'confirmButtonColor: "#A40020"' +
+            '});'
+          );
+
+          $('.showbox').css('visibility', 'hidden');
+          $('.login-text').css('color', '#FFF');
+        }
     });
   }
 
