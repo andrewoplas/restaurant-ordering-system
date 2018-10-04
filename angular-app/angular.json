@@ -40,7 +40,7 @@
               "../angular-app/src/plugins/js/waves.js",
 
               "../angular-app/src/plugins/bower_components/switchery/dist/switchery.min.js",
-              "../angular-app/src/plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
+              "../angular-app/src/plugins/bower_components/sweetalert/sweetalert.min.js",
 
               "../angular-app/src/plugins/js/custom.js",
 

@@ -48,12 +48,26 @@ export class LoginComponent implements OnInit {
       password: this.forms.value.password,
     };
 
+    $('.showbox').css('visibility', 'visible');
+    $('.login-text').css('color', '#FBA62F');
+
     this.auth.login(user).subscribe(
       response => {
         if(response != null) {
           this.auth.successLogin(response);
         } else {
-          this.isError = true;
+          eval(
+            'swal({' +
+            'title: "Error",' +
+            'text: "Invalid Username or Password!",' +
+            'type: "error",' +
+            'confirmButtonText: "Try Again",' +
+            'confirmButtonColor: "#A40020"' +
+            '});'
+          );
+
+          $('.showbox').css('visibility', 'hidden');
+          $('.login-text').css('color', '#FFF');
         }
     });
   }

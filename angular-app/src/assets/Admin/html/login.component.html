@@ -5,10 +5,6 @@
         <form [formGroup]="forms" #formDirective="ngForm" (submit)="login()">
             <img src="assets/img/logo-transparent.png" class="logo" />
 
-            <div class="error-message" *ngIf="isError">
-                Invalid <b>Username</b> or <b>Password</b>!
-            </div>
-            
             <div class="group">
                 <input type="text" name="username" id="username" required formControlName="username">
                 <span class="bar"></span>
@@ -22,7 +18,17 @@
                 <label>Password</label>
             </div>
 
-            <button [disabled]="!forms.valid">LOGIN</button>
+            <button [disabled]="!forms.valid">
+                <span class="login-text">LOGIN</span>
+                <div class="showbox">
+                    <div class="loader">
+                      <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                      </svg>
+                    </div>
+                  </div>
+
+            </button>
         </form>
 
     </div>
