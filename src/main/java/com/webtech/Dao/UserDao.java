@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.google.appengine.api.datastore.Entity;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
+import com.webtech.Model.LoginUser;
 import com.webtech.Model.User;
 
 @Repository
@@ -72,6 +73,15 @@ public class UserDao implements REPOSITORY<User> {
 	//@Override
 	public Optional<Long> addObject(User obj) {
         return null;
+	}
+
+	public List<User> getUser(LoginUser user) {
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `User` WHERE username=@user AND password=@pass");
+		request.setNamedBinding("user", user.getUsername());
+		request.setNamedBinding("pass", user.getPassword());
+		QueryResponse<User> response = em.executeEntityQueryRequest(User.class, request);
+		
+		return response.getResults();
 	}
 
 }
