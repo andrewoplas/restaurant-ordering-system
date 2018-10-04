@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
-import { User } from "../../models/User";
+import { User, Role } from "../../models/User";
 
 
 const httpOptions = {
@@ -19,11 +20,11 @@ const httpOptions = {
 export class AuthService {
 
   private baseUrl: string;
-  private user: User;
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {
     this.baseUrl = "http://localhost:8080";
   } 
@@ -31,69 +32,36 @@ export class AuthService {
    /** POST: Retrieve user */
   login(user: LoginUser): Observable<any> {
     return this.http
-      .put<LoginUser>(`${this.baseUrl}/login`, user, httpOptions)
+      .post<LoginUser>(`${this.baseUrl}/login`, user, httpOptions)
       .pipe(
         tap(_ => this.log(`login user with username=${user.username}`)),
         catchError(this.handleError<LoginUser>("login"))
       );
   }
 
-  setLoggedInUser(user: User) {
-    this.user = user;
+  successLogin(user: User) {
+    localStorage.setItem('user_credentials', JSON.stringify(user));
+    this.router.navigate(['admin/dashboard']);   
   }
 
   isAdmin() {
-    return this.user.isAdmin;
+    let user: User = this.getUser();
+    return user != null && user.role == Role.ADMIN;
   }
 
   isloggedIn() {
-    return this.user != null;
+    return localStorage.getItem("user_credentials");
   }
 
-  // handleAuth() {
-  //   // When Auth0 hash parsed, get profile
-  //   this._auth0.parseHash(window.location.href, (err, authResult) => {
-  //     ...
-  //     } else if (err) {
-  //       this._clearRedirect();
-  //       this.router.navigate(['/']);
-  //       console.error(`Error authenticating: ${err.error}`);
-  //     }
-  //   });
-  // }
+  logout() {
+    localStorage.removeItem('user_credentials');
+    this.router.navigate(['/']);
+  }
 
-  // private _getProfile(authResult) {
-  //   ...
-  //     if (profile) {
-  //       ...
-  //       this._redirect();
-  //     } else if (err) {
-  //     ...
-  //   });
-  // }
+  getUser() {
+    return JSON.parse(localStorage.getItem('user_credentials'));
+  }
 
-  // ...
-
-  // private _redirect() {
-  //   const redirect = decodeURI(localStorage.getItem('authRedirect'));
-  //   const navArr = [redirect || '/'];
-
-  //   this.router.navigate(navArr);
-  //   // Redirection completed; clear redirect from storage
-  //   this._clearRedirect();
-  // }
-
-  // private _clearRedirect() {
-  //   // Remove redirect from localStorage
-  //   localStorage.removeItem('authRedirect');
-  // }
-
-  // logout() {
-  //   // Remove data from localStorage
-  //   ...
-  //   this._clearRedirect();
-  //   ...
-  // }
 
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {

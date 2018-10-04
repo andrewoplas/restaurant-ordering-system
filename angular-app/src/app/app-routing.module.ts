@@ -15,7 +15,6 @@ import { LandingComponent } from '../assets/ts/landing.component';
 import { OccupantOrderComponent } from '../assets/ts/occupant-order.component';
 import { OrderComponent } from '../assets/Admin/ts/order.component';
 import { FeedbackComponent } from '../assets/ts/feedback.component';
-import { AuthGuard } from './core/authentication/auth.guard';
 import { AdminGuard } from './core/authentication/admin.guard';
 
 const routes: Routes = [
@@ -41,7 +40,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
-    AuthGuard,
     AdminGuard
   ]
 })

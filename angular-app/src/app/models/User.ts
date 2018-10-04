@@ -2,12 +2,18 @@ export class User {
     id: number;
     username: string;
     name: string;
-    isAdmin: boolean;
+    role: string;
   
-    constructor(id: number, username: string, name: string, isAdmin: boolean) {
+    constructor(id: number, username: string, name: string, role: string) {
         this.id = id;
         this.username = username;
         this.name = name;
-        this.isAdmin = isAdmin;
+        this.role = role;
     }
 }
+
+export enum Role {
+    ADMIN = 'admin',
+    CHEF = 'chef',
+    STAFF = 'staff'
+  }

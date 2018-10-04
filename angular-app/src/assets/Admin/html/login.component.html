@@ -4,6 +4,10 @@
     <div class="login-container">
         <form [formGroup]="forms" #formDirective="ngForm" (submit)="login()">
             <img src="assets/img/logo-transparent.png" class="logo" />
+
+            <div class="error-message" *ngIf="isError">
+                Invalid <b>Username</b> or <b>Password</b>!
+            </div>
             
             <div class="group">
                 <input type="text" name="username" id="username" required formControlName="username">
