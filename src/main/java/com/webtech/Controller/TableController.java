@@ -22,26 +22,26 @@ public class TableController extends BaseController implements CONTROLLER<Table>
 	@CrossOrigin
     @RequestMapping(path = "/table", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public Table create(Table obj) {
+	public List<Table> create(Table obj) {
 		// TODO Auto-generated method stub
 		return service.create(obj);
 	}
 	@CrossOrigin
-    @RequestMapping(path = "/table", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/update-table", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public void update(Table obj) {
+	public List<Table> update(Table obj) {
 		// TODO Auto-generated method stub
-		service.update(obj);
+		return service.update(obj);
 	}
 	@CrossOrigin
-    @RequestMapping(path = "/table/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/delete-table/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public boolean delete(@PathVariable(name = "id", required = true) String id) {
+	public List<Table> delete(@PathVariable(name = "id", required = true) String id) {
 		// TODO Auto-generated method stub
 		return service.delete(id);
 	}
 	@CrossOrigin
-    @RequestMapping(path = "/tables", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/get-all-tables", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public List<Table> getItems() {
 		// TODO Auto-generated method stub

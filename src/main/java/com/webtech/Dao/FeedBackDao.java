@@ -59,20 +59,13 @@ public class FeedBackDao implements REPOSITORY<FeedBack> {
 		return em.load(FeedBack.class, Long.parseLong(id));
 	}
 
-	@Override
-	public FeedBack entityToObject(Entity entity) {
-		return null;
-	}
-
-	@Override
+	
+	
 	public boolean itemExist(long id) {
 		return getItem(Long.toString(id)) != null;
 	}
 
-	//@Override
-	public Optional<Long> addObject(FeedBack obj) {
-        return null;
-	}
+	
 
 	
 

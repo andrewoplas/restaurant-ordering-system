@@ -64,23 +64,12 @@ public class TableRepo implements REPOSITORY<Table> {
 		return em.load(Table.class, id);
 	}
 
-	@Override
-	public Table entityToObject(Entity entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
+	
 	public boolean itemExist(long id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
-	public Optional<Long> addObject(Table obj) {
-		// TODO Auto-generated method stub
-		obj = em.insert(obj);
-        return Optional.of(Long.parseLong(obj.getId()));
-	}
+	
 
 }

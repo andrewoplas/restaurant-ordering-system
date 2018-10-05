@@ -7,10 +7,18 @@ import com.jmethods.catatumbo.EntityManagerFactory;
 import java.util.*;
 import com.webtech.CRUD;
 
-public interface REPOSITORY<T> extends CRUD<T>{
+public interface REPOSITORY<T> {
 	EntityManagerFactory emf = EntityManagerFactory.getInstance();
 	EntityManager em = emf.createDefaultEntityManager();
-   T entityToObject(Entity entity);
-   boolean itemExist(long id);
-   Optional<Long> addObject(T obj);
+	
+	 T create(T obj);
+
+     void update(T obj);
+
+     boolean delete(String id);
+
+     List<T> getItems();
+     
+     T getItem(String id);    
+
 }

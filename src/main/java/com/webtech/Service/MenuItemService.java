@@ -3,6 +3,7 @@ package com.webtech.Service;
 import java.util.List;
 
 import com.webtech.Dao.MenuItemRepo;
+import com.webtech.Model.Menu;
 import com.webtech.Model.MenuItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +17,35 @@ public class MenuItemService implements SERVICE<MenuItem>{
 	MenuItemRepo dao;
 	
 	@Override
-	public MenuItem create(MenuItem obj) {
-		Optional<Long> id = dao.addObject(obj);
-        id.ifPresent(i -> obj.setId(i));
-		obj.setId(id.get());
-		return obj;
+	public List<MenuItem> create(MenuItem obj) {
+		 dao.create(obj);
+		return dao.getItems();
 	}
 
 	@Override
-	public void update(MenuItem obj) {
+	public List<MenuItem> update(MenuItem obj) {
 		dao.update(obj);
+		return dao.getItems();
 	}
 
 	@Override
-	public boolean delete(String id) {
-		dao.delete(Long.valueOf(id));
-        return true;
+	public List<MenuItem> delete(String id) {
+		try {		
+			Long longId = Long.parseLong(id);
+			MenuItem menu = dao.getItem(id);
+			if(menu != null) {
+				dao.delete(id);
+				return dao.getItems();
+			}else {
+				return null;
+			}
+			 
+		} catch (Exception ex) {
+			
+			System.out.print("DELETESERVICE");
+			return null;
+		}
+       
 	}
 
 	@Override

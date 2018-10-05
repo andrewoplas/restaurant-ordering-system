@@ -19,118 +19,59 @@ import java.util.Optional;
 @Repository
 public class MenuItemRepo implements REPOSITORY<MenuItem>{
 
-    private final static String KIND = "MenuItem";
-
-    @Autowired
-    com.google.appengine.api.datastore.DatastoreService datastore;
-    
-    @Override
-    public MenuItem entityToObject(Entity entity) {
-        return new MenuItem.Builder()
-                            .id(entity.getKey().getId())
-                            .name((String)entity.getProperty(MenuItem.NAME))
-                            .description((String)entity.getProperty(MenuItem.DESCRIPTION))
-                            .price((double)entity.getProperty(MenuItem.PRICE))
-                            .cooking_time((int)entity.getProperty(MenuItem.COOKING_TIME))
-                            .serving((int)entity.getProperty(MenuItem.SERVING))
-                            .picture((String)entity.getProperty(MenuItem.PICTURE))
-                            .build();
-    }
-    @Override
-    public Optional<Long> addObject(MenuItem menuItem) {
-       // Entity incTaskEntity = new Entity(KIND);
-        
-         
-        //  incTaskEntity.setProperty(MenuItem.NAME, menuItem.getName());
-        //  incTaskEntity.setProperty(MenuItem.DESCRIPTION, menuItem.getDescription());
-        //  incTaskEntity.setProperty(MenuItem.PRICE, menuItem.getPrice());
-        //  incTaskEntity.setProperty(MenuItem.COOKING_TIME, menuItem.getCooking_time());
-        //  incTaskEntity.setProperty(MenuItem.SERVING, menuItem.getServing());
-        //  incTaskEntity.setProperty(MenuItem.PICTURE, menuItem.getPicture());
-        //  Key k = datastore.put(incTaskEntity);
-        //  return Optional.of(k.getId());
-        menuItem = em.insert(menuItem);
-        return Optional.of(menuItem.getId());
-    }
-
-    
-    public MenuItem getItem(Long menuItemId) {
-        
-        return em.load(MenuItem.class, menuItemId);
-    }
-
-    @Override
-    public void update(MenuItem menuItem) {
-        em.update(menuItem);
-    }
-
-    
-    public boolean delete(Long taskId) {
-        Key key = KeyFactory.createKey(KIND, taskId);
-        datastore.delete(key);
-        return true;
-    }
-    
-    public List<MenuItem> entitiesToObjects(Iterator<Entity> resultList) {
-    	EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM MenuItem");
-		QueryResponse<MenuItem> response = em.executeEntityQueryRequest(MenuItem.class, request);
-		List<MenuItem> obj = response.getResults();
-		return obj;
-    }
-
-    @Override
-	public List<MenuItem> getItems() {
-		return getItems(null);
-    }
-    
-    
-    public List<MenuItem> getItems(String startCursorString) {
-        FetchOptions fetchOptions = FetchOptions.Builder.withLimit(10);
-        if (startCursorString != null && !startCursorString.equals("")) {
-            fetchOptions.startCursor(Cursor.fromWebSafeString(startCursorString));
-        }
-        Query query = new Query(KIND)
-                .addSort(MenuItem.DESCRIPTION, Query.SortDirection.ASCENDING);
-        PreparedQuery preparedQuery = datastore.prepare(query);
-        QueryResultIterator<Entity> results = preparedQuery.asQueryResultIterator(fetchOptions);
-
-        List<MenuItem> resultBooks = entitiesToObjects(results);
-        Cursor cursor = results.getCursor();
-       
-            return resultBooks;
-        
-    }
-    
 
 	@Override
 	public MenuItem create(MenuItem obj) {
-		MenuItem insertedMenuItem = null ; 
+		MenuItem insertedMenu = null;
+		
 		try {
-			insertedMenuItem = em.insert(obj);	
+			insertedMenu = em.insert(obj);	
 		} catch (Exception ex) {
-			System.out.println("INSERTDAO: " + ex.getMessage());
+			System.out.println("INSERTMENU: " + ex.getMessage());
 		}
 		
-        return insertedMenuItem;
-	}
-
-    @Deprecated
-	@Override
-	public MenuItem getItem(String id) {
-		return em.load(MenuItem.class, id);
+		return insertedMenu;
 	}
 
 	@Override
-	public boolean itemExist(long id) {
-		return false;
-    }
-    
-    @Deprecated
+	public void update(MenuItem obj) {
+		try {
+			em.update(obj);			
+		} catch (Exception ex) {
+			System.out.println("UPDATEMENU: " + ex.getMessage());
+		}
+	}
+
 	@Override
 	public boolean delete(String id) {
+		try {
+			em.delete(MenuItem.class, Long.parseLong(id));
+			return true;
+		} catch (Exception ex) {
+			System.out.println("DELETEMENU: " + ex.getMessage());
+		}
+		
 		return false;
 	}
-    
+	
+	public List<MenuItem> getItems() {
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `MenuItem`");
+		QueryResponse<MenuItem> response = em.executeEntityQueryRequest(MenuItem.class, request);
+		List<MenuItem> obj = response.getResults();
+		return obj;
+	}
+
+	@Override
+	public MenuItem getItem(String id) {
+		return em.load(MenuItem.class, Long.parseLong(id));
+	}
+
+
+	public boolean itemExist(long id) {
+		return getItem(Long.toString(id)) != null;
+	}
+
+	    
     public List<MenuItem> getItemsFromMenu(String menuId){
     	EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM MenuItem where menuId = @id	");
     	request.setNamedBinding("id", menuId);

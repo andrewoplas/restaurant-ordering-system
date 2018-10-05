@@ -35,21 +35,21 @@ public class UserController extends BaseController implements CONTROLLER<User> {
 	@CrossOrigin
     @PostMapping(path = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public User create(User obj) {
+	public List<User> create(User obj) {
 		return service.create(obj);
 	}
 	
 	@CrossOrigin
     @PutMapping(path = "/update-user", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public void update(User obj) {
-		service.update(obj);
+	public List<User> update(User obj) {
+		return service.update(obj);
 	}
 	
 	@CrossOrigin
     @DeleteMapping(path = "/delete-user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public boolean delete(@PathVariable(name = "id", required = true) String id) {
+	public List<User> delete(@PathVariable(name = "id", required = true) String id) {
 		return service.delete(id);
 	}
 	

@@ -59,19 +59,11 @@ public class OrderDao implements REPOSITORY<Order> {
 		return em.load(Order.class, Long.parseLong(id));
 	}
 
-	@Override
-	public Order entityToObject(Entity entity) {
-		return null;
-	}
-
-	@Override
+	
 	public boolean itemExist(long id) {
 		return getItem(Long.toString(id)) != null;
 	}
 
-	//@Override
-	public Optional<Long> addObject(Order obj) {
-        return null;
-	}
+	
 
 }
