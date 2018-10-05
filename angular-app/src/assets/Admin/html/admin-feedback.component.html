@@ -1,3 +1,148 @@
-<p>
-  admin-feedback works!
-</p>
+<div class="row bg-title">
+  <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+      <h4 class="page-title">{{title}}</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <div class="white-box">
+          <div class="row row-in">
+              
+              <div class="col-lg-4 col-sm-4 col-xs-12 row-in-br">
+                  <ul class="col-in">
+                      <li>
+                          <span class="circle circle-md bg-success"><i class="mdi mdi-playlist-check"></i></span>
+                      </li>
+                      <li class="col-last">
+                          <h3 class="counter text-right m-t-15">
+                              {{ orderList | orderStatusFilter:status.PAID }}
+                          </h3>
+                      </li>
+                      <li class="col-middle">
+                          <h4>Average <br>Overall Score</h4>
+                          <div class="progress">
+                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                  aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-lg-4 col-sm-4 col-xs-12 row-in-br  b-r-none">
+                  <ul class="col-in">
+                      <li>
+                          <span class="circle circle-md bg-warning"><i class="mdi mdi-silverware-variant"></i></span>
+                      </li>
+                      <li class="col-last">
+                          <h3 class="counter text-right m-t-15">
+                              {{ orderList | orderStatusFilter:status.PENDING }}
+                          </h3>
+                      </li>
+                      <li class="col-middle">
+                          <h4>Average <br>Food Quality</h4>
+                          <div class="progress">
+                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                                  aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              <div class="col-lg-4 col-sm-4 col-xs-12 b-0">
+                  <ul class="col-in">
+                      <li>
+                          <span class="circle circle-md bg-danger"><i class="mdi mdi-account-star"></i></span>
+                      </li>
+                      <li class="col-last">
+                          <h3 class="counter text-right m-t-15">
+                              {{ orderList | orderStatusFilter:status.CANCELLED }}
+                          </h3>
+                      </li>
+                      <li class="col-middle">
+                          <h4>Average <br>Staff Quality</h4>
+                          <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40"
+                                  aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="white-box">
+          <h3 class="box-title m-b-20">Feedbacks</h3>
+
+          <div class="table-responsive">
+              <table id="table-orders" class="table table-striped">
+                  <thead>
+                      <tr>
+                          <th width="15%">Feedback ID</th>
+                          <th width="35%">Overall Score</th>
+                          <th width="25%">Food Quality</th>
+                          <th width="25%">Staff Quality</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>1</td>
+                          <td>10/10</td>
+                          <td><i class="em em-heart_eyes"></i></td>
+                          <td><i class="em em-smile"></i></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          
+      </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-body">
+      <h3>Order - #{{ orderModal.orderNumber }}</h3>
+
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <i class="text-danger mdi mdi-close"></i>
+      </button>
+
+      <hr class="m-t-0"/>
+
+      <table class="table">
+          <tbody>
+              <tr *ngFor="let item of orderModal.menuItem">
+                  <td class="text-center image">
+                      <img src="../../../assets/img/dish-1.png" />
+                  </td>
+                  <td class="dish-name">
+                      <span class="name">{{ item.name }}</span> <br>
+                      <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam, mauris ac sodales pulvinar, quam magna
+                      vehicula purus, sit amet fermentum tellus felis iaculis lectus.</span>
+                  </td>
+                  <td class="price">P{{ item.price }} x {{ item.quantity }}</td>
+              </tr>
+              <tr>
+                  <td class="image"></td>
+                  <td class="dish-name">
+                      <p class="total-label">Total </p>
+                  </td>
+                  <td class="price">
+                      <p class="total-price">P3999.99</p>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+      <hr />
+
+      <button class="btn btn-default btn-warning btn-standard pull-right btn-close" 
+          (click)="modal.dismiss('Cross click')">Close</button>
+
+  </div>
+</ng-template>
