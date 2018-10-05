@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { AdminComponent } from "../../../assets/Admin/admin.component";
 import { AdminNavComponent } from '@admin/parts/admin-nav.component';
@@ -35,6 +36,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule, 
+    FormsModule,
     RouterModule.forChild(routes),
     NgbModule.forRoot(),
     SweetAlert2Module.forRoot(),
