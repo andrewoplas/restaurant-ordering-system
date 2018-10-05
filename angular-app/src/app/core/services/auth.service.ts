@@ -41,7 +41,7 @@ export class AuthService {
 
   successLogin(user: User) {
     localStorage.setItem('user_credentials', JSON.stringify(user));
-    this.router.navigate(['admin/dashboard']);   
+    this.router.navigate(['admin']);   
   }
 
   isAdmin() {
