@@ -9,6 +9,7 @@ import { MenuComponent } from "../assets/Admin/ts/menu.component";
 import { MenuItemAddComponent } from "../assets/Admin/ts/menu-item-add.component";
 import { LoginComponent } from "../assets/Admin/ts/login.component";
 import { TableComponent } from "../assets/Admin/ts/table.component";
+import { AdminFeedbackComponent } from '../assets/Admin/ts/admin-feedback.component';
 
 import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
 import { LandingComponent } from '../assets/ts/landing.component';
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: "menu", component: MenuComponent },
       { path: "menu-item", component: MenuItemComponent },
       { path: "menu-item/add", component: MenuItemAddComponent },
-      { path: "orders", component: OrderComponent }
+      { path: "orders", component: OrderComponent },
+      { path: "feedback", component: AdminFeedbackComponent }
     ]
   },
   { path: "menu", component: OccupantMenuComponent },
