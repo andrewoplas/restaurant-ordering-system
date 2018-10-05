@@ -26,6 +26,7 @@ import { AdminSideBarComponent } from '../assets/Admin/ts/parts/admin-side-bar.c
 import { OrderComponent } from '../assets/Admin/ts/order.component';
 import { MenuItemAddComponent } from "../assets/Admin/ts/menu-item-add.component";
 import { MenuComponent } from '../assets/Admin/ts/menu.component';
+import { AdminFeedbackComponent } from '../assets/Admin/ts/admin-feedback.component';
 
 //Service
 import { OrderService } from './core/services/order.service';
@@ -54,6 +55,8 @@ import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
     MenuComponent,
 
     OrderStatusFilterPipe,
+
+    AdminFeedbackComponent,
   ],
   imports: [
     BrowserModule,
