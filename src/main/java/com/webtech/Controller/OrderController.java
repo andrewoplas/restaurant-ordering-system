@@ -27,21 +27,21 @@ public class OrderController extends BaseController implements CONTROLLER<Order>
 	@CrossOrigin
     @PostMapping(path = "/order", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public Order create(Order obj) {
+	public List<Order> create(Order obj) {
 		return service.create(obj);
 	}
 	
 	@CrossOrigin
     @PutMapping(path = "/update-order", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public void update(Order obj) {
-		service.update(obj);
+	public List<Order> update(Order obj) {
+		return service.update(obj);
 	}
 	
 	@CrossOrigin
     @DeleteMapping(path = "/delete-order/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public boolean delete(@PathVariable(name = "id", required = true) String id) {
+	public List<Order> delete(@PathVariable(name = "id", required = true) String id) {
 		return service.delete(id);
 	}
 	

@@ -29,7 +29,7 @@ public class FeedBackController extends BaseController implements CONTROLLER<Fee
 	@CrossOrigin
     @PostMapping(path = "/feedback", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public FeedBack create(@RequestBody(required = true) FeedBack obj) {
+	public List<FeedBack> create(@RequestBody(required = true) FeedBack obj) {
 		System.out.println(obj.getStaffQuality() + " -- " + obj.getOverallQuality() + " -- " + obj.getFoodQuality());
 		return service.create(obj);
 	}
@@ -37,19 +37,19 @@ public class FeedBackController extends BaseController implements CONTROLLER<Fee
 	@CrossOrigin
     @PutMapping(path = "/update-feedback", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public void update(@RequestBody(required = true)FeedBack obj) {
-		service.update(obj);
+	public List<FeedBack> update(@RequestBody(required = true)FeedBack obj) {
+		return service.update(obj);
 	}
 	
 	@CrossOrigin
     @DeleteMapping(path = "/delete-feedback/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public boolean delete(@PathVariable(name = "id", required = true) String id) {
+	public List<FeedBack> delete(@PathVariable(name = "id", required = true) String id) {
 		return service.delete(id);
 	}
 	
 	@CrossOrigin
-	@GetMapping(path = "/get-all-feedback", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/get-all-feedbacks", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public List<FeedBack> getItems() {
 		return service.getItems();

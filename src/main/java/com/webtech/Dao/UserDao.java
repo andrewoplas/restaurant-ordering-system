@@ -60,21 +60,12 @@ public class UserDao implements REPOSITORY<User> {
 		return em.load(User.class, Long.parseLong(id));
 	}
 
-	@Override
-	public User entityToObject(Entity entity) {
-		return null;
-	}
-
-	@Override
+	
 	public boolean itemExist(long id) {
 		return getItem(Long.toString(id)) != null;
 	}
 
-	//@Override
-	public Optional<Long> addObject(User obj) {
-        return null;
-	}
-
+	
 	public List<User> getUser(LoginUser user) {
 		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `User` WHERE username=@user AND password=@pass");
 		request.setNamedBinding("user", user.getUsername());

@@ -15,29 +15,36 @@ public class UserService implements SERVICE<User> {
 	private UserDao repository;
 	
 	@Override
-	public User create(User obj) {
-		return repository.create(obj);
+	public List<User> create(User obj) {
+		 repository.create(obj);
+		return repository.getItems();
 	}
 
 	@Override
-	public void update(User obj) {
+	public List<User> update(User obj) {
 		repository.update(obj);
+		return repository.getItems();
 	}
 
 	@Override
-	public boolean delete(String id) {
+	public List<User> delete(String id) {
 		boolean result = false;
 		
 		try {		
 			Long longId = Long.parseLong(id);
 			if(userExist(longId)) {
 				result = repository.delete(id);
+				return repository.getItems();
+			}
+			else {
+				return null;
 			}
 		} catch (Exception ex) {
 			System.out.print("DELETESERVICE");
+			return null;
 		}
 		
-		return result;
+		
 	}
 
 	private boolean userExist(Long longId) {

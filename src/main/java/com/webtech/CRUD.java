@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CRUD<T>{
 
-     T create(T obj);
+	List<T> create(T obj);
 
-     void update(T obj);
+	List<T> update(T obj);
 
-     boolean delete(String id);
+     List<T> delete(String id);
 
      List<T> getItems();
      

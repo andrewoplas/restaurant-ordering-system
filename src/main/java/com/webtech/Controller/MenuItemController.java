@@ -18,7 +18,7 @@ public class MenuItemController extends BaseController implements CONTROLLER<Men
     MenuItemService taskservice;
 
     @CrossOrigin
-    @RequestMapping(path = "/items", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/get-all-items", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MenuItem> getItems() {
         return taskservice.getItems();
     }
@@ -30,22 +30,21 @@ public class MenuItemController extends BaseController implements CONTROLLER<Men
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/item", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public MenuItem create(@RequestBody(required = true) MenuItem menuItem) {
+    @RequestMapping(path = "/item", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<MenuItem> create(@RequestBody(required = true) MenuItem menuItem) {
         return taskservice.create(menuItem);
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.DELETE, path = "/item/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean delete(@PathVariable(name = "id", required = true) String id) {
-        taskservice.delete(id);
-        return true;
+    @RequestMapping(method = RequestMethod.DELETE, path = "/delete-item/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<MenuItem> delete(@PathVariable(name = "id", required = true) String id) {
+        return taskservice.delete(id);
     }
 
     @CrossOrigin
-    @RequestMapping(path = "item", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@RequestBody(required = true) MenuItem menuItem) {
-        taskservice.update(menuItem);
+    @RequestMapping(path = "update-item", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<MenuItem> update(@RequestBody(required = true) MenuItem menuItem) {
+        return taskservice.update(menuItem);
     }
 
 }

@@ -10,13 +10,13 @@ public class FeedBack {
 	@Identifier
 	private Long id;
 
-	@Property(name="overall")
+	@Property(name="overall" , indexed=true)
 	private int overallQuality;
 
-	@Property(name="food")
+	@Property(name="food" , indexed=true)
 	private int foodQuality;
 
-	@Property(name="staff")
+	@Property(name="staff" , indexed=true) 
 	private int staffQuality;
 
 	// public FeedBack(){}

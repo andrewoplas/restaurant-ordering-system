@@ -15,17 +15,19 @@ public class OrderService implements SERVICE<Order> {
 	private OrderDao repository;
 	
 	@Override
-	public Order create(Order obj) {
-		return repository.create(obj);
+	public List<Order> create(Order obj) {
+		repository.create(obj);
+		return repository.getItems();
 	}
 
 	@Override
-	public void update(Order obj) {
+	public List<Order> update(Order obj) {
 		repository.update(obj);
+		return repository.getItems();
 	}
 
 	@Override
-	public boolean delete(String id) {
+	public List<Order> delete(String id) {
 		boolean result = false;
 		
 		try {		
@@ -33,12 +35,16 @@ public class OrderService implements SERVICE<Order> {
 			Order order = repository.getItem(id);
 			if(order != null && order.getStatus().equals(OrderStatus.CANCELLED.toString())) {
 				result = repository.delete(id);
+				return repository.getItems();
+			}else {
+				return null;
 			}
 		} catch (Exception ex) {
 			System.out.print("DELETESERVICE");
+			return null;
 		}
 		
-		return result;
+		
 	}
 
 	@Override

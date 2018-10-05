@@ -14,17 +14,19 @@ public class MenuService implements SERVICE<Menu> {
 	private MenuDao repository;
 	
 	@Override
-	public Menu create(Menu obj) {
-		return repository.create(obj);
+	public  List<Menu> create(Menu obj) {
+		repository.create(obj);
+		return repository.getItems();
 	}
 
 	@Override
-	public void update(Menu obj) {
-		repository.update(obj);
+	public  List<Menu> update(Menu obj) {
+		 repository.update(obj);
+		 return repository.getItems();
 	}
 
 	@Override
-	public boolean delete(String id) {
+	public  List<Menu> delete(String id) {
 		boolean result = false;
 		
 		try {		
@@ -32,12 +34,16 @@ public class MenuService implements SERVICE<Menu> {
 			Menu menu = repository.getItem(id);
 			if(menu != null) {
 				result = repository.delete(id);
+				return repository.getItems();
+			}else {
+				return null;
 			}
 		} catch (Exception ex) {
 			System.out.print("DELETESERVICE");
+			return null;
 		}
 		
-		return result;
+		
 	}
 
 	@Override

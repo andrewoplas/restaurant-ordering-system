@@ -59,19 +59,11 @@ public class MenuDao implements REPOSITORY<Menu> {
 		return em.load(Menu.class, Long.parseLong(id));
 	}
 
-	@Override
-	public Menu entityToObject(Entity entity) {
-		return null;
-	}
 
-	@Override
 	public boolean itemExist(long id) {
 		return getItem(Long.toString(id)) != null;
 	}
 
-	@Override
-	public Optional<Long> addObject(Menu obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
 }

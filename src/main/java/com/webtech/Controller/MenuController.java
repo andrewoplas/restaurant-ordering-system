@@ -30,26 +30,26 @@ public class MenuController extends BaseController implements CONTROLLER<Menu>{
 
 	@CrossOrigin
 	@PostMapping(path = "/menu", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Menu create(Menu obj) {
+	public @ResponseBody List<Menu> create(Menu obj) {
 		return service.create(obj);
 	}
 	
 	@CrossOrigin
     @PutMapping(path = "/update-menu", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public void update(Menu obj) {
-		service.update(obj);
+	public List<Menu> update(Menu obj) {
+		return service.update(obj);
 	}
 	
 	@CrossOrigin
     @DeleteMapping(path = "/delete-menu/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public boolean delete(@PathVariable(name = "id", required = true) String id) {
+	public List<Menu> delete(@PathVariable(name = "id", required = true) String id) {
 		return service.delete(id);
 	}
 	
 	@CrossOrigin
-	@GetMapping(path = "/get-all-menu", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/get-all-menus", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public List<Menu> getItems() {
 		System.out.println("GET ALL MENU");
