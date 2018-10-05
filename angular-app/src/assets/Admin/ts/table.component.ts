@@ -128,6 +128,10 @@ export class TableComponent implements OnInit {
           $(".edit-seats").val(2);
           $(".edit-details").css("background-image", "url(assets/img/table-gold-2.png)");
       }
+
+      $('.edit-seats').keypress(function (evt) {
+          evt.preventDefault();
+      });
     });
 
     $('#submit-edit-table').click(function() {
