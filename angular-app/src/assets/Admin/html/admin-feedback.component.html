@@ -16,7 +16,7 @@
                       </li>
                       <li class="col-last">
                           <h3 class="counter text-right m-t-15">
-                              {{ orderList | orderStatusFilter:status.PAID }}
+                              {{ feedbackList | feedbackFilter:1 }}
                           </h3>
                       </li>
                       <li class="col-middle">
@@ -36,7 +36,7 @@
                       </li>
                       <li class="col-last">
                           <h3 class="counter text-right m-t-15">
-                              {{ orderList | orderStatusFilter:status.PENDING }}
+                              {{ feedbackList | feedbackFilter:2 }}
                           </h3>
                       </li>
                       <li class="col-middle">
@@ -56,7 +56,7 @@
                       </li>
                       <li class="col-last">
                           <h3 class="counter text-right m-t-15">
-                              {{ orderList | orderStatusFilter:status.CANCELLED }}
+                              {{ feedbackList | feedbackFilter:3 }}
                           </h3>
                       </li>
                       <li class="col-middle">
@@ -90,11 +90,19 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>10/10</td>
-                          <td><i class="em em-heart_eyes"></i></td>
-                          <td><i class="em em-smile"></i></td>
+                      <tr *ngFor="let feedback of feedbackList; let last = last">
+                          <td>{{ feedback.id }}</td>
+                          <td>{{ feedback.overallQuality }}</td>
+                          <td [ngSwitch]="feedback.foodQuality">
+                            <i *ngSwitchCase="1" class="em em-expressionless"></i>
+                            <i *ngSwitchCase="2" class="em em-smile"></i>
+                            <i *ngSwitchCase="3" class="em em-heart_eyes"></i>
+                          </td>
+                          <td [ngSwitch]="feedback.staffQuality">
+                            <i *ngSwitchCase="1" class="em em-expressionless"></i>
+                            <i *ngSwitchCase="2" class="em em-smile"></i>
+                            <i *ngSwitchCase="3" class="em em-heart_eyes"></i>
+                            </td>
                       </tr>
                   </tbody>
               </table>

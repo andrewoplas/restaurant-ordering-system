@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../../../app/core/services/order.service';
-import { Order, Status } from '../../../app/models/Order';
+import { FeedbackService } from '../../../app/core/services/feedback.service';
+import { Feedback } from '../../../app/models/Feedback';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import 'datatables.net';
@@ -12,15 +12,25 @@ import 'datatables.net';
 })
 export class AdminFeedbackComponent implements OnInit {
   title = 'FEEDBACK';
-  status = Status;
-  orderModal;
-  orderList: Array<Order> = new Array<Order>();
+  feedbackModal;
+  feedbackList: Array<Feedback> = new Array<Feedback>();
 
-  constructor(private orderService: OrderService, private modalService: NgbModal) {}
+  constructor(private feedbackService: FeedbackService, private modalService: NgbModal) {}
 
   ngOnInit() {
     $("#table-orders").dataTable();
+    this.getFeedbacks();
     $('.preloader').fadeOut();
+  }
+
+  getFeedbacks() {
+    this.feedbackService.getFeedbacks().subscribe(
+      data => {
+        this.feedbackList = data;
+        $("#table-orders").DataTable().clear();
+        $('#table-orders').DataTable().destroy();
+      }
+    );
   }
 
   reinitialize(isLast: boolean) {
@@ -28,31 +38,6 @@ export class AdminFeedbackComponent implements OnInit {
       $('#table-orders').dataTable();
       eval("$('[data-toggle=tooltip]').tooltip();");
     }
-  }
-
-  delete(id: number) {
-    this.orderService.deleteOrder(id)
-      .subscribe(
-        success => {
-          if(success) {
-            this.orderList = this.orderList.filter(o => o.id != id);
-            // alert('done');
-          } else {
-            // alert('error');
-          }
-      });
-  }
-
-  open(content: any, order: Order) {
-    this.orderModal = order;
-    this.modalService.open(content, { 
-      ariaLabelledBy: 'modal-basic-title' ,
-      centered: true,
-      windowClass: 'order-items-modal'
-    }).result.then((result) => {
-    }, (reason) => {
-      // close
-    });
   }
 
 }
