@@ -34,7 +34,6 @@ export class TableComponent implements OnInit {
   }
 
   addTable(){
-
     $("#table-number").val(this.table.tablenum);
     $("#table-seats").val(this.table.seats);
     $(".table-details").html(this.table.tablenum);
@@ -47,6 +46,8 @@ export class TableComponent implements OnInit {
   }
 
   initFunc(){
+
+    // add table funtionalities
     $('#table-number').on("change", function(){
       this.num = parseInt($("#table-number").val());
       $(".table-details").html(this.num);
@@ -101,15 +102,25 @@ export class TableComponent implements OnInit {
       "</div>");
     });
 
+    //-- end add table funtionalities
+
+    // edit table funtionalities
     $(".button-edit").click(function(){
       var tnum = $(this).parent().parent().find(".table-pic").html();
-      var tseats = $(this).parent().parent().find(".table-four");
 
       $(".edit-number").val(tnum);
       $(".edit-details").html(tnum);
 
-      console.log(tseats);
+      if ($(this).parent().parent().find(".table-four")[0]){
+          $(".edit-seats").val(4);
+          $(".edit-details").css("background-image", "url(assets/img/table-gold-4.png)");
+      } else {
+          $(".edit-seats").val(2);
+          $(".edit-details").css("background-image", "url(assets/img/table-gold-2.png)");
+      }
     });
+
+    //-- end edit table funtionalities
 
     console.log(this.num);
     console.log(this.seats);

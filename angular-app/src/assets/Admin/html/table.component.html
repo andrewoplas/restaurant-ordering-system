@@ -64,7 +64,7 @@
                     <span class="table-pic table-four">1</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container">
-                    <div class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
+                    <div (click)="editTable($event)" class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
                         <i class="mdi mdi-pencil"></i>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 button-delete" [swal]="deleteTable" data-toggle="tooltip">
