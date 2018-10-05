@@ -39,11 +39,11 @@ export class TableComponent implements OnInit {
     $("#table-seats").val(this.table.seats);
     $(".table-details").html(this.table.tablenum);
 
+    console.log(this.table.seats);
+
     $('#table-seats').keypress(function (evt) {
         evt.preventDefault();
     });
-
-    
   }
 
   initFunc(){
@@ -62,7 +62,7 @@ export class TableComponent implements OnInit {
       console.log(this.seats);
     });
 
-    $('#submit').click(function() {
+    $('#submit-add-table').click(function() {
       // Check seats
       if($("#table-seats").val() == 4){
         this.seats = 4;
@@ -99,6 +99,16 @@ export class TableComponent implements OnInit {
               "</div>" +
           "</div>" +
       "</div>");
+    });
+
+    $(".button-edit").click(function(){
+      var tnum = $(this).parent().parent().find(".table-pic").html();
+      var tseats = $(this).parent().parent().find(".table-four");
+
+      $(".edit-number").val(tnum);
+      $(".edit-details").html(tnum);
+
+      console.log(tseats);
     });
 
     console.log(this.num);

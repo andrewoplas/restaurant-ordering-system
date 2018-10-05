@@ -189,7 +189,18 @@
     }
 }
 
-.btn-submit-container {
+.btn-submit-add-table {
+    text-align: center;
+
+    button {
+        background-color: #ffa500;
+        color: #ffffff;
+        width: 119px;
+        height: 40px;
+    }
+}
+
+.btn-submit-edit-table {
     text-align: center;
 
     button {
