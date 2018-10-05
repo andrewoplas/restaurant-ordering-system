@@ -2,10 +2,10 @@ import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Services
-import { OrderService } from '../core/services/order.service';
-import { MessageService } from "../core/services/message.service";
-import { MenuService } from "../core/services/menu.service";
-import { AuthService } from "../core/services/auth.service";
+import { OrderService } from '@services/order.service';
+import { MessageService } from "@services/message.service";
+import { MenuService } from "@services/menu.service";
+import { AuthService } from "@services/auth.service";
 
 @NgModule({
   providers: [
@@ -22,5 +22,4 @@ export class CoreModule {
       throw new Error('CoreModue Already Instantiated');
     }
   }
-
 }
