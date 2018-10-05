@@ -22,7 +22,7 @@ public class MenuItem {
     
 	
 	@Identifier
-	private String id;
+	private Long id;
 
 	@Property(name="name",indexed=true)
 	private String name;
@@ -51,7 +51,7 @@ public class MenuItem {
 
 	public MenuItem(){}
 
-	public MenuItem(String id, String menuId,String name, String description , Double price, int cooking_time, int serving , String picture) {
+	public MenuItem(Long id, String menuId,String name, String description , Double price, int cooking_time, int serving , String picture) {
         this.id = id;
         this.description = description;
         this.name = name;
@@ -68,7 +68,6 @@ public class MenuItem {
         this.description = description;
         this.name = name;
 		this.price = price;
-		
 		this.cooking_time = cooking_time;
 		this.serving = serving;
 		this.picture = picture;
@@ -76,7 +75,7 @@ public class MenuItem {
 	}
 	
 	private MenuItem(Builder builder) {
-        this.id = (String.valueOf(builder.id));
+        this.id = builder.id;
         this.description = builder.description;
         this.name = builder.name;
 		this.price = builder.price;
@@ -90,14 +89,14 @@ public class MenuItem {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

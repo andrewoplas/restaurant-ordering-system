@@ -18,8 +18,8 @@ public class MenuItemService implements SERVICE<MenuItem>{
 	@Override
 	public MenuItem create(MenuItem obj) {
 		Optional<Long> id = dao.addObject(obj);
-        id.ifPresent(i -> obj.setId(i.toString()));
-		obj.setId(id.get()+"");
+        id.ifPresent(i -> obj.setId(i));
+		obj.setId(id.get());
 		return obj;
 	}
 

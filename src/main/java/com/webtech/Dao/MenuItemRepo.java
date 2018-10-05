@@ -50,7 +50,7 @@ public class MenuItemRepo implements REPOSITORY<MenuItem>{
         //  Key k = datastore.put(incTaskEntity);
         //  return Optional.of(k.getId());
         menuItem = em.insert(menuItem);
-        return Optional.of(Long.parseLong(menuItem.getId()));
+        return Optional.of(menuItem.getId());
     }
 
     
