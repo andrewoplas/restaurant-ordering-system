@@ -12,8 +12,10 @@ import { MenuItemComponent } from '@admin/menu-item.component';
 import { OrderComponent } from '@admin/order.component';
 import { MenuItemAddComponent } from "@admin/menu-item-add.component";
 import { MenuComponent } from '@admin/menu.component';
+import { AdminFeedbackComponent } from '@admin/admin-feedback.component';
 
 import { OrderStatusFilterPipe } from '@pipe/order-status-filter.pipe';
+import { FeedbackFilterPipe } from '@pipe/feedback-filter.pipe';
 
 import { Routes, RouterModule } from '@angular/router';
 
@@ -26,7 +28,8 @@ const routes: Routes = [
       { path: "menu", component: MenuComponent },
       { path: "menu-item", component: MenuItemComponent },
       { path: "menu-item/add", component: MenuItemAddComponent },
-      { path: "orders", component: OrderComponent }
+      { path: "orders", component: OrderComponent },
+      { path: "feedback", component: AdminFeedbackComponent }
     ],
   },
 ];
@@ -49,8 +52,10 @@ const routes: Routes = [
     OrderComponent,
     MenuItemAddComponent,
     MenuComponent,
+    AdminFeedbackComponent,
     
     OrderStatusFilterPipe,
+    FeedbackFilterPipe,
   ]
 })
 export class AdminModule { }

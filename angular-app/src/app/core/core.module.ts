@@ -13,7 +13,8 @@ import { AuthService } from "@services/auth.service";
     MessageService,
     MenuService,
     AuthService,
-  ]
+  ],
+  declarations: [  ]
   
 })
 export class CoreModule { 
