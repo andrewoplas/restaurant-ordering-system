@@ -30,9 +30,12 @@ export class TableComponent implements OnInit {
     this.num = 13;
     this.seats = 4;
 
-    this.initFunc();
+    this.addOnChange();
+    this.addSubmit();
+    this.editOnChange();
   }
 
+  // add table funtionalities
   addTable(){
     $("#table-number").val(this.table.tablenum);
     $("#table-seats").val(this.table.seats);
@@ -45,9 +48,7 @@ export class TableComponent implements OnInit {
     });
   }
 
-  initFunc(){
-
-    // add table funtionalities
+  addOnChange(){
     $('#table-number').on("change", function(){
       this.num = parseInt($("#table-number").val());
       $(".table-details").html(this.num);
@@ -62,7 +63,9 @@ export class TableComponent implements OnInit {
       }
       console.log(this.seats);
     });
+  }
 
+  addSubmit(){
     $('#submit-add-table').click(function() {
       // Check seats
       if($("#table-seats").val() == 4){
@@ -101,10 +104,11 @@ export class TableComponent implements OnInit {
           "</div>" +
       "</div>");
     });
+  }
+  //-- end add table funtionalities
 
-    //-- end add table funtionalities
-
-    // edit table funtionalities
+  // edit table funtionalities
+  editOnChange(){
     $(".button-edit").click(function(){
       var tnum = $(this).parent().parent().find(".table-pic").html();
 
@@ -119,11 +123,8 @@ export class TableComponent implements OnInit {
           $(".edit-details").css("background-image", "url(assets/img/table-gold-2.png)");
       }
     });
-
-    //-- end edit table funtionalities
-
-    console.log(this.num);
-    console.log(this.seats);
   }
+  //-- end edit table funtionalities
+    
 
 }
