@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from "@angular/core";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
+import { CoreModule } from './core/core.module';
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from './app-routing.module';
@@ -15,9 +16,8 @@ import { AdminComponent } from "../assets/Admin/admin.component";
 import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
 import { OccupantMenuComponent } from "../assets/ts/occupant-menu.component";
 import { FeedbackComponent } from '../assets/ts/feedback.component';
-
-//Admin
 import { LandingComponent } from '../assets/ts/landing.component';
+<<<<<<< HEAD
 import { TableComponent } from '../assets/Admin/ts/table.component';
 import { MenuItemComponent } from '../assets/Admin/ts/menu-item.component';
 import { LoginComponent } from '../assets/Admin/ts/login.component';
@@ -27,6 +27,8 @@ import { OrderComponent } from '../assets/Admin/ts/order.component';
 import { MenuItemAddComponent } from "../assets/Admin/ts/menu-item-add.component";
 import { MenuComponent } from '../assets/Admin/ts/menu.component';
 import { AdminFeedbackComponent } from '../assets/Admin/ts/admin-feedback.component';
+=======
+>>>>>>> [Task/#0075] - Setup core module
 
 //Service
 import { OrderService } from './core/services/order.service';
@@ -67,8 +69,9 @@ import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
     HttpClientModule,
     NgbModule.forRoot(),
     SweetAlert2Module.forRoot(),
+    CoreModule,
   ],
-  providers: [OrderService, MessageService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

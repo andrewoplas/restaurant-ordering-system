@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderStatusFilterPipe } from './pipe/order-status-filter.pipe';
 
@@ -8,4 +8,11 @@ import { OrderStatusFilterPipe } from './pipe/order-status-filter.pipe';
   ],
   declarations: [OrderStatusFilterPipe]
 })
-export class CoreModule { }
+export class CoreModule { 
+  constructor(@Optional() @SkipSelf() core: CoreModule) {
+    if(core) {
+      throw new Error('CoreModue Already Instantiated');
+    }
+  }
+
+}
