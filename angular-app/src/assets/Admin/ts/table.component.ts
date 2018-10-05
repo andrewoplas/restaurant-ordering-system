@@ -109,14 +109,19 @@ export class TableComponent implements OnInit {
 
   // edit table funtionalities
   editTable(){
+    var tnum = 0;
+    var tid = 0;
+
     $(".button-edit").click(function(){
-      var tnum = $(this).parent().parent().find(".table-pic").html();
-      this.flexItem = $(this);
+      tnum = $(this).parent().parent().find(".table-pic").html();
+      tid = $(this).parent().parent().parent().attr("table-id");
+
+      console.log();
 
       $(".edit-number").val(tnum);
       $(".edit-details").html(tnum);
 
-      if ($(this).parent().parent().find(".table-four")[0]){
+      if (parseInt($(this).parent().parent().find(".table-pic").attr("num-seats")) == 4){
           $(".edit-seats").val(4);
           $(".edit-details").css("background-image", "url(assets/img/table-gold-4.png)");
       } else {
@@ -127,43 +132,26 @@ export class TableComponent implements OnInit {
 
     $('#submit-edit-table').click(function() {
       // check seats
-      if($("#table-seats").val() == 4){
-        this.seats = 4;
-      }
-      else{
-        this.seats = 2;
-      }
+      if(parseInt($(".edit-seats").val()) == 4){ this.seats = 4; }
+      else{ this.seats = 2; }
 
       this.table = {
-        id : "",
+        id : tid,
         seats : this.seats,
         tablenum : this.num = parseInt($(".edit-number").val())
       }
+      
+      var flexItem = $("[table-id="+ this.table.id +"]");
+      flexItem.find('.table-pic').text(this.num);
 
-      if(this.table.seats == 2){
-        this.tableSeat = "table-two";
+      if(this.table.seats == 4){
+        flexItem.find('.table-pic').css("background-image", "url(assets/img/table-gold-4.png)");
+        flexItem.find('.table-pic').attr("num-seats", 4);
       }
       else{
-        this.tableSeat = "table-four";
+        flexItem.find('.table-pic').css("background-image", "url(assets/img/table-gold-2.png)");
+        flexItem.find('.table-pic').attr("num-seats", 2);
       }
-
-      console.log(this.flexItem);
-      console.log(this.num);
-      console.log(this.seats);
-
-      this.flexItem.parent().parent().html("<div class='row'>" +
-        "<div class='col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive' alt='default' data-toggle='modal' data-target='.view-table-modal' title='View Table'>" +
-            "<span class='table-pic " + this.tableSeat + "'>" + this.num + "</span>" +
-        "</div>" +
-        "<div class='col-lg-12 col-md-8 col-sm-12 button-container'>" +
-            "<div (click)='editTable($event)' class='col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive' alt='default' data-toggle='modal' data-target='.edit-table-modal'>" +
-                "<i _ngcontent-c4 class='mdi mdi-pencil'></i>" +
-            "</div>" +
-            "<div class='col-lg-6 col-md-6 col-sm-12 button-delete' [swal]='deleteTable' data-toggle='tooltip'>" +
-                "<i _ngcontent-c4 class='mdi mdi-delete'></i>" +
-            "</div>" +
-        "</div>" +
-      "</div>");
     });
   }
 
