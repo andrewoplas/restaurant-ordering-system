@@ -1,12 +1,20 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderStatusFilterPipe } from './pipe/order-status-filter.pipe';
+
+// Services
+import { OrderService } from '../core/services/order.service';
+import { MessageService } from "../core/services/message.service";
+import { MenuService } from "../core/services/menu.service";
+import { AuthService } from "../core/services/auth.service";
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [OrderStatusFilterPipe]
+  providers: [
+    OrderService,
+    MessageService,
+    MenuService,
+    AuthService,
+  ]
+  
 })
 export class CoreModule { 
   constructor(@Optional() @SkipSelf() core: CoreModule) {

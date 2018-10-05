@@ -30,10 +30,6 @@ import { AdminFeedbackComponent } from '../assets/Admin/ts/admin-feedback.compon
 =======
 >>>>>>> [Task/#0075] - Setup core module
 
-//Service
-import { OrderService } from './core/services/order.service';
-import { MessageService } from "./core/services/message.service";
-
 //Pipes
 import { OrderStatusFilterPipe } from './core/pipe/order-status-filter.pipe';
 
