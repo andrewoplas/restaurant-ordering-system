@@ -2,6 +2,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@admin/*" : ["./src/assets/Admin/ts/*"],
+      "@occupant/*" : ["./src/assets/ts/*"],
+      "@services/*" : ["./src/app/core/services/*"],
+      "@pipe/*" : ["./src/app/core/pipe/*"],
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
