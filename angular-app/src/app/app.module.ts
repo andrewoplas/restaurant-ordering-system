@@ -11,6 +11,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 //Occupant
+import { LoginComponent } from '@admin/login.component';
 import { ReceptionistComponent } from "../assets/ts/receptionist.component";
 import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
 import { OccupantMenuComponent } from "../assets/ts/occupant-menu.component";
@@ -25,6 +26,7 @@ import { LandingComponent } from '../assets/ts/landing.component';
     LandingComponent,
     OccupantOrderComponent,
     FeedbackComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

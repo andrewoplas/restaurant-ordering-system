@@ -12,7 +12,6 @@ import { MenuItemComponent } from '@admin/menu-item.component';
 import { OrderComponent } from '@admin/order.component';
 import { MenuItemAddComponent } from "@admin/menu-item-add.component";
 import { MenuComponent } from '@admin/menu.component';
-import { LoginComponent } from '@admin/login.component';
 
 import { OrderStatusFilterPipe } from '@pipe/order-status-filter.pipe';
 
@@ -30,7 +29,6 @@ const routes: Routes = [
       { path: "orders", component: OrderComponent }
     ],
   },
-  { path: "login", component: LoginComponent }
 ];
 
 @NgModule({
@@ -51,8 +49,7 @@ const routes: Routes = [
     OrderComponent,
     MenuItemAddComponent,
     MenuComponent,
-    LoginComponent,
-
+    
     OrderStatusFilterPipe,
   ]
 })

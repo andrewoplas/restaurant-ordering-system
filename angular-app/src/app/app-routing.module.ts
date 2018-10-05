@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ReceptionistComponent } from '../assets/ts/receptionist.component';
-import { OccupantMenuComponent } from '../assets/ts/occupant-menu.component';
-import { LandingComponent } from '../assets/ts/landing.component';
-import { OccupantOrderComponent } from '../assets/ts/occupant-order.component';
-import { FeedbackComponent } from '../assets/ts/feedback.component';
+import { LoginComponent } from '@admin/login.component';
+import { ReceptionistComponent } from '@occupant/receptionist.component';
+import { OccupantMenuComponent } from '@occupant/occupant-menu.component';
+import { LandingComponent } from '@occupant/landing.component';
+import { OccupantOrderComponent } from '@occupant/occupant-order.component';
+import { FeedbackComponent } from '@occupant/feedback.component';
 import { AdminGuard } from './core/authentication/admin.guard';
 
 import { AdminModule } from './modules/admin/admin.module';
 
 const routes: Routes = [
   { path: 'admin', loadChildren: () => AdminModule },
+  { path: "login", component: LoginComponent },
   { path: 'menu', component: OccupantMenuComponent },
   { path: 'order', component: OccupantOrderComponent },
   { path: 'receptionist', component: ReceptionistComponent },
