@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from "@angular/core";
 import { CoreModule } from './core/core.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
 
 import { AppComponent } from "./app.component";
@@ -10,7 +9,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-//Occupant
+import { AdminNavComponent } from '@admin/parts/admin-nav.component';
+import { AdminSideBarComponent } from '@admin/parts/admin-side-bar.component';
+import { AdminComponent } from '../assets/Admin/admin.component';
 import { LoginComponent } from '@admin/login.component';
 import { ReceptionistComponent } from "../assets/ts/receptionist.component";
 import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
@@ -26,7 +27,10 @@ import { LandingComponent } from '../assets/ts/landing.component';
     LandingComponent,
     OccupantOrderComponent,
     FeedbackComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+    AdminNavComponent,
+    AdminSideBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +39,7 @@ import { LandingComponent } from '../assets/ts/landing.component';
     AppRoutingModule,
     FlexLayoutModule,
     HttpClientModule,
-
     SweetAlert2Module.forRoot(),
-
     CoreModule,
   ],
   providers: [],

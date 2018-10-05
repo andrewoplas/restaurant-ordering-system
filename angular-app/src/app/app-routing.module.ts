@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AdminComponent } from '../assets/Admin/admin.component';
 import { LoginComponent } from '@admin/login.component';
 import { ReceptionistComponent } from '@occupant/receptionist.component';
 import { OccupantMenuComponent } from '@occupant/occupant-menu.component';
@@ -11,9 +12,10 @@ import { AdminGuard } from './core/authentication/admin.guard';
 
 import { AdminModule } from './modules/admin/admin.module';
 
+
 const routes: Routes = [
-  { path: 'admin', loadChildren: () => AdminModule },
   { path: "login", component: LoginComponent },
+  { path: 'admin', component: AdminComponent, loadChildren: () => AdminModule},
   { path: 'menu', component: OccupantMenuComponent },
   { path: 'order', component: OccupantOrderComponent },
   { path: 'receptionist', component: ReceptionistComponent },
