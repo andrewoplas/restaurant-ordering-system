@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webtech.Model.Table;
 import com.webtech.Service.TableService;
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class TableController extends BaseController implements CONTROLLER<Table> {
 	@Autowired

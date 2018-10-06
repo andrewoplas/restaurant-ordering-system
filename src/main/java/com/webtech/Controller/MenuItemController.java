@@ -11,6 +11,7 @@ import java.util.*;
 import com.webtech.Service.MenuItemService;
 
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class MenuItemController extends BaseController implements CONTROLLER<MenuItem>{
 

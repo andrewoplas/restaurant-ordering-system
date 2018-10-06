@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webtech.Dao.MenuDao;
+import com.webtech.Dao.MenuItemRepo;
 import com.webtech.Model.Menu;
 
 @Service
 public class MenuService implements SERVICE<Menu> {
 	@Autowired
 	private MenuDao repository;
+	
+	@Autowired
+	private MenuItemRepo repo;
 	
 	@Override
 	public  List<Menu> create(Menu obj) {
@@ -52,7 +56,10 @@ public class MenuService implements SERVICE<Menu> {
 	}
 
 	@Override
-	public Menu getItem(String id) {		
-		return repository.getItem(id);
+	public Menu getItem(String id) {
+		Menu returnedMenu = repository.getItem(id);
+		returnedMenu.setItems(repo.getItemsFromMenu(id));
+		
+		return returnedMenu;
 	}
 }

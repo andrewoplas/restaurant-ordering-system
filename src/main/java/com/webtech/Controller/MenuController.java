@@ -21,7 +21,7 @@ import com.webtech.Model.Order;
 import com.webtech.Service.MenuService;
 
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class MenuController extends BaseController implements CONTROLLER<Menu>{
 
