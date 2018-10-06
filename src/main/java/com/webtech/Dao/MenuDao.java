@@ -9,6 +9,7 @@ import com.google.appengine.api.datastore.Entity;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
 import com.webtech.Model.Menu;
+import com.webtech.Model.User;
 
 @Repository
 public class MenuDao implements REPOSITORY<Menu> {
@@ -62,6 +63,14 @@ public class MenuDao implements REPOSITORY<Menu> {
 
 	public boolean itemExist(long id) {
 		return getItem(Long.toString(id)) != null;
+	}
+
+	public boolean itemExist(String name) {
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Menu` WHERE name=@menu_name");
+		request.setNamedBinding("menu_name", name);
+		QueryResponse<User> response = em.executeEntityQueryRequest(User.class, request);
+		
+		return !response.getResults().isEmpty();
 	}
 
 	

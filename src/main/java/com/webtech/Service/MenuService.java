@@ -19,7 +19,12 @@ public class MenuService implements SERVICE<Menu> {
 	
 	@Override
 	public  List<Menu> create(Menu obj) {
-		repository.create(obj);
+		if(repository.itemExist(obj.getName())) {
+			return null;
+		} else {
+			repository.create(obj);
+		}
+		
 		return repository.getItems();
 	}
 

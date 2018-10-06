@@ -90,3 +90,9 @@
     padding-right: 0;
     padding-bottom: 0;
 }
+
+/deep/ {
+    .dataTables_filter input, .dataTables_length select {
+        outline: none !important;
+    }
+}
