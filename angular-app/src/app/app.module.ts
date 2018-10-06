@@ -31,8 +31,12 @@ import { DishDetailsComponent } from '@occupant/dish-details.component';
     LoginComponent,
     AdminComponent,
     AdminNavComponent,
+<<<<<<< HEAD
     AdminSideBarComponent,
     DishDetailsComponent,
+=======
+    AdminSideBarComponent
+>>>>>>> [Task/#0081] - Generated dashboard component
   ],
   imports: [
     BrowserModule,

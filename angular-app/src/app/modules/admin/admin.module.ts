@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { DashboardComponent } from '@admin/dashboard.component';
 import { TableComponent } from '@admin/table.component';
 import { MenuItemComponent } from '@admin/menu-item.component';
 import { MenuItemAddComponent } from '@admin/menu-item-add.component';
@@ -20,7 +21,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: MenuItemComponent },
+    { path: 'dashboard', component: DashboardComponent },
     { path: 'table', component: TableComponent },
     { path: 'menu', component: MenuComponent },
     { path: 'menu/add', component: MenuAddComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
     SweetAlert2Module
   ],
   declarations: [
+    DashboardComponent,
     TableComponent,
     MenuItemComponent,
     OrderComponent,
