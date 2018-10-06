@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import * as $ from "jquery";
 import "animate.css";
+import { Menu } from '../../app/models/Menu';
+import { MenuService } from '@services/menu.service';
 
 @Component({
   selector: 'app-occupant-menu',
@@ -13,7 +15,9 @@ import "animate.css";
 })
 export class OccupantMenuComponent implements OnInit {
     
-  constructor() { }
+    menuList: Array<Menu> = new Array<Menu>();
+    constructor(private menuService: MenuService) {}
+ 
 
   ngOnInit() {
     this.initializeMenuItems();
@@ -22,13 +26,20 @@ export class OccupantMenuComponent implements OnInit {
   }
 
   initializeMenuItems() {
+    this.menuService.getMenus().subscribe(
+        data => {
+          this.menuList = data;
+          console.log(data);
+        }
+      );
+
     $(document).ready(function(){
         $(".menu-item")
           .removeClass("hide")
           .addClass("animated zoomIn fast");
     });
   }
-
+  
   clickMenu() {
       $(document).on('click', '.menu', function () {
           $('.menu').removeClass('active');

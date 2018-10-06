@@ -19,6 +19,8 @@ import com.webtech.Model.LoginUser;
 import com.webtech.Model.User;
 import com.webtech.Service.UserService;
 
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/")
 public class UserController extends BaseController implements CONTROLLER<User> {

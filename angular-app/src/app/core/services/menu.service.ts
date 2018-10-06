@@ -31,12 +31,12 @@ export class MenuService {
   }
 
   /** GET: retrieve menu from the server */
-  public getOrders(): Observable<Menu[]> {
+  public getMenus(): Observable<Menu[]> {
     return this.http
-      .get<Menu[]>(`${this.baseUrl}/get-all-menu`, httpOptions)
+      .get<Menu[]>(`${this.baseUrl}/get-all-menus`, httpOptions)
       .pipe(
-        tap(() => this.log("get-all-menu")),
-        catchError(this.handleError("get-all-menu", []))
+        tap(() => this.log("get-all-menus")),
+        catchError(this.handleError("get-all-menus", []))
       );
   }
 
@@ -84,7 +84,7 @@ export class MenuService {
   load(): Promise<Menu[]> {
     this.menu = new Array<Menu>();
     return this.http
-      .get<Menu[]>(`${this.baseUrl}/get-all-menu`, httpOptions)
+      .get<Menu[]>(`${this.baseUrl}/get-all-menus`, httpOptions)
       .toPromise()
       .then((data: any) => (this.menu = data))
       .catch((err: any) => Promise.resolve());
