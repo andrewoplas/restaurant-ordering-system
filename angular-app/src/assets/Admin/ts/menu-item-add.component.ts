@@ -18,15 +18,15 @@ export class MenuItemAddComponent implements OnInit {
   menuItem: MenuItem = new MenuItem();
 
   menuItemForm : FormGroup;
-  name:  FormControl = new FormControl();
-  description: FormControl = new FormControl();
+  name:  FormControl = new FormControl('', Validators.required);
+  description: FormControl = new FormControl('', Validators.required);
   price: FormControl = new FormControl();
   salePrice: FormControl = new FormControl();
   cookingTime: FormControl = new FormControl();
   maxServings: FormControl = new FormControl();
-  imageLink: FormControl = new FormControl();
+  imageLink: FormControl = new FormControl('', Validators.required);
   show: FormControl = new FormControl();
-  menuId: FormControl = new FormControl();
+  menuId: FormControl = new FormControl('', Validators.required);
 
   menuList: Array<Menu> = new Array<Menu>();
 
