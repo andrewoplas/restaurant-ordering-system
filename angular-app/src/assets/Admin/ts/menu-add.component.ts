@@ -33,15 +33,40 @@ export class MenuAddComponent implements OnInit {
       show: this.forms.value.show,
     };
 
-    console.log(menu);
+    eval(
+      'swal({' +
+      'title: "Processing",' +
+      'text: "Please wait as we process your request",' +
+      'showConfirmButton: false,' +
+      'confirmButtonColor: "#FBA62F"' +
+      '});'
+    );
+
     this.menuService.addMenu(menu).subscribe(
       data => {
-        console.log(data);
+        if(data != null) {
+          eval(
+            'swal({' +
+            'title: "Success",' +
+            'text: "Successfully added the menu!",' +
+            'type: "success",' +
+            'confirmButtonText: "Okay",' +
+            'confirmButtonColor: "#FBA62F"' +
+            '});'
+          );
+        } else {
+          eval(
+            'swal({' +
+            'title: "Ooops!",' +
+            'text: "There was an error during the process. Please try again!",' +
+            'type: "error",' +
+            'confirmButtonText: "Try Again",' +
+            'confirmButtonColor: "#A40020"' +
+            '});'
+          );
+        }
       }
     );
-    
-      console.log('menu end');
-
   }
 
 }

@@ -25,7 +25,7 @@ const routes: Routes = [
     { path: 'menu/add', component: MenuAddComponent },
     { path: 'menu-item', component: MenuItemComponent },
     { path: 'menu-item/add', component: MenuItemAddComponent },
-    { path: 'orders', component: OrderComponent }
+    { path: 'orders', component: OrderComponent },
     { path: "feedback", component: AdminFeedbackComponent }
 ];
 
