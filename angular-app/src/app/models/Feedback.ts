@@ -1,5 +1,5 @@
 export interface Feedback {
-    id: string,
+    id?: number,
     overallQuality: number,
     foodQuality: number,
     staffQuality: number

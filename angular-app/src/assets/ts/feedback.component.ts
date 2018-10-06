@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Feedback } from '../../app/models/Feedback';
+import { FeedbackService } from '../../app/core/services/feedback.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -12,7 +13,7 @@ export class FeedbackComponent implements OnInit {
 
   feedback : Feedback;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private feedbackService: FeedbackService) { }
 
   ngOnInit() {
     this.initDataFeedback();
@@ -21,7 +22,6 @@ export class FeedbackComponent implements OnInit {
 
   initDataFeedback(){
     this.feedback = {
-      id: "test",
       overallQuality: 5,
       foodQuality: 2,
       staffQuality: 2
@@ -33,18 +33,50 @@ export class FeedbackComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  initFunctions() {
-    $(".submit-btn").click(function() {
-      // Initiate the feedback model
-      this.feedback = {
-        id: "",
-        overallQuality: parseInt($(".overall-rate.choosen").html()),
-        foodQuality: getFoodQuality(),
-        staffQuality: getStaffQuality()
-      }
+  submitButton() {
 
-      console.log(this.feedback);
+    this.feedback = {
+      overallQuality: parseInt($(".overall-rate.choosen").html()),
+      foodQuality: getFoodQuality(),
+      staffQuality: getStaffQuality()
+    }
+
+    this.feedbackService.addFeedback(this.feedback).subscribe(
+      success => {
+        if(success) {
+          console.log("done");
+        } else {
+
+        }
     });
+    console.log(this.feedback);
+
+    // Gets food quality rate base on index
+    function getFoodQuality(){
+      let result : number;
+      result = 0;
+      $(".foodquality-rate").each(function(index) {
+        if($(this).hasClass("choosen")){
+          result = index + 1;
+        }
+      });
+      return result;
+    }
+
+    // Gets staff quality rate base on index
+    function getStaffQuality(){
+      let result : number;
+      result = 0;
+      $(".staff-rate").each(function(index) {
+        if($(this).hasClass("choosen")){
+          result = index + 1;
+        }
+      });
+      return result;
+    }
+  }
+
+  initFunctions() {
 
     $(".overall-rate").click(function(){
       // Clear rate before choosing assigning a new one
@@ -88,29 +120,6 @@ export class FeedbackComponent implements OnInit {
       });
     }
 
-    // Gets food quality rate base on index
-    function getFoodQuality(){
-      let result : number;
-      result = 0;
-      $(".foodquality-rate").each(function(index) {
-        if($(this).hasClass("choosen")){
-          result = index + 1;
-        }
-      });
-      return result;
-    }
-
-    // Gets staff quality rate base on index
-    function getStaffQuality(){
-      let result : number;
-      result = 0;
-      $(".staff-rate").each(function(index) {
-        if($(this).hasClass("choosen")){
-          result = index + 1;
-        }
-      });
-      return result;
-    }
   }
 
 }
