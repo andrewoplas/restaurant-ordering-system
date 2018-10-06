@@ -43,7 +43,7 @@ export class MenuService {
   /** POST: add a new menu to the server */
   public addMenu(menu: Menu): Observable<any> {
     return this.http
-      .put<Menu>(`${this.baseUrl}/add-menu`, menu, httpOptions)
+      .post<Menu>(`${this.baseUrl}/add-menu`, menu, httpOptions)
       .pipe(
         tap(_ => this.log(`add menu with id=${menu.id}`)),
         catchError(this.handleError<Menu>("add-menu"))

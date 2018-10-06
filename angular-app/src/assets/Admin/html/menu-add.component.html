@@ -9,7 +9,7 @@
         <div class="white-box">
             <h3 class="box-title m-b-40">Create Menu</h3>
 
-            <form [formGroup]="forms" #formDirective="ngForm">
+            <form [formGroup]="forms" #formDirective="ngForm" (submit)="create()">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="group">
