@@ -20,6 +20,8 @@ public class Menu {
 	
 	private boolean show;
 	
+    private List<Integer> menu_items;
+	
     @Ignore
     private List<MenuItem> items;
     
@@ -57,6 +59,14 @@ public class Menu {
 		this.show = show;
 	}
 
+	public List<Integer> getMenu_items() {
+		return menu_items;
+	}
+
+	public void setMenu_items(List<Integer> menu_items) {
+		this.menu_items = menu_items;
+	}
+
 	public List<MenuItem> getItems() {
 		return items;
 	}
@@ -64,6 +74,4 @@ public class Menu {
 	public void setItems(List<MenuItem> items) {
 		this.items = items;
 	}
-    
-    
 }

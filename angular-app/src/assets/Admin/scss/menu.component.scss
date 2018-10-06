@@ -1,5 +1,15 @@
 @import "admin.component.scss";
 
+.btn-additem, .btn-additem:hover, .btn-additem:active, .btn-additem:visited {
+    padding: 5px;
+    color: white;
+    background-color: $brand-primary !important;
+    border-color: $brand-primary !important;
+    float: right;
+    max-height: 40px;
+    width: 120px;
+}
+
 :host /deep/ {
     table.dataTable {
         width: 100%;
