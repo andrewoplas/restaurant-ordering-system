@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webtech.Model.Menu;
-import com.webtech.Model.Order;
 import com.webtech.Service.MenuService;
 
 
@@ -29,8 +27,9 @@ public class MenuController extends BaseController implements CONTROLLER<Menu>{
 	MenuService service;
 
 	@CrossOrigin
-	@PostMapping(path = "/menu", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<Menu> create(Menu obj) {
+	@PostMapping(path = "/add-menu", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Override
+	public @ResponseBody List<Menu> create(@RequestBody Menu obj) {
 		return service.create(obj);
 	}
 	
