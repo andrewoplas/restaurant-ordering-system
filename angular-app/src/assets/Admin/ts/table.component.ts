@@ -67,12 +67,8 @@ export class TableComponent implements OnInit {
   addSubmit(){
     $('#submit-add-table').click(function() {
       // check seats
-      if($("#table-seats").val() == 4){
-        this.seats = 4;
-      }
-      else{
-        this.seats = 2;
-      }
+      if($("#table-seats").val() == 4){ this.seats = 4; }
+      else{ this.seats = 2; }
 
       this.table = {
         id : "",
@@ -115,8 +111,6 @@ export class TableComponent implements OnInit {
     $(".button-edit").click(function(){
       tnum = $(this).parent().parent().find(".table-pic").html();
       tid = $(this).parent().parent().parent().attr("table-id");
-
-      console.log();
 
       $(".edit-number").val(tnum);
       $(".edit-details").html(tnum);
