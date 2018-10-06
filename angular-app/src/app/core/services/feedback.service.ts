@@ -42,11 +42,11 @@ export class FeedbackService {
   }
 
   /** POST: add a new Feedback to the server */
-  addFeedback(Feedback: Feedback): Observable<any> {
+  addFeedback(feedback: Feedback): Observable<any> {
     return this.http
-      .put<Feedback>(`${this.baseUrl}/feedback`, Feedback, httpOptions)
+      .post<Feedback>(`${this.baseUrl}/feedback`, feedback, httpOptions)
       .pipe(
-        tap(_ => this.log(`add Feedback with id=${Feedback.id}`)),
+        tap(_ => this.log(`add Feedback with id=${feedback.id}`)),
         catchError(this.handleError<Feedback>("add-Feedback"))
       );
   }
