@@ -58,141 +58,200 @@
 
 <div class="col-lg-12 col-md-8 col-sm-12 col-12 flex-tables-container">
     <div class="flex-container flex-catcher">
-        <div class="flex-item table-vacant">
+        <div class="flex-item table-vacant" table-id="1">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
-                    <span class="table-pic table-four">1</span>
+                    <span class="table-pic table-four" num-seats="4">1</span>
                 </div>
-                <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
-                    <i class="text-danger mdi mdi-delete"></i>
+                <div class="col-lg-12 col-md-8 col-sm-12 button-container">
+                    <div (click)="editTable($event)" class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete" [swal]="deleteTable" data-toggle="tooltip">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-occupied">
+        <div class="flex-item table-occupied" table-id="2">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container" title="View Table">
-                    <span class="table-pic table-four">2</span>
+                    <span class="table-pic table-four" num-seats="4">2</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container">
-                    <i class="text-danger mdi mdi-delete"></i>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-edit">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-occupied">
+        <div class="flex-item table-occupied" table-id="3">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container">
-                    <span class="table-pic table-two">3</span>
+                    <span class="table-pic table-two" num-seats="2">3</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container">
-                    <i class="text-danger mdi mdi-delete"></i>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-edit">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-vacant">
+        <div class="flex-item table-vacant" table-id="4">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
-                    <span class="table-pic table-two">4</span>
+                    <span class="table-pic table-two" num-seats="2">4</span>
                 </div>
-                <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
-                    <i class="text-danger mdi mdi-delete"></i>
+                <div class="col-lg-12 col-md-8 col-sm-12 button-container">
+                    <div (click)="editTable()" class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete" [swal]="deleteTable" data-toggle="tooltip">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-occupied">
+        <div class="flex-item table-occupied" table-id="5">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container">
-                    <span class="table-pic table-two">5</span>
+                    <span class="table-pic table-two" num-seats="2">5</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container">
-                    <i class="text-danger mdi mdi-delete"></i>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-edit">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-vacant">
+        <div class="flex-item table-vacant" table-id="6">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
-                    <span class="table-pic table-four">6</span>
+                    <span class="table-pic table-four" num-seats="4">6</span>
                 </div>
-                <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
-                    <i class="text-danger mdi mdi-delete"></i>
+                <div class="col-lg-12 col-md-8 col-sm-12 button-container">
+                    <div (click)="editTable()" class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete" [swal]="deleteTable" data-toggle="tooltip">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-occupied">
+        <div class="flex-item table-occupied" table-id="7">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container">
-                    <span class="table-pic table-two">7</span>
+                    <span class="table-pic table-two" num-seats="2">7</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container">
-                    <i class="text-danger mdi mdi-delete"></i>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-edit">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-vacant">
+        <div class="flex-item table-vacant" table-id="8">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
-                    <span class="table-pic table-four">8</span>
+                    <span class="table-pic table-four" num-seats="4">8</span>
                 </div>
-                <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
-                    <i class="text-danger mdi mdi-delete"></i>
+                <div class="col-lg-12 col-md-8 col-sm-12 button-container">
+                    <div (click)="editTable()" class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete" [swal]="deleteTable" data-toggle="tooltip">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-vacant">
+        <div class="flex-item table-vacant" table-id="9">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
-                    <span class="table-pic table-four">9</span>
+                    <span class="table-pic table-four" num-seats="4">9</span>
                 </div>
-                <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
-                    <i class="text-danger mdi mdi-delete"></i>
+                <div class="col-lg-12 col-md-8 col-sm-12 button-container">
+                    <div (click)="editTable()" class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete" [swal]="deleteTable" data-toggle="tooltip">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-vacant">
+        <div class="flex-item table-vacant" table-id="10">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
-                    <span class="table-pic table-two">10</span>
+                    <span class="table-pic table-two" num-seats="2">10</span>
                 </div>
-                <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
-                    <i class="text-danger mdi mdi-delete"></i>
+                <div class="col-lg-12 col-md-8 col-sm-12 button-container">
+                    <div (click)="editTable()" class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete" [swal]="deleteTable" data-toggle="tooltip">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-vacant">
+        <div class="flex-item table-vacant" table-id="11">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container model_img img-responsive" alt="default" data-toggle="modal" data-target=".view-table-modal" title="View Table">
-                    <span class="table-pic table-two">11</span>
+                    <span class="table-pic table-two" num-seats="2">11</span>
                 </div>
-                <div class="col-lg-12 col-md-8 col-sm-12 button-container" [swal]="deleteTable" data-toggle="tooltip">
-                    <i class="text-danger mdi mdi-delete"></i>
+                <div class="col-lg-12 col-md-8 col-sm-12 button-container">
+                    <div (click)="editTable()" class="col-lg-6 col-md-6 col-sm-12 button-edit model_img img-responsive" alt="default" data-toggle="modal" data-target=".edit-table-modal">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete" [swal]="deleteTable" data-toggle="tooltip">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex-item table-occupied">
+        <div class="flex-item table-occupied" table-id="12">
             <div class="row">
                 <div class="col-lg-12 col-md-8 col-sm-12 span-container">
-                    <span class="table-pic table-four">12</span>
+                    <span class="table-pic table-four" num-seats="4">12</span>
                 </div>
                 <div class="col-lg-12 col-md-8 col-sm-12 button-container">
-                    <i class="text-danger mdi mdi-delete"></i>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-edit">
+                        <i class="mdi mdi-pencil"></i>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 button-delete">
+                        <i class="mdi mdi-delete"></i>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <swal
-            #deleteTable
-            title="Delete Table?"
-            text="Are you sure you want to remove this table?"
-            type="question"
-            [showCancelButton]="true"
-            [focusCancel]="true"
-            (confirm)="delete(table.id)"
-            confirmButtonText="Yes, Delete it"
-            confirmButtonColor="#A40020">
-        </swal>
-        
     </div>
 </div>
+
+<swal
+    #deleteTable
+    title="Delete Table?"
+    text="Are you sure you want to remove this table?"
+    type="question"
+    [showCancelButton]="true"
+    [focusCancel]="true"
+    (confirm)="delete(table.id)"
+    confirmButtonText="Yes, Delete it"
+    confirmButtonColor="#A40020">
+</swal>
 
 <!-- add table modal content -->
 <div id="add-table-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -200,7 +259,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Table Details</h4> </div>
+                <h4 class="modal-title" id="myModalLabel">Add Table</h4> </div>
             <div class="modal-body container-fluid add-table-body-container">
                 <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 add-table-container">
                     <div class="add-table-item">
@@ -218,8 +277,8 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer btn-submit-container">
-                <button type="button" class="btn waves-effect" id="submit" data-dismiss="modal">Submit</button>
+            <div class="modal-footer btn-submit-add-table">
+                <button type="button" class="btn waves-effect" id="submit-add-table" data-dismiss="modal">Submit</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -277,6 +336,40 @@
                         <h3>400</h3>
                     </div>
                 </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- edit table modal content -->
+<div class="modal fade edit-table-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Edit Table</h4> </div>
+            <div class="modal-body container-fluid add-table-body-container">
+                <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12 add-table-container">
+                    <div class="add-table-item">
+                        <span class="table-details edit-details"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+                    <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+                        <h5>Table Number</h5>
+                        <h5>No. of Seats</h5>
+                    </div>
+                    <div class="col-lg-6 col-md-2 col-sm-2 col-xs-12">
+                        <input type="number" class="form-control table-input edit-number">
+                        <input type="number" class="form-control table-input edit-seats" max="4" min="2" step="2">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer btn-submit-edit-table">
+                <button type="button" class="btn waves-effect" id="submit-edit-table" data-dismiss="modal">Submit</button>
             </div>
         </div>
         <!-- /.modal-content -->
