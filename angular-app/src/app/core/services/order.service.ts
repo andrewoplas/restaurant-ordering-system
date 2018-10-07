@@ -61,7 +61,7 @@ export class OrderService {
   }
 
   /** PUT: update the order on the server */
-  updateHero(order: Order): Observable<any> {
+  updateOrder(order: Order): Observable<any> {
     return this.http
       .put(`${this.baseUrl}/update-order`, order, httpOptions)
       .pipe(
