@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { OrderService } from '../../../app/core/services/order.service';
+import { OrderService } from '@services/order.service';
 import { Order, Status } from '../../../app/models/Order';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
@@ -19,18 +19,8 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService, private modalService: NgbModal) {}
 
   ngOnInit() {
-    $("#table-orders").dataTable();
-    this.getOrders();
-    $('.preloader').fadeOut();
-  }
-
-  getOrders() {
     this.orderService.getOrders().subscribe(
-      data => {
-        this.orderList = data;
-        $("#table-orders").DataTable().clear();
-        $('#table-orders').DataTable().destroy();
-      }
+      data => { this.orderList = data; }
     );
   }
 

@@ -15,19 +15,8 @@ export class MenuComponent implements OnInit {
   constructor(private menuService: MenuService) {}
 
   ngOnInit() {
-    $("#table-menu").dataTable();
-    this.getMenus();
-    $(".preloader").fadeOut();
-  }
-
-  getMenus() {
     this.menuService.getMenus().subscribe(
-      data => {
-        this.menuList = data;
-        console.log(data);
-        $("#table-menu").DataTable().clear();
-        $('#table-menu').DataTable().destroy();
-      }
+      data => { this.menuList = data; }
     );
   }
 
