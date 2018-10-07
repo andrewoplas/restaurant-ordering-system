@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Feedback } from '../../models/Feedback';
+import { Feedback } from '@models/Feedback';
 
 @Pipe({
   name: 'feedbackFilter'
