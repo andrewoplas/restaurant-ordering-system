@@ -483,4 +483,55 @@ body {
         }
     }
 }
+.modal-title-right {
+    text-align: right;
+}
 
+.checkout-body-container {
+   
+    .column-heading {
+        text-align: center;
+    }
+    .table-no{
+        color:rgba(117, 117, 116, 0.9);
+        font-size:11px;
+    }
+    .cash-on-hand-container, .input-cash-container{
+        margin-top:20px;
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+    }
+    .cash-on-hand{
+        color:rgba(117, 117, 116, 0.9);
+    }
+    .input-cash{
+        width: 100%;
+    }
+
+    .total-container {
+        h3 {
+            color: #ffa500;
+            margin: 15px 0;
+        }
+       
+    }
+    .tbl{
+        padding: 0 !important;
+    }
+}
+
+.btn-submit-container {
+    text-align: center !important;
+
+    button {
+        background-color: #ffa500;
+        color: #ffffff;
+        width: 119px;
+        height: 40px;
+    }
+}
