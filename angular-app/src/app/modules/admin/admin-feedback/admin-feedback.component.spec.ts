@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminFeedbackComponent } from '../../../../assets/Admin/ts/admin-feedback.component';
+import { AdminFeedbackComponent } from '@admin/admin-feedback.component';
 
 describe('AdminFeedbackComponent', () => {
   let component: AdminFeedbackComponent;
