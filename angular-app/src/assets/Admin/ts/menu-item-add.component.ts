@@ -20,13 +20,13 @@ export class MenuItemAddComponent implements OnInit {
   menuItemForm = this.formBuilder.group({
     name: ["", Validators.required],
     description: ["", Validators.required],
-    price: ["", Validators.required],
-    salePrice: ["", Validators.required],
-    cookingTime: ["", Validators.required],
-    servings: ["", Validators.required],
-    imageLink: ["", Validators.required],
+    price: [""],
+    salePrice: [""],
+    cookingTime: [""],
+    servings: [""],
+    imageLink: [""],
     show: [""],
-    menuId: ["", Validators.required],
+    menuId: [""],
   });
 
   menuList: Array<Menu> = new Array<Menu>();
@@ -46,10 +46,10 @@ export class MenuItemAddComponent implements OnInit {
       id: 0,
       name: this.menuItemForm.value.name.trim(),
       description: this.menuItemForm.value.description.trim(),
-      price: this.menuItemForm.value.price.trim(),
-      salePrice: this.menuItemForm.value.salePrice.trim(),
-      cookingTime: this.menuItemForm.value.cookingTime.trim(),
-      servings: this.menuItemForm.value.servings.trim(),
+      price: this.menuItemForm.value.price,
+      salePrice: this.menuItemForm.value.salePrice,
+      cookingTime: this.menuItemForm.value.cookingTime,
+      servings: this.menuItemForm.value.servings,
       imageLink: this.menuItemForm.value.imageLink.trim(),
       menuId: this.menuItemForm.value.menuId.trim(),
       show: this.menuItemForm.value.show,
@@ -99,6 +99,7 @@ export class MenuItemAddComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.addItem();
   }
 
