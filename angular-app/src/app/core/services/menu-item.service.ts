@@ -1,11 +1,11 @@
 
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { MessageService } from "../services/message.service";
+import { MessageService } from "@services/message.service";
 import { Observable } from "rxjs/Observable";
 import { catchError, tap } from "rxjs/operators";
 import { of } from "rxjs/observable/of";
-import { MenuItem } from '../../models/MenuItem';
+import { MenuItem } from '@models/MenuItem';
 
 const httpOptions = {
   headers: new HttpHeaders({
