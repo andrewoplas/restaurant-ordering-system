@@ -48,7 +48,7 @@ export class MenuAddComponent implements OnInit {
             'swal({' +
             'title: "Success",' +
             'text: "Successfully added the menu!",' +
-            'type: "success",' +
+            'type:   "success",' +
             'confirmButtonText: "Okay",' +
             'confirmButtonColor: "#FBA62F"' +
             '});'

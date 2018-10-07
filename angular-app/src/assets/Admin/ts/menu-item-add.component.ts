@@ -15,18 +15,19 @@ import * as $ from "jquery";
 })
 export class MenuItemAddComponent implements OnInit {
   title = "MENU ITEM"
-  menuItem: MenuItem = new MenuItem();
+  //menuItem: MenuItem = new MenuItem();
 
-  menuItemForm : FormGroup;
-  name:  FormControl = new FormControl('', Validators.required);
-  description: FormControl = new FormControl('', Validators.required);
-  price: FormControl = new FormControl('', Validators.required);
-  salePrice: FormControl = new FormControl('', Validators.required);
-  cookingTime: FormControl = new FormControl('', Validators.required);
-  maxServings: FormControl = new FormControl('', Validators.required);
-  imageLink: FormControl = new FormControl('', Validators.required);
-  show: FormControl = new FormControl();
-  menuId: FormControl = new FormControl('', Validators.required);
+  menuItemForm = this.formBuilder.group({
+    name: ["", Validators.required],
+    description: ["", Validators.required],
+    price: ["", Validators.required],
+    salePrice: ["", Validators.required],
+    cookingTime: ["", Validators.required],
+    servings: ["", Validators.required],
+    imageLink: ["", Validators.required],
+    show: [""],
+    menuId: ["", Validators.required],
+  });
 
   menuList: Array<Menu> = new Array<Menu>();
 
@@ -35,24 +36,24 @@ export class MenuItemAddComponent implements OnInit {
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    //this.getMenus();
-    this.menuItemForm = new FormGroup({
-      name: this.name,
-      description: this.description,
-      price: this.price,
-      salePrice: this.salePrice,
-      cookingTime: this.cookingTime,
-      maxServings: this.maxServings,
-      imageLink: this.imageLink,
-      show: this.show,
-      menuId: this.menuId
-    });
+    this.getMenus();
   }
 
 
 
   addItem() {
-
+    let menuItem = {      
+      id: 0,
+      name: this.menuItemForm.value.name.trim(),
+      description: this.menuItemForm.value.description.trim(),
+      price: this.menuItemForm.value.price.trim(),
+      salePrice: this.menuItemForm.value.salePrice.trim(),
+      cookingTime: this.menuItemForm.value.cookingTime.trim(),
+      servings: this.menuItemForm.value.servings.trim(),
+      imageLink: this.menuItemForm.value.imageLink.trim(),
+      menuId: this.menuItemForm.value.menuId.trim(),
+      show: this.menuItemForm.value.show,
+    }; 
     eval(
       'swal({' +
       'title: "Processing",' +
@@ -62,13 +63,13 @@ export class MenuItemAddComponent implements OnInit {
       '});'
     );
     
-    this.menuItemService.addMenuItem(this.menuItem).subscribe(
+    this.menuItemService.addMenuItem(menuItem).subscribe(
       data => {
         if(data != null) {
           eval(
             'swal({' +
             'title: "Success",' +
-            'text: "Successfully added the menu!",' +
+            'text: "Successfully added the menu item!",' +
             'type: "success",' +
             'confirmButtonText: "Okay",' +
             'confirmButtonColor: "#FBA62F"' +

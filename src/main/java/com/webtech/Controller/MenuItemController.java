@@ -18,7 +18,7 @@ public class MenuItemController extends BaseController implements CONTROLLER<Men
     @Autowired
     MenuItemService taskservice;
 
-    @CrossOrigin
+    @CrossOrigin	
     @RequestMapping(path = "/get-all-items", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MenuItem> getItems() {
         return taskservice.getItems();

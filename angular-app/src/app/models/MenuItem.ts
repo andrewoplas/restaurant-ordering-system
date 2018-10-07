@@ -8,7 +8,7 @@ export class MenuItem {
     servings: number;
     show: boolean;
     menuId: number;
-    imageURL: string;
+    imageLink: string;
     //ingredients: Array<string>;
     constructor() {
       this.id = 0;
@@ -19,7 +19,7 @@ export class MenuItem {
       this.cookingTime = 0;
       this.servings = 0;
       this.menuId = 0;
-      this.imageURL =  "Test";;
+      this.imageLink =  "Test";;
       this.show = true;
     }
 
