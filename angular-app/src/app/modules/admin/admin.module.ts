@@ -11,6 +11,7 @@ import { OrderComponent } from '@admin/order.component';
 import { MenuComponent } from '@admin/menu.component';
 import { AdminFeedbackComponent } from '@admin/admin-feedback.component';
 import { MenuAddComponent } from '@admin/menu-add.component';
+import { MenuEditComponent } from '@admin/menu-edit.component';
 
 import { OrderStatusFilterPipe } from '@pipe/order-status-filter.pipe';
 import { FeedbackFilterPipe } from '@pipe/feedback-filter.pipe';
@@ -23,6 +24,7 @@ const routes: Routes = [
     { path: 'table', component: TableComponent },
     { path: 'menu', component: MenuComponent },
     { path: 'menu/add', component: MenuAddComponent },
+    { path: 'menu/edit/:id', component: MenuEditComponent },
     { path: 'menu-item', component: MenuItemComponent },
     { path: 'menu-item/add', component: MenuItemAddComponent },
     { path: 'orders', component: OrderComponent },
@@ -46,6 +48,7 @@ const routes: Routes = [
     MenuComponent,
     AdminFeedbackComponent,
     MenuAddComponent,
+    MenuEditComponent,
     
     OrderStatusFilterPipe,
     FeedbackFilterPipe,
