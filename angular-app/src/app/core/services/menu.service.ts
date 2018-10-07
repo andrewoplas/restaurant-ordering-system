@@ -40,6 +40,16 @@ export class MenuService {
       );
   }
 
+  /** GET: retrieve single menu from the server */
+  public getMenu(id: number): Observable<Menu> {
+    return this.http
+      .get<Menu>(`${this.baseUrl}/get-menu/${id}`, httpOptions)
+      .pipe(
+        tap(() => this.log("get-menu")),
+        catchError(this.handleError("get-all-menus", null))
+      );
+  }
+
   /** POST: add a new menu to the server */
   public addMenu(menu: Menu): Observable<any> {
     return this.http
@@ -61,7 +71,7 @@ export class MenuService {
   }
 
   /** PUT: update the menu on the server */
-  public updateHero(menu: Menu): Observable<any> {
+  public updateMenu(menu: Menu): Observable<any> {
     return this.http
       .put(`${this.baseUrl}/update-menu`, menu, httpOptions)
       .pipe(
