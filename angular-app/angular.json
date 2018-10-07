@@ -34,6 +34,8 @@
               "../angular-app/src/plugins/bower_components/jquery/dist/jquery.min.js",
               "../angular-app/src/plugins/bootstrap/dist/js/bootstrap.min.js",
 
+              "../angular-app/src/plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
+
               "../angular-app/src/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js",
               
               "../angular-app/src/plugins/js/jquery.slimscroll.js",

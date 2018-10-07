@@ -18,7 +18,7 @@ public class MenuItemController extends BaseController implements CONTROLLER<Men
     @Autowired
     MenuItemService taskservice;
 
-    @CrossOrigin
+    @CrossOrigin	
     @RequestMapping(path = "/get-all-items", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MenuItem> getItems() {
         return taskservice.getItems();
@@ -31,7 +31,7 @@ public class MenuItemController extends BaseController implements CONTROLLER<Men
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/item", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/add-item", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<MenuItem> create(@RequestBody(required = true) MenuItem menuItem) {
         return taskservice.create(menuItem);
     }
@@ -43,7 +43,7 @@ public class MenuItemController extends BaseController implements CONTROLLER<Men
     }
 
     @CrossOrigin
-    @RequestMapping(path = "update-item", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/update-item", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<MenuItem> update(@RequestBody(required = true) MenuItem menuItem) {
         return taskservice.update(menuItem);
     }

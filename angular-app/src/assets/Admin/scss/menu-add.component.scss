@@ -25,6 +25,14 @@
         width: 100%;
         font-family: "VarelaRound", sans-serif;
 
+        .invalid {
+            border-bottom: 1px solid red;
+        }
+
+        .valid {
+            border-bottom: 1px solid green;
+        }
+
         &:focus {
             outline: none; 
         }
