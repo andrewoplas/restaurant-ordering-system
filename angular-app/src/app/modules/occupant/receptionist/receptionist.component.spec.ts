@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReceptionistComponent } from '../../../assets/ts/receptionist.component';
+import { ReceptionistComponent } from '@occupant/receptionist.component';
 
 describe('ReceptionistComponent', () => {
   let component: ReceptionistComponent;

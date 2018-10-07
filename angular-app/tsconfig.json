@@ -6,6 +6,7 @@
       "@admin/*" : ["./src/assets/Admin/ts/*"],
       "@occupant/*" : ["./src/assets/ts/*"],
       "@services/*" : ["./src/app/core/services/*"],
+      "@models/*" : ["./src/app/models/*"],
       "@pipe/*" : ["./src/app/core/pipe/*"],
     },
     "outDir": "./dist/out-tsc",

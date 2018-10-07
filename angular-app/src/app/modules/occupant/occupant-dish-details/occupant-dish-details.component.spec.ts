@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OccupantDishDetailsComponent } from '../../../../assets/ts/occupant-dish-details.component';
+import { OccupantDishDetailsComponent } from '@occupant/occupant-dish-details.component';
 
 describe('OccupantDishDetailsComponent', () => {
   let component: OccupantDishDetailsComponent;

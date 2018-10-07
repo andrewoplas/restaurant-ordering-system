@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OccupantMenuComponent } from '../../../../assets/ts/occupant-menu.component';
+import { OccupantMenuComponent } from '@occupant/occupant-menu.component';
 
 describe('OccupantMenuComponent', () => {
   let component: OccupantMenuComponent;

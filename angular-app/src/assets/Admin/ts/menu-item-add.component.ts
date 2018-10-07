@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { MenuItemService } from '../../../app/core/services/menu-item.service';
-import { MenuService } from '../../../app/core/services/menu.service';
-import { MenuItem } from '../../../app/models/MenuItem';
-import { Menu } from '../../../app/models/Menu';
-import * as $ from "jquery";
+import { Validators, FormBuilder } from '@angular/forms';
+import { MenuItemService } from '@services/menu-item.service';
+import { MenuService } from '@services/menu.service';
+import { Menu } from '@models/Menu';
 
 @Component({
   selector: 'app-menu-item-add',

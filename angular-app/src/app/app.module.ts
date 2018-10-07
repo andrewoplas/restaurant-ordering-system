@@ -13,11 +13,11 @@ import { AdminNavComponent } from '@admin/parts/admin-nav.component';
 import { AdminSideBarComponent } from '@admin/parts/admin-side-bar.component';
 import { AdminComponent } from '../assets/Admin/admin.component';
 import { LoginComponent } from '@admin/login.component';
-import { ReceptionistComponent } from "../assets/ts/receptionist.component";
-import { OccupantOrderComponent } from "../assets/ts/occupant-order.component";
-import { OccupantMenuComponent } from "../assets/ts/occupant-menu.component";
-import { FeedbackComponent } from '../assets/ts/feedback.component';
-import { LandingComponent } from '../assets/ts/landing.component';
+import { ReceptionistComponent } from "@occupant/receptionist.component";
+import { OccupantOrderComponent } from "@occupant/occupant-order.component";
+import { OccupantMenuComponent } from "@occupant/occupant-menu.component";
+import { FeedbackComponent } from '@occupant/feedback.component';
+import { LandingComponent } from '@occupant/landing.component';
 
 @NgModule({
   declarations: [

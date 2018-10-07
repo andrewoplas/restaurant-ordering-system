@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Feedback } from '../../app/models/Feedback';
-import { FeedbackService } from '../../app/core/services/feedback.service';
+import { Feedback } from '@models/Feedback';
+import { FeedbackService } from '@services/feedback.service';
 import * as $ from 'jquery';
 
 @Component({

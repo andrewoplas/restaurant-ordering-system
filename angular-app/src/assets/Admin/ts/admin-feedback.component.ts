@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FeedbackService } from '../../../app/core/services/feedback.service';
-import { Feedback } from '../../../app/models/Feedback';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FeedbackService } from '@services/feedback.service';
+import { Feedback } from '@models/Feedback';
 import * as $ from 'jquery';
 import 'datatables.net';
 

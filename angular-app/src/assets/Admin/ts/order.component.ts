@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { OrderService } from '@services/order.service';
-import { Order, Status } from '../../../app/models/Order';
+import { Order, Status } from '@models/Order';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import 'datatables.net';
