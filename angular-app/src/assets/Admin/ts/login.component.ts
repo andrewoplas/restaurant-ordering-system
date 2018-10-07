@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { AuthService } from '../../../app/core/services/auth.service';
+import { AuthService } from '@services/auth.service';
 import * as $ from "jquery";
 
 @Component({

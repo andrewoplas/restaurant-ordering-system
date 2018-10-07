@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MenuService } from '@services/menu.service';
-import { Menu } from '../../../app/models/Menu';
 import * as $ from 'jquery';
 import 'datatables.net';
 
