@@ -1,0 +1,29 @@
+@import "admin.component.scss";
+
+
+.top-details {
+    
+
+    .top-container {
+        height: 50px;
+        padding: 0px;
+        margin-bottom: 8px;
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+
+        div {
+            padding: 0px;
+        }
+    
+        img {
+            width: 50px;
+            margin-right: 10px;
+        }
+    
+        strong {
+            font-size: 30px;
+            color: #FBA62F;
+        }
+    }
+}
