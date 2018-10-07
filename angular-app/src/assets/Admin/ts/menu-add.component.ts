@@ -27,8 +27,8 @@ export class MenuAddComponent implements OnInit {
   create() {
     let menu = {      
       id: 0,
-      name: this.forms.value.name,
-      description: this.forms.value.description,
+      name: this.forms.value.name.trim(),
+      description: this.forms.value.description.trim(),
       menu_items: null,
       show: this.forms.value.show,
     };
@@ -38,7 +38,6 @@ export class MenuAddComponent implements OnInit {
       'title: "Processing",' +
       'text: "Please wait as we process your request",' +
       'showConfirmButton: false,' +
-      'confirmButtonColor: "#FBA62F"' +
       '});'
     );
 
