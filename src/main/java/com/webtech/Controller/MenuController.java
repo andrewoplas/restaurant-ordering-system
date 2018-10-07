@@ -36,7 +36,8 @@ public class MenuController extends BaseController implements CONTROLLER<Menu>{
 	@CrossOrigin
     @PutMapping(path = "/update-menu", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public List<Menu> update(Menu obj) {
+	public @ResponseBody List<Menu> update(@RequestBody Menu obj) {
+		System.out.println("--Update Menu");
 		return service.update(obj);
 	}
 	
@@ -56,7 +57,7 @@ public class MenuController extends BaseController implements CONTROLLER<Menu>{
 	}
 	
 	@CrossOrigin
-    @GetMapping(path = "/menu/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/get-menu/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public Menu getItem(@PathVariable(name = "id", required = true)String id) {
 		return service.getItem(id);

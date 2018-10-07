@@ -1,13 +1,17 @@
 package com.webtech.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jmethods.catatumbo.EntityQueryRequest;
+import com.jmethods.catatumbo.QueryResponse;
 import com.webtech.Dao.MenuDao;
 import com.webtech.Dao.MenuItemRepo;
 import com.webtech.Model.Menu;
+import com.webtech.Model.MenuItem;
 
 @Service
 public class MenuService implements SERVICE<Menu> {
@@ -15,7 +19,7 @@ public class MenuService implements SERVICE<Menu> {
 	private MenuDao repository;
 	
 	@Autowired
-	private MenuItemRepo repo;
+	private MenuItemRepo menuItemRepository;
 	
 	@Override
 	public  List<Menu> create(Menu obj) {
@@ -29,8 +33,15 @@ public class MenuService implements SERVICE<Menu> {
 	}
 
 	@Override
-	public  List<Menu> update(Menu obj) {
-		 repository.update(obj);
+	public List<Menu> update(Menu obj) {
+		System.out.println(repository.itemExist(obj.getId()));
+		System.out.println(repository.sameName(obj.getName(), obj.getId()));
+		if(repository.itemExist(obj.getId()) && !repository.sameName(obj.getName(), obj.getId())) {
+			repository.update(obj);
+		} else {
+			return null;
+		}
+		 
 		 return repository.getItems();
 	}
 
@@ -50,9 +61,7 @@ public class MenuService implements SERVICE<Menu> {
 		} catch (Exception ex) {
 			System.out.print("DELETESERVICE");
 			return null;
-		}
-		
-		
+		}		
 	}
 
 	@Override
@@ -63,7 +72,15 @@ public class MenuService implements SERVICE<Menu> {
 	@Override
 	public Menu getItem(String id) {
 		Menu returnedMenu = repository.getItem(id);
-		returnedMenu.setItems(repo.getItemsFromMenu(id));
+		if(returnedMenu != null) {
+			List<MenuItem> menuItems = new ArrayList<MenuItem>();
+			
+	    	for(Long menuItemId: returnedMenu.getMenu_items()) {
+	    		menuItems.add(menuItemRepository.getItem(menuItemId.toString()));
+	    	}
+	    	
+	    	returnedMenu.setItems(menuItems);
+		}
 		
 		return returnedMenu;
 	}

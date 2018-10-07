@@ -1,15 +1,12 @@
 package com.webtech.Dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.google.appengine.api.datastore.Entity;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
 import com.webtech.Model.Menu;
-import com.webtech.Model.User;
 
 @Repository
 public class MenuDao implements REPOSITORY<Menu> {
@@ -68,11 +65,27 @@ public class MenuDao implements REPOSITORY<Menu> {
 	public boolean itemExist(String name) {
 		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Menu` WHERE name=@menu_name");
 		request.setNamedBinding("menu_name", name);
-		QueryResponse<User> response = em.executeEntityQueryRequest(User.class, request);
+		QueryResponse<Menu> response = em.executeEntityQueryRequest(Menu.class, request);
 		
 		return !response.getResults().isEmpty();
 	}
-
 	
-
+	public boolean sameName(String name, long id) {
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Menu` WHERE name=@menu_name");
+		request.setNamedBinding("menu_name", name);
+		request.setNamedBinding("menu_id", id);
+		QueryResponse<Menu> response = em.executeEntityQueryRequest(Menu.class, request);
+		
+		boolean exists = false;
+		if(!response.getResults().isEmpty()) {
+			for(Menu menu: response.getResults()) {
+				if(menu.getId() != id) {
+					exists = true;
+					break;
+				}
+			}
+		}
+		
+		return exists;
+	}
 }
