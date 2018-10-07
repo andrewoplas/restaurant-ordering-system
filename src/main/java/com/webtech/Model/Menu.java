@@ -1,5 +1,6 @@
 package com.webtech.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.jmethods.catatumbo.Entity;
@@ -20,7 +21,7 @@ public class Menu {
 	
 	private boolean show;
 	
-    private List<Integer> menu_items;
+    private List<Long> menu_items;
 	
     @Ignore
     private List<MenuItem> items;
@@ -59,11 +60,15 @@ public class Menu {
 		this.show = show;
 	}
 
-	public List<Integer> getMenu_items() {
+	public List<Long> getMenu_items() {
+		if(menu_items == null) {
+			this.setMenu_items(new ArrayList<Long>());
+		}
+			
 		return menu_items;
 	}
 
-	public void setMenu_items(List<Integer> menu_items) {
+	public void setMenu_items(List<Long> menu_items) {
 		this.menu_items = menu_items;
 	}
 
