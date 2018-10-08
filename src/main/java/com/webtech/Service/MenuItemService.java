@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webtech.Dao.MenuItemDao;
+import com.webtech.Model.Menu;
 import com.webtech.Model.MenuItem;
 
 @Service
@@ -14,18 +15,26 @@ public class MenuItemService implements SERVICE<MenuItem>{
 	@Autowired
 	MenuItemDao repository;
 	
+	@Autowired
+	MenuService menuService;
+	
 	@Override
 	public List<MenuItem> create(MenuItem obj) {
 		if(!repository.itemExist(obj.getName())) {
-			if(repository.create(obj) == null) {
-				System.out.println("ERROR");
+			// Menu Item does not exists
+			MenuItem response = repository.create(obj);			
+			if(response != null) {
+				// Add Menu Item to a Menu's menu item list
+				Menu menu = menuService.getItem(obj.getMenuId().toString());
+				menu.addMenu_items(response.getId());
+			} else {
 				return null;
 			}
 		} else {
-			System.out.println("ALREADY EXISTS");
+			// Menu Item already exists
 			return null;
 		}
-			
+		
 		return repository.getItems();
 	}
 
