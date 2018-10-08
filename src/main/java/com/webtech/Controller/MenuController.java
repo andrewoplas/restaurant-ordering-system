@@ -52,7 +52,6 @@ public class MenuController extends BaseController implements CONTROLLER<Menu>{
 	@GetMapping(path = "/get-all-menus", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public List<Menu> getItems() {
-		System.out.println("GET ALL MENU");
 		return service.getItems();
 	}
 	

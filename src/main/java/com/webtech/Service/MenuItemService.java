@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webtech.Dao.MenuItemDao;
+import com.webtech.Model.Menu;
 import com.webtech.Model.MenuItem;
 
 @Service
@@ -14,18 +15,27 @@ public class MenuItemService implements SERVICE<MenuItem>{
 	@Autowired
 	MenuItemDao repository;
 	
+	@Autowired
+	MenuService menuService;
+	
 	@Override
 	public List<MenuItem> create(MenuItem obj) {
 		if(!repository.itemExist(obj.getName())) {
-			if(repository.create(obj) == null) {
-				System.out.println("ERROR");
+			// Menu Item does not exists
+			MenuItem response = repository.create(obj);			
+			if(response != null) {
+				// Add Menu Item to a Menu's menu item list
+				Menu menu = menuService.getItem(obj.getMenuId().toString());
+				menu.addMenu_items(response.getId());
+				menuService.update(menu);
+			} else {
 				return null;
 			}
 		} else {
-			System.out.println("ALREADY EXISTS");
+			// Menu Item already exists
 			return null;
 		}
-			
+		
 		return repository.getItems();
 	}
 
@@ -41,18 +51,20 @@ public class MenuItemService implements SERVICE<MenuItem>{
 
 	@Override
 	public List<MenuItem> delete(String id) {
-		try {		
-			MenuItem menu = repository.getItem(id);
-			if(menu != null) {
-				repository.delete(id);
-				return repository.getItems();
-			}else {
-				return null;
-			}
-		} catch (Exception ex) {
-			System.out.print("DELETESERVICE");
+		MenuItem menuItem = repository.getItem(id);
+		if(repository.itemExist(Long.parseLong(id))) {
+			repository.delete(id);
+			
+			// Remove Menu Item to a Menu's menu item list
+			Menu menu = menuService.getItem(menuItem.getMenuId().toString());
+			menu.removeMenu_items(menuItem.getId());
+			menuService.update(menu);
+		} else {
+			// Menu Item does not exists
 			return null;
 		}
+		
+		return repository.getItems();
 	}
 
 	@Override

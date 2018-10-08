@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jmethods.catatumbo.EntityQueryRequest;
-import com.jmethods.catatumbo.QueryResponse;
 import com.webtech.Dao.MenuDao;
 import com.webtech.Dao.MenuItemDao;
 import com.webtech.Model.Menu;
@@ -34,8 +32,6 @@ public class MenuService implements SERVICE<Menu> {
 
 	@Override
 	public List<Menu> update(Menu obj) {
-		System.out.println(repository.itemExist(obj.getId()));
-		System.out.println(repository.sameName(obj.getName(), obj.getId()));
 		if(repository.itemExist(obj.getId()) && !repository.sameName(obj.getName(), obj.getId())) {
 			repository.update(obj);
 		} else {
@@ -47,26 +43,37 @@ public class MenuService implements SERVICE<Menu> {
 
 	@Override
 	public  List<Menu> delete(String id) {
-		boolean result = false;
-		
 		try {		
-			Long longId = Long.parseLong(id);
 			Menu menu = repository.getItem(id);
 			if(menu != null) {
-				result = repository.delete(id);
-				return repository.getItems();
-			}else {
+				repository.delete(id);
+			} else {
 				return null;
 			}
 		} catch (Exception ex) {
-			System.out.print("DELETESERVICE");
 			return null;
 		}		
+		
+		return repository.getItems();
 	}
 
 	@Override
 	public List<Menu> getItems() {
-		return repository.getItems();
+		List<Menu> menus = repository.getItems();
+		
+		if(menus.size() > 0) {
+			for(Menu menu: menus) {
+				List<MenuItem> menuItems = new ArrayList<MenuItem>();
+				
+				for(Long menuItemId: menu.getMenu_items()) {
+		    		menuItems.add(menuItemRepository.getItem(menuItemId.toString()));
+		    	}
+				
+				menu.setItems(menuItems);
+	    	}
+		}
+		
+		return menus;
 	}
 
 	@Override

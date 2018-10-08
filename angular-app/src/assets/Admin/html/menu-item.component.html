@@ -19,7 +19,7 @@
                             <th>Image</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Status</th>
+                            <th class="text-center">Status</th>
                             <th>Serving</th>
                             <th>Action</th>
                         </tr>
@@ -37,7 +37,7 @@
                                         {{ item.show? 'SHOWN' : 'HIDDEN' }}
                                     </span>
                             </td>
-                            <td>{{ item.maxServings }}</td>
+                            <td>{{ item.servings }}</td>
                             <td>
                                 <button type="button" data-toggle="tooltip" title="Edit" 
                                     class="btn btn-success btn-outline btn-circle m-r-5 p-0">

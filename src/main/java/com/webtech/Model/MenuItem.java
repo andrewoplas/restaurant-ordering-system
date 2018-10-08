@@ -28,7 +28,7 @@ public class MenuItem {
 	private int cookingTime;
 
 	@Property(name="max_servings",indexed=true)
-	private int maxServings;
+	private int servings;
 
 	@Property(name="image_link")
 	private String imageLink;
@@ -97,12 +97,12 @@ public class MenuItem {
 		this.cookingTime = cookingTime;
 	}
 
-	public int getMaxServings() {
-		return maxServings;
+	public int getServings() {
+		return servings;
 	}
 
-	public void setMaxServings(int maxServings) {
-		this.maxServings = maxServings;
+	public void setServings(int maxServings) {
+		this.servings = maxServings;
 	}
 
 	public String getImageLink() {
@@ -137,7 +137,7 @@ public class MenuItem {
 		System.out.println(price);
 		System.out.println(salePrice);
 		System.out.println(cookingTime);
-		System.out.println(maxServings);
+		System.out.println(servings);
 		System.out.println(imageLink);
 		System.out.println(show);
 		

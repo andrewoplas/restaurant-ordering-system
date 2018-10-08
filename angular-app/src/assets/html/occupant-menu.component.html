@@ -3,14 +3,14 @@
     <div class="circle-container"></div>
 
     <div class="menu-item-container">
-        <div class="menu-item animated hide" *ngFor="let number of [0,1,2,3,5,6,7,8]">
+        <div class="menu-item animated hide" *ngFor="let menuItem of currentMenu.items">
             <div class="dish-padding">
                 <span class="dish-price">
                     <span></span>
-                    <p>P320</p>
+                    <p>P{{ menuItem.salePrice > 0? menuItem.salePrice : menuItem.price }}</p>
                 </span>
                 <img src="assets/img/dish-1.png" class="img-responsive" />
-                <span class="dish-name">Scottish Prawn</span>
+                <span class="dish-name">{{ menuItem.name }}</span>
             </div>
 
             <div class="dish-buttons">
@@ -29,28 +29,13 @@
 
     <div class="menu-container">
         <div class="menu active">
-            <img src="assets/img/Salad.png" />
+            <img (click)="showMenu('all')" src="assets/img/Salad.png" />
             <span>All</span>
         </div>
-
-        <div class="menu">
+        
+        <div class="menu" *ngFor="let menu of menuList" (click)="showMenu(menu)" [hidden]="!menu.show">
             <img src="assets/img/Main course.png" />
-            <span>Main</span>
-        </div>
-
-        <div class="menu">
-            <img src="assets/img/Japanese food.png" />
-            <span>Side</span>
-        </div>
-
-        <div class="menu">
-            <img src="assets/img/Dessert.png" />
-            <span>Desserts</span>
-        </div>
-
-        <div class="menu">
-            <img src="assets/img/Beverage.png" />
-            <span>Beverages</span>
+            <span>{{ menu.name }}</span>
         </div>
     </div>
 
@@ -62,29 +47,14 @@
     <div class="fab-menu-expand inactive"> </div>
 
     <div class="menu-container-xs hide">
-        <div class="menu-item-xs animated hide active">
+        <div (click)="showMenu('all')" class="menu-item-xs animated hide active">
             <img src="assets/img/Salad.png" />
             <span>All</span>
         </div>
-        
-        <div class="menu-item-xs animated hide">
+
+        <div class="menu-item-xs animated hide"  *ngFor="let menu of menuList" (click)="showMenu(menu)" [hidden]="!menu.show">
             <img src="assets/img/Main course.png" />
-            <span>Main</span>
-        </div>
-        
-        <div class="menu-item-xs animated hide">
-            <img src="assets/img/Japanese food.png" />
-            <span>Side</span>
-        </div>
-        
-        <div class="menu-item-xs animated hide">
-            <img src="assets/img/Dessert.png" />
-            <span>Desserts</span>
-        </div>
-        
-        <div class="menu-item-xs animated hide">
-            <img src="assets/img/Beverage.png" />
-            <span>Beverages</span>
+            <span>{{ menu.name }}</span>
         </div>
     </div>
 </div>
