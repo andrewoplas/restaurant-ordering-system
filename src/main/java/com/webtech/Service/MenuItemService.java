@@ -27,6 +27,7 @@ public class MenuItemService implements SERVICE<MenuItem>{
 				// Add Menu Item to a Menu's menu item list
 				Menu menu = menuService.getItem(obj.getMenuId().toString());
 				menu.addMenu_items(response.getId());
+				menuService.update(menu);
 			} else {
 				return null;
 			}
@@ -50,18 +51,20 @@ public class MenuItemService implements SERVICE<MenuItem>{
 
 	@Override
 	public List<MenuItem> delete(String id) {
-		try {		
-			MenuItem menu = repository.getItem(id);
-			if(menu != null) {
-				repository.delete(id);
-				return repository.getItems();
-			}else {
-				return null;
-			}
-		} catch (Exception ex) {
-			System.out.print("DELETESERVICE");
+		MenuItem menuItem = repository.getItem(id);
+		if(repository.itemExist(Long.parseLong(id))) {
+			repository.delete(id);
+			
+			// Remove Menu Item to a Menu's menu item list
+			Menu menu = menuService.getItem(menuItem.getMenuId().toString());
+			menu.removeMenu_items(menuItem.getId());
+			menuService.update(menu);
+		} else {
+			// Menu Item does not exists
 			return null;
 		}
+		
+		return repository.getItems();
 	}
 
 	@Override

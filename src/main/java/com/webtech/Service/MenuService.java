@@ -51,7 +51,6 @@ public class MenuService implements SERVICE<Menu> {
 				return null;
 			}
 		} catch (Exception ex) {
-			System.out.print("DELETESERVICE");
 			return null;
 		}		
 		

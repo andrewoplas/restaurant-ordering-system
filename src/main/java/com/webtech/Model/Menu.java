@@ -1,6 +1,7 @@
 package com.webtech.Model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.jmethods.catatumbo.Entity;
@@ -78,6 +79,10 @@ public class Menu {
 		}
 		
 		menu_items.add(menu_item);
+	}
+	
+	public void removeMenu_items(Long id) {
+		menu_items.remove(id);
 	}
 
 	public List<MenuItem> getItems() {
