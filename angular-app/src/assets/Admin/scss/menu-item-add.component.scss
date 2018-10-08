@@ -1,4 +1,5 @@
-@import "./bower_components/bootstrap-tagsinput/css/bootstrap-tagsinput.css";
+@import "bower_components/bootstrap-tagsinput/css/bootstrap-tagsinput.css";
+@import 'bower_components/sweetalert/sweetalert.scss';
 @import "admin.component.scss";
 
 .group 	{ 
@@ -34,6 +35,10 @@
             -moz-animation: inputHighlighter 0.3s ease;
             animation: inputHighlighter 0.3s ease;
         }
+
+        &.ng-invalid.ng-touched {
+            border-bottom: 1px solid $brand-secondary;
+        }
     }
 
     textarea {
@@ -64,6 +69,10 @@
             -webkit-animation: inputHighlighter 0.3s ease;
             -moz-animation: inputHighlighter 0.3s ease;
             animation: inputHighlighter 0.3s ease;
+        }
+
+        &.ng-invalid.ng-touched {
+            border-bottom: 1px solid $brand-secondary;
         }
     }
 
@@ -96,6 +105,14 @@
             -moz-animation: inputHighlighter 0.3s ease;
             animation: inputHighlighter 0.3s ease;
         }
+
+        &.ng-invalid.ng-touched {
+            border-bottom: 1px solid $brand-secondary;
+        }
+    }
+
+    .ng-invalid.ng-touched ~ label {
+        color: $brand-secondary;
     }
 
     label {

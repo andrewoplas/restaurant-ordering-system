@@ -1,23 +1,15 @@
 package com.webtech.Dao;
 
-import com.google.appengine.api.datastore.*;
-import com.jmethods.catatumbo.EntityQueryRequest;
-import com.jmethods.catatumbo.QueryResponse;
-import com.webtech.Model.Menu;
-import com.webtech.Model.MenuItem;
-import com.webtech.Model.Order;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import com.jmethods.catatumbo.EntityQueryRequest;
+import com.jmethods.catatumbo.QueryResponse;
+import com.webtech.Model.MenuItem;
 
 @Repository
-public class MenuItemRepo implements REPOSITORY<MenuItem>{
+public class MenuItemDao implements REPOSITORY<MenuItem>{
 
 
 	@Override
@@ -25,7 +17,8 @@ public class MenuItemRepo implements REPOSITORY<MenuItem>{
 		MenuItem insertedMenu = null;
 		
 		try {
-			insertedMenu = em.insert(obj);	
+			insertedMenu = em.insert(obj);
+			System.out.println("SUCCESS");
 		} catch (Exception ex) {
 			System.out.println("INSERTMENU: " + ex.getMessage());
 		}
@@ -69,6 +62,14 @@ public class MenuItemRepo implements REPOSITORY<MenuItem>{
 
 	public boolean itemExist(long id) {
 		return getItem(Long.toString(id)) != null;
+	}
+	
+	public boolean itemExist(String name) {
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `MenuItem` WHERE name=@menu_item_name");
+		request.setNamedBinding("menu_item_name", name);
+		QueryResponse<MenuItem> response = em.executeEntityQueryRequest(MenuItem.class, request);
+		
+		return !response.getResults().isEmpty();
 	}
 
 	    

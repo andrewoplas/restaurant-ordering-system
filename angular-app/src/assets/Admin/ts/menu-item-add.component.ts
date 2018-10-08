@@ -3,6 +3,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { MenuItemService } from '@services/menu-item.service';
 import { MenuService } from '@services/menu.service';
 import { Menu } from '@models/Menu';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-menu-item-add',
@@ -13,9 +14,10 @@ import { Menu } from '@models/Menu';
 })
 export class MenuItemAddComponent implements OnInit {
   title = "MENU ITEM"
+  menuList: Array<Menu> = new Array<Menu>();
   //menuItem: MenuItem = new MenuItem();
 
-  menuItemForm = this.formBuilder.group({
+  forms = this.formBuilder.group({
     name: ["", Validators.required],
     description: ["", Validators.required],
     price: [""],
@@ -27,31 +29,31 @@ export class MenuItemAddComponent implements OnInit {
     menuId: [""],
   });
 
-  menuList: Array<Menu> = new Array<Menu>();
-
-  constructor(private menuItemService: MenuItemService,
-              private menuService: MenuService,
-              private formBuilder: FormBuilder) { }
+  constructor(
+    private menuItemService: MenuItemService,
+    private menuService: MenuService,
+    private formBuilder: FormBuilder) 
+  { }
 
   ngOnInit() {
     this.getMenus();
   }
 
-
-
-  addItem() {
+  create() {
     let menuItem = {      
       id: 0,
-      name: this.menuItemForm.value.name.trim(),
-      description: this.menuItemForm.value.description.trim(),
-      price: this.menuItemForm.value.price,
-      salePrice: this.menuItemForm.value.salePrice,
-      cookingTime: this.menuItemForm.value.cookingTime,
-      servings: this.menuItemForm.value.servings,
-      imageLink: this.menuItemForm.value.imageLink.trim(),
-      menuId: this.menuItemForm.value.menuId.trim(),
-      show: this.menuItemForm.value.show,
+      name: this.forms.value.name.trim(),
+      description: this.forms.value.description.trim(),
+      price: this.forms.value.price,
+      salePrice: this.forms.value.salePrice,
+      cookingTime: this.forms.value.cookingTime,
+      servings: this.forms.value.servings,
+      imageLink: this.forms.value.imageLink.trim(),
+      menuId: this.forms.value.menuId.trim(),
+      show: this.forms.value.show,
+      ingredients: eval('$("[data-role=tagsinput]").tagsinput("items")')
     }; 
+    
     eval(
       'swal({' +
       'title: "Processing",' +
@@ -95,10 +97,4 @@ export class MenuItemAddComponent implements OnInit {
       }
     );
   }
-
-  onSubmit() {
-
-    this.addItem();
-  }
-
 }
