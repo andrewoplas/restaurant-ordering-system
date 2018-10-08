@@ -24,19 +24,21 @@ export class MenuItemComponent implements OnInit {
     // });
 
     this.menuItemService.getAllMenuItems().subscribe(
-      data => { this.menuItemList = data; console.log(data);}
+      data => { this.menuItemList = data;}
     );
   }
 
   reinitialize(isLast: boolean) {
     if (isLast && !$.fn.DataTable.isDataTable('#table-menu-item')) {
-      $('#table-menu-item').dataTable();
+      setTimeout(function(){
+        $('#table-menu-item').dataTable();
+      }, 500);
+
       eval("$('[data-toggle=tooltip]').tooltip();");
     }
   }
 
   delete(id: number) {
-    
     eval(
       'swal({' +
       'title: "Processing",' +
@@ -49,6 +51,10 @@ export class MenuItemComponent implements OnInit {
       .subscribe(
         data => {
           if(data != null) {
+            if ($.fn.DataTable.isDataTable("#table-menu-item")) {
+              $('#table-menu-item').DataTable().clear().destroy();
+            }
+
             this.menuItemList = data;
             eval(
               'swal({' +
