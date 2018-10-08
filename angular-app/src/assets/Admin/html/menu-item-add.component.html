@@ -9,17 +9,12 @@
         <div class="white-box">
             <h3 class="box-title m-b-40">Create Menu Item</h3>
 
-            <form [formGroup]="menuItemForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="forms" #formDirective="ngForm" (ngSubmit)="create()">
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         <div class="group"> 
                             <input type="text" name="name" id="name" formControlName="name" required>
                             <span class="bar"></span>
-<!--                             <div *ngIf="name.invalid && (name.dirty || name.touched)">
-                                <div *ngIf="name.errors.required">
-                                    Name is required.
-                                </div>
-                            </div> -->
                             <label>Name</label>
                         </div>
                     </div>
@@ -34,11 +29,6 @@
                         <div class="group">
                             <input type="number" name="price" id="price" formControlName="price" required>
                             <span class="bar"></span>
-<!--                             <div *ngIf="price.invalid && (price.dirty || price.touched)">
-                                <div *ngIf="price.errors.required">
-                                    Price is required.
-                                </div>
-                            </div> -->
                             <label>Price</label>
                         </div>
                     </div>
@@ -46,11 +36,6 @@
                         <div class="group">
                             <input type="number" name="sale-price" id="sale-price" formControlName="salePrice" required>
                             <span class="bar"></span>
-<!--                             <div *ngIf="salePrice.invalid && (salePrice.dirty || salePrice.touched)">
-                                <div *ngIf="salePrice.errors.required">
-                                    Sale price is required.
-                                </div>
-                            </div> -->
                             <label>Sale Price</label>
                             <small>Input '0' if food item is not on sale </small>
                         </div>
@@ -62,36 +47,32 @@
                         <div class="group">
                             <input type="number" name="max_servings" id="servings" formControlName="servings" required>
                             <span class="bar"></span>
-<!--                             <div *ngIf="servings.invalid && (servings.dirty || servings.touched)">
-                                <div *ngIf="servings.errors.required">
-                                    Max servings is required.
-                                </div>
-                            </div> -->
                             <label>Max Servings</label>
                         </div>
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <div class="group">
-                            <select name="menu" id="menu" formControlName="menuId" required>
-                                <option disabled selected></option>
-                                <!-- <option *ngFor="let menu of menuList" [value]="menu.id"> {{menu.name}} </option> -->
-                                <option value="menu1">Menu 1</option>
-                                <option value="menu2">Menu 2</option>
-                                <option value="menu3">Menu 3</option>
-                            </select>
+                            <input type="number" name="cooking_time" id="cooking_time" formControlName="cookingTime" required>
                             <span class="bar"></span>
-<!--                             <div *ngIf="menuId.invalid && (menuId.dirty || menuId.touched)">
-                                <div *ngIf="menuId.errors.required">
-                                    Menu is required.
-                                </div>
-                            </div> -->
-                            <label>Menu</label>
+                            <label>Cooking Time</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="row m-t-20 m-b-40">
-                    <div class="col-md-12">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="group">
+                            <select name="menu" id="menu" formControlName="menuId" required>
+                                <option disabled selected></option>
+                                <option *ngFor="let menu of menuList" [value]="menu.id"> 
+                                    {{menu.name}}
+                                </option>
+                            </select>
+                            <span class="bar"></span>
+                            <label>Menu</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12">
                         <div class="tags-default">
                             <input type="text" data-role="tagsinput" placeholder="Add Ingredients" /> 
                         </div>
@@ -104,11 +85,6 @@
                         <div class="group">
                             <textarea type="text" name="description" id="description" formControlName="description" required></textarea>
                             <span class="bar"></span>
-<!--                             <div *ngIf="description.invalid && (description.dirty || description.touched)">
-                                <div *ngIf="description.errors.required">
-                                    Description is required.
-                                </div>
-                            </div> -->
                             <label>Description</label>
                         </div>
                     </div>
@@ -119,18 +95,12 @@
                         <div class="group">
                             <input type="text" name="image_link" id="imageLink" formControlName="imageLink" required>
                             <span class="bar"></span>
-<!--                             <div *ngIf="imageLink.invalid && (imageLink.dirty || imageLink.touched)">
-                                <div *ngIf="imageLink.errors.required">
-                                    Image link is required.
-                                </div>
-                            </div> -->
                             <label>Image Link</label>
-                            <small>Temporary lang sa ni pat</small>
                         </div>
                     </div>
                 </div>
                 
-                <button type="submit" [disabled]="!menuItemForm.valid" class="btn btn-standard btn-submit">Submit</button>
+                <button type="submit" [disabled]="!forms.valid" class="btn btn-standard btn-submit">Submit</button>
             </form>
         </div>
     </div>

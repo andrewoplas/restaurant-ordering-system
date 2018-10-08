@@ -1,6 +1,7 @@
 package com.webtech.Model;
 
-import com.google.appengine.api.datastore.Key;
+import java.util.List;
+
 import com.jmethods.catatumbo.Entity;
 import com.jmethods.catatumbo.Identifier;
 import com.jmethods.catatumbo.Property;
@@ -8,138 +9,142 @@ import com.jmethods.catatumbo.Property;
 @Entity(kind = "MenuItem")
 public class MenuItem {
 	
-
-	
 	@Identifier
 	private Long id;
 
-	@Property(name="name",indexed=true)
 	private String name;
 
-	@Property(name="menuId",indexed=true)
-	private String menuId;
-
-	
-	
-	@Property(name="description")
+	@Property(name="menu_id",indexed=true)
+	private Long menuId;	
+		
 	private String description;
 
-	@Property(name="price",indexed=true)
 	private double price;
 	
-	
-	
+	@Property(name="sale_price",indexed=true)
+	private double salePrice;
+		
 	@Property(name="cooking_time",indexed=true)
-	private int cooking_time;
+	private int cookingTime;
 
 	@Property(name="max_servings",indexed=true)
-	private int serving;
+	private int maxServings;
 
 	@Property(name="image_link")
-	private String picture;
-
+	private String imageLink;
 	
-	/**
-	 * @return the id
-	 */
+	private boolean show;
+	
+	private List<String> ingredients;
+	
+	public MenuItem() {
+		
+	}
+
 	public Long getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the picture
-	 */
-	public String getPicture() {
-		return picture;
-	}
-
-	/**
-	 * @param picture the picture to set
-	 */
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-
-	/**
-	 * @return the serving
-	 */
-	public int getServing() {
-		return serving;
-	}
-
-	/**
-	 * @param serving the serving to set
-	 */
-	public void setServing(int serving) {
-		this.serving = serving;
-	}
-
-	/**
-	 * @return the cooking_time
-	 */
-	public int getCooking_time() {
-		return cooking_time;
-	}
-
-	/**
-	 * @param cooking_time the cooking_time to set
-	 */
-	public void setCooking_time(int cooking_time) {
-		this.cooking_time = cooking_time;
-	}
-
-	/**
-	 * @return the name
-	 */
 	public String getName() {
 		return name;
 	}
-	/**
-	 * @return the price
-	 */
-	public double getPrice() {
-		return price;
-	}
-	/**
-	 * @param price the price to set
-	 */
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	/**
-	 * @param name the name to set
-	 */
+
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-
-	public String getMenuId() {
+	public Long getMenuId() {
 		return menuId;
 	}
 
-	public void setMenuId(String menuId) {
+	public void setMenuId(Long menuId) {
 		this.menuId = menuId;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public double getSalePrice() {
+		return salePrice;
+	}
+
+	public void setSalePrice(double salePrice) {
+		this.salePrice = salePrice;
+	}
+
+	public int getCookingTime() {
+		return cookingTime;
+	}
+
+	public void setCookingTime(int cookingTime) {
+		this.cookingTime = cookingTime;
+	}
+
+	public int getMaxServings() {
+		return maxServings;
+	}
+
+	public void setMaxServings(int maxServings) {
+		this.maxServings = maxServings;
+	}
+
+	public String getImageLink() {
+		return imageLink;
+	}
+
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
+	}
+
+	public boolean isShow() {
+		return show;
+	}
+
+	public void setShow(boolean show) {
+		this.show = show;
+	}
+		
+	public List<String> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<String> ingredients) {
+		this.ingredients = ingredients;
+	}
+
+	public String toString() {
+		System.out.println(id);
+		System.out.println(name);
+		System.out.println(menuId);
+		System.out.println(description);
+		System.out.println(price);
+		System.out.println(salePrice);
+		System.out.println(cookingTime);
+		System.out.println(maxServings);
+		System.out.println(imageLink);
+		System.out.println(show);
+		
+		for(String temp: ingredients) {
+			System.out.println(temp);
+		}
+		
+		return "";
+	}
 }

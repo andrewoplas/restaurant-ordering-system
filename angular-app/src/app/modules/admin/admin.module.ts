@@ -38,7 +38,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes),
     NgbModule.forRoot(),
-    SweetAlert2Module.forRoot(),
+    SweetAlert2Module,
   ],
   declarations: [
     TableComponent,

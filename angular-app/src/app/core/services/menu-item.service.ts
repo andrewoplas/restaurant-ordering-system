@@ -44,7 +44,7 @@ export class MenuItemService {
   /** POST: add a new menu to the server */
   addMenuItem(menuItem: MenuItem): Observable<any> {
     return this.http
-      .put<MenuItem>(`${this.baseUrl}/add-item`, menuItem, httpOptions)
+      .post<MenuItem>(`${this.baseUrl}/add-item`, menuItem, httpOptions)
       .pipe(
         tap(_ => this.log(`add item with id=${menuItem.id}`)),
         catchError(this.handleError<MenuItem>("add-item"))

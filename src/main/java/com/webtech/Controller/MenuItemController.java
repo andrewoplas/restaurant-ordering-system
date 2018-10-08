@@ -1,13 +1,21 @@
 package com.webtech.Controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import com.webtech.Model.MenuItem;
-import java.util.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.webtech.Model.MenuItem;
 import com.webtech.Service.MenuItemService;
 
 
@@ -16,36 +24,37 @@ import com.webtech.Service.MenuItemService;
 public class MenuItemController extends BaseController implements CONTROLLER<MenuItem>{
 
     @Autowired
-    MenuItemService taskservice;
+    MenuItemService service;
 
     @CrossOrigin	
-    @RequestMapping(path = "/get-all-items", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/get-all-items", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MenuItem> getItems() {
-        return taskservice.getItems();
+        return service.getItems();
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET, path = "/item/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/item/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public MenuItem getItem(@PathVariable(name = "id", required = true) String id) {
-        return taskservice.getItem(id);
+        return service.getItem(id);
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/add-item", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuItem> create(@RequestBody(required = true) MenuItem menuItem) {
-        return taskservice.create(menuItem);
+    @PostMapping(path = "/add-item", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<MenuItem> create(@RequestBody MenuItem menuItem) {
+		menuItem.toString();
+        return service.create(menuItem);
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.DELETE, path = "/delete-item/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuItem> delete(@PathVariable(name = "id", required = true) String id) {
-        return taskservice.delete(id);
+    @DeleteMapping(path = "/delete-item/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<MenuItem> delete(@PathVariable(name = "id", required = true) String id) {
+        return service.delete(id);
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/update-item", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuItem> update(@RequestBody(required = true) MenuItem menuItem) {
-        return taskservice.update(menuItem);
+    @PutMapping(path = "/update-item", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<MenuItem> update(@RequestBody(required = true) MenuItem menuItem) {
+        return service.update(menuItem);
     }
 
 }

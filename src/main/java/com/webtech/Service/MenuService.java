@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
 import com.webtech.Dao.MenuDao;
-import com.webtech.Dao.MenuItemRepo;
+import com.webtech.Dao.MenuItemDao;
 import com.webtech.Model.Menu;
 import com.webtech.Model.MenuItem;
 
@@ -19,7 +19,7 @@ public class MenuService implements SERVICE<Menu> {
 	private MenuDao repository;
 	
 	@Autowired
-	private MenuItemRepo menuItemRepository;
+	private MenuItemDao menuItemRepository;
 	
 	@Override
 	public  List<Menu> create(Menu obj) {

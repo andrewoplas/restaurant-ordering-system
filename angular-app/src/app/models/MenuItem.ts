@@ -1,5 +1,5 @@
 export class MenuItem {
-    id: number;
+    id?: number;
     name: string;
     description: string;
     price: number;
@@ -9,21 +9,9 @@ export class MenuItem {
     show: boolean;
     menuId: number;
     imageLink: string;
-    //ingredients: Array<string>;
-    constructor() {
-      this.id = 0;
-      this.name = "Test";
-      this.description = "Test";
-      this.price = 0;
-      this.salePrice = 0;
-      this.cookingTime = 0;
-      this.servings = 0;
-      this.menuId = 0;
-      this.imageLink =  "Test";;
-      this.show = true;
-    }
+    ingredients: Array<string>;
 
-    /*constructor(id:number, name:string, description: string, price: number, salePrice: number, cookingTime: number, servings: number, menuId: number, imageURL: string, show:boolean) {
+    constructor(id:number, name:string, description: string, price: number, salePrice: number, cookingTime: number, servings: number, menuId: number, imageLink: string, show:boolean, ingredients:Array<string>) {
       this.id = id;
       this.name = name;
       this.description = description;
@@ -32,8 +20,9 @@ export class MenuItem {
       this.cookingTime = cookingTime;
       this.servings = servings;
       this.menuId = menuId;
-      this.imageURL = imageURL;
+      this.imageLink = imageLink;
       this.show = show;
-    }*/
+      this.ingredients = ingredients
+    }
   }
   

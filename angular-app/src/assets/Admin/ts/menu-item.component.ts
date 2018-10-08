@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { MenuItemService } from '@services/menu-item.service';
+import { MenuItem } from '@models/MenuItem';
 
 @Component({
   selector: 'display-item-menu',
@@ -7,28 +9,67 @@ import * as $ from 'jquery';
   styleUrls: ['../scss/menu-item.component.scss']
 })
 export class MenuItemComponent implements OnInit {
-
-  title = "MAIN COURSE";
+  title = "MENU ITEM";
+  menuItemList: Array<MenuItem> = new Array<MenuItem>();
   
-  constructor() { }
+  constructor(
+    private menuItemService: MenuItemService
+  ) { }
 
 
   ngOnInit() {
-    $('input[type=file]').change(function () {
-      var filePath = $(this).val().replace(/^.*[\\\/]/, '');
-      $("#file-name").text(filePath); 
-    });
+    // $('input[type=file]').change(function () {
+    //   var filePath = $(this).val().replace(/^.*[\\\/]/, '');
+    //   $("#file-name").text(filePath); 
+    // });
+
+    this.menuItemService.getAllMenuItems().subscribe(
+      data => { this.menuItemList = data; console.log(data);}
+    );
   }
 
-  ngAfterViewInit() {
-    $("#table-menu-item").dataTable({
-      columnDefs: [
-        {
-          targets: [0, 5],
-          orderable: false
-        }
-      ]
-    });
+  reinitialize(isLast: boolean) {
+    if (isLast && !$.fn.DataTable.isDataTable('#table-menu-item')) {
+      $('#table-menu-item').dataTable();
+      eval("$('[data-toggle=tooltip]').tooltip();");
+    }
   }
 
+  delete(id: number) {
+    
+    eval(
+      'swal({' +
+      'title: "Processing",' +
+      'text: "Please wait as we process your request",' +
+      'showConfirmButton: false,' +
+      '});'
+    );
+
+    this.menuItemService.deleteMenuItem(id)
+      .subscribe(
+        data => {
+          if(data != null) {
+            this.menuItemList = data;
+            eval(
+              'swal({' +
+              'title: "Success",' +
+              'text: "Successfully removed the menu item!",' +
+              'type:   "success",' +
+              'confirmButtonText: "Okay",' +
+              'confirmButtonColor: "#FBA62F"' +
+              '});'
+            );
+          } else {
+            eval(
+              'swal({' +
+              'title: "Ooops!",' +
+              'text: "There was an error during the process. Please try again!",' +
+              'type: "error",' +
+              'confirmButtonText: "Try Again",' +
+              'confirmButtonColor: "#A40020"' +
+              '});'
+            );
+          }
+      });
+  }
 }
