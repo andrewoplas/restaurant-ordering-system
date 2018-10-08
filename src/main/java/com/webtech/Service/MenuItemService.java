@@ -31,6 +31,10 @@ public class MenuItemService implements SERVICE<MenuItem>{
 
 	@Override
 	public List<MenuItem> update(MenuItem obj) {
+		//TODO: Check if menu item was not referenced in any order
+		//TODO: If not referenced, check if it exists
+		//TODO: If exists, get menu where it belongs and remove it in the list of menu_items
+		//TODO: Remove item
 		repository.update(obj);
 		return repository.getItems();
 	}

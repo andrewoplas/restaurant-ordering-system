@@ -52,8 +52,8 @@ public class MenuItemController extends BaseController implements CONTROLLER<Men
     }
 
     @CrossOrigin
-    @PutMapping(path = "/update-item", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuItem> update(@RequestBody(required = true) MenuItem menuItem) {
+    @PutMapping(path = "/update-item", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<MenuItem> update(@RequestBody(required = true) MenuItem menuItem) {
         return service.update(menuItem);
     }
 
