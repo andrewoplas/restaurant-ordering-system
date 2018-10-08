@@ -19,28 +19,36 @@
                             <th>Image</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Cooking Time</th>
-                            <th>Persons/Serving</th>
+                            <th>Status</th>
+                            <th>Serving</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let x of [1,2,3,4,5]">
+                        <tr *ngFor="let item of menuItemList; let last = last">
                             <td><img src="../../../assets/img/dish-1.png" width="80"/></td>
-                            <td>Human Limbs with Diarrhea</td>
-                            <td>P320</td>
-                            <td>40 minutes</td>
-                            <td>3-5 persons</td>
+                            <td>{{ item.name }}</td>
+                            <td>P{{ item.salePrice > 0? item.salePrice : item.price }}</td>
+                            <td class="text-center">
+                                    <span class="badge" [ngClass]="{
+                                        'badge-success': item.show == true,
+                                        'badge-danger': item.show == false 
+                                        }">
+                                        {{ item.show? 'SHOWN' : 'HIDDEN' }}
+                                    </span>
+                                </td>
+                            <td>{{ item.servings }}</td>
                             <td>
-                                <button type="button" data-toggle="tooltip" title="View" 
-                                    class="btn btn-info btn-outline btn-circle m-r-5 p-0">
-                                    <i class="text-info mdi mdi-eye"></i>
+                                <button type="button" data-toggle="tooltip" title="Edit" 
+                                    class="btn btn-success btn-outline btn-circle m-r-5 p-0">
+                                    <i class="text-success mdi mdi-pencil"></i>
                                 </button>
                                 <button [swal]="deleteOrder" type="button" data-toggle="tooltip" title="Delete"
                                     class="btn btn-danger btn-outline btn-circle p-0">
                                     <i class="text-danger mdi mdi-delete"></i>
                                 </button>
                             </td>
+                            <span *ngIf='last'>{{reinitialize(last)}}</span>
                         </tr>
                     </tbody>
                 </table>
