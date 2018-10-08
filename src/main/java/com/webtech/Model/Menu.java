@@ -71,6 +71,14 @@ public class Menu {
 	public void setMenu_items(List<Long> menu_items) {
 		this.menu_items = menu_items;
 	}
+	
+	public void addMenu_items(Long menu_item) {
+		if(menu_items == null) {
+			this.setMenu_items(new ArrayList<Long>());
+		}
+		
+		menu_items.add(menu_item);
+	}
 
 	public List<MenuItem> getItems() {
 		return items;
