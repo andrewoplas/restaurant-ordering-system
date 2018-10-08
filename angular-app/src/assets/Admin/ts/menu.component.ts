@@ -45,7 +45,6 @@ export class MenuComponent implements OnInit {
           if(data != null) {
             if ($.fn.DataTable.isDataTable("#table-menu")) {
               $('#table-menu').DataTable().clear().destroy();
-              console.log('test');
             }
             
             this.menuList = data;

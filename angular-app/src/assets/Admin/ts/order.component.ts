@@ -26,20 +26,52 @@ export class OrderComponent implements OnInit {
 
   reinitialize(isLast: boolean) {
     if (isLast && !$.fn.DataTable.isDataTable('#table-orders')) {
-      $('#table-orders').dataTable();
+      setTimeout(function(){
+        $('#table-orders').dataTable();
+      }, 500);
+
       eval("$('[data-toggle=tooltip]').tooltip();");
     }
   }
 
   delete(id: number) {
+    eval(
+      'swal({' +
+      'title: "Processing",' +
+      'text: "Please wait as we process your request",' +
+      'showConfirmButton: false,' +
+      '});'
+    );
+
     this.orderService.deleteOrder(id)
       .subscribe(
-        success => {
-          if(success) {
-            this.orderList = this.orderList.filter(o => o.id != id);
-            // alert('done');
+        data => {
+          if(data != null) {
+            if ($.fn.DataTable.isDataTable("#table-orders")) {
+              $('#table-orders').DataTable().clear().destroy();
+            }
+
+            this.orderList = data;
+
+            eval(
+              'swal({' +
+              'title: "Success",' +
+              'text: "Successfully removed order!",' +
+              'type:   "success",' +
+              'confirmButtonText: "Okay",' +
+              'confirmButtonColor: "#FBA62F"' +
+              '});'
+            );
           } else {
-            // alert('error');
+            eval(
+              'swal({' +
+              'title: "Ooops!",' +
+              'text: "There was an error during the process. Please try again!",' +
+              'type: "error",' +
+              'confirmButtonText: "Try Again",' +
+              'confirmButtonColor: "#A40020"' +
+              '});'
+            );
           }
       });
   }

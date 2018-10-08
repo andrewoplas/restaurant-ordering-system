@@ -58,9 +58,11 @@ export class MenuEditComponent implements OnInit {
   }
 
   reinitialize(isLast: boolean) {
-    console.log('reinitialize');
     if (isLast && !$.fn.DataTable.isDataTable('#table-menu-items')) {
-      $('#table-menu-items').dataTable();
+      setTimeout(function(){
+        $('#table-menu-items').dataTable();
+      }, 500);
+
       eval("$('[data-toggle=tooltip]').tooltip();");
     }
   }
@@ -88,18 +90,11 @@ export class MenuEditComponent implements OnInit {
         if(data != null) {
           eval(
             'swal({' +
-              'title: "Success",' +
-              'text: "Successfully updated the menu!",' +
-              'type: "success",' +
-              'confirmButtonText: "Okay",' +
-              'confirmButtonColor: "#FBA62F"' +
-            '},' +
-            'function(isConfirm){   ' + 
-            '  if (isConfirm) {     ' + 
-            '      swal("Deleted!", "Your imaginary file has been deleted.", "success");   ' + 
-            '  } else {     ' + 
-            '      swal("Cancelled", "Your imaginary file is safe :)", "error");   ' + 
-            '  } ' + 
+            'title: "Success",' +
+            'text: "Successfully updated menu item!",' +
+            'type:   "success",' +
+            'confirmButtonText: "Okay",' +
+            'confirmButtonColor: "#FBA62F"' +
             '});'
           );
         } else {
