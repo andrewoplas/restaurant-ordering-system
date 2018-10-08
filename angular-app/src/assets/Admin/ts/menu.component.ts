@@ -22,20 +22,53 @@ export class MenuComponent implements OnInit {
 
   reinitialize(isLast: boolean) {
     if (isLast && !$.fn.DataTable.isDataTable('#table-menu')) {
-      $('#table-menu').dataTable();
+      setTimeout(function(){
+        $('#table-menu').dataTable();
+      }, 500);
+        
       eval("$('[data-toggle=tooltip]').tooltip();");
     }
   }
 
   delete(id: number) {
+    eval(
+      'swal({' +
+      'title: "Processing",' +
+      'text: "Please wait as we process your request",' +
+      'showConfirmButton: false,' +
+      '});'
+    );
+
     this.menuService.deleteMenu(id)
       .subscribe(
-        success => {
-          if(success) {
-            this.menuList = this.menuList.filter(o => o.id != id);
-             alert('done');
+        data => {
+          if(data != null) {
+            if ($.fn.DataTable.isDataTable("#table-menu")) {
+              $('#table-menu').DataTable().clear().destroy();
+              console.log('test');
+            }
+            
+            this.menuList = data;
+             
+            eval(
+              'swal({' +
+              'title: "Success",' +
+              'text: "Successfully removed menu!",' +
+              'type:   "success",' +
+              'confirmButtonText: "Okay",' +
+              'confirmButtonColor: "#FBA62F"' +
+              '});'
+            );
           } else {
-             alert('error');
+            eval(
+              'swal({' +
+              'title: "Ooops!",' +
+              'text: "There was an error during the process. Please try again!",' +
+              'type: "error",' +
+              'confirmButtonText: "Try Again",' +
+              'confirmButtonColor: "#A40020"' +
+              '});'
+            );
           }
       });
   }

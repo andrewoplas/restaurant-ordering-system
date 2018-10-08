@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let menu of menuList; let last = last">
+                        <tr *ngFor="let menu of menuList; let last = last" id="menu{{ menu.id }}">
                             <td>{{ menu.name }}</td>
                             <td class="description">{{ menu.description }}</td>
                             <td class="text-center">
@@ -43,22 +43,10 @@
                                     class="btn btn-success btn-outline btn-circle m-r-5 p-0">
                                     <i class="text-success mdi mdi-pencil"></i>
                                 </button>
-                                <button [swal]="deleteMenu" type="button"
+                                <button [swal]="deleteMenu" (confirm)="delete(menu.id)" type="button"
                                     data-toggle="tooltip" title="Delete" class="btn btn-danger btn-outline btn-circle p-0">
                                     <i class="text-danger mdi mdi-delete"></i>
                                 </button>
-                                <swal 
-                                    #deleteMenu 
-                                    title="Delete Menu?" 
-                                    text="Are you sure you want to remove this menu?" 
-                                    type="question"
-                                    [showCancelButton]="true" 
-                                    [focusCancel]="true" 
-                                    (confirm)="delete(menu.id)"
-                                    confirmButtonText="Yes, Delete it"
-                                    confirmButtonColor="#A40020">
-                                </swal>
-
                                 <span *ngIf='last'>{{reinitialize(last)}}</span>
                             </td>
                         </tr>
@@ -69,3 +57,14 @@
         </div>
     </div>
 </div>
+
+<swal 
+    #deleteMenu 
+    title="Delete Menu?" 
+    text="Are you sure you want to remove this menu?" 
+    type="question"
+    [showCancelButton]="true" 
+    [focusCancel]="true" 
+    confirmButtonText="Yes, Delete it"
+    confirmButtonColor="#A40020">
+</swal>
