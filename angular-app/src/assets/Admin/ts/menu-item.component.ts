@@ -24,7 +24,7 @@ export class MenuItemComponent implements OnInit {
     // });
 
     this.menuItemService.getAllMenuItems().subscribe(
-      data => { this.menuItemList = data; }
+      data => { this.menuItemList = data; console.log(data);}
     );
   }
 
@@ -35,17 +35,41 @@ export class MenuItemComponent implements OnInit {
     }
   }
 
-  // delete(id: number) {
-  //   this.menuService.deleteMenu(id)
-  //     .subscribe(
-  //       success => {
-  //         if(success) {
-  //           this.menuList = this.menuList.filter(o => o.id != id);
-  //            alert('done');
-  //         } else {
-  //            alert('error');
-  //         }
-  //     });
-  // }
+  delete(id: number) {
+    
+    eval(
+      'swal({' +
+      'title: "Processing",' +
+      'text: "Please wait as we process your request",' +
+      'showConfirmButton: false,' +
+      '});'
+    );
 
+    this.menuItemService.deleteMenuItem(id)
+      .subscribe(
+        data => {
+          if(data != null) {
+            this.menuItemList = data;
+            eval(
+              'swal({' +
+              'title: "Success",' +
+              'text: "Successfully removed the menu item!",' +
+              'type:   "success",' +
+              'confirmButtonText: "Okay",' +
+              'confirmButtonColor: "#FBA62F"' +
+              '});'
+            );
+          } else {
+            eval(
+              'swal({' +
+              'title: "Ooops!",' +
+              'text: "There was an error during the process. Please try again!",' +
+              'type: "error",' +
+              'confirmButtonText: "Try Again",' +
+              'confirmButtonColor: "#A40020"' +
+              '});'
+            );
+          }
+      });
+  }
 }

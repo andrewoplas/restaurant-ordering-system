@@ -47,7 +47,7 @@ public class MenuItemController extends BaseController implements CONTROLLER<Men
 
     @CrossOrigin
     @DeleteMapping(path = "/delete-item/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuItem> delete(@PathVariable(name = "id", required = true) String id) {
+    public @ResponseBody List<MenuItem> delete(@PathVariable(name = "id", required = true) String id) {
         return service.delete(id);
     }
 

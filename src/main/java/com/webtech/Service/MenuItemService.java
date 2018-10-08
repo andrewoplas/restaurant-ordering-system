@@ -45,13 +45,10 @@ public class MenuItemService implements SERVICE<MenuItem>{
 			}else {
 				return null;
 			}
-			 
 		} catch (Exception ex) {
-			
 			System.out.print("DELETESERVICE");
 			return null;
 		}
-       
 	}
 
 	@Override
