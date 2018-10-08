@@ -15,7 +15,6 @@ import * as $ from 'jquery';
 export class MenuItemAddComponent implements OnInit {
   title = "MENU ITEM"
   menuList: Array<Menu> = new Array<Menu>();
-  //menuItem: MenuItem = new MenuItem();
 
   forms = this.formBuilder.group({
     name: ["", Validators.required],
@@ -37,6 +36,7 @@ export class MenuItemAddComponent implements OnInit {
 
   ngOnInit() {
     this.getMenus();
+    eval('$("[data-role=tagsinput]").tagsinput()');
   }
 
   create() {
@@ -53,6 +53,8 @@ export class MenuItemAddComponent implements OnInit {
       show: this.forms.value.show,
       ingredients: eval('$("[data-role=tagsinput]").tagsinput("items")')
     }; 
+
+    console.log(menuItem);
     
     eval(
       'swal({' +

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuService } from '@services/menu.service';
+import { MenuItemService } from '@services/menu-item.service';
+import { MenuItem } from '@models/MenuItem';
+import { Menu } from '@models/Menu';
 
 import * as $ from "jquery";
 import "animate.css";
-import { Menu } from '../../app/models/Menu';
-import { MenuService } from '@services/menu.service';
 
 @Component({
   selector: 'app-occupant-menu',
@@ -16,35 +18,59 @@ import { MenuService } from '@services/menu.service';
 export class OccupantMenuComponent implements OnInit {
     
 	menuList: Array<Menu> = new Array<Menu>();
-	constructor(private menuService: MenuService) {}
+	menuitemList: Array<MenuItem> = new Array<MenuItem>();
+	currentMenu = {
+		items: []
+	};
+
+	constructor(
+		private menuService: MenuService,
+		private menuItemService: MenuItemService
+	) {}
  
   ngOnInit() {
     this.initializeMenuItems();
     this.clickMenu();
-    this.clickFloatingActionButton();
+		this.clickFloatingActionButton();
   }
 
   initializeMenuItems() {
     this.menuService.getMenus().subscribe(
 			data => {
 				this.menuList = data;
-				console.log(data);
 			}
 		);
 
-    $(document).ready(function(){
-			$(".menu-item")
-				.removeClass("hide")
-				.addClass("animated zoomIn fast");
-    });
-  }
-  
+		this.menuItemService.getAllMenuItems().subscribe(
+			data => {
+				this.menuitemList = data
+				this.currentMenu = {
+					items: data
+				};
+
+				this.animateMenuItems();
+			}
+		); 
+	}
+	
   clickMenu() {
 		$(document).on('click', '.menu', function () {
 			$('.menu').removeClass('active');
 			$(this).addClass("active");
 		});
-  }
+	}
+	
+	showMenu(menu) {
+		if(menu == 'all') {
+			this.currentMenu = {
+				items: this.menuitemList
+			};
+		} else {
+			this.currentMenu = menu;
+		}
+		
+		this.animateMenuItems();
+	}
 
   clickFloatingActionButton() {
 		$('.fab-menu').click(function () {
@@ -71,6 +97,14 @@ export class OccupantMenuComponent implements OnInit {
 				$(this).find('i').text('restaurant_menu');
 			}
 		});
-  }
+	}
+	
+	animateMenuItems() {
+		$(document).ready(function(){
+			$(".menu-item")
+				.removeClass("hide")
+				.addClass("animated zoomIn fast");
+    });
+	}
 
 }
