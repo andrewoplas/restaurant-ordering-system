@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { MessageService } from '@services/message.service';
+import { ErrorHandlerService } from '@services/error-handler.service';
 import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Order } from '@models/Order';
+import 'rxjs/add/observable/throw';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,7 +24,8 @@ export class OrderService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private errHandler:ErrorHandlerService
   ) {
     this.baseUrl = "http://localhost:8080";
   }
@@ -36,14 +40,14 @@ export class OrderService {
       .get<Order[]>(`${this.baseUrl}/get-all-orders`, httpOptions)
       .pipe(
         tap(() => this.log("get-all-orders")),
-        catchError(this.handleError("get-all-orders", []))
+        catchError(this.errHandler.handleError)
       );
   }
 
   /** POST: add a new order to the server */
   addOrder(order: Order): Observable<any> {
     return this.http
-      .put<Order>(`${this.baseUrl}/add-order`, order, httpOptions)
+      .post<Order>(`${this.baseUrl}/add-order`, order, httpOptions)
       .pipe(
         tap(_ => this.log(`add order with id=${order.id}`)),
         catchError(this.handleError<Order>("add-order"))
@@ -71,6 +75,10 @@ export class OrderService {
   }
 
   /* Helper Methods */
+  private errorHandler(error: HttpErrorResponse) {
+    console.log(error);
+    return Observable.throw(error);
+  }
 
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {

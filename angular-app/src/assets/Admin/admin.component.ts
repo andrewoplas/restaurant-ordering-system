@@ -7,22 +7,10 @@ import * as $ from 'jquery';
   styleUrls: ['./scss/admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  datas : any = [
-                  {
-                    'name':'Okay here we go',
-                    'icon':'icon-people',
-                    'number' : 255
-                  },
-                  {
-                    'name':'Okay here we go',
-                    'icon':'icon-folder',
-                    'number' : 255
-                  }
-                ];
-  constructor() { }
+
+  constructor( ) { }
 
   ngOnInit() {
     $('.preloader').fadeOut();
   }
-
 }

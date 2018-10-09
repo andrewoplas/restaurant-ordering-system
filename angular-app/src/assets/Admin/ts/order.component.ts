@@ -1,7 +1,7 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { OrderService } from '@services/order.service';
 import { Order, Status } from '@models/Order';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import 'datatables.net';
 
@@ -16,11 +16,17 @@ export class OrderComponent implements OnInit {
   orderModal;
   orderList: Array<Order> = new Array<Order>();
 
-  constructor(private orderService: OrderService, private modalService: NgbModal) {}
+  constructor(
+    private orderService: OrderService, 
+    private modalService: NgbModal,
+  ) { }
 
   ngOnInit() {
     this.orderService.getOrders().subscribe(
-      data => { this.orderList = data; }
+      data => { this.orderList = data; },
+      error => { 
+        this.displayError(error);
+      }
     );
   }
 
@@ -86,5 +92,17 @@ export class OrderComponent implements OnInit {
     }, (reason) => {
       // close
     });
+  }
+
+  displayError(error) {
+    eval(
+      'swal({' +
+      'title: "'+ error.title +'",' +
+      'text: "'+ error.message +'",' +
+      'type: "error",' +
+      'confirmButtonText: "Got it!",' +
+      'confirmButtonColor: "#A40020"' +
+      '});'
+    );
   }
 }
