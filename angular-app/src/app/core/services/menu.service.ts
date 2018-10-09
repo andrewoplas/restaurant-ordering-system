@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { MessageService } from "@services/message.service";
 import { Observable } from "rxjs/Observable";
 import { catchError, tap } from "rxjs/operators";
-import { of } from "rxjs/observable/of";
 import { Menu } from "@models/Menu";
+import { ErrorHandlerService } from "@services/error-handler.service";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,12 +16,14 @@ const httpOptions = {
   providedIn: "root"
 })
 export class MenuService {
+
   private baseUrl: string;
   public menu: Array<Menu>;
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private errHandler: ErrorHandlerService
   ) {
     this.baseUrl = "http://localhost:8080";
   }
@@ -36,7 +38,7 @@ export class MenuService {
       .get<Menu[]>(`${this.baseUrl}/get-all-menus`, httpOptions)
       .pipe(
         tap(() => this.log("get-all-menus")),
-        catchError(this.handleError("get-all-menus", []))
+        catchError(this.errHandler.handleError)
       );
   }
 
@@ -46,7 +48,7 @@ export class MenuService {
       .get<Menu>(`${this.baseUrl}/get-menu/${id}`, httpOptions)
       .pipe(
         tap(() => this.log("get-menu")),
-        catchError(this.handleError("get-all-menus", null))
+        catchError(this.errHandler.handleError)
       );
   }
 
@@ -56,7 +58,7 @@ export class MenuService {
       .post<Menu>(`${this.baseUrl}/add-menu`, menu, httpOptions)
       .pipe(
         tap(_ => this.log(`add menu with id=${menu.id}`)),
-        catchError(this.handleError<Menu>("add-menu"))
+        catchError(this.errHandler.handleError)
       );
   }
 
@@ -66,7 +68,7 @@ export class MenuService {
       .delete<Menu>(`${this.baseUrl}/delete-menu/${menu}`)
       .pipe(
         tap(_ => this.log(`deleted menu id=${menu}`)),
-        catchError(this.handleError("delete-menu", menu))
+        catchError(this.errHandler.handleError)
       );
   }
 
@@ -76,28 +78,8 @@ export class MenuService {
       .put(`${this.baseUrl}/update-menu`, menu, httpOptions)
       .pipe(
         tap(_ => this.log(`updated menu id=${menu.id}`)),
-        catchError(this.handleError<any>("update-menu"))
+        catchError(this.errHandler.handleError)
       );
-  }
-
-  /* Helper Methods */
-
-  private handleError<T>(operation = "operation", result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
-
-  load(): Promise<Menu[]> {
-    this.menu = new Array<Menu>();
-    return this.http
-      .get<Menu[]>(`${this.baseUrl}/get-all-menus`, httpOptions)
-      .toPromise()
-      .then((data: any) => (this.menu = data))
-      .catch((err: any) => Promise.resolve());
   }
 
   /** Log a MenuService message with the MessageService */

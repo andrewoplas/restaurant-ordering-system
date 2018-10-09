@@ -4,9 +4,8 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { MessageService } from '@services/message.service';
 import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
 import { User, Role } from "@models/User";
-
+import { ErrorHandlerService } from '@services/error-handler.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,52 +23,43 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private errHandler: ErrorHandlerService
   ) {
     this.baseUrl = "http://localhost:8080";
   } 
 
    /** POST: Retrieve user */
-  login(user: LoginUser): Observable<any> {
+  public login(user: LoginUser): Observable<any> {
     return this.http
       .post<LoginUser>(`${this.baseUrl}/login`, user, httpOptions)
       .pipe(
         tap(_ => this.log(`login user with username=${user.username}`)),
-        catchError(this.handleError<LoginUser>("login"))
+        catchError(this.errHandler.handleError)
       );
   }
 
-  successLogin(user: User) {
+  public successLogin(user: User) {
     localStorage.setItem('user_credentials', JSON.stringify(user));
     this.router.navigate(['admin']);   
   }
 
-  isAdmin() {
+  public isAdmin() {
     let user: User = this.getUser();
     return user != null && user.role == Role.ADMIN;
   }
 
-  isloggedIn() {
+  public isloggedIn() {
     return localStorage.getItem("user_credentials");
   }
 
-  logout() {
+  public logout() {
     localStorage.removeItem('user_credentials');
     this.router.navigate(['/']);
   }
 
-  getUser() {
+  public getUser() {
     return JSON.parse(localStorage.getItem('user_credentials'));
-  }
-
-
-  private handleError<T>(operation = "operation", result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
   }
 
   /** Log a OrderService message with the MessageService */
