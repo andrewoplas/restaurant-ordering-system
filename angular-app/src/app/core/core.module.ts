@@ -9,6 +9,7 @@ import { AuthService } from "@services/auth.service";
 import { MenuItemService } from '@services/menu-item.service';
 import { FeedbackService } from '@services/feedback.service';
 import { ErrorHandlerService } from '@services/error-handler.service';
+import { Globals } from '@models/Globals';
 
 @NgModule({
   providers: [
@@ -18,7 +19,8 @@ import { ErrorHandlerService } from '@services/error-handler.service';
     AuthService,
     MenuItemService,
     FeedbackService,
-    ErrorHandlerService
+    ErrorHandlerService,
+    Globals
   ],
   declarations: [  ]
   
