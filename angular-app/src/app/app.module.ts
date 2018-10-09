@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from "@angular/core";
 import { CoreModule } from './core/core.module';
-import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
+import { SweetAlert2Module } from "@toverux/ngx-sweetalert2"
+import { ToastaModule } from 'ngx-toasta';
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +41,7 @@ import { LandingComponent } from '@occupant/landing.component';
     FlexLayoutModule,
     HttpClientModule,
     SweetAlert2Module.forRoot(),
+    ToastaModule.forRoot(),
     CoreModule,
   ],
   providers: [],
