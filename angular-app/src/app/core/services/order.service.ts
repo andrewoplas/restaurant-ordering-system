@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
 import { Order } from '@models/Order';
 import 'rxjs/add/observable/throw';
+import { Globals } from '@models/Globals';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,9 +25,10 @@ export class OrderService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    private errHandler:ErrorHandlerService
+    private errHandler:ErrorHandlerService,
+    private Global: Globals
   ) {
-    this.baseUrl = "http://localhost:8080";
+    this.baseUrl = this.Global.BASE_URL;
   }
 
   get orderList(): Array<Order> {

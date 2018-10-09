@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { catchError, tap } from "rxjs/operators";
 import { Menu } from "@models/Menu";
 import { ErrorHandlerService } from "@services/error-handler.service";
+import { Globals } from "@models/Globals";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,9 +24,10 @@ export class MenuService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    private errHandler: ErrorHandlerService
+    private errHandler: ErrorHandlerService,
+    private Global: Globals
   ) {
-    this.baseUrl = "http://localhost:8080";
+    this.baseUrl = this.Global.BASE_URL;
   }
 
   get menuList(): Array<Menu> {

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
 import { User, Role } from "@models/User";
 import { ErrorHandlerService } from '@services/error-handler.service';
+import { Globals } from '@models/Globals';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,9 +25,10 @@ export class AuthService {
     private http: HttpClient,
     private messageService: MessageService,
     private router: Router,
-    private errHandler: ErrorHandlerService
+    private errHandler: ErrorHandlerService,
+    private Global: Globals
   ) {
-    this.baseUrl = "http://localhost:8080";
+    this.baseUrl = this.Global.BASE_URL;
   } 
 
    /** POST: Retrieve user */

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
 import { Feedback } from '@models/Feedback';
 import { ErrorHandlerService } from '@services/error-handler.service';
+import { Globals } from '@models/Globals';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,9 +24,10 @@ export class FeedbackService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
-    private errHandler: ErrorHandlerService
+    private errHandler: ErrorHandlerService,
+    private Global: Globals
   ) {
-    this.baseUrl = "http://ros-2018.appspot.com/";
+    this.baseUrl = this.Global.BASE_URL;
   }
 
   get FeedbackList(): Array<Feedback> {
