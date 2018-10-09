@@ -6,6 +6,9 @@ import { OrderService } from '@services/order.service';
 import { MessageService } from "@services/message.service";
 import { MenuService } from "@services/menu.service";
 import { AuthService } from "@services/auth.service";
+import { MenuItemService } from '@services/menu-item.service';
+import { FeedbackService } from '@services/feedback.service';
+import { ErrorHandlerService } from '@services/error-handler.service';
 
 @NgModule({
   providers: [
@@ -13,6 +16,9 @@ import { AuthService } from "@services/auth.service";
     MessageService,
     MenuService,
     AuthService,
+    MenuItemService,
+    FeedbackService,
+    ErrorHandlerService
   ],
   declarations: [  ]
   
