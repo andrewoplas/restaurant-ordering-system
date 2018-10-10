@@ -14,7 +14,9 @@ import swal from 'sweetalert2';
 export class OrderComponent implements OnInit {
   title = 'ORDERS';
   status = Status;
-  orderModal;
+  orderModal = {
+    menuItem: []
+  };
   orderList: Array<Order> = new Array<Order>();
 
   constructor(
@@ -82,16 +84,10 @@ export class OrderComponent implements OnInit {
     );
   }
 
-  open(content: any, order: Order) {
+  getOrderModal(order: Order) {
     this.orderModal = order;
-    this.modalService.open(content, { 
-      ariaLabelledBy: 'modal-basic-title' ,
-      centered: true,
-      windowClass: 'order-items-modal'
-    }).result.then((result) => {
-    }, (reason) => {
-      // close
-    });
+
+    console.log(this.orderModal);
   }
 
   displayError(error) {

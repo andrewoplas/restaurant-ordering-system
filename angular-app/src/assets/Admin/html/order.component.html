@@ -108,8 +108,8 @@
                                 </span>
                             </td>
                             <td>
-                                <button type="button" (click)="open(content, order)" data-toggle="tooltip" title="Show Menu Item"  class="btn btn-info btn-outline btn-circle m-r-5 p-0">
-                                    <i class="mdi mdi-food"></i> 
+                                <button type="button" (click)="getOrderModal(order)" data-toggle="modal" data-target="#modal" class="btn btn-info btn-outline btn-circle m-r-5 p-0">
+                                    <i data-toggle="tooltip" title="Show Menu Item" class=" text-info mdi mdi-food"></i> 
                                 </button>
                                 <button [swal]="deleteOrder" *ngIf="order.status == status.CANCELLED" type="button" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-outline btn-circle p-0">
                                     <i class="text-danger mdi mdi-delete"></i> 
@@ -138,44 +138,60 @@
 </div>
 
 <ng-template #content let-modal>
-    <div class="modal-body">
-        <h3>Order - #{{ orderModal.orderNumber }}</h3>
-
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <i class="text-danger mdi mdi-close"></i>
-        </button>
-
-        <hr class="m-t-0"/>
-
-        <table class="table">
-            <tbody>
-                <tr *ngFor="let item of orderModal.menuItem">
-                    <td class="text-center image">
-                        <img src="../../../assets/img/dish-1.png" />
-                    </td>
-                    <td class="dish-name">
-                        <span class="name">{{ item.name }}</span> <br>
-                        <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam, mauris ac sodales pulvinar, quam magna
-                        vehicula purus, sit amet fermentum tellus felis iaculis lectus.</span>
-                    </td>
-                    <td class="price">P{{ item.price }} x {{ item.quantity }}</td>
-                </tr>
-                <tr>
-                    <td class="image"></td>
-                    <td class="dish-name">
-                        <p class="total-label">Total </p>
-                    </td>
-                    <td class="price">
-                        <p class="total-price">P3999.99</p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <hr />
-
-        <button class="btn btn-default btn-warning btn-standard pull-right btn-close" 
-            (click)="modal.dismiss('Cross click')">Close</button>
-
-    </div>
+    
 </ng-template>
+
+<!-- edit table modal content -->
+<div class="modal fade order-items-modal" id="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>Order - #{{ orderModal.orderNumber }}</h3>
+        
+                <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+                    <i class="text-danger mdi mdi-close"></i>
+                </button>
+        
+                <hr class="m-t-0"/>
+        
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let item of orderModal.menuItem">
+                            <td class="text-center image">
+                                <img src="../../../assets/img/dish-1.png" />
+                            </td>
+                            <td class="dish-name">
+                                <span class="name">{{ item.name }}</span> <br>
+                                <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam, mauris ac sodales pulvinar, quam magna
+                                vehicula purus, sit amet fermentum tellus felis iaculis lectus.</span>
+                            </td>
+                            <td class="price">P{{ item.price }} x {{ item.quantity }}</td>
+                        </tr>
+                        <tr>
+                            <td class="image"></td>
+                            <td class="dish-name">
+                                <p class="total-label">Total </p>
+                            </td>
+                            <td class="price">
+                                <p class="total-price">P3999.99</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        
+                <hr />
+        
+                <button class="btn btn-default btn-warning btn-standard pull-right btn-close" 
+                    data-dismiss="modal">Close</button>
+
+                <div class="clear"></div>
+        
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
