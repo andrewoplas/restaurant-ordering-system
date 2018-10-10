@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MenuService } from '@services/menu.service';
 import * as $ from 'jquery';
 import 'datatables.net';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu-edit',
@@ -36,15 +37,13 @@ export class MenuEditComponent implements OnInit {
     this.menuService.getMenu(this.id).subscribe(
       data => {
         if(data == null) {
-          eval(
-            'swal({' +
-            'title: "Ooops!",' +
-            'text: "There was an error during the process. The menu you are trying to edit might not exist",' +
-            'type: "error",' +
-            'showConfirmButton: false,' +
-            'timer: 2900, ' +
-            '});'
-          );
+          swal({
+            title: "Ooops!",
+            text: "There was an error during the process. The menu you are trying to edit might not exist",
+            type: "error",
+            showConfirmButton: false,
+            timer: 2900, 
+          });
 
           setTimeout(this.back(), 3000);
         } else {
@@ -76,37 +75,33 @@ export class MenuEditComponent implements OnInit {
       show: this.forms.value.show,
     };
 
-    eval(
-      'swal({' +
-      'title: "Processing",' +
-      'text: "Please wait as we process your request",' +
-      'showConfirmButton: false,' +
-      'confirmButtonColor: "#FBA62F"' +
-      '});'
-    );
+    swal({
+      title: "Processing",
+      text: "Please wait as we process your request",
+      showConfirmButton: false,
+      confirmButtonColor: "#FBA62F"
+    });
+    
 
     this.menuService.updateMenu(menu).subscribe(
       data => {
         if(data != null) {
-          eval(
-            'swal({' +
-            'title: "Success",' +
-            'text: "Successfully updated menu item!",' +
-            'type:   "success",' +
-            'confirmButtonText: "Okay",' +
-            'confirmButtonColor: "#FBA62F"' +
-            '});'
-          );
+          swal({
+            title: "Success",
+            text: "Successfully updated menu item!",
+            type:   "success",
+            confirmButtonText: "Okay",
+            confirmButtonColor: "#FBA62F"
+          });
+          
         } else {
-          eval(
-            'swal({' +
-            'title: "Ooops!",' +
-            'text: "There was an error during the process. Please try again!",' +
-            'type: "error",' +
-            'confirmButtonText: "Try Again",' +
-            'confirmButtonColor: "#A40020"' +
-            '});'
-          );
+          swal({
+            title: "Ooops!",
+            text: "There was an error during the process. Please try again!",
+            type: "error",
+            confirmButtonText: "Try Again",
+            confirmButtonColor: "#A40020"
+          });
         }
       }
     );
@@ -118,5 +113,15 @@ export class MenuEditComponent implements OnInit {
       this.menu.menu_items.splice(index, 1);
       this.menu.items.splice(index, 1);
     }
+  }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
   }
 }

@@ -1,9 +1,10 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { OrderService } from '@services/order.service';
 import { Order, Status } from '@models/Order';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import 'datatables.net';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order',
@@ -16,11 +17,17 @@ export class OrderComponent implements OnInit {
   orderModal;
   orderList: Array<Order> = new Array<Order>();
 
-  constructor(private orderService: OrderService, private modalService: NgbModal) {}
+  constructor(
+    private orderService: OrderService, 
+    private modalService: NgbModal,
+  ) { }
 
   ngOnInit() {
     this.orderService.getOrders().subscribe(
-      data => { this.orderList = data; }
+      data => { this.orderList = data; },
+      error => { 
+        this.displayError(error);
+      }
     );
   }
 
@@ -35,13 +42,11 @@ export class OrderComponent implements OnInit {
   }
 
   delete(id: number) {
-    eval(
-      'swal({' +
-      'title: "Processing",' +
-      'text: "Please wait as we process your request",' +
-      'showConfirmButton: false,' +
-      '});'
-    );
+    swal({
+      title: "Processing",
+      text: "Please wait as we process your request",
+      showConfirmButton: false,
+    });
 
     this.orderService.deleteOrder(id)
       .subscribe(
@@ -53,27 +58,28 @@ export class OrderComponent implements OnInit {
 
             this.orderList = data;
 
-            eval(
-              'swal({' +
-              'title: "Success",' +
-              'text: "Successfully removed order!",' +
-              'type:   "success",' +
-              'confirmButtonText: "Okay",' +
-              'confirmButtonColor: "#FBA62F"' +
-              '});'
-            );
+            swal({
+              title: "Success",
+              text: "Successfully removed order!",
+              type:   "success",
+              confirmButtonText: "Okay",
+              confirmButtonColor: "#FBA62F"
+            });
           } else {
-            eval(
-              'swal({' +
-              'title: "Ooops!",' +
-              'text: "There was an error during the process. Please try again!",' +
-              'type: "error",' +
-              'confirmButtonText: "Try Again",' +
-              'confirmButtonColor: "#A40020"' +
-              '});'
-            );
+            swal({
+              title: "Ooops!",
+              text: "There was an error during the process. Please try again!",
+              type: "error",
+              confirmButtonText: "Try Again",
+              confirmButtonColor: "#A40020"
+            });
           }
-      });
+        },
+    
+      error => { 
+        this.displayError(error);
+      }
+    );
   }
 
   open(content: any, order: Order) {
@@ -85,6 +91,16 @@ export class OrderComponent implements OnInit {
     }).result.then((result) => {
     }, (reason) => {
       // close
+    });
+  }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
     });
   }
 }

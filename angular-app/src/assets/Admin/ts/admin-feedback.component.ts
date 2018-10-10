@@ -4,6 +4,7 @@ import { FeedbackService } from '@services/feedback.service';
 import { Feedback } from '@models/Feedback';
 import * as $ from 'jquery';
 import 'datatables.net';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-feedback',
@@ -38,6 +39,16 @@ export class AdminFeedbackComponent implements OnInit {
       $('#table-orders').dataTable();
       eval("$('[data-toggle=tooltip]').tooltip();");
     }
+  }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
   }
 
 }

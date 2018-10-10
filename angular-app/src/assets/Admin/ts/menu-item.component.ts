@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { MenuItemService } from '@services/menu-item.service';
 import { MenuItem } from '@models/MenuItem';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'display-item-menu',
@@ -39,13 +40,11 @@ export class MenuItemComponent implements OnInit {
   }
 
   delete(id: number) {
-    eval(
-      'swal({' +
-      'title: "Processing",' +
-      'text: "Please wait as we process your request",' +
-      'showConfirmButton: false,' +
-      '});'
-    );
+    swal({
+    title: "Processing",
+    text: "Please wait as we process your request",
+    showConfirmButton: false,
+    });
 
     this.menuItemService.deleteMenuItem(id)
       .subscribe(
@@ -56,26 +55,34 @@ export class MenuItemComponent implements OnInit {
             }
 
             this.menuItemList = data;
-            eval(
-              'swal({' +
-              'title: "Success",' +
-              'text: "Successfully removed the menu item!",' +
-              'type:   "success",' +
-              'confirmButtonText: "Okay",' +
-              'confirmButtonColor: "#FBA62F"' +
-              '});'
-            );
+          
+            swal({
+              title: "Success",
+              text: "Successfully removed the menu item!",
+              type:   "success",
+              confirmButtonText: "Okay",
+              confirmButtonColor: "#FBA62F"
+            });
           } else {
-            eval(
-              'swal({' +
-              'title: "Ooops!",' +
-              'text: "There was an error during the process. Please try again!",' +
-              'type: "error",' +
-              'confirmButtonText: "Try Again",' +
-              'confirmButtonColor: "#A40020"' +
-              '});'
-            );
+            swal({
+              title: "Ooops!",
+              text: "There was an error during the process. Please try again!",
+              type: "error",
+              confirmButtonText: "Try Again",
+              confirmButtonColor: "#A40020"
+            });
           }
       });
   }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
+  }
+
 }

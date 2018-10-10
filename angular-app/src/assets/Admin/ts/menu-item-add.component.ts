@@ -4,6 +4,7 @@ import { MenuItemService } from '@services/menu-item.service';
 import { MenuService } from '@services/menu.service';
 import { Menu } from '@models/Menu';
 import * as $ from 'jquery';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu-item-add',
@@ -53,40 +54,32 @@ export class MenuItemAddComponent implements OnInit {
       show: this.forms.value.show,
       ingredients: eval('$("[data-role=tagsinput]").tagsinput("items")')
     }; 
-
-    console.log(menuItem);
     
-    eval(
-      'swal({' +
-      'title: "Processing",' +
-      'text: "Please wait as we process your request",' +
-      'showConfirmButton: false,' +
-      'confirmButtonColor: "#FBA62F"' +
-      '});'
-    );
+    swal({
+      title: "Processing",
+      text: "Please wait as we process your request",
+      showConfirmButton: false,
+      confirmButtonColor: "#FBA62F"
+    });
     
     this.menuItemService.addMenuItem(menuItem).subscribe(
       data => {
         if(data != null) {
-          eval(
-            'swal({' +
-            'title: "Success",' +
-            'text: "Successfully added the menu item!",' +
-            'type: "success",' +
-            'confirmButtonText: "Okay",' +
-            'confirmButtonColor: "#FBA62F"' +
-            '});'
-          );
+          swal({
+            title: "Success",
+            text: "Successfully added the menu item!",
+            type: "success",
+            confirmButtonText: "Okay",
+            confirmButtonColor: "#FBA62F"
+          });
         } else {
-          eval(
-            'swal({' +
-            'title: "Ooops!",' +
-            'text: "There was an error during the process. Please try again!",' +
-            'type: "error",' +
-            'confirmButtonText: "Try Again",' +
-            'confirmButtonColor: "#A40020"' +
-            '});'
-          );
+          swal({
+            title: "Ooops!",
+            text: "There was an error during the process. Please try again!",
+            type: "error",
+            confirmButtonText: "Try Again",
+            confirmButtonColor: "#A40020"
+          });  
         }
       }
     );
@@ -98,5 +91,15 @@ export class MenuItemAddComponent implements OnInit {
         this.menuList = data;
       }
     );
+  }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
   }
 }

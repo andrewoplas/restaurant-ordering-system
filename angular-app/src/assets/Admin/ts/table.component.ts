@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-table',
@@ -169,6 +170,15 @@ export class TableComponent implements OnInit {
     });
   }
   //-- end edit table funtionalities
-    
+  
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
+  }
 
 }
