@@ -27,7 +27,7 @@ export class FeedbackFilterPipe implements PipeTransform {
       result = sum;
     }
     else{
-      result = sum / items.length;
+      result = parseFloat((sum / items.length).toFixed(2));
     }
 
     return result;
