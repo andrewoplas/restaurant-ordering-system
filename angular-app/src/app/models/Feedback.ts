@@ -2,5 +2,6 @@ export interface Feedback {
     id?: number,
     overallQuality: number,
     foodQuality: number,
-    staffQuality: number
+    staffQuality: number,
+    date: Date
 }

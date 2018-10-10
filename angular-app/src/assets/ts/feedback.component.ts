@@ -24,7 +24,8 @@ export class FeedbackComponent implements OnInit {
     this.feedback = {
       overallQuality: 5,
       foodQuality: 2,
-      staffQuality: 2
+      staffQuality: 2,
+      date: new Date()
     }
   }
 
@@ -38,7 +39,8 @@ export class FeedbackComponent implements OnInit {
     this.feedback = {
       overallQuality: parseInt($(".overall-rate.choosen").html()),
       foodQuality: getFoodQuality(),
-      staffQuality: getStaffQuality()
+      staffQuality: getStaffQuality(),
+      date : new Date()
     }
 
     this.feedbackService.addFeedback(this.feedback).subscribe(

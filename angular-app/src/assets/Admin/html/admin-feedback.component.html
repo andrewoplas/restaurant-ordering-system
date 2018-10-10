@@ -83,15 +83,16 @@
               <table id="table-orders" class="table table-striped">
                   <thead>
                       <tr>
-                          <th width="15%">Feedback ID</th>
+                          <!-- <th width="15%">Feedback ID</th> -->
                           <th width="35%">Overall Score</th>
                           <th width="25%">Food Quality</th>
                           <th width="25%">Staff Quality</th>
+                          <th width="15%">Date</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr *ngFor="let feedback of feedbackList; let last = last">
-                          <td>{{ feedback.id }}</td>
+                          <!-- <td>{{ feedback.id }}</td> -->
                           <td>{{ feedback.overallQuality }}</td>
                           <td [ngSwitch]="feedback.foodQuality">
                             <i *ngSwitchCase="1" class="em em-expressionless"></i>
@@ -103,6 +104,7 @@
                             <i *ngSwitchCase="2" class="em em-smile"></i>
                             <i *ngSwitchCase="3" class="em em-heart_eyes"></i>
                             </td>
+                            <td>{{ feedback.date | date:'medium' }}</td>
                       </tr>
                   </tbody>
               </table>

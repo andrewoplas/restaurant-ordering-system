@@ -1,5 +1,7 @@
 package com.webtech.Model;
 
+import java.util.Date;
+
 import com.jmethods.catatumbo.Entity;
 import com.jmethods.catatumbo.Identifier;
 import com.jmethods.catatumbo.Property;
@@ -18,6 +20,9 @@ public class FeedBack {
 
 	@Property(name="staff" , indexed=true) 
 	private int staffQuality;
+	
+	@Property(name="date" , indexed=true) 
+	private Date date;
 
 	// public FeedBack(){}
 	// public FeedBack(int foodQuality, int staffQuality, int overallQuality){
@@ -81,6 +86,12 @@ public class FeedBack {
 	public void setStaffQuality(int staffQuality) {
 		this.staffQuality = staffQuality;
 	}
-
+	
+	public Date getDate(){
+		return date;
+	}
+	public void setDate(Date date){
+		this.date = date;
+	}
 
 }
