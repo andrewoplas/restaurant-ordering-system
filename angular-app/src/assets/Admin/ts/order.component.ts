@@ -4,6 +4,7 @@ import { Order, Status } from '@models/Order';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import 'datatables.net';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order',
@@ -41,13 +42,11 @@ export class OrderComponent implements OnInit {
   }
 
   delete(id: number) {
-    eval(
-      'swal({' +
-      'title: "Processing",' +
-      'text: "Please wait as we process your request",' +
-      'showConfirmButton: false,' +
-      '});'
-    );
+    swal({
+      title: "Processing",
+      text: "Please wait as we process your request",
+      showConfirmButton: false,
+    });
 
     this.orderService.deleteOrder(id)
       .subscribe(
@@ -59,27 +58,28 @@ export class OrderComponent implements OnInit {
 
             this.orderList = data;
 
-            eval(
-              'swal({' +
-              'title: "Success",' +
-              'text: "Successfully removed order!",' +
-              'type:   "success",' +
-              'confirmButtonText: "Okay",' +
-              'confirmButtonColor: "#FBA62F"' +
-              '});'
-            );
+            swal({
+              title: "Success",
+              text: "Successfully removed order!",
+              type:   "success",
+              confirmButtonText: "Okay",
+              confirmButtonColor: "#FBA62F"
+            });
           } else {
-            eval(
-              'swal({' +
-              'title: "Ooops!",' +
-              'text: "There was an error during the process. Please try again!",' +
-              'type: "error",' +
-              'confirmButtonText: "Try Again",' +
-              'confirmButtonColor: "#A40020"' +
-              '});'
-            );
+            swal({
+              title: "Ooops!",
+              text: "There was an error during the process. Please try again!",
+              type: "error",
+              confirmButtonText: "Try Again",
+              confirmButtonColor: "#A40020"
+            });
           }
-      });
+        },
+    
+      error => { 
+        this.displayError(error);
+      }
+    );
   }
 
   open(content: any, order: Order) {
@@ -95,14 +95,12 @@ export class OrderComponent implements OnInit {
   }
 
   displayError(error) {
-    eval(
-      'swal({' +
-      'title: "'+ error.title +'",' +
-      'text: "'+ error.message +'",' +
-      'type: "error",' +
-      'confirmButtonText: "Got it!",' +
-      'confirmButtonColor: "#A40020"' +
-      '});'
-    );
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
   }
 }

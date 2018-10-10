@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from '@services/auth.service';
 import * as $ from "jquery";
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -70,6 +71,16 @@ export class LoginComponent implements OnInit {
     //       $('.login-text').css('color', '#FFF');
     //     }
     // });
+  }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MenuService } from '@services/menu.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu-add',
@@ -33,39 +34,43 @@ export class MenuAddComponent implements OnInit {
       show: this.forms.value.show,
     };
 
-    eval(
-      'swal({' +
-      'title: "Processing",' +
-      'text: "Please wait as we process your request",' +
-      'showConfirmButton: false,' +
-      '});'
-    );
+    swal({
+      title: "Processing",
+      text: "Please wait as we process your request",
+      showConfirmButton: false,
+    });
 
     this.menuService.addMenu(menu).subscribe(
       data => {
         if(data != null) {
-          eval(
-            'swal({' +
-            'title: "Success",' +
-            'text: "Successfully added the menu!",' +
-            'type:   "success",' +
-            'confirmButtonText: "Okay",' +
-            'confirmButtonColor: "#FBA62F"' +
-            '});'
-          );
+          swal({
+            title: "Success",
+            text: "Successfully added the menu!",
+            type: "success",
+            confirmButtonText: "Okay",
+            confirmButtonColor: "#FBA62F"
+          });
         } else {
-          eval(
-            'swal({' +
-            'title: "Ooops!",' +
-            'text: "There was an error during the process. Please try again!",' +
-            'type: "error",' +
-            'confirmButtonText: "Try Again",' +
-            'confirmButtonColor: "#A40020"' +
-            '});'
-          );
+          swal({
+            title: "Ooops!",
+            text: "There was an error during the process. Please try again!",
+            type: "error",
+            confirmButtonText: "Try Again",
+            confirmButtonColor: "#A40020"
+          });
         }
       }
     );
+  }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
   }
 
 }
