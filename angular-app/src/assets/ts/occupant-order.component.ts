@@ -28,12 +28,6 @@ export class OccupantOrderComponent implements OnInit {
   initializeTableItems() {
     this.items = this.orderService.getOrder();
     this.calculateTotalAmount();
-
-    $(function () {
-      $(".table-order tbody")
-        .find("tr")
-        .after('<tr _ngcontent-c1 class="spacer"><td _ngcontent-c1 colspan="6"></td></tr>');
-    });
   }
 
   calculateTotalAmount() {
@@ -51,34 +45,21 @@ export class OccupantOrderComponent implements OnInit {
     var container = $('#' + menuItem.id);
     container.addClass('fadeOutLeft');
 
-    console.log(container);
-    
-    setTimeout(function () { 
-      container.next().remove();
-      container.remove();
-    }, 750);
-
-    setTimeout(this.removeItemTimeout(menuItem), 1000);
-  }
-
-  removeItemTimeout(menuItem: MenuItemQuantity) {
-    console.log(menuItem);
-    this.orderService.removeToCart(menuItem);
-    this.items = this.orderService.getOrder();
+    setTimeout(
+      () => {
+        this.orderService.removeToCart(menuItem, this.items);
+        this.initializeTableItems();
+    }, 1000);
   }
 
   increaseQuantity(menuItem: MenuItemQuantity) {
-    this.orderService.increaseQuantity(menuItem, 1);
-    this.calculateTotalAmount();
-
-    this.items = this.orderService.getOrder();
+    this.orderService.increaseQuantity(menuItem, 1, this.items);
+    this.initializeTableItems();
   }
 
   decreaseQuantity(menuItem: MenuItemQuantity) {
-    this.orderService.decreaseQuantity(menuItem, 1);
-    this.calculateTotalAmount();
-
-    this.items = this.orderService.getOrder();
+    this.orderService.decreaseQuantity(menuItem, 1, this.items);
+    this.initializeTableItems();
   }
 
   finalizeOrder() {

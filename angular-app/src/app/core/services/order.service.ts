@@ -63,26 +63,13 @@ export class OrderService {
     sessionStorage.setItem("order", JSON.stringify(items));
   }
 
-  public removeToCart(item: MenuItemQuantity) {
-    let items: Array<MenuItemQuantity> = this.getOrder();
+  public removeToCart(item: MenuItemQuantity, items: Array<MenuItemQuantity>) {
+    items = items.filter(obj => obj.id !== item.id);
     
-    let i: number;
-    let index = 0;
-    for(i = 0; i<items.length; i++) {
-      if(items[i].item.id == item.id) {
-        index = i;
-        break;
-      }
-    }
-
-    items.slice(index, 1);
-
     sessionStorage.setItem("order", JSON.stringify(items));
   }
 
-  public increaseQuantity(item: MenuItemQuantity, quantity) {
-    let items: Array<MenuItemQuantity> = this.getOrder();
-    
+  public increaseQuantity(item: MenuItemQuantity,  quantity: number, items: Array<MenuItemQuantity>) {
     let i: number;
     for(i = 0; i<items.length; i++) {
       if(items[i].item.id == item.id) {
@@ -93,9 +80,7 @@ export class OrderService {
     sessionStorage.setItem("order", JSON.stringify(items));
   }
 
-  public decreaseQuantity(item: MenuItemQuantity, quantity) {
-    let items: Array<MenuItemQuantity> = this.getOrder();
-    
+  public decreaseQuantity(item: MenuItemQuantity, quantity: number, items: Array<MenuItemQuantity>) {
     let i: number;
     for(i = 0; i<items.length; i++) {
       if(items[i].item.id == item.id) {
