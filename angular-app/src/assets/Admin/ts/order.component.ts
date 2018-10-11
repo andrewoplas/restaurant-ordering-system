@@ -18,6 +18,7 @@ export class OrderComponent implements OnInit {
     menuItem: []
   };
   orderList: Array<Order> = new Array<Order>();
+  totalAmount: number;
 
   constructor(
     private orderService: OrderService, 
@@ -86,8 +87,12 @@ export class OrderComponent implements OnInit {
 
   getOrderModal(order: Order) {
     this.orderModal = order;
-    
-    console.log(this.orderModal);
+
+    this.totalAmount = 0;
+    let i: number;
+    for (i=0; i<this.orderModal.menuItem.length; i++) {      
+      this.totalAmount += order.menuItem[i].price * order.menuItem[i].quantity;
+    }
   }
 
   displayError(error) {
