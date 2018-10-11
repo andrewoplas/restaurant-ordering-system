@@ -107,6 +107,14 @@ export class OrderService {
     sessionStorage.removeItem("order");
   }
 
+  public startCountdown() {
+    sessionStorage.setItem("countdown", "true");
+  }
+
+  public hasStartCountdown(){
+    return sessionStorage.getItem("countdown") !== null && sessionStorage.getItem("countdown") == "true";
+  }
+
   /** GET: retrieve orders from the server */
   public getOrders(): Observable<Order[]> {
     return this.http
