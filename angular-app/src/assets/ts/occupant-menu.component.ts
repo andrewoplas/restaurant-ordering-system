@@ -8,6 +8,7 @@ import * as $ from "jquery";
 import "animate.css";
 import { OrderService } from '@services/order.service';
 import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-occupant-menu',
@@ -29,15 +30,30 @@ export class OccupantMenuComponent implements OnInit {
 	constructor(
 		private menuService: MenuService,
     private menuItemService: MenuItemService,
-    private orderService: OrderService
+		private orderService: OrderService,
+		private router: Router
 	) {}
  
   ngOnInit() {
-    this.initializeMenuItems();
-    this.clickMenu();
-    this.clickFloatingActionButton();
-    
-    this.cartItems = this.orderService.getOrder().length;
+		if(this.orderService.hasStartCountdown()) {
+      swal({
+        title: "Oops",
+        text: "It seems you have a pending order. You will be redirected to the waiting area",
+        type:   "warning",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      setTimeout(
+        () => {
+          this.router.navigate(['waiting']);
+      }, 3000);
+    } else {
+			this.initializeMenuItems();
+			this.clickMenu();
+			this.clickFloatingActionButton();
+			this.cartItems = this.orderService.getOrder().length;
+		}
   }
 
   initializeMenuItems() {
