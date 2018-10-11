@@ -3,7 +3,7 @@
     <div class="circle-container"></div>
 
     <div class="menu-item-container">
-        <div class="menu-item animated hide" *ngFor="let menuItem of currentMenu.items">
+        <div class="menu-item animated hide" *ngFor="let menuItem of currentMenu.items" [hidden]="menuItem.servings <= 0">
             <div class="dish-padding">
                 <span class="dish-price">
                     <span></span>
