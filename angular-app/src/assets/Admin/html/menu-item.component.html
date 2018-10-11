@@ -27,7 +27,10 @@
                     <tbody>
                         <tr *ngFor="let item of menuItemList; let last = last">
                             <td><img src="../../../assets/img/dish-1.png" width="80"/></td>
-                            <td>{{ item.name }}</td>
+                            <td>
+                                {{ item.name }} <br>
+                                <span class="badge badge-warning" [hidden]="item.salePrice > 0">ON SALE</span>
+                            </td>
                             <td>P{{ item.salePrice > 0? item.salePrice : item.price }}</td>
                             <td class="text-center">
                                     <span class="badge" [ngClass]="{

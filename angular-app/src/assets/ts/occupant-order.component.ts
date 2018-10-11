@@ -87,9 +87,13 @@ export class OccupantOrderComponent implements OnInit {
       showConfirmButton: false,
     });
 
+    let orderNumber = (new Date()).getTime();
+
     let order: Order = new Order(
-      0, this.totalAmount, Status.PENDING, 0, 0, this.items, new Date()
+      0, this.totalAmount, Status.PENDING, 0, orderNumber, this.items, new Date()
     );   
+
+    sessionStorage.setItem("order_number", orderNumber.toString());
 
     this.orderService.addOrder(order)
     .subscribe(

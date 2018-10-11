@@ -40,7 +40,7 @@ export class OccupantMenuComponent implements OnInit {
   initializeMenuItems() {
     this.menuService.getMenus().subscribe(
 			data => {
-				this.menuList = data;
+        this.menuList = data;
 			}
 		);
 
@@ -70,7 +70,7 @@ export class OccupantMenuComponent implements OnInit {
 			};
 		} else {
 			this.currentMenu = menu;
-		}
+    }
 		
 		this.animateMenuItems();
 	}
