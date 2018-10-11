@@ -25,9 +25,9 @@
             </div>
 
             <div class="dish-buttons">
-                <button class="btn-review">
+                <button class="btn-review" routerLink="{{ menuItem.id }}">
                     <i class="material-icons">visibility</i>
-                    <span>Review</span>
+                    <span>View</span>
                 </button>
 
                 <button class="btn-order" (click)="addToCart(menuItem)">
