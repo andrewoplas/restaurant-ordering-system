@@ -4,9 +4,10 @@ import { MessageService } from '@services/message.service';
 import { ErrorHandlerService } from '@services/error-handler.service';
 import { Observable } from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
-import { Order } from '@models/Order';
+import { Order, Status, MenuItemQuantity } from '@models/Order';
 import 'rxjs/add/observable/throw';
 import { Globals } from '@models/Globals';
+import { MenuItem } from '@models/MenuItem';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,6 +22,7 @@ export class OrderService {
 
   private baseUrl: string;
   public orders: Array<Order>;
+  public order: Order;
 
   constructor(
     private http: HttpClient,
@@ -33,6 +35,46 @@ export class OrderService {
 
   get orderList(): Array<Order> {
     return this.orders;
+  }
+
+  public addToCart(item: MenuItem, quantity: number) {
+    let items: Array<MenuItemQuantity> = this.getOrder();
+    
+    let i: number;
+    let exists: boolean = false;
+    for(i = 0; i<items.length; i++) {
+      if(items[i].item.id == item.id) {
+        items[i].quantity++;
+        exists = true;
+        break;
+      }
+    }
+
+    if(!exists) {
+      items.push({
+        id: item.id,
+        item: item,
+        price: item.salePrice > 0? item.salePrice : item.price,
+        onSale: item.salePrice > 0? true : false,
+        quantity: quantity
+      });
+    }
+
+    console.log(items);
+
+    sessionStorage.setItem("order", JSON.stringify(items));
+  }
+
+  public getOrder() {
+    let items: Array<MenuItemQuantity>;
+
+    if (sessionStorage.getItem("order") !== null) {
+      items = JSON.parse(sessionStorage.getItem("order"));
+    } else {
+      items = [];
+    }
+
+    return items;
   }
 
   /** GET: retrieve orders from the server */

@@ -6,6 +6,8 @@ import { Menu } from '@models/Menu';
 
 import * as $ from "jquery";
 import "animate.css";
+import { OrderService } from '@services/order.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-occupant-menu',
@@ -25,7 +27,8 @@ export class OccupantMenuComponent implements OnInit {
 
 	constructor(
 		private menuService: MenuService,
-		private menuItemService: MenuItemService
+    private menuItemService: MenuItemService,
+    private orderService: OrderService
 	) {}
  
   ngOnInit() {
@@ -105,6 +108,17 @@ export class OccupantMenuComponent implements OnInit {
 				.removeClass("hide")
 				.addClass("animated zoomIn fast");
     });
-	}
-
+  }
+  
+  addToCart(item: MenuItem) {
+		this.orderService.addToCart(item, 1);
+		
+		swal({
+			title: "Success",
+			text: "Successfully added " + item.name + " to your order",
+			type: "success",
+			confirmButtonText: "Close",
+			confirmButtonColor: "#FBA62F"
+		});
+  }
 }

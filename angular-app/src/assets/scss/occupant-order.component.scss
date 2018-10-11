@@ -33,6 +33,7 @@ body {
 
 .user-side {
     overflow-y: auto;
+    min-height: 100vh;
     height: auto;
 }
 
@@ -79,6 +80,7 @@ body {
             color: #FFFFFF;
             font-size: 8px;
             margin-left: -14px;
+            font-weight: bold !important;
 
             span { 
                 height: 20px; 
@@ -533,5 +535,11 @@ body {
         color: #ffffff;
         width: 119px;
         height: 40px;
+    }
+}
+
+/deep/ {
+    .swal2-popup {
+        font-size: 1.5rem;
     }
 }

@@ -3,6 +3,7 @@ package com.webtech.Model;
 import java.util.Date;
 import java.util.List;
 
+import com.jmethods.catatumbo.Embedded;
 import com.jmethods.catatumbo.Entity;
 import com.jmethods.catatumbo.Identifier;
 import com.jmethods.catatumbo.Property;
@@ -22,12 +23,14 @@ public class Order {
 	
 	@Property(name="order_number")
 	private String orderNumber;
-    
+    	
     @Property(name="menu_item")
     private List<MenuItemQuantity> menuItem;
     
     @Property(name="date_created")
     private Date dateCreated;
+    
+    
     
     public Order() {
     }
