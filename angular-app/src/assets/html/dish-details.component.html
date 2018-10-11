@@ -16,34 +16,34 @@
     <div class="row">
         <div class="center-align col-md-7 col-sm-3">
             <span class="order-quantity" id="col-1-order-quantity">
-                    <span></span><p>P320</p>
+                    <span></span><p>₱{{ menuItem.salePrice > 0? menuItem.salePrice : menuItem.price }}</p>
             </span>
-            <img src="assets/img/pasta.png" class="img-responsive" />
+            <img src="assets/img/dish-1.png" class="img-responsive" />
         </div>
         <div class="col-md-5 col-sm-9">
-            <h3 class="order-name">Pasta with Mushrooms and Prosciutto</h3>
+            <h3 class="order-name">{{ menuItem.name }}</h3>
             <div class="row">
                 <div class="col-md-6">
-                    <p class="col-detail">40 MINUTES</p>
+                    <p class="col-detail">{{ menuItem.cookingTime }} MINUTES</p>
                     <p class="col-title">Cooking Time</p>
                 </div>
                 <div class="col-md-6">
-                    <p class="col-detail" id="serving-detail">3 - 5 PEOPLE</p>
-                    <p class="col-title" id="serving-detail">Per Serving</p>
+                    <p class="col-detail" id="serving-detail">{{ menuItem.servings }}</p>
+                    <p class="col-title" id="serving-detail">Serving</p>
                 </div>
             </div>
             <div class="quantity-container">
-                    <button class="btn btn-left">
+                    <button class="btn btn-left" (click)="decreaseQuantity()">
                         <i class="material-icons hidden-xs">chevron_left</i>
                         <i class="material-icons visible-xs">expand_less</i>
                     </button>
-                    <input type="text" class="quantity" value="1" readonly />
-                    <button class="btn btn-right">
+                    <input type="text" class="quantity" [value]="quantity" readonly />
+                    <button class="btn btn-right" (click)="increaseQuantity()">
                         <i class="material-icons hidden-xs">chevron_right</i>
                         <i class="material-icons visible-xs">expand_more</i>
                     </button>
             </div>            
-            <button class="btn-checkout">Add to order</button>
+            <button class="btn-checkout" (click)="addToCart()">Add to order</button>
         </div>
     </div>
 </div> 

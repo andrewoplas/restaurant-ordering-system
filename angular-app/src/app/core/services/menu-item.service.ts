@@ -33,12 +33,22 @@ export class MenuItemService {
     return this.menuItem;
   }
 
-  /** GET: retrieve menuItem from the server */
+  /** GET: retrieve menuItems from the server */
   public getAllMenuItems(): Observable<MenuItem[]> {
     return this.http
       .get<MenuItem[]>(`${this.baseUrl}/get-all-items`, httpOptions)
       .pipe(
         tap(() => this.log("get-all-items")),
+        catchError(this.errHandler.handleError)
+      );
+  }
+
+  /** GET: retrieve menuItem from the server */
+  public getMenuItem(menuItem: string | number): Observable<MenuItem> {
+    return this.http
+      .get<MenuItem>(`${this.baseUrl}/item/${menuItem}`, httpOptions)
+      .pipe(
+        tap(() => this.log("get-menu-item")),
         catchError(this.errHandler.handleError)
       );
   }

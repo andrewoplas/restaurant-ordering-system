@@ -44,7 +44,7 @@ export class OrderService {
     let exists: boolean = false;
     for(i = 0; i<items.length; i++) {
       if(items[i].item.id == item.id) {
-        items[i].quantity++;
+        items[i].quantity += quantity;
         exists = true;
         break;
       }
