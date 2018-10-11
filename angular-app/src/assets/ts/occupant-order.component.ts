@@ -40,7 +40,7 @@ export class OccupantOrderComponent implements OnInit {
 
       setTimeout(
         () => {
-          this.router.navigate(['menu']);
+          this.router.navigate(['waiting']);
       }, 3000);
     } else {
       this.items = this.orderService.getOrder();
@@ -112,7 +112,7 @@ export class OccupantOrderComponent implements OnInit {
 
           setTimeout(
             () => {
-              this.router.navigate(['menu']);
+              this.router.navigate(['waiting']);
           }, 3000);
 
         } else {
