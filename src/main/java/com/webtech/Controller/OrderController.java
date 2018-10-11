@@ -36,8 +36,14 @@ public class OrderController extends BaseController implements CONTROLLER<Order>
 	
 	@CrossOrigin
     @PostMapping(path = "/cancel-order", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<Order> create(@RequestBody String order) {
+	public @ResponseBody List<Order> cancelOrder(@RequestBody String order) {
 		return service.cancelOrder(order);
+	}
+	
+	@CrossOrigin
+    @PostMapping(path = "/pay-order", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Order> payOrder(@RequestBody String order) {
+		return service.payOrder(order);
 	}
 	
 	@CrossOrigin
