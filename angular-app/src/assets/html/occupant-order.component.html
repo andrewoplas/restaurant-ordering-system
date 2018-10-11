@@ -30,22 +30,26 @@
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let number of [0,1,2,3,5,6,7,8]" class="animated">
+                    <tr *ngFor="let item of items; let i = index" class="animated">
                         <td></td>
                         <td>
                             <img src="assets/img/dish-1.png" class="img-responsive" />
                         </td>
-                        <td>Scottish Prawn asdf <br/> <span class="visible-xs badge price-xs">₱ 100</span></td>
-                        <td class="hidden-xs">₱ 100</td>
-                        <td>₱ 100</td>
+                        <td>{{ item.item.name }} <br/> 
+                            <span class="visible-xs badge price-xs">
+                            ₱ {{ item.item.salePrice > 0? item.item.salePrice : item.price }}
+                            </span>
+                        </td>
+                        <td class="hidden-xs">₱ {{ item.item.salePrice > 0? item.item.salePrice : item.price }}</td>
+                        <td>₱ {{ (item.item.salePrice > 0? item.item.salePrice : item.price) * item.quantity }}</td>
                         <td>
                             <div class="quantity-container">
-                                <button class="btn btn-left">
+                                <button class="btn btn-left" [disabled]="item.quantity <= 1" (click)="decreaseQuantity(i)">
                                     <i class="material-icons hidden-xs">chevron_left</i>
                                     <i class="material-icons visible-xs">expand_less</i>
                                 </button>
-                                <input type="text" class="quantity" value="1" readonly />
-                                <button class="btn btn-right">
+                                <input type="text" class="quantity" [disabled]="item.quantity >= item.item.servings" [value]="item.quantity" readonly />
+                                <button class="btn btn-right" (click)="increaseQuantity(i)">
                                     <i class="material-icons hidden-xs">chevron_right</i>
                                     <i class="material-icons visible-xs">expand_more</i>
                                 </button>
@@ -60,8 +64,8 @@
 
             <div class="total-price-container visible-sm visible-xs">
                 <p class="total-price-label">Total Price</p>
-                <p class="price">₱ 299</p>
-                <button class="btn-checkout">Checkout</button>
+                <p class="price">₱ {{ totalAmount }}</p>
+                <button class="btn-checkout" [swal]="finalizeOrder">Finalize</button>
             </div>
 
         </div>
@@ -73,13 +77,25 @@
                     <i></i>
                     <p>
                         <span class="total">Total</span>
-                        <span class="price">₱ 299</span>
-                        <button class="btn btn-checkout btn-standard" alt="default" data-toggle="modal" data-target="#checkout-modal">Checkout</button>
+                        <span class="price">₱ {{ totalAmount }}</span>
+                        <button [swal]="notification" class="btn btn-checkout btn-standard" alt="default">Finalize</button>
                     </p>
                 </span>
             </div>
         </div>
     </div>
+
+    <swal
+        #notification
+        title="Lesgoo!"
+        text="We are ready to cook your food now. Just confirm your order."
+        type="info"
+        [showCancelButton]="true"
+        (confirm)="finalizeOrder()"
+        confirmButtonText="Confirm"
+        confirmButtonColor="#A40020"
+    >
+    </swal>
 
     <div id="checkout-modal" class="modal  fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
