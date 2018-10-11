@@ -13,6 +13,7 @@ import { AdminGuard } from './core/authentication/admin.guard';
 import { AdminModule } from './modules/admin/admin.module';
 import { DishDetailsComponent } from '@occupant/dish-details.component';
 import { AuthGuard } from './core/authentication/auth.guard';
+import { WaitingComponent } from '@occupant/waiting.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'order', component: OccupantOrderComponent },
   { path: 'receptionist', component: ReceptionistComponent },
   { path: 'feedback', component: FeedbackComponent },
+  { path: 'waiting', component: WaitingComponent },
   { path: '', component: LandingComponent }
 ];
 
