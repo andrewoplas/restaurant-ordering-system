@@ -1,3 +1,5 @@
+import { MenuItem } from "@models/MenuItem";
+
 export class Order {
   id: number;
   amount: number;
@@ -19,11 +21,11 @@ export class Order {
 }
 
 export interface MenuItemQuantity {
-  quantity: number;
-  price: number;
-  imageUrl: string;
-  name: string;
-  onSale: number;
+  item: MenuItem,
+  price: number,
+  onSale: boolean,
+  quantity: number,
+  id?: number
 }
 
 export enum Status {
