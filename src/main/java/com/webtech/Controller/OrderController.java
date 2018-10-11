@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,11 +31,13 @@ public class OrderController extends BaseController implements CONTROLLER<Order>
     @PostMapping(path = "/add-order", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public @ResponseBody List<Order> create(@RequestBody Order obj) {
-		System.out.println("CREATE");
-		System.out.println(obj.getAmount());
-		System.out.println(obj.getStatus());
-		System.out.println(obj.getMenuItem().size());
 		return service.create(obj);
+	}
+	
+	@CrossOrigin
+    @PostMapping(path = "/cancel-order", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Order> create(@RequestBody String order) {
+		return service.cancelOrder(order);
 	}
 	
 	@CrossOrigin
