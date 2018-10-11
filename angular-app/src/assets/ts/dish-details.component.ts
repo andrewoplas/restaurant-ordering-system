@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from '@models/MenuItem';
 import swal from 'sweetalert2';
 import { OrderService } from '@services/order.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItemService } from '@services/menu-item.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class DishDetailsComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private menuItemService: MenuItemService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.route.params.subscribe(params => 
       this.id = params['id']
@@ -27,27 +28,42 @@ export class DishDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.quantity = 1;
-    this.cartItems = this.orderService.getOrder().length;
-    
-    this.menuItemService.getMenuItem(this.id).subscribe(
-			data => {
-        if(data != null) {
-          this.menuItem = data;
-				} else {
-          swal({
-            title: "Ooops!",
-            text: "There was an error during the process. Menu Item that you try go find might not exists!",
-            type: "error",
-            confirmButtonText: "Try Again",
-            confirmButtonColor: "#A40020"
-          });
+    if(this.orderService.hasStartCountdown()) {
+      swal({
+        title: "Oops",
+        text: "It seems you have a pending order. You will be redirected to the waiting area",
+        type:   "warning",
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      setTimeout(
+        () => {
+          this.router.navigate(['waiting']);
+      }, 3000);
+    } else {
+      this.quantity = 1;
+      this.cartItems = this.orderService.getOrder().length;
+      
+      this.menuItemService.getMenuItem(this.id).subscribe(
+        data => {
+          if(data != null) {
+            this.menuItem = data;
+          } else {
+            swal({
+              title: "Ooops!",
+              text: "There was an error during the process. Menu Item that you try go find might not exists!",
+              type: "error",
+              confirmButtonText: "Try Again",
+              confirmButtonColor: "#A40020"
+            });
+          }
+        },
+        error => { 
+          this.displayError(error);
         }
-      },
-      error => { 
-        this.displayError(error);
-      }
-		); 
+      ); 
+    }
   }
 
   increaseQuantity() {
