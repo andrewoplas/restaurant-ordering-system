@@ -87,4 +87,70 @@ export class WaitingComponent implements OnInit {
     });
   }
 
+  async payBill() {
+    let billAmount = 0;
+    let order = this.orderService.getOrder();
+
+    let i: number;
+    let price: number = 0;
+    for (i=0; i<order.length; i++) {
+      price = order[i].item.salePrice > 0? order[i].item.salePrice : order[i].item.price;
+      billAmount += price * order[i].quantity;
+    }
+
+    const {value: money} = await swal({
+      title: 'Pay Bill',
+      input: 'number',
+      showCancelButton: true,
+      confirmButtonText: "Confirm",
+      confirmButtonColor: "#A40020",
+      type: 'info',
+      inputPlaceholder: "Input Amount",
+      text: "Your current total bill is ₱" + billAmount,
+      inputValidator: (value) => {
+        return !value && 'You need to write something!'
+      }
+    })
+
+    if (money) {
+      if(money > billAmount) {
+        let orderNumber = sessionStorage.getItem("order_number");
+        this.orderService.payOrder(orderNumber)
+        .subscribe(
+          data => {
+            if(data != null) {
+              swal({
+                title: "Success",
+                text: "Successfully paid your bill. You will redirected to landing page!",
+                type: "success",
+                timer: 3000
+              });
+    
+              this.orderService.clearOrder();
+    
+              setTimeout(
+                () => {
+                  this.router.navigate(['/']);
+              }, 3000);
+            } else {
+              swal({
+                title: "Ooops!",
+                text: "There was an error during the process. Please try again!",
+                type: "error",
+                confirmButtonText: "Try Again",
+                confirmButtonColor: "#A40020"
+              });            
+            }
+        });
+      } else {
+        swal({
+          title: "Ooops!",
+          text: "Your money is less than your bill. Try again please!",
+          type: "error",
+          confirmButtonText: "Try Again",
+          confirmButtonColor: "#A40020"
+        }); 
+      }
+    }
+  }
 }
