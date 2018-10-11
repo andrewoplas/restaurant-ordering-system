@@ -261,8 +261,8 @@
 }
 
 .col-title{
-    font: $primary-font;
-    color: $gray;
+    font-family: $primary-font;
+    color: $white-o-40;
 
     @media (min-width: 2560px){
         font-size: 40px;

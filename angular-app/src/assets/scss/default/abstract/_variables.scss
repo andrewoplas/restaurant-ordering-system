@@ -30,6 +30,16 @@ $dark-l-90: lighten($dark, 90);
 $dark-l-80: lighten($dark, 80); //lighten
 
 $white: #FFFFFF;
+$white-o-1: rgba($white, 0.01);
+$white-o-5: rgba($white, 0.05);
+$white-o-10: rgba($white, 0.10);
+$white-o-20: rgba($white, 0.20);
+$white-o-30: rgba($white, 0.30);
+$white-o-40: rgba($white, 0.40);
+$white-o-50: rgba($white, 0.50);
+$white-o-70: rgba($white, 0.70);
+$white-o-90: rgba($white, 0.90);
+
 $gray: #262625;
 $dark-container: #1E1E1D;
 $green: #3D9A2D;
