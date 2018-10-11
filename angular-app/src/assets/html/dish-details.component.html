@@ -1,16 +1,16 @@
 <div class="dishSlideContainer">
     <div class="menu">
-        <div class="menu-item order">
+        <div class="menu-item order" routerLink="/order">
             <span>
                 Order <i class="material-icons shopping-icon">shopping_cart</i>
                 <span class="order-quantity">
-                    <span></span><p>12</p>
+                    <span></span><p>{{ cartItems }}</p>
                 </span>
             </span>
         </div>        
-            <div class="menu-item menu">
-                <span>Menu <i class="material-icons menu-icon">view_headline</i></span>
-            </div>
+        <div class="menu-item menu" routerLink="/menu">
+            <span>Menu <i class="material-icons menu-icon">view_headline</i></span>
+        </div>
     </div>
 
     <div class="row">

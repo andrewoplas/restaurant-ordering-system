@@ -38,6 +38,9 @@ body {
 }
 
 .menu {
+    position: relative;
+    z-index: 10000;
+
     @include breakpoint(xxs) {
         padding: 15px;
         text-align: center;

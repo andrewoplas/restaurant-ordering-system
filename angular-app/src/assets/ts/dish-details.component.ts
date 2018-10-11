@@ -14,6 +14,7 @@ export class DishDetailsComponent implements OnInit {
   id: number;
   menuItem: MenuItem;
   quantity: number;
+  cartItems;
 
   constructor(
     private orderService: OrderService,
@@ -27,6 +28,7 @@ export class DishDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.quantity = 1;
+    this.cartItems = this.orderService.getOrder().length;
     
     this.menuItemService.getMenuItem(this.id).subscribe(
 			data => {

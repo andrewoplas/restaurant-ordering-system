@@ -4,7 +4,6 @@ import "animate.css";
 import { OrderService } from '@services/order.service';
 import { Order, MenuItemQuantity, Status } from '@models/Order';
 import swal from 'sweetalert2';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,6 +17,7 @@ import { Router } from '@angular/router';
 export class OccupantOrderComponent implements OnInit {
   items: Array<MenuItemQuantity>;
   totalAmount;  
+  cartItems;
 
   constructor(
     private orderService: OrderService,
@@ -25,10 +25,6 @@ export class OccupantOrderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.initializeTableItems();
-  }
-
-  initializeTableItems() {
     if(this.orderService.hasStartCountdown()) {
       swal({
         title: "Oops",
@@ -43,9 +39,15 @@ export class OccupantOrderComponent implements OnInit {
           this.router.navigate(['waiting']);
       }, 3000);
     } else {
-      this.items = this.orderService.getOrder();
-      this.calculateTotalAmount();
+      this.initializeTableItems();
     }
+  }
+
+  initializeTableItems() {
+    this.items = this.orderService.getOrder();
+    this.calculateTotalAmount();
+
+    this.cartItems = this.items.length;
   }
 
   calculateTotalAmount() {
