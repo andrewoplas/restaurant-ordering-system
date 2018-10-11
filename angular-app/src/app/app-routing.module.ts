@@ -11,12 +11,14 @@ import { FeedbackComponent } from '@occupant/feedback.component';
 import { AdminGuard } from './core/authentication/admin.guard';
 
 import { AdminModule } from './modules/admin/admin.module';
+import { DishDetailsComponent } from '@occupant/dish-details.component';
 
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: 'admin', component: AdminComponent, loadChildren: () => AdminModule},
   { path: 'menu', component: OccupantMenuComponent },
+  { path: 'menu/:id', component: DishDetailsComponent },
   { path: 'order', component: OccupantOrderComponent },
   { path: 'receptionist', component: ReceptionistComponent },
   { path: 'feedback', component: FeedbackComponent },
