@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webtech.Model.Order;
@@ -27,9 +29,13 @@ public class OrderController extends BaseController implements CONTROLLER<Order>
 	OrderService service;
 	
 	@CrossOrigin
-    @PostMapping(path = "/order", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/add-order", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public List<Order> create(Order obj) {
+	public @ResponseBody List<Order> create(@RequestBody Order obj) {
+		System.out.println("CREATE");
+		System.out.println(obj.getAmount());
+		System.out.println(obj.getStatus());
+		System.out.println(obj.getMenuItem().size());
 		return service.create(obj);
 	}
 	
