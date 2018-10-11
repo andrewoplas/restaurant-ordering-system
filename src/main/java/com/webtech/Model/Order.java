@@ -21,7 +21,7 @@ public class Order {
 	@Property(name="table_id")
 	private int tableId;
 	
-	@Property(name="order_number")
+	@Property(name="order_number", indexed = true)
 	private String orderNumber;
     	
     @Property(name="menu_item")

@@ -1,11 +1,9 @@
 package com.webtech.Dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.google.appengine.api.datastore.Entity;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
 import com.webtech.Model.Order;
@@ -53,6 +51,14 @@ public class OrderDao implements REPOSITORY<Order> {
 		List<Order> obj = response.getResults();
 		return obj;
 	}
+	
+	public Order getItemByOrderNumber(String orderNumber) {
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Order` WHERE order_number=@order_num");
+		request.setNamedBinding("order_num", orderNumber);
+		QueryResponse<Order> response = em.executeEntityQueryRequest(Order.class, request);
+		
+		return response.getResults().get(0);
+	}
 
 	@Override
 	public Order getItem(String id) {
@@ -62,6 +68,19 @@ public class OrderDao implements REPOSITORY<Order> {
 	
 	public boolean itemExist(long id) {
 		return getItem(Long.toString(id)) != null;
+	}
+	
+	public boolean itemExistByOrderNumber(String orderNumber) {
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Order` WHERE order_number=@order_num");
+		request.setNamedBinding("order_num", orderNumber);
+		QueryResponse<Order> response = em.executeEntityQueryRequest(Order.class, request);
+		
+		return !response.getResults().isEmpty();
+	}
+
+	public void cancelOrder(long orderNumber) {
+		
+		
 	}
 
 	

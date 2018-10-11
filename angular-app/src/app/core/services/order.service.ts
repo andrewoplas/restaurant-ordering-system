@@ -103,6 +103,28 @@ export class OrderService {
     return items;
   }
 
+  public clearOrder() {
+    sessionStorage.removeItem("order");
+    sessionStorage.removeItem("countdown_timer");
+    sessionStorage.removeItem("countdown");
+  }
+
+  public startCountdown() {
+    let now = new Date();
+    now.setMinutes(now.getMinutes() + 3);
+    
+    sessionStorage.setItem("countdown_timer", now.getTime().toString());
+    sessionStorage.setItem("countdown", "true");  
+  }
+
+  public hasStartCountdown(){
+    return sessionStorage.getItem("countdown") !== null && sessionStorage.getItem("countdown") == "true";
+  }
+
+  public countDownTimer() {
+    return new Date(parseInt(sessionStorage.getItem("countdown_timer")));
+  }
+
   /** GET: retrieve orders from the server */
   public getOrders(): Observable<Order[]> {
     return this.http
@@ -139,6 +161,16 @@ export class OrderService {
       .put(`${this.baseUrl}/update-order`, order, httpOptions)
       .pipe(
         tap(_ => this.log(`updated order id=${order.id}`)),
+        catchError(this.errHandler.handleError)
+      );
+  }
+
+  /** POST: cancel an order to the server */
+  public cancelOrder(order: string | number): Observable<any> {
+    return this.http
+      .post<Order>(`${this.baseUrl}/cancel-order`, order, httpOptions)
+      .pipe(
+        tap(_ => this.log(`cancel order with id=${order}`)),
         catchError(this.errHandler.handleError)
       );
   }

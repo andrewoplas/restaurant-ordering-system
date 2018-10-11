@@ -33,13 +33,10 @@ public class OrderService implements SERVICE<Order> {
 
 	@Override
 	public List<Order> delete(String id) {
-		boolean result = false;
-		
 		try {		
-			Long longId = Long.parseLong(id);
 			Order order = repository.getItem(id);
 			if(order != null && order.getStatus().equals(OrderStatus.CANCELLED.toString())) {
-				result = repository.delete(id);
+				repository.delete(id);
 				return repository.getItems();
 			}else {
 				return null;
@@ -48,8 +45,6 @@ public class OrderService implements SERVICE<Order> {
 			System.out.print("DELETESERVICE");
 			return null;
 		}
-		
-		
 	}
 
 	@Override
@@ -76,6 +71,18 @@ public class OrderService implements SERVICE<Order> {
 	@Override
 	public Order getItem(String id) {		
 		return repository.getItem(id);
+	}
+
+	public List<Order> cancelOrder(String orderNumber) {
+		if(repository.itemExistByOrderNumber(orderNumber)) {
+			Order order = repository.getItemByOrderNumber(orderNumber);
+			order.setStatus("cancelled");
+			repository.update(order);
+			
+			return repository.getItems();
+		} else {
+			return null;
+		}
 	}
 
 }
