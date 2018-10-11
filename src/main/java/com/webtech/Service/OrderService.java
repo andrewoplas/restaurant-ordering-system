@@ -76,7 +76,7 @@ public class OrderService implements SERVICE<Order> {
 	public List<Order> cancelOrder(String orderNumber) {
 		if(repository.itemExistByOrderNumber(orderNumber)) {
 			Order order = repository.getItemByOrderNumber(orderNumber);
-			order.setStatus("CANCELLED");
+			order.setStatus("cancelled");
 			repository.update(order);
 			
 			return repository.getItems();
