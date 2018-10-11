@@ -156,16 +156,20 @@
         
                 <table class="table">
                     <tbody>
-                        <tr *ngFor="let item of orderModal.menuItem">
+                        <tr *ngFor="let miq of orderModal.menuItem">
                             <td class="text-center image">
                                 <img src="../../../assets/img/dish-1.png" />
                             </td>
                             <td class="dish-name">
-                                <span class="name">{{ item.name }}</span> <br>
-                                <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam, mauris ac sodales pulvinar, quam magna
-                                vehicula purus, sit amet fermentum tellus felis iaculis lectus.</span>
+                                <span class="name">{{ miq.item.name }}</span> 
+                                <span [hidden]="!miq.onSale" class="badge badge-info">ON SALE</span> <br>
+                                <span class="description">{{ miq.item.description }}</span>
                             </td>
-                            <td class="price">P{{ item.price }} x {{ item.quantity }}</td>
+                            <td class="price">
+                                ₱ 
+                                {{ miq.price }} 
+                                x 
+                                {{ miq.quantity }}</td>
                         </tr>
                         <tr>
                             <td class="image"></td>
@@ -173,7 +177,7 @@
                                 <p class="total-label">Total </p>
                             </td>
                             <td class="price">
-                                <p class="total-price">P3999.99</p>
+                                <p class="total-price">₱ {{ totalAmount }}</p>
                             </td>
                         </tr>
                     </tbody>
