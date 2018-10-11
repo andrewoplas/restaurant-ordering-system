@@ -52,25 +52,23 @@ export class LoginComponent implements OnInit {
     $('.showbox').css('visibility', 'visible');
     $('.login-text').css('color', '#FBA62F');
     this.auth.successLogin(null);
-    // this.auth.login(user).subscribe(
-    //   response => {
-    //     if(response != null) {
-    //       this.auth.successLogin(response);
-    //     } else {
-    //       eval(
-    //         'swal({' +
-    //         'title: "Error",' +
-    //         'text: "Invalid Username or Password!",' +
-    //         'type: "error",' +
-    //         'confirmButtonText: "Try Again",' +
-    //         'confirmButtonColor: "#A40020"' +
-    //         '});'
-    //       );
+    this.auth.login(user).subscribe(
+      response => {
+        if(response != null) {
+          this.auth.successLogin(response);
+        } else {
+          swal({
+            title: "Error",
+            text: "Invalid Username or Password!",
+            type: "error",
+            confirmButtonText: "Try Again",
+            confirmButtonColor: "#A40020"
+          });
 
-    //       $('.showbox').css('visibility', 'hidden');
-    //       $('.login-text').css('color', '#FFF');
-    //     }
-    // });
+          $('.showbox').css('visibility', 'hidden');
+          $('.login-text').css('color', '#FFF');
+        }
+    });
   }
 
   displayError(error) {
@@ -82,5 +80,4 @@ export class LoginComponent implements OnInit {
       confirmButtonColor: "#A40020"
     });
   }
-
 }
