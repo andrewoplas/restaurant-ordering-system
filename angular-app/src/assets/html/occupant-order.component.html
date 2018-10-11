@@ -30,7 +30,8 @@
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let item of items; let i = index" class="animated">
+                <ng-container *ngFor="let item of items" >
+                    <tr class="animated" id="{{ item.id }}">
                         <td></td>
                         <td>
                             <img src="assets/img/dish-1.png" class="img-responsive" />
@@ -44,19 +45,21 @@
                         <td>₱ {{ (item.item.salePrice > 0? item.item.salePrice : item.price) * item.quantity }}</td>
                         <td>
                             <div class="quantity-container">
-                                <button class="btn btn-left" [disabled]="item.quantity <= 1" (click)="decreaseQuantity(i)">
+                                <button class="btn btn-left" [disabled]="item.quantity <= 1" (click)="decreaseQuantity(item)">
                                     <i class="material-icons hidden-xs">chevron_left</i>
                                     <i class="material-icons visible-xs">expand_less</i>
                                 </button>
                                 <input type="text" class="quantity" [disabled]="item.quantity >= item.item.servings" [value]="item.quantity" readonly />
-                                <button class="btn btn-right" (click)="increaseQuantity(i)">
+                                <button class="btn btn-right" (click)="increaseQuantity(item)">
                                     <i class="material-icons hidden-xs">chevron_right</i>
                                     <i class="material-icons visible-xs">expand_more</i>
                                 </button>
                             </div>
-                            <i class="material-icons close-icon remove-order">close</i>
+                            <i class="material-icons close-icon remove-order" (click)="removeItem(item)">close</i>
                         </td>
                     </tr>
+                    <tr class="spacer"><td colspan="6"></td></tr>
+                </ng-container>
                 </tbody>
             </table>
 

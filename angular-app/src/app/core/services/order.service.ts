@@ -60,7 +60,33 @@ export class OrderService {
       });
     }
 
-    console.log(items);
+    sessionStorage.setItem("order", JSON.stringify(items));
+  }
+
+  public removeToCart(item: MenuItemQuantity, items: Array<MenuItemQuantity>) {
+    items = items.filter(obj => obj.id !== item.id);
+    
+    sessionStorage.setItem("order", JSON.stringify(items));
+  }
+
+  public increaseQuantity(item: MenuItemQuantity,  quantity: number, items: Array<MenuItemQuantity>) {
+    let i: number;
+    for(i = 0; i<items.length; i++) {
+      if(items[i].item.id == item.id) {
+        items[i].quantity += quantity;
+      }
+    }
+
+    sessionStorage.setItem("order", JSON.stringify(items));
+  }
+
+  public decreaseQuantity(item: MenuItemQuantity, quantity: number, items: Array<MenuItemQuantity>) {
+    let i: number;
+    for(i = 0; i<items.length; i++) {
+      if(items[i].item.id == item.id) {
+        items[i].quantity -= quantity;
+      }
+    }
 
     sessionStorage.setItem("order", JSON.stringify(items));
   }
