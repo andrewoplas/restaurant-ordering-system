@@ -23,7 +23,8 @@ export class OccupantMenuComponent implements OnInit {
 	menuitemList: Array<MenuItem> = new Array<MenuItem>();
 	currentMenu = {
 		items: []
-	};
+  };
+  cartItems;
 
 	constructor(
 		private menuService: MenuService,
@@ -34,7 +35,9 @@ export class OccupantMenuComponent implements OnInit {
   ngOnInit() {
     this.initializeMenuItems();
     this.clickMenu();
-		this.clickFloatingActionButton();
+    this.clickFloatingActionButton();
+    
+    this.cartItems = this.orderService.getOrder().length;
   }
 
   initializeMenuItems() {
