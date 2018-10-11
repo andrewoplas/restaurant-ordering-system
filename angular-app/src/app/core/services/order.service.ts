@@ -175,6 +175,16 @@ export class OrderService {
       );
   }
 
+  /** POST: pay an order to the server */
+  public payOrder(order: string | number): Observable<any> {
+    return this.http
+      .post<Order>(`${this.baseUrl}/pay-order`, order, httpOptions)
+      .pipe(
+        tap(_ => this.log(`pay order with id=${order}`)),
+        catchError(this.errHandler.handleError)
+      );
+  }
+
   /** Log a OrderService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`OrderService: ${message}`);

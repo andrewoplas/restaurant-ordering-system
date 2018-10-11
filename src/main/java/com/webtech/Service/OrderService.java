@@ -84,5 +84,17 @@ public class OrderService implements SERVICE<Order> {
 			return null;
 		}
 	}
+	
+	public List<Order> payOrder(String orderNumber) {
+		if(repository.itemExistByOrderNumber(orderNumber)) {
+			Order order = repository.getItemByOrderNumber(orderNumber);
+			order.setStatus("paid");
+			repository.update(order);
+			
+			return repository.getItems();
+		} else {
+			return null;
+		}
+	}
 
 }
