@@ -60,7 +60,48 @@ export class OrderService {
       });
     }
 
-    console.log(items);
+    sessionStorage.setItem("order", JSON.stringify(items));
+  }
+
+  public removeToCart(item: MenuItemQuantity) {
+    let items: Array<MenuItemQuantity> = this.getOrder();
+    
+    let i: number;
+    let index = 0;
+    for(i = 0; i<items.length; i++) {
+      if(items[i].item.id == item.id) {
+        index = i;
+        break;
+      }
+    }
+
+    items.slice(index, 1);
+
+    sessionStorage.setItem("order", JSON.stringify(items));
+  }
+
+  public increaseQuantity(item: MenuItemQuantity, quantity) {
+    let items: Array<MenuItemQuantity> = this.getOrder();
+    
+    let i: number;
+    for(i = 0; i<items.length; i++) {
+      if(items[i].item.id == item.id) {
+        items[i].quantity += quantity;
+      }
+    }
+
+    sessionStorage.setItem("order", JSON.stringify(items));
+  }
+
+  public decreaseQuantity(item: MenuItemQuantity, quantity) {
+    let items: Array<MenuItemQuantity> = this.getOrder();
+    
+    let i: number;
+    for(i = 0; i<items.length; i++) {
+      if(items[i].item.id == item.id) {
+        items[i].quantity -= quantity;
+      }
+    }
 
     sessionStorage.setItem("order", JSON.stringify(items));
   }
