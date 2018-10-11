@@ -18,6 +18,7 @@ import { OccupantOrderComponent } from "@occupant/occupant-order.component";
 import { OccupantMenuComponent } from "@occupant/occupant-menu.component";
 import { FeedbackComponent } from '@occupant/feedback.component';
 import { LandingComponent } from '@occupant/landing.component';
+import { DishDetailsComponent } from '@occupant/dish-details.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LandingComponent } from '@occupant/landing.component';
     AdminComponent,
     AdminNavComponent,
     AdminSideBarComponent,
+    DishDetailsComponent,
   ],
   imports: [
     BrowserModule,
