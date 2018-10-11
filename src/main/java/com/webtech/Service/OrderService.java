@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webtech.Dao.MenuItemDao;
 import com.webtech.Dao.OrderDao;
+import com.webtech.Model.MenuItemQuantity;
 import com.webtech.Model.Order;
 import com.webtech.Model.OrderStatus;
 
@@ -13,6 +15,9 @@ import com.webtech.Model.OrderStatus;
 public class OrderService implements SERVICE<Order> {		
 	@Autowired
 	private OrderDao repository;
+	
+	@Autowired
+	private MenuItemDao menuItemRepository;
 	
 	@Override
 	public List<Order> create(Order obj) {
@@ -49,7 +54,23 @@ public class OrderService implements SERVICE<Order> {
 
 	@Override
 	public List<Order> getItems() {
-		return repository.getItems();
+		List<Order> orders = repository.getItems();
+		
+		if(orders.size() > 0) {
+			for(Order order: orders) {				
+				List<MenuItemQuantity> miq = order.getMenuItem();
+				
+				for(int i=0; i<miq.size(); i++) {
+					MenuItemQuantity item = miq.get(i);
+					item.setItem(menuItemRepository.getItem(item.getId().toString()));
+					miq.set(i, item);
+		    	}
+				
+				order.setMenuItem(miq);
+	    	}
+		}
+		
+		return orders;
 	}
 
 	@Override

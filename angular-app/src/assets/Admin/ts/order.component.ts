@@ -86,7 +86,7 @@ export class OrderComponent implements OnInit {
 
   getOrderModal(order: Order) {
     this.orderModal = order;
-
+    
     console.log(this.orderModal);
   }
 
