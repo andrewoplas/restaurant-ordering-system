@@ -103,6 +103,10 @@ export class OrderService {
     return items;
   }
 
+  public clearOrder() {
+    sessionStorage.removeItem("order");
+  }
+
   /** GET: retrieve orders from the server */
   public getOrders(): Observable<Order[]> {
     return this.http

@@ -77,6 +77,8 @@ export class OccupantOrderComponent implements OnInit {
     .subscribe(
       data => {
         if(data != null) {
+          this.orderService.clearOrder();
+
           swal({
             title: "Success",
             text: "Successfully processed your order.!",
