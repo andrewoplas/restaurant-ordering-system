@@ -1,0 +1,42 @@
+<div class="user-side">
+    <img src="assets/img/menu-background.png" class="fire-image" />
+
+    <div class="login-container">
+        <img src="assets/img/logo-transparent.png" class="logo" />
+
+        <p class="slogan">Expect the best</p>
+        <p class="timer-notification" [hidden]="!hideTimer">
+            "Patience is bitter but its fruit is sweet - Aristotle . <br>
+            Please wait as we cook something delicious for you. Edi wow!"
+        </p>
+        
+        <span [hidden]="hideTimer">
+            <p class="timer">{{ minutes }}m {{ seconds }}s</p>
+            <p class="timer-notification">
+                You cannot cancel your order anymore after timer reaches zerooo. You better not to coz' we're currently cooking your order.
+            </p>
+
+            <button [swal]="cancel" (confirm)="cancelOrder()">
+                <span class="login-text">CANCEL ORDER</span>
+                <div class="showbox">
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                        </svg>
+                    </div>
+                </div>
+            </button>
+        </span>
+    </div>
+</div>
+
+<swal 
+    #cancel
+    title="Cancel Order?" 
+    text="Are you sure you want to cancel this order?" 
+    type="question"
+    [showCancelButton]="true" 
+    [focusCancel]="true" 
+    confirmButtonText="Yes, Cancel It"
+    confirmButtonColor="#A40020">
+</swal>
