@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
       password: this.forms.value.password,
     };    
 
-    this.auth.successLogin(null);
     this.auth.login(user).subscribe(
       response => {
         if(response != null) {
