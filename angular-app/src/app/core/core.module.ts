@@ -9,7 +9,15 @@ import { AuthService } from "@services/auth.service";
 import { MenuItemService } from '@services/menu-item.service';
 import { FeedbackService } from '@services/feedback.service';
 import { ErrorHandlerService } from '@services/error-handler.service';
+
+// Interceptor
+import { HTTPListener, HTTPStatus } from '../core/interceptor/loading-http-interceptor';
+
+// Global Variables
 import { Globals } from '@models/Globals';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+const HTTPServices = [HTTPListener, HTTPStatus];
 
 @NgModule({
   providers: [
@@ -20,7 +28,15 @@ import { Globals } from '@models/Globals';
     MenuItemService,
     FeedbackService,
     ErrorHandlerService,
-    Globals
+    Globals,
+
+    HTTPServices,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HTTPListener,
+      multi: true
+    }
+    
   ],
   declarations: [  ]
   

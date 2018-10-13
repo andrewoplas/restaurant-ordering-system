@@ -28,6 +28,7 @@
               "src/plugins"
             ],
             "styles": [
+              "../angular-app/node_modules/animate.css/animate.css",
               "src/styles.scss"
             ],
             "scripts": [
