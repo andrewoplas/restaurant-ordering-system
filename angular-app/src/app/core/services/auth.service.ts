@@ -31,7 +31,7 @@ export class AuthService {
     this.baseUrl = this.Global.BASE_URL;
   } 
 
-   /** POST: Retrieve user */
+  /** POST: Retrieve user */
   public login(user: LoginUser): Observable<any> {
     return this.http
       .post<LoginUser>(`${this.baseUrl}/login`, user, httpOptions)
@@ -39,6 +39,34 @@ export class AuthService {
         tap(_ => this.log(`login user with username=${user.username}`)),
         catchError(this.errHandler.handleError)
       );
+  }
+
+  /** POST: Retrieve table */
+  public loginOccupant(table: number | string): Observable<any> {
+    return this.http
+      .post<LoginUser>(`${this.baseUrl}/table/login`, table, httpOptions)
+      .pipe(
+        tap(_ => this.log(`login user with table=${table}`)),
+        catchError(this.errHandler.handleError)
+      );
+  }
+
+  public successLoginOccupant(table: string) {
+    localStorage.setItem('table', table);
+    this.router.navigate(['/']);   
+  }
+
+  public isloggedInOccupant() {
+    return localStorage.getItem("table");
+  }
+
+  public logoutOccupant() {
+    localStorage.removeItem('table');
+    this.router.navigate(['/occupant']);
+  }
+
+  public getTable() {
+    return localStorage.getItem('table');
   }
 
   public successLogin(user: User) {
