@@ -59,7 +59,6 @@ export class OccupantMenuComponent implements OnInit {
   initializeMenuItems() {
     this.menuService.getMenus().subscribe(
 			data => { this.menuList = data; },
-			error => { this.displayError(error); }
 		);
 
 		this.menuItemService.getAllMenuItems().subscribe(
@@ -71,8 +70,6 @@ export class OccupantMenuComponent implements OnInit {
 
 				this.animateMenuItems();
 			}, 
-
-			error => { this.displayError(error); }
 		); 
 	}
 	
@@ -141,14 +138,4 @@ export class OccupantMenuComponent implements OnInit {
 			confirmButtonColor: "#FBA62F"
 		});
 	}
-	
-	displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
-  }
 }

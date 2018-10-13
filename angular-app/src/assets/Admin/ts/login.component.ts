@@ -68,20 +68,7 @@ export class LoginComponent implements OnInit {
           $('.showbox').css('visibility', 'hidden');
           $('.login-text').css('color', '#FFF');
         }
-    }, 
-    
-    error => { this.displayError(error); }
-
+      }, 
     );
-  }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
   }
 }

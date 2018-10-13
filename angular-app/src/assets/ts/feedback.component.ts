@@ -62,10 +62,7 @@ export class FeedbackComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });   
         }
-    }, 
-
-    error => { this.displayError(error); }
-    
+      }, 
     );
 
     // Gets food quality rate base on index
@@ -138,16 +135,4 @@ export class FeedbackComponent implements OnInit {
     }
 
   }
-
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
-  }
-
 }

@@ -31,8 +31,6 @@ export class AdminFeedbackComponent implements OnInit {
         $("#table-orders").DataTable().clear();
         $('#table-orders').DataTable().destroy();
       }, 
-
-      error => { this.displayError(error); }
     );
   }
 
@@ -42,15 +40,4 @@ export class AdminFeedbackComponent implements OnInit {
       eval("$('[data-toggle=tooltip]').tooltip();");
     }
   }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
-  }
-
 }

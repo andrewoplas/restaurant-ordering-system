@@ -27,8 +27,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderService.getOrders().subscribe(
-      data => { this.orderList = data; },
-      error => { this.displayError(error); }
+      data => { this.orderList = data; }
     );
   }
 
@@ -69,9 +68,7 @@ export class OrderComponent implements OnInit {
               confirmButtonColor: "#A40020"
             });
           }
-        },
-    
-      error => { this.displayError(error); }
+        }
     );
   }
 
@@ -83,15 +80,5 @@ export class OrderComponent implements OnInit {
     for (i=0; i<this.orderModal.menuItem.length; i++) {      
       this.totalAmount += order.menuItem[i].price * order.menuItem[i].quantity;
     }
-  }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
   }
 }
