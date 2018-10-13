@@ -18,7 +18,8 @@ export class OccupantLoginComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.authService.isloggedInOccupant();
   }
 
   login() {
@@ -26,32 +27,18 @@ export class OccupantLoginComponent implements OnInit {
 
     this.authService.loginOccupant(tableNumber).subscribe(
       response => {
-        if(response == null) {
-          this.authService.successLoginOccupant(response);
-        } else {
+        if(response.error) {
           swal({
             title: "Error",
-            text: response,
+            text: response.message,
             type: "error",
             confirmButtonText: "Try Again",
             confirmButtonColor: "#A40020"
           });
+        } else {
+          this.authService.successLoginOccupant(response);
         }
-    }, 
-    
-    error => { this.displayError(error); }
-
+      }, 
     );
   }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
-  }
-
 }

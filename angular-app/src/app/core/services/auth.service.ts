@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   /** POST: Retrieve table */
-  public loginOccupant(table: number | string): Observable<any> {
+  public loginOccupant(table: string): Observable<any> {
     return this.http
       .post<LoginUser>(`${this.baseUrl}/table/login`, table, httpOptions)
       .pipe(
