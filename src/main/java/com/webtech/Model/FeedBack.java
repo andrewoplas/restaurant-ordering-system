@@ -23,75 +23,51 @@ public class FeedBack {
 	
 	@Property(name="date" , indexed=true) 
 	private Date date;
+	
+	public FeedBack() {
+		
+	}
 
-	// public FeedBack(){}
-	// public FeedBack(int foodQuality, int staffQuality, int overallQuality){
-	// 	this.staffQuality = staffQuality;
-	// 	this.foodQuality = foodQuality;
-	// 	this.overallQuality = overallQuality;
-
-	// }
-	// public FeedBack(Long id, int foodQuality, int staffQuality, int overallQuality){
-	// 		this.id = id;
-	// 		this.staffQuality = staffQuality;
-	// 		this.foodQuality = foodQuality;
-	// 		this.overallQuality = overallQuality;
-
-	// }
-	/**
-	 * @return the id
-	 */
 	public Long getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	/**
-	 * @return the overallQuality
-	 */
+
 	public int getOverallQuality() {
 		return overallQuality;
 	}
-	/**
-	 * @param overallQuality the overallQuality to set
-	 */
+
 	public void setOverallQuality(int overallQuality) {
 		this.overallQuality = overallQuality;
 	}
-	/**
-	 * @return the foodQuality
-	 */
+
 	public int getFoodQuality() {
 		return foodQuality;
 	}
-	/**
-	 * @param foodQuality the foodQuality to set
-	 */
+
 	public void setFoodQuality(int foodQuality) {
 		this.foodQuality = foodQuality;
 	}
-	/**
-	 * @return the staffQuality
-	 */
+
 	public int getStaffQuality() {
 		return staffQuality;
 	}
-	/**
-	 * @param staffQuality the staffQuality to set
-	 */
+
 	public void setStaffQuality(int staffQuality) {
 		this.staffQuality = staffQuality;
 	}
-	
-	public Date getDate(){
+
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(Date date){
+
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	
+	
 }

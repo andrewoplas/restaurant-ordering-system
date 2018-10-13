@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webtech.Model.Order;
 import com.webtech.Service.OrderService;
 
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/")

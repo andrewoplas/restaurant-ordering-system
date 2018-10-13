@@ -1,11 +1,9 @@
 package com.webtech.Dao;
 
-import com.google.appengine.api.datastore.*;
+import java.util.List;
+
 import com.jmethods.catatumbo.EntityManager;
 import com.jmethods.catatumbo.EntityManagerFactory;
-
-import java.util.*;
-import com.webtech.CRUD;
 
 public interface REPOSITORY<T> {
 	EntityManagerFactory emf = EntityManagerFactory.getInstance();

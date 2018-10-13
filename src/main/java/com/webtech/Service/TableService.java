@@ -5,16 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.webtech.Dao.TableRepo;
-import com.webtech.Model.Order;
-import com.webtech.Model.OrderStatus;
+import com.webtech.Dao.TableDao;
 import com.webtech.Model.Table;
 
 @Service
 public class TableService implements SERVICE<Table> {
 	
 	@Autowired
-	TableRepo service;
+	TableDao service;
 	@Override
 	public List<Table> create(Table obj) {
 		// TODO Auto-generated method stub

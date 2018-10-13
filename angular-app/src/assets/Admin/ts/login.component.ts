@@ -44,13 +44,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    $('.showbox').css('visibility', 'visible');
+    $('.login-text').css('color', '#FBA62F');
+    
     let user = {
       username: this.forms.value.username,
       password: this.forms.value.password,
-    };
+    };    
 
-    $('.showbox').css('visibility', 'visible');
-    $('.login-text').css('color', '#FBA62F');
     this.auth.successLogin(null);
     this.auth.login(user).subscribe(
       response => {
