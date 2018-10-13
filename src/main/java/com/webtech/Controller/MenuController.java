@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.webtech.Model.Menu;
 import com.webtech.Service.MenuService;
-
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -37,7 +35,6 @@ public class MenuController extends BaseController implements CONTROLLER<Menu>{
     @PutMapping(path = "/update-menu", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
 	public @ResponseBody List<Menu> update(@RequestBody Menu obj) {
-		System.out.println("--Update Menu");
 		return service.update(obj);
 	}
 	

@@ -1,18 +1,16 @@
 package com.webtech.Dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.google.appengine.api.datastore.Entity;
 import com.jmethods.catatumbo.EntityQueryRequest;
 import com.jmethods.catatumbo.QueryResponse;
 import com.webtech.Model.Menu;
 import com.webtech.Model.Table;
 
 @Repository
-public class TableRepo implements REPOSITORY<Table> {
+public class TableDao implements REPOSITORY<Table> {
 
 	@Override
 	public Table create(Table obj) {
