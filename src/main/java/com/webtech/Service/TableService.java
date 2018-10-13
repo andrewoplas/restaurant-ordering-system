@@ -15,29 +15,22 @@ public class TableService implements SERVICE<Table> {
 	TableDao service;
 	@Override
 	public List<Table> create(Table obj) {
-		// TODO Auto-generated method stub
 		service.create(obj);
 		return service.getItems();
 	}
 
 	@Override
 	public List<Table> update(Table obj) {
-		// TODO Auto-generated method stub
-		
 		service.update(obj);
 		return service.getItems();
 	}
 
 	@Override
-	public List<Table> delete(String id) {
-		// TODO Auto-generated method stub
-boolean result = false;
-		
+	public List<Table> delete(String id) {		
 		try {		
-			Long longId = Long.parseLong(id);
 			Table order = service.getItem(id);
 			if(order != null) {
-				result = service.delete(id);
+				service.delete(id);
 				return service.getItems();
 			}else {
 				return null;
@@ -50,14 +43,41 @@ boolean result = false;
 
 	@Override
 	public List<Table> getItems() {
-		// TODO Auto-generated method stub
 		return service.getItems();
 	}
 
 	@Override
 	public Table getItem(String id) {
-		// TODO Auto-generated method stub
 		return service.getItem(id);
 	}
 
+	public String login(String id) {
+		Table table = service.getItemByTableNumber(id);
+		if(table != null) {
+			if(table.getStatus().equals("unavailable")) {
+				return "Table is currently occupied. Check another vacant table.";
+			} else {
+				table.setStatus("unavailable");
+				service.update(table);
+			}
+		} else {
+			return "Table does not exists. Make sure it is an existing table number.";
+		}
+		
+		return null;
+	}
+	
+	public String logout(String id) {
+		Table table = service.getItemByTableNumber(id);
+		if(table != null) {
+			if(table.getStatus().equals("unavailable")) {
+				table.setStatus("available");
+				service.update(table);
+			}
+		} else {
+			return "Table does not exists. Make sure it is an existing table number.";
+		}
+		
+		return null;
+	}
 }

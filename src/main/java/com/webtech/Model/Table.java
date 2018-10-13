@@ -10,44 +10,44 @@ public class Table{
 	@Identifier
     private String id;
 	
-	@Property(name = "capacity")
-	
-	
-	
     private int capacity;
-	public Table(String id, int capacity) {
-		
-		this.id = id;
-		this.capacity = capacity;
-	}
 	
-	public Table(int capacity) {
+	@Property(name = "capacity")	
+	private int tableNumber;
+	
+	private String status;
 		
-		this.capacity = capacity;
-	}
-	/**
-	 * @return the id
-	 */
+	public Table() { }
+
 	public String getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
+
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	/**
-	 * @return the capacity
-	 */
+
 	public int getCapacity() {
 		return capacity;
 	}
-	/**
-	 * @param capacity the capacity to set
-	 */
+
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
+	}
+
+	public int getTableNumber() {
+		return tableNumber;
+	}
+
+	public void setTableNumber(int tableNumber) {
+		this.tableNumber = tableNumber;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
