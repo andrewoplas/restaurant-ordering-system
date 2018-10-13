@@ -34,12 +34,6 @@ export class MenuAddComponent implements OnInit {
       show: this.forms.value.show,
     };
 
-    swal({
-      title: "Processing",
-      text: "Please wait as we process your request",
-      showConfirmButton: false,
-    });
-
     this.menuService.addMenu(menu).subscribe(
       data => {
         if(data != null) {
@@ -59,7 +53,9 @@ export class MenuAddComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });
         }
-      }
+      }, 
+
+      error => { this.displayError(error); }
     );
   }
 

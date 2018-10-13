@@ -83,12 +83,6 @@ export class OccupantOrderComponent implements OnInit {
   }
 
   finalizeOrder() {
-    swal({
-      title: "Processing",
-      text: "Please wait as we process your request",
-      showConfirmButton: false,
-    });
-
     let orderNumber = (new Date()).getTime();
 
     let order: Order = new Order(
@@ -126,6 +120,20 @@ export class OccupantOrderComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });            
         }
+    }, 
+    
+    error => { this.displayError(error); }
+
+    );
+  }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
     });
   }
 }

@@ -69,7 +69,11 @@ export class LoginComponent implements OnInit {
           $('.showbox').css('visibility', 'hidden');
           $('.login-text').css('color', '#FFF');
         }
-    });
+    }, 
+    
+    error => { this.displayError(error); }
+
+    );
   }
 
   displayError(error) {

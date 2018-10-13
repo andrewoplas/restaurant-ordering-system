@@ -19,13 +19,9 @@ export class MenuItemComponent implements OnInit {
 
 
   ngOnInit() {
-    // $('input[type=file]').change(function () {
-    //   var filePath = $(this).val().replace(/^.*[\\\/]/, '');
-    //   $("#file-name").text(filePath); 
-    // });
-
     this.menuItemService.getAllMenuItems().subscribe(
-      data => { this.menuItemList = data;}
+      data => { this.menuItemList = data;}, 
+      error => { this.displayError(error); }
     );
   }
 
@@ -40,12 +36,6 @@ export class MenuItemComponent implements OnInit {
   }
 
   delete(id: number) {
-    swal({
-    title: "Processing",
-    text: "Please wait as we process your request",
-    showConfirmButton: false,
-    });
-
     this.menuItemService.deleteMenuItem(id)
       .subscribe(
         data => {
@@ -72,7 +62,10 @@ export class MenuItemComponent implements OnInit {
               confirmButtonColor: "#A40020"
             });
           }
-      });
+      }, 
+
+      error => { this.displayError(error); }
+    );
   }
 
   displayError(error) {

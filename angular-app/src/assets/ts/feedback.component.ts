@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Feedback } from '@models/Feedback';
 import { FeedbackService } from '@services/feedback.service';
 import * as $ from 'jquery';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-feedback',
@@ -46,12 +47,26 @@ export class FeedbackComponent implements OnInit {
     this.feedbackService.addFeedback(this.feedback).subscribe(
       success => {
         if(success) {
-          console.log("done");
+          swal({
+            title: "Success",
+            text: "Successfully submitted your feedback. Thank you!",
+            type: "success",
+            timer: 3000
+          });
         } else {
-
+          swal({
+            title: "Ooops!",
+            text: "There was an error during the process. Please try again!",
+            type: "error",
+            confirmButtonText: "Try Again",
+            confirmButtonColor: "#A40020"
+          });   
         }
-    });
-    console.log(this.feedback);
+    }, 
+
+    error => { this.displayError(error); }
+    
+    );
 
     // Gets food quality rate base on index
     function getFoodQuality(){
@@ -122,6 +137,17 @@ export class FeedbackComponent implements OnInit {
       });
     }
 
+  }
+
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
   }
 
 }

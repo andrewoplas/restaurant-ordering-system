@@ -55,13 +55,6 @@ export class MenuItemAddComponent implements OnInit {
       ingredients: eval('$("[data-role=tagsinput]").tagsinput("items")')
     }; 
     
-    swal({
-      title: "Processing",
-      text: "Please wait as we process your request",
-      showConfirmButton: false,
-      confirmButtonColor: "#FBA62F"
-    });
-    
     this.menuItemService.addMenuItem(menuItem).subscribe(
       data => {
         if(data != null) {
@@ -81,7 +74,9 @@ export class MenuItemAddComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });  
         }
-      }
+      }, 
+
+      error => { this.displayError(error); }
     );
   }
 
