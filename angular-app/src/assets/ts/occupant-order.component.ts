@@ -5,6 +5,7 @@ import { OrderService } from '@services/order.service';
 import { Order, MenuItemQuantity, Status } from '@models/Order';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: "app-occupant-order",
@@ -21,6 +22,7 @@ export class OccupantOrderComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
+    private auth: AuthService,
     private router: Router
   ) {}
 
@@ -84,9 +86,10 @@ export class OccupantOrderComponent implements OnInit {
 
   finalizeOrder() {
     let orderNumber = (new Date()).getTime();
+    let tableNumber = this.auth.getTable().tableNumber;
 
     let order: Order = new Order(
-      0, this.totalAmount, Status.PENDING, 0, orderNumber, this.items, new Date()
+      0, this.totalAmount, Status.PENDING, Number(tableNumber), orderNumber, this.items, new Date()
     );   
 
     sessionStorage.setItem("order_number", orderNumber.toString());
@@ -109,7 +112,7 @@ export class OccupantOrderComponent implements OnInit {
           setTimeout(
             () => {
               this.router.navigate(['waiting']);
-          }, 3000);
+          }, 2000);
 
         } else {
           swal({
@@ -120,10 +123,7 @@ export class OccupantOrderComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });            
         }
-    }, 
-    
-    error => { this.displayError(error); }
-
+      }, 
     );
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@services/order.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-waiting',
@@ -12,9 +13,11 @@ export class WaitingComponent implements OnInit {
   minutes: number;
   seconds: number;
   hideTimer: boolean;
+  paid: boolean;
 
   constructor(
     private orderService: OrderService,
+    private auth: AuthService,
     private router: Router
   ) { }
 
@@ -36,8 +39,12 @@ export class WaitingComponent implements OnInit {
       }, 3000);
     } else {
       this.hideTimer = false;
+      this.paid = false;
       this.startTimer();
     }    
+  }
+  startCookingNow() {
+    this.hideTimer = true;
   }
 
   startTimer() {
@@ -84,10 +91,7 @@ export class WaitingComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });            
         }
-    }, 
-
-    error => { this.displayError(error); }
-    
+      },
     );
   }
 
@@ -125,17 +129,13 @@ export class WaitingComponent implements OnInit {
             if(data != null) {
               swal({
                 title: "Success",
-                text: "Successfully paid your bill. You will redirected to landing page!",
+                text: "Successfully paid your bill!",
                 type: "success",
                 timer: 3000
               });
     
               this.orderService.clearOrder();
-    
-              setTimeout(
-                () => {
-                  this.router.navigate(['/']);
-              }, 3000);
+              this.paid = true;
             } else {
               swal({
                 title: "Ooops!",
@@ -145,9 +145,7 @@ export class WaitingComponent implements OnInit {
                 confirmButtonColor: "#A40020"
               });            
             }
-        }, 
-        
-        error => { this.displayError(error); }
+          },
         
         );
       } else {
@@ -162,13 +160,23 @@ export class WaitingComponent implements OnInit {
     }
   }
 
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
+  logout() {
+    let tableNumber = this.auth.getTable().tableNumber;
+    console.log(tableNumber);
+    this.auth.logoutOccupant(tableNumber).subscribe(
+      response => {
+        if(response.error) {
+          swal({
+            title: "Error",
+            text: response.message,
+            type: "error",
+            confirmButtonText: "Try Again",
+            confirmButtonColor: "#A40020"
+          });
+        } else {
+          this.auth.clearTable();
+        }
+      }, 
+    );
   }
 }

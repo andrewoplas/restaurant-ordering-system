@@ -13,6 +13,29 @@
     }
 }
 
+.logout {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  padding: 5px 15px;
+  border: 2px solid #FBA62F;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+
+  h3 {
+    color: white;
+    margin: 0;
+  }
+}
+
+.start-cooking-now {
+	color: white;
+	margin-top: 10px;
+}
+
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;

@@ -1,0 +1,20 @@
+<div class="user-side">  
+    <img src="assets/img/menu-background.png" class="fire-image" />
+
+    <div class="login-container">
+        <img src="assets/img/animated-logo.gif" class="animated-logo">
+
+        <form [formGroup]="forms" #formDirective="ngForm" (submit)="login()">  
+            <div class="group">
+                <input type="number" min="1" name="tableNumber" id="tableNumber" 
+                    required formControlName="tableNumber" maxlength="3" placeholder="Table Number">
+                <span class="bar"></span>
+            </div>
+    
+            <button [disabled]="!forms.valid">
+                <span class="login-text">START DINING</span>
+            </button>
+        </form>
+    </div>
+  </div>
+  

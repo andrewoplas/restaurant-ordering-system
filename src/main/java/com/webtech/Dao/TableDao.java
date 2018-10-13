@@ -14,42 +14,22 @@ public class TableDao implements REPOSITORY<Table> {
 
 	@Override
 	public Table create(Table obj) {
-		// TODO Auto-generated method stub
-		Table insertTable = null;
-		try {
-			insertTable = em.insert(obj);	
-		} catch (Exception ex) {
-			System.out.println("INSERTDAO: " + ex.getMessage());
-		}
-		return insertTable;
+		return em.insert(obj);	
 	}
 
 	@Override
 	public void update(Table obj) {
-		// TODO Auto-generated method stub
-		
-		try {
-			em.update(obj);
-		} catch (Exception ex) {
-			System.out.println("INSERTDAO: " + ex.getMessage());
-		}
+		em.update(obj);
 	}
 
 	@Override
 	public boolean delete(String id) {
-		// TODO Auto-generated method stub
-		try {
-			em.delete(Menu.class, id);
-			return true;
-		} catch (Exception ex) {
-			System.out.println("INSERTDAO: " + ex.getMessage());
-			return false;
-		}
+		em.delete(Menu.class, id);
+		return true;
 	}
 
 	@Override
 	public List<Table> getItems() {
-		// TODO Auto-generated method stub
 		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM Table");
 		QueryResponse<Table> response = em.executeEntityQueryRequest(Table.class, request);
 		List<Table> obj = response.getResults();
@@ -58,16 +38,15 @@ public class TableDao implements REPOSITORY<Table> {
 
 	@Override
 	public Table getItem(String id) {
-		// TODO Auto-generated method stub
-		return em.load(Table.class, id);
+		return em.load(Table.class, Long.parseLong(id));
 	}
-
 	
-	public boolean itemExist(long id) {
-		// TODO Auto-generated method stub
-		return false;
+	public Table getItemByTableNumber(String tableNumber) {
+		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Table` WHERE table_number=@tableNumber");
+		request.setNamedBinding("tableNumber", Long.parseLong(tableNumber));
+		QueryResponse<Table> response = em.executeEntityQueryRequest(Table.class, request);
+		Table table = response.getResults().size() > 0? response.getResults().get(0) : null;
+		
+		return table;
 	}
-
-	
-
 }

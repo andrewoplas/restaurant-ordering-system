@@ -11,7 +11,7 @@ import { FeedbackService } from '@services/feedback.service';
 import { ErrorHandlerService } from '@services/error-handler.service';
 
 // Interceptor
-import { HTTPListener, HTTPStatus } from '../core/interceptor/loading-http-interceptor';
+import { HTTPListener, HTTPStatus } from './interceptor/interceptor';
 
 // Global Variables
 import { Globals } from '@models/Globals';

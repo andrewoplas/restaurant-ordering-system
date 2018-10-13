@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webtech.Errors;
 import com.webtech.Dao.TableDao;
+import com.webtech.Model.ErrorResponseModel;
 import com.webtech.Model.Table;
 
 @Service
@@ -15,29 +17,22 @@ public class TableService implements SERVICE<Table> {
 	TableDao service;
 	@Override
 	public List<Table> create(Table obj) {
-		// TODO Auto-generated method stub
 		service.create(obj);
 		return service.getItems();
 	}
 
 	@Override
 	public List<Table> update(Table obj) {
-		// TODO Auto-generated method stub
-		
 		service.update(obj);
 		return service.getItems();
 	}
 
 	@Override
-	public List<Table> delete(String id) {
-		// TODO Auto-generated method stub
-boolean result = false;
-		
+	public List<Table> delete(String id) {		
 		try {		
-			Long longId = Long.parseLong(id);
 			Table order = service.getItem(id);
 			if(order != null) {
-				result = service.delete(id);
+				service.delete(id);
 				return service.getItems();
 			}else {
 				return null;
@@ -50,14 +45,41 @@ boolean result = false;
 
 	@Override
 	public List<Table> getItems() {
-		// TODO Auto-generated method stub
 		return service.getItems();
 	}
 
 	@Override
 	public Table getItem(String id) {
-		// TODO Auto-generated method stub
 		return service.getItem(id);
 	}
 
+	public Object login(String id) {
+		Table table = service.getItemByTableNumber(id);
+		if(table != null) {
+			if(table.getStatus().equals("unavailable")) {
+				return new ErrorResponseModel(Errors.TABLE_OCCUPIED);
+			} else {
+				table.setStatus("unavailable");
+				service.update(table);
+			}
+		} else {
+			return new ErrorResponseModel(Errors.TABLE_DOES_NOT_EXISTS);
+		}
+		
+		return table;
+	}
+	
+	public Object logout(String id) {
+		Table table = service.getItemByTableNumber(id);
+		if(table != null) {
+			if(table.getStatus().equals("unavailable")) {
+				table.setStatus("available");
+				service.update(table);
+			}
+		} else {
+			return new ErrorResponseModel(Errors.TABLE_DOES_NOT_EXISTS);
+		}
+		
+		return table;
+	}
 }

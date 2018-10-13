@@ -12,27 +12,30 @@ import { AdminGuard } from './core/authentication/admin.guard';
 
 import { AdminModule } from './modules/admin/admin.module';
 import { DishDetailsComponent } from '@occupant/dish-details.component';
-import { AuthGuard } from './core/authentication/auth.guard';
 import { WaitingComponent } from '@occupant/waiting.component';
+import { OccupantLoginComponent } from '@occupant/occupant-login.component';
+import { OccupantGuard } from './core/authentication/occupant.guard';
 
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: 'admin', component: AdminComponent, loadChildren: () => AdminModule, canActivate: [AdminGuard]},
-  { path: 'menu', component: OccupantMenuComponent },
-  { path: 'menu/:id', component: DishDetailsComponent },
-  { path: 'order', component: OccupantOrderComponent },
-  { path: 'receptionist', component: ReceptionistComponent },
-  { path: 'feedback', component: FeedbackComponent },
-  { path: 'waiting', component: WaitingComponent },
-  { path: '', component: LandingComponent }
+  { path: 'menu', component: OccupantMenuComponent, canActivate: [OccupantGuard]},
+  { path: 'menu/:id', component: DishDetailsComponent, canActivate: [OccupantGuard]},
+  { path: 'order', component: OccupantOrderComponent, canActivate: [OccupantGuard]},
+  { path: 'receptionist', component: ReceptionistComponent, canActivate: [OccupantGuard]},
+  { path: 'feedback', component: FeedbackComponent, canActivate: [OccupantGuard]},
+  { path: 'waiting', component: WaitingComponent, canActivate: [OccupantGuard]},
+  { path: 'occupant', component: OccupantLoginComponent },
+  { path: '', component: LandingComponent, canActivate: [OccupantGuard]}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
-    AdminGuard
+    AdminGuard,
+    OccupantGuard
   ]
 })
 export class AppRoutingModule { }

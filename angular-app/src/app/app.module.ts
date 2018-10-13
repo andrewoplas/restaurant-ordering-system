@@ -20,6 +20,7 @@ import { FeedbackComponent } from '@occupant/feedback.component';
 import { LandingComponent } from '@occupant/landing.component';
 import { DishDetailsComponent } from '@occupant/dish-details.component';
 import { WaitingComponent } from '@occupant/waiting.component';
+import { OccupantLoginComponent } from '@occupant/occupant-login.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { WaitingComponent } from '@occupant/waiting.component';
     AdminSideBarComponent,
     DishDetailsComponent,
     WaitingComponent,
+    OccupantLoginComponent,
   ],
   imports: [
     BrowserModule,
