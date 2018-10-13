@@ -49,7 +49,10 @@ export class MenuEditComponent implements OnInit {
         } else {
           this.menu = data; 
         }
-    })
+      },
+
+      error => { this.displayError(error); }
+    )
   }
 
   back() {
@@ -75,14 +78,6 @@ export class MenuEditComponent implements OnInit {
       show: this.forms.value.show,
     };
 
-    swal({
-      title: "Processing",
-      text: "Please wait as we process your request",
-      showConfirmButton: false,
-      confirmButtonColor: "#FBA62F"
-    });
-    
-
     this.menuService.updateMenu(menu).subscribe(
       data => {
         if(data != null) {
@@ -103,7 +98,9 @@ export class MenuEditComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });
         }
-      }
+      }, 
+      
+      error => { this.displayError(error); }
     );
   }
 

@@ -30,7 +30,9 @@ export class AdminFeedbackComponent implements OnInit {
         this.feedbackList = data;
         $("#table-orders").DataTable().clear();
         $('#table-orders').DataTable().destroy();
-      }
+      }, 
+
+      error => { this.displayError(error); }
     );
   }
 

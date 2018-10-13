@@ -84,7 +84,11 @@ export class WaitingComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });            
         }
-    });
+    }, 
+
+    error => { this.displayError(error); }
+    
+    );
   }
 
   async payBill() {
@@ -141,7 +145,11 @@ export class WaitingComponent implements OnInit {
                 confirmButtonColor: "#A40020"
               });            
             }
-        });
+        }, 
+        
+        error => { this.displayError(error); }
+        
+        );
       } else {
         swal({
           title: "Ooops!",
@@ -152,5 +160,15 @@ export class WaitingComponent implements OnInit {
         }); 
       }
     }
+  }
+
+  displayError(error) {
+    swal({
+      title: error.title,
+      text: error.message,
+      type: "error",
+      confirmButtonText: "Got it!",
+      confirmButtonColor: "#A40020"
+    });
   }
 }

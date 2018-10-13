@@ -28,9 +28,7 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.orderService.getOrders().subscribe(
       data => { this.orderList = data; },
-      error => { 
-        this.displayError(error);
-      }
+      error => { this.displayError(error); }
     );
   }
 
@@ -45,12 +43,6 @@ export class OrderComponent implements OnInit {
   }
 
   delete(id: number) {
-    swal({
-      title: "Processing",
-      text: "Please wait as we process your request",
-      showConfirmButton: false,
-    });
-
     this.orderService.deleteOrder(id)
       .subscribe(
         data => {
@@ -79,9 +71,7 @@ export class OrderComponent implements OnInit {
           }
         },
     
-      error => { 
-        this.displayError(error);
-      }
+      error => { this.displayError(error); }
     );
   }
 

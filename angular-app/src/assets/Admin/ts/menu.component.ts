@@ -17,7 +17,8 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.menuService.getMenus().subscribe(
-      data => { this.menuList = data; }
+      data => { this.menuList = data; } ,
+      error => { this.displayError(error); }
     );
   }
 
@@ -32,14 +33,7 @@ export class MenuComponent implements OnInit {
   }
 
   delete(id: number) {
-    swal({
-      title: "Processing",
-      text: "Please wait as we process your request",
-      showConfirmButton: false,
-    });
-
-    this.menuService.deleteMenu(id)
-      .subscribe(
+    this.menuService.deleteMenu(id).subscribe(
         data => {
           if(data != null) {
             if ($.fn.DataTable.isDataTable("#table-menu")) {
@@ -64,7 +58,9 @@ export class MenuComponent implements OnInit {
               confirmButtonColor: "#A40020"
             });            
           }
-      });
+      }, 
+      error => { this.displayError(error); }
+    );
   }
 
   displayError(error) {
