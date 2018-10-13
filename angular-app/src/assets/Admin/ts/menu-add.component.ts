@@ -54,19 +54,6 @@ export class MenuAddComponent implements OnInit {
           });
         }
       }, 
-
-      error => { this.displayError(error); }
     );
   }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
-  }
-
 }

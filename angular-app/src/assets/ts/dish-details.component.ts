@@ -59,9 +59,6 @@ export class DishDetailsComponent implements OnInit {
             });
           }
         },
-        error => { 
-          this.displayError(error);
-        }
       ); 
     }
   }
@@ -87,15 +84,5 @@ export class DishDetailsComponent implements OnInit {
 			confirmButtonText: "Close",
 			confirmButtonColor: "#FBA62F"
 		});
-  }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
   }
 }

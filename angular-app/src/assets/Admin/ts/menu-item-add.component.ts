@@ -74,9 +74,7 @@ export class MenuItemAddComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });  
         }
-      }, 
-
-      error => { this.displayError(error); }
+      },
     );
   }
 
@@ -86,15 +84,5 @@ export class MenuItemAddComponent implements OnInit {
         this.menuList = data;
       }
     );
-  }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
   }
 }

@@ -50,8 +50,6 @@ export class MenuEditComponent implements OnInit {
           this.menu = data; 
         }
       },
-
-      error => { this.displayError(error); }
     )
   }
 
@@ -98,9 +96,7 @@ export class MenuEditComponent implements OnInit {
             confirmButtonColor: "#A40020"
           });
         }
-      }, 
-      
-      error => { this.displayError(error); }
+      },
     );
   }
 
@@ -110,15 +106,5 @@ export class MenuEditComponent implements OnInit {
       this.menu.menu_items.splice(index, 1);
       this.menu.items.splice(index, 1);
     }
-  }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
   }
 }

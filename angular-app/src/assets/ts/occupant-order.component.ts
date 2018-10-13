@@ -126,14 +126,4 @@ export class OccupantOrderComponent implements OnInit {
       }, 
     );
   }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
-  }
 }

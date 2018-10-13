@@ -21,7 +21,6 @@ export class MenuItemComponent implements OnInit {
   ngOnInit() {
     this.menuItemService.getAllMenuItems().subscribe(
       data => { this.menuItemList = data;}, 
-      error => { this.displayError(error); }
     );
   }
 
@@ -62,20 +61,7 @@ export class MenuItemComponent implements OnInit {
               confirmButtonColor: "#A40020"
             });
           }
-      }, 
-
-      error => { this.displayError(error); }
+      },
     );
   }
-
-  displayError(error) {
-    swal({
-      title: error.title,
-      text: error.message,
-      type: "error",
-      confirmButtonText: "Got it!",
-      confirmButtonColor: "#A40020"
-    });
-  }
-
 }

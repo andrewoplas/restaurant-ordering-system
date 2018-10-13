@@ -162,7 +162,7 @@ export class WaitingComponent implements OnInit {
 
   logout() {
     let tableNumber = this.auth.getTable().tableNumber;
-    console.log(tableNumber);
+
     this.auth.logoutOccupant(tableNumber).subscribe(
       response => {
         if(response.error) {
