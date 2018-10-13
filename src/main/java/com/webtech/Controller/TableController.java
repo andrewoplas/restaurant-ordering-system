@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,13 +59,15 @@ public class TableController extends BaseController implements CONTROLLER<Table>
 	
 	@CrossOrigin
     @PostMapping(path = "/table/login", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String login(String table) { 
+	public Object login(@RequestBody String table) { 
+		System.out.println(table);
 		return service.login(table);
 	}
 	
 	@CrossOrigin
     @PostMapping(path = "/table/logout", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String logout(String table) { 
+	public Object logout(@RequestBody String table) { 
+		System.out.println(table);
 		return service.logout(table);
 	}
 

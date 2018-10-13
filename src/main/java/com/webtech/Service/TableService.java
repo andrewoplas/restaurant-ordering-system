@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webtech.Errors;
 import com.webtech.Dao.TableDao;
+import com.webtech.Model.ErrorResponseModel;
 import com.webtech.Model.Table;
 
 @Service
@@ -51,23 +53,23 @@ public class TableService implements SERVICE<Table> {
 		return service.getItem(id);
 	}
 
-	public String login(String id) {
+	public Object login(String id) {
 		Table table = service.getItemByTableNumber(id);
 		if(table != null) {
 			if(table.getStatus().equals("unavailable")) {
-				return "Table is currently occupied. Check another vacant table.";
+				return new ErrorResponseModel(Errors.TABLE_OCCUPIED);
 			} else {
 				table.setStatus("unavailable");
 				service.update(table);
 			}
 		} else {
-			return "Table does not exists. Make sure it is an existing table number.";
+			return new ErrorResponseModel(Errors.TABLE_DOES_NOT_EXISTS);
 		}
 		
-		return null;
+		return table;
 	}
 	
-	public String logout(String id) {
+	public Object logout(String id) {
 		Table table = service.getItemByTableNumber(id);
 		if(table != null) {
 			if(table.getStatus().equals("unavailable")) {
@@ -75,9 +77,9 @@ public class TableService implements SERVICE<Table> {
 				service.update(table);
 			}
 		} else {
-			return "Table does not exists. Make sure it is an existing table number.";
+			return new ErrorResponseModel(Errors.TABLE_DOES_NOT_EXISTS);
 		}
 		
-		return null;
+		return table;
 	}
 }
