@@ -7,6 +7,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { User, Role } from "@models/User";
 import { ErrorHandlerService } from '@services/error-handler.service';
 import { Globals } from '@models/Globals';
+import { Table } from '@models/Table';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -46,13 +47,23 @@ export class AuthService {
     return this.http
       .post<LoginUser>(`${this.baseUrl}/table/login`, table, httpOptions)
       .pipe(
-        tap(_ => this.log(`login user with table=${table}`)),
+        tap(_ => this.log(`login with table=${table}`)),
         catchError(this.errHandler.handleError)
       );
   }
 
-  public successLoginOccupant(table: string) {
-    localStorage.setItem('table', table);
+  /** POST: Logout */
+  public logoutOccupant(table: string): Observable<any> {
+    return this.http
+      .post<LoginUser>(`${this.baseUrl}/table/logout`, table, httpOptions)
+      .pipe(
+        tap(_ => this.log(`logout with table=${table}`)),
+        catchError(this.errHandler.handleError)
+      );
+  }
+
+  public successLoginOccupant(table: Table) {
+    localStorage.setItem('table', JSON.stringify(table));
     this.router.navigate(['/']);   
   }
 
@@ -60,13 +71,13 @@ export class AuthService {
     return localStorage.getItem("table");
   }
 
-  public logoutOccupant() {
+  public clearTable() {
     localStorage.removeItem('table');
     this.router.navigate(['/occupant']);
   }
 
   public getTable() {
-    return localStorage.getItem('table');
+    return JSON.parse(localStorage.getItem("table"));
   }
 
   public successLogin(user: User) {
