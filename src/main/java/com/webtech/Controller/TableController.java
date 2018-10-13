@@ -60,7 +60,6 @@ public class TableController extends BaseController implements CONTROLLER<Table>
 	@CrossOrigin
     @PostMapping(path = "/table/login", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Object login(@RequestBody String table) { 
-		System.out.println(table);
 		return service.login(table);
 	}
 	

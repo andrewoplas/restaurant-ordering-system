@@ -27,7 +27,7 @@ export class AppComponent {
         (hasRequested: boolean) => {
           if(hasRequested) {            
             swal({
-              text: 'Loading',
+              title: 'Loading',
               animation: false,
               customClass: 'animated fadeIn faster loadingSwal',
               allowOutsideClick: false,
@@ -55,7 +55,7 @@ export class AppComponent {
               text: response.message,
               type: "error",
               confirmButtonText: "Got it!",
-              confirmButtonColor: "#A40020"
+              confirmButtonColor: "#A40020",
             });
           }
         }

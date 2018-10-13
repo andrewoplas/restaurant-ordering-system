@@ -43,7 +43,7 @@ public class TableDao implements REPOSITORY<Table> {
 	
 	public Table getItemByTableNumber(String tableNumber) {
 		EntityQueryRequest request = em.createEntityQueryRequest("SELECT * FROM `Table` WHERE table_number=@tableNumber");
-		request.setNamedBinding("tableNumber", tableNumber);
+		request.setNamedBinding("tableNumber", Long.parseLong(tableNumber));
 		QueryResponse<Table> response = em.executeEntityQueryRequest(Table.class, request);
 		Table table = response.getResults().size() > 0? response.getResults().get(0) : null;
 		

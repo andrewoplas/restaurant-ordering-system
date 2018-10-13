@@ -8,22 +8,23 @@ import com.jmethods.catatumbo.Property;
 public class Table{
     
 	@Identifier
-    private String id;
+    private Long id;
 	
     private int capacity;
 	
-	@Property(name = "capacity")	
+	@Property(name = "table_number")	
 	private int tableNumber;
 	
 	private String status;
 		
 	public Table() { }
 
-	public String getId() {
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
