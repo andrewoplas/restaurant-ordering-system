@@ -14,6 +14,7 @@ import { AdminFeedbackComponent } from '@admin/admin-feedback.component';
 import { MenuAddComponent } from '@admin/menu-add.component';
 import { MenuEditComponent } from '@admin/menu-edit.component';
 
+import { MenuItemFilterPipe } from '@pipe/menu-item-filter.pipe';
 import { OrderStatusFilterPipe } from '@pipe/order-status-filter.pipe';
 import { FeedbackFilterPipe } from '@pipe/feedback-filter.pipe';
 
@@ -52,6 +53,7 @@ const routes: Routes = [
     MenuAddComponent,
     MenuEditComponent,
     
+    MenuItemFilterPipe,
     OrderStatusFilterPipe,
     FeedbackFilterPipe,
   ]

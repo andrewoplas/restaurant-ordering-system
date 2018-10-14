@@ -19,7 +19,7 @@ import { OccupantGuard } from './core/authentication/occupant.guard';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
-  { path: 'admin', component: AdminComponent, loadChildren: () => AdminModule, canActivate: [AdminGuard]},
+  { path: 'admin', component: AdminComponent, loadChildren: () => AdminModule /*, canActivate: [AdminGuard]*/},
   { path: 'menu', component: OccupantMenuComponent, canActivate: [OccupantGuard]},
   { path: 'menu/:id', component: DishDetailsComponent, canActivate: [OccupantGuard]},
   { path: 'order', component: OccupantOrderComponent, canActivate: [OccupantGuard]},
