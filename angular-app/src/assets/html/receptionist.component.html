@@ -8,45 +8,8 @@
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-12 col-12">
         <div class="flex-container">
-          <div class="flex-item">
-            <img src="assets/img/table-gold-4.png" class="reception-table table-occupied" />
-          </div>
-          <div class="flex-item">
-            <img src="assets/img/table-gold-4.png" class="reception-table" />
-          </div>
-          <div class="flex-item">
-              <img src="assets/img/table-gold-2.png" class="reception-table table-occupied" />
-          </div>
-          <div class="flex-item">
-              <img src="assets/img/table-gold-2.png" class="reception-table" />
-          </div>
-        </div>
-        <div class="flex-container">
-          <div class="flex-item">
-            <img src="assets/img/table-gold-4.png" class="reception-table table-occupied" />
-          </div>
-          <div class="flex-item">
-            <img src="assets/img/table-gold-4.png" class="reception-table table-occupied" />
-          </div>
-          <div class="flex-item">
-            <img src="assets/img/table-gold-2.png" class="reception-table" />
-          </div>
-          <div class="flex-item">
-            <img src="assets/img/table-gold-2.png" class="reception-table" />
-          </div>
-        </div>
-        <div class="flex-container">
-          <div class="flex-item">
-            <img src="assets/img/table-gold-4.png" class="reception-table" />
-          </div>
-          <div class="flex-item">
-            <img src="assets/img/table-gold-4.png" class="reception-table table-occupied" />
-          </div>
-          <div class="flex-item">
-            <img src="assets/img/table-gold-2.png" class="reception-table table-occupied" />
-          </div>
-          <div class="flex-item">
-            <img src="assets/img/table-gold-2.png" class="reception-table" />
+          <div *ngFor="let table of tableList" class="flex-item">
+            <span class="reception-table {{ table.capacity == 2 ? 'twoSeater' : 'fourSeater' }} {{ table.status == 'available' ? 'table-occupied' : '' }}">{{ table.tableNumber }}</span>
           </div>
         </div>
       </div>
@@ -63,8 +26,8 @@
         <!-- Tab content -->
         <div id="dine" class="tabcontent" style="display: block">
           <h2 class="title">New Dine Session</h2>
-          <p class="sub-text">July 14, 2018 <i class="material-icons">calendar_today</i></p>
-          <p class="sub-text">8:07PM - Dinner</p>
+          <p class="sub-text">{{ currentDate }} <i class="material-icons">calendar_today</i></p>
+          <p class="sub-text time-text">8:07PM - Dinner</p>
           <button class="reception-btn">Dine</button>
         </div>
 

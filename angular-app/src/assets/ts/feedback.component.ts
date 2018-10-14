@@ -53,6 +53,10 @@ export class FeedbackComponent implements OnInit {
             type: "success",
             timer: 3000
           });
+          setTimeout(
+            () => {
+              this.router.navigate(['']);
+          }, 3000);
         } else {
           swal({
             title: "Ooops!",

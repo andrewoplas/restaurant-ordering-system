@@ -21,21 +21,51 @@
         display: flex;
         flex-flow: row;
         justify-content: space-evenly;
+        flex-wrap: wrap;
         margin: 25px 0;
 
         .flex-item {
             background-color: #ffffff;
-            height: 110px;
-            width: 110px;
+            height: 150px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
             padding: 15px;
+            margin: 15px;
+            width: calc(100% * (1/4) - 30px - 1px);
+            cursor: pointer;
 
             .reception-table {
                 height: 80px;
                 width: 80px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                color: #ffffff;
+                font-size: 24px;
+                font-family: "VarelaRound";
+            }
+
+            .twoSeater {
+                background-image: url(../img/table-gold-2.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .fourSeater {
+                background-image: url(../img/table-gold-4.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
             }
         }
 
         .flex-item:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+        }
+
+        .clicked-table {
             box-shadow: 0 6px 16px rgba(0,0,0,0.35);
         }
 
