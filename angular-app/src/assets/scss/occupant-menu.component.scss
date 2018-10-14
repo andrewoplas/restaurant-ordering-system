@@ -41,6 +41,10 @@ body {
     min-height: 100vh;
 }
 
+.menu-item {
+    cursor: pointer;
+}
+
 .background-image {
     position: fixed;
     bottom: 0;
