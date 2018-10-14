@@ -85,45 +85,57 @@ export class OccupantOrderComponent implements OnInit {
   }
 
   finalizeOrder() {
-    let orderNumber = (new Date()).getTime();
-    let tableNumber = this.auth.getTable().tableNumber;
+    if(this.items.length == 0){
+      swal({
+        title: "Ooops!",
+        text: "You may not have ordered anything yet, please finalize after you have ordered something.",
+        type:   "error",
+        confirmButtonText: "Got it!",
+        confirmButtonColor: "#FBA62F"
+      });
+    }
+    else{
+      let orderNumber = (new Date()).getTime();
+      let tableNumber = this.auth.getTable().tableNumber;
 
-    let order: Order = new Order(
-      0, this.totalAmount, Status.PENDING, Number(tableNumber), orderNumber, this.items, new Date()
-    );   
+      let order: Order = new Order(
+        0, this.totalAmount, Status.PENDING, Number(tableNumber), orderNumber, this.items, new Date()
+      );   
 
-    sessionStorage.setItem("order_number", orderNumber.toString());
+      sessionStorage.setItem("order_number", orderNumber.toString());
 
-    this.orderService.addOrder(order)
-    .subscribe(
-      data => {
-        if(data != null) {
-          this.orderService.startCountdown();
-          this.initializeTableItems();
+      this.orderService.addOrder(order)
+      .subscribe(
+        data => {
+          if(data != null) {
+            this.orderService.startCountdown();
+            this.initializeTableItems();
 
-          swal({
-            title: "Success",
-            text: "Successfully processed your order. You will be redirected to waiting screen in a second...",
-            type:   "success",
-            confirmButtonText: "Cool",
-            confirmButtonColor: "#FBA62F"
-          });
+            swal({
+              title: "Success",
+              text: "Successfully processed your order. You will be redirected to waiting screen in a second...",
+              type:   "success",
+              confirmButtonText: "Cool",
+              confirmButtonColor: "#FBA62F"
+            });
 
-          setTimeout(
-            () => {
-              this.router.navigate(['waiting']);
-          }, 2000);
+            setTimeout(
+              () => {
+                this.router.navigate(['waiting']);
+            }, 2000);
 
-        } else {
-          swal({
-            title: "Ooops!",
-            text: "There was an error during the process. Please try again!",
-            type: "error",
-            confirmButtonText: "Try Again",
-            confirmButtonColor: "#A40020"
-          });            
-        }
-      }, 
-    );
+          } else {
+            swal({
+              title: "Ooops!",
+              text: "There was an error during the process. Please try again!",
+              type: "error",
+              confirmButtonText: "Try Again",
+              confirmButtonColor: "#A40020"
+            });            
+          }
+        }, 
+      );
+    }
+    
   }
 }
