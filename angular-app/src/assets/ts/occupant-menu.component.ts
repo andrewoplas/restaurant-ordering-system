@@ -129,6 +129,7 @@ export class OccupantMenuComponent implements OnInit {
   
   addToCart(item: MenuItem) {
 		this.orderService.addToCart(item, 1);
+		$(".cart-items-ctr").html((parseInt($(".cart-items-ctr").html()) + 1) + "");
 		
 		swal({
 			title: "Success",
