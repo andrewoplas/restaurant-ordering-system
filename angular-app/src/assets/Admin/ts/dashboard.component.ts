@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '@services/order.service';
+import { Order } from '@models/Order';
+import { MenuItemFilterPipe } from '@pipe/menu-item-filter.pipe';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +11,20 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   title = "DASHBOARD";
+  menuItemList: Array<Order> = new Array<Order>();
 
-  constructor() { }
+  constructor(private orderService: OrderService) { }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.getMenuItems();
+  }
+
+  getMenuItems() {
+    this.orderService.getOrders().subscribe(
+      data => {
+        this.menuItemList = data;
+      }, 
+    );
   }
 
 }
