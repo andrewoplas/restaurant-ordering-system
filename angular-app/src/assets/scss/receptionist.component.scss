@@ -28,6 +28,7 @@
             height: 110px;
             width: 110px;
             padding: 15px;
+            cursor: pointer;
 
             .reception-table {
                 height: 80px;
@@ -36,6 +37,10 @@
         }
 
         .flex-item:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+        }
+
+        .clicked-table {
             box-shadow: 0 6px 16px rgba(0,0,0,0.35);
         }
 

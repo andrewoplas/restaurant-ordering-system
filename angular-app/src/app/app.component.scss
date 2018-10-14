@@ -1,5 +1,18 @@
 /deep/ {
     .loadingSwal {
         font-size: 1rem !important;
+        background-color: rgba(0,0,0,0);
+
+        .swal2-loading {
+            display: none !important;
+        }
+
+        h2 {
+            color: #ffffff;
+        }
+    }
+
+    .logo-animated {
+        width: 150px;
     }
 }

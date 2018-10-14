@@ -27,7 +27,8 @@ export class AppComponent {
         (hasRequested: boolean) => {
           if(hasRequested) {            
             swal({
-              title: 'Loading',
+              title: '',
+              html: '<img class="logo-animated" src="assets/img/animated-logo.gif" /><br/><h2>LOADING</h2>',
               animation: false,
               customClass: 'animated fadeIn faster loadingSwal',
               allowOutsideClick: false,
