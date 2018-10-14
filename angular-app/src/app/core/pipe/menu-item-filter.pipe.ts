@@ -16,12 +16,12 @@ export class MenuItemFilterPipe implements PipeTransform {
         
         let i : number;
         for(i = 0; i < items.length; i++){
-            if(filter == "1") { // DAILY
+            if(filter == "1" && items[i].status == "paid") { // DAILY
                 if(new Date(items[i].dateCreated).toLocaleDateString("en-US") === new Date().toLocaleDateString("en-US")){
                     items[i].menuItem.filter((menuItem: MenuItemQuantity) => dict[menuItem.id] == null ? dict[menuItem.id] = menuItem.quantity : dict[menuItem.id] += menuItem.quantity);
                 }
             }
-            else if(filter == "2") { // WEEKLY
+            else if(filter == "2" && items[i].status == "paid") { // WEEKLY
                 var curr = new Date;
                 var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
                 var lastday = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
@@ -29,12 +29,12 @@ export class MenuItemFilterPipe implements PipeTransform {
                     items[i].menuItem.filter((menuItem: MenuItemQuantity) => dict[menuItem.id] == null ? dict[menuItem.id] = menuItem.quantity : dict[menuItem.id] += menuItem.quantity);
                 }
             }
-            else if(filter == "3") { // MONTHLY
+            else if(filter == "3" && items[i].status == "paid") { // MONTHLY
                 if((new Date(items[i].dateCreated).getMonth() == new Date().getMonth()) && new Date(items[i].dateCreated).getFullYear() == new Date().getFullYear()){
                     items[i].menuItem.filter((menuItem: MenuItemQuantity) => dict[menuItem.id] == null ? dict[menuItem.id] = menuItem.quantity : dict[menuItem.id] += menuItem.quantity);
                 }
             }
-            else if(filter == "4") { // YEARLY
+            else if(filter == "4" && items[i].status == "paid") { // YEARLY
                 if((new Date(items[i].dateCreated).getFullYear() == new Date().getFullYear())){
                     items[i].menuItem.filter((menuItem: MenuItemQuantity) => dict[menuItem.id] == null ? dict[menuItem.id] = menuItem.quantity : dict[menuItem.id] += menuItem.quantity);
                 }

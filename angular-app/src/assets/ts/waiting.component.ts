@@ -121,7 +121,7 @@ export class WaitingComponent implements OnInit {
     })
 
     if (money) {
-      if(money > billAmount) {
+      if(money >= billAmount) {
         let orderNumber = sessionStorage.getItem("order_number");
         this.orderService.payOrder(orderNumber)
         .subscribe(
