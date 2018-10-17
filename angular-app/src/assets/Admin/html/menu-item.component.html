@@ -29,7 +29,7 @@
                             <td><img src="../../../assets/img/dish-1.png" width="80"/></td>
                             <td>
                                 {{ item.name }} <br>
-                                <span class="badge badge-warning" [hidden]="item.salePrice > 0">ON SALE</span>
+                                <span class="badge badge-warning" [hidden]="item.salePrice <= 0">ON SALE</span>
                             </td>
                             <td>P{{ item.salePrice > 0? item.salePrice : item.price }}</td>
                             <td class="text-center">

@@ -12,7 +12,6 @@ export class LandingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
     function AnimateRotate(elem, angle) {
       // caching the object for performance reasons
       var $elem = $(elem);
