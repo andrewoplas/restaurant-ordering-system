@@ -8,6 +8,7 @@ import { DashboardComponent } from '@admin/dashboard.component';
 import { TableComponent } from '@admin/table.component';
 import { MenuItemComponent } from '@admin/menu-item.component';
 import { MenuItemAddComponent } from '@admin/menu-item-add.component';
+import { MenuItemEditComponent } from '@admin/menu-item-edit.component';
 import { OrderComponent } from '@admin/order.component';
 import { MenuComponent } from '@admin/menu.component';
 import { AdminFeedbackComponent } from '@admin/admin-feedback.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
     { path: 'menu/edit/:id', component: MenuEditComponent },
     { path: 'menu-item', component: MenuItemComponent },
     { path: 'menu-item/add', component: MenuItemAddComponent },
+    { path: 'menu-item/edit/:id', component: MenuItemEditComponent },
     { path: 'orders', component: OrderComponent },
     { path: "feedback", component: AdminFeedbackComponent }
 ];
@@ -56,6 +58,7 @@ const routes: Routes = [
     MenuItemFilterPipe,
     OrderStatusFilterPipe,
     FeedbackFilterPipe,
+    MenuItemEditComponent,
   ]
 })
 export class AdminModule { }

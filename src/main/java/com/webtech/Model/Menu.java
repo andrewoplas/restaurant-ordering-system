@@ -85,6 +85,15 @@ public class Menu {
 		menu_items.remove(id);
 	}
 
+	public void updateMenu_items(Long id) {
+		menu_items.remove(id);
+		if(menu_items == null) {
+			this.setMenu_items(new ArrayList<Long>());
+		}
+		
+		menu_items.add(id);
+	}
+
 	public List<MenuItem> getItems() {
 		return items;
 	}

@@ -53,6 +53,40 @@ public class MenuItemService implements SERVICE<MenuItem>{
 		//TODO: Remove item
 		repository.update(obj);
 		return repository.getItems();
+/* 		String id = obj.getId().toString();
+		MenuItem menuItem = repository.getItem(id);
+		if(repository.itemExist(Long.parseLong(id))) {
+			List<Order> orders = orderRepository.getItems();
+			long menuItemId = Long.parseLong(id);
+			boolean valid = true;
+			
+			for(Order order: orders) {
+				for(MenuItemQuantity miq: order.getMenuItem()) {
+					if(miq.getId() == menuItemId) {
+						valid = false;
+						break;
+					}
+				}
+				
+				if(!valid) break;
+			}
+			
+			if(valid) {
+				repository.update(obj);
+				
+
+				Menu menu = menuService.getItem(menuItem.getMenuId().toString());
+				menu.updateMenu_items(menuItem.getId());
+				menuService.update(menu);
+			} else {
+				return null;
+			}
+		} else {
+			// Menu Item does not exists
+			return null;
+		}
+		
+		return repository.getItems(); */
 	}
 
 	@Override

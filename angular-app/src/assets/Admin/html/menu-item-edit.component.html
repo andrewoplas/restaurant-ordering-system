@@ -1,0 +1,82 @@
+<div class="row bg-title">
+  <div class="col-xs-12">
+      <h4 class="page-title">{{ title }}</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+      <div class="white-box">
+          <h3 class="box-title m-b-40">Edit Menu Item</h3>
+
+          <form [formGroup]="forms" #formDirective="ngForm" (submit)="edit()" *ngIf="menuItem">
+              <div class="row">
+                  <div class="col-md-6 col-xs-12">
+                      <div class="group"> 
+                          <input type="text" name="name" id="name" formControlName="name" [(ngModel)]="menuItem.name" required>
+                          <span class="bar"></span>
+                          <label>Name</label>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                      <input type='checkbox' class='ios8-switch ios8-switch-lg' formControlName="show" [(ngModel)]="menuItem.show" id='checkbox-3'>
+                      <label for='checkbox-3' class="label-show">Show</label>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <div class="group">
+                        <textarea type="text" name="description" id="description" formControlName="description" [(ngModel)]="menuItem.description" required></textarea>
+                        <span class="bar"></span>
+                        <label>Description</label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="group">
+                      <input type="text" name="menu" id="menu" value={{menuName}} required>
+                      <span class="bar"></span>
+                      <label>Menu</label>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-6 col-xs-12">
+                      <div class="group">
+                          <input type="number" name="price" id="price" formControlName="price" [(ngModel)]="menuItem.price" required>
+                          <span class="bar"></span>
+                          <label>Price</label>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                      <div class="group">
+                          <input type="number" name="sale-price" id="sale-price" formControlName="salePrice" [(ngModel)]="menuItem.salePrice" required>
+                          <span class="bar"></span>
+                          <label>Sale Price</label>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-6 col-xs-12">
+                      <div class="group">
+                          <input type="number" name="max_servings" id="servings" formControlName="servings" [(ngModel)]="menuItem.servings" required>
+                          <span class="bar"></span>
+                          <label>Max Servings</label>
+                      </div>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                      <div class="group">
+                          <input type="number" name="cooking_time" id="cooking_time" formControlName="cookingTime" [(ngModel)]="menuItem.cookingTime" required>
+                          <span class="bar"></span>
+                          <label>Cooking Time</label>
+                      </div>
+                  </div>
+              </div>
+              
+              <button type="submit" [disabled]="!forms.valid" class="btn btn-standard btn-submit">Update</button>
+          </form>
+      </div>
+  </div>
+</div>
