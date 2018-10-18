@@ -15,18 +15,20 @@ import { DishDetailsComponent } from '@occupant/dish-details.component';
 import { WaitingComponent } from '@occupant/waiting.component';
 import { OccupantLoginComponent } from '@occupant/occupant-login.component';
 import { OccupantGuard } from './core/authentication/occupant.guard';
+import { LogoutComponent } from '@occupant/logout.component';
 
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
-  { path: 'admin', component: AdminComponent, loadChildren: () => AdminModule /*, canActivate: [AdminGuard]*/},
+  { path: 'admin', component: AdminComponent, loadChildren: () => AdminModule , canActivate: [AdminGuard]},
   { path: 'menu', component: OccupantMenuComponent, canActivate: [OccupantGuard]},
   { path: 'menu/:id', component: DishDetailsComponent, canActivate: [OccupantGuard]},
   { path: 'order', component: OccupantOrderComponent, canActivate: [OccupantGuard]},
-  { path: 'receptionist', component: ReceptionistComponent, canActivate: [OccupantGuard]},
+  { path: 'receptionist', component: ReceptionistComponent},
   { path: 'feedback', component: FeedbackComponent, canActivate: [OccupantGuard]},
   { path: 'waiting', component: WaitingComponent, canActivate: [OccupantGuard]},
   { path: 'occupant', component: OccupantLoginComponent },
+  { path: 'logout', component: LogoutComponent, canActivate: [OccupantGuard] },
   { path: '', component: LandingComponent, canActivate: [OccupantGuard]}
 ];
 

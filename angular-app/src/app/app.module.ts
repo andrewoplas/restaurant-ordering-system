@@ -21,6 +21,7 @@ import { LandingComponent } from '@occupant/landing.component';
 import { DishDetailsComponent } from '@occupant/dish-details.component';
 import { WaitingComponent } from '@occupant/waiting.component';
 import { OccupantLoginComponent } from '@occupant/occupant-login.component';
+import { LogoutComponent } from '@occupant/logout.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { OccupantLoginComponent } from '@occupant/occupant-login.component';
     DishDetailsComponent,
     WaitingComponent,
     OccupantLoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
